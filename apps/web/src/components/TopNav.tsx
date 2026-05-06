@@ -6,6 +6,8 @@ import { CATEGORIES, PLATFORMS } from '../constants';
 import { FilterState, EventCategory, CalendarEvent } from '../types';
 import { cn } from '../lib/utils';
 
+const LOGO_IMAGE = "/assets/logo.svg";
+
 interface TopNavProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
@@ -76,8 +78,8 @@ export default function TopNav({
     <header className="h-[56px] border-b border-border bg-card sticky top-0 z-40 flex items-center px-6">
       {/* Logo Area (aligned with Sidebar) */}
       <Link to="/" className="w-[256px] flex items-center shrink-0 hover:opacity-80 transition-opacity">
-        <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg">
-          <InfinityIcon className="w-5 h-5 text-background" strokeWidth={3} />
+        <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
+          <img src={LOGO_IMAGE} alt="" className="h-5 w-5 invert" />
         </div>
         <span className="ml-3 font-bold tracking-tighter text-2xl italic">Eventio</span>
       </Link>

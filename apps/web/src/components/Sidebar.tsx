@@ -1,14 +1,16 @@
 import React from 'react';
-import { Calendar, Settings, Moon, Sun, User, Info, Users, Infinity as InfinityIcon } from 'lucide-react';
+import { Calendar, Settings, User } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
+
+const LOGO_IMAGE = "/assets/logo.svg";
 
 export default function Sidebar() {
   return (
     <aside className="w-16 h-screen flex flex-col items-center py-6 border-r border-border bg-card transition-colors duration-300">
       <div className="mb-12">
-        <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg">
-          <InfinityIcon className="w-5 h-5 text-background" strokeWidth={3} />
+        <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
+          <img src={LOGO_IMAGE} alt="" className="h-5 w-5 invert" />
         </div>
       </div>
 

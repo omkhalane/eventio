@@ -1,36 +1,58 @@
 # Data Flow
 
-## Current Flow
+## Current Runtime Flow
 
 ```text
-source website/API
-  -> scraper module
-  -> normalized event list
-  -> deduplication by external_id
-  -> future database upsert
-  -> Supabase query from web app
-  -> calendar UI
+public source website/API
+  -> Python scraper adapter
+  -> normalized event dictionaries
+  -> JSON output from services.scraper.main
+  -> Supabase events table populated outside the frontend
+  -> browser Supabase query
+  -> calendar, search, filters, modal, and Google Calendar sync
 ```
 
-## Near-Term Storage Contract
+The web app reads from Supabase directly in the browser through the public anon
+key. It does not currently call a custom events API for event listing.
 
-The scraper runner should write to a storage adapter instead of writing ad hoc
-JSON files from individual source modules. The storage adapter should own:
+## Vercel Endpoint
 
-- validation
+The deployed app includes one serverless endpoint:
+
+```text
+GET /api/v1/health
+```
+
+It returns a small JSON health payload and is useful for deployment smoke tests.
+
+## Scraper Runner
+
+`services.scraper.main` discovers no-argument `fetch_*` functions from
+`services/scraper/scrapers`, runs selected sources, deduplicates by stable event
+identity through shared utilities, and writes JSON to stdout or an `--output`
+file.
+
+## Storage Gap
+
+The repository does not yet contain a formal scheduled upsert worker that moves
+scraper output into Supabase. That remains the main backend integration gap.
+
+The future storage adapter should own:
+
+- event validation
 - deduplication keys
-- upsert behavior
+- Supabase upsert behavior
 - source run metadata
-- error reporting
+- per-source error reporting
 
-## Observability
+## Observability Target
 
-Every scheduled scrape should emit:
+Every scheduled scrape should eventually emit:
 
 - run id
 - source name
-- started and finished timestamps
+- start and finish timestamps
 - event count
-- insert/update count
+- insert and update count
 - warning count
 - failure reason, when present

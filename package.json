@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/omkhalane/eventio.git"
   },
-  "homepage": "https://github.com/omkhalane/eventio#readme",
+  "homepage": "https://eventio-sandy.vercel.app/",
   "bugs": {
     "url": "https://github.com/omkhalane/eventio/issues"
   },

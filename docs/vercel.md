@@ -6,7 +6,7 @@ frontend source lives in `apps/web`, and the production build is emitted to
 
 ## Project Settings
 
-Use these values in the Vercel dashboard if Vercel does not auto-detect them:
+These values are committed in `vercel.json`:
 
 ```text
 Framework Preset: Vite
@@ -18,14 +18,14 @@ Development Command: npm run dev
 Node.js Version: 20.x
 ```
 
-The same settings are committed in `vercel.json`, so importing the repository
-should work without extra build configuration.
+The config also defines long-lived cache headers for static assets and a SPA
+rewrite so routes such as `/calendar` and `/architecture` load correctly.
 
 ## Environment Variables
 
 Add these variables in Vercel under Project Settings -> Environment Variables.
-Use the same values for Production, Preview, and Development unless you keep
-separate Firebase or Supabase projects per environment.
+Use separate values per environment if you keep separate Firebase or Supabase
+projects for Production, Preview, and Development.
 
 ```text
 VITE_SUPABASE_URL=
@@ -44,48 +44,47 @@ Do not add `NODE_ENV`; Vercel sets it during builds and runtime.
 
 ## Firebase Setup
 
-In Firebase Authentication, add your Vercel domains to the authorized domains
+In Firebase Authentication, add each deployed host to the authorized domains
 list:
 
 ```text
-your-project.vercel.app
+eventio-sandy.vercel.app
 your-custom-domain.com
 ```
 
-If you use preview deployments for auth testing, also add the relevant preview
-domain shown by Vercel.
+If you test authentication on preview deployments, add the preview domain shown
+by Vercel or use a dedicated Firebase preview project.
 
 ## Google OAuth Setup
 
-In Google Cloud Console, configure the OAuth web client for the deployed app:
+In Google Cloud Console, configure the OAuth web client:
 
 ```text
 Authorized JavaScript origins:
-https://your-project.vercel.app
+https://eventio-sandy.vercel.app
 https://your-custom-domain.com
 ```
 
-The app uses the browser Google API flow for Calendar access, so the deployed
-origin must match exactly.
+Enable the Google Calendar API for the same project. The browser sync flow calls
+`https://www.googleapis.com/calendar/v3/calendars/primary/events` with the
+signed-in user's access token.
 
 ## Supabase Setup
 
-In Supabase, add the deployed URLs to Auth URL configuration if you use Supabase
-Auth redirects in the future:
+The frontend reads from Supabase using `VITE_SUPABASE_URL` and
+`VITE_SUPABASE_ANON_KEY`. Confirm Row Level Security policies allow only the
+intended public reads and authenticated user writes.
+
+If Supabase Auth redirects are added later, configure:
 
 ```text
-Site URL: https://your-custom-domain.com
+Site URL: https://eventio-sandy.vercel.app
 Additional Redirect URLs:
-https://your-project.vercel.app/**
+https://eventio-sandy.vercel.app/**
 https://your-custom-domain.com/**
 ```
 
-The current app uses Supabase for data storage from the browser, so verify Row
-Level Security policies allow only the intended public reads and user writes.
-
 ## CLI Deployment
-
-Install or run the Vercel CLI, link the project, then deploy:
 
 ```bash
 npx vercel link
@@ -103,12 +102,15 @@ push to the production branch.
 After deployment, check:
 
 ```text
-https://your-domain.com/
-https://your-domain.com/calendar
-https://your-domain.com/api/v1/health
-https://your-domain.com/robots.txt
-https://your-domain.com/sitemap.xml
+https://eventio-sandy.vercel.app/
+https://eventio-sandy.vercel.app/calendar
+https://eventio-sandy.vercel.app/architecture
+https://eventio-sandy.vercel.app/api/v1/health
+https://eventio-sandy.vercel.app/assets/hero.png
+https://eventio-sandy.vercel.app/assets/og-image.png
+https://eventio-sandy.vercel.app/robots.txt
+https://eventio-sandy.vercel.app/sitemap.xml
 ```
 
-The `/api/v1/health` endpoint is a Vercel serverless function. All other app
-routes are served by the Vite SPA rewrite to `index.html`.
+`/api/v1/health` is a Vercel serverless function. All app routes are served by
+the Vite SPA rewrite to `index.html`.
