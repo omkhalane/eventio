@@ -49,7 +49,7 @@
     "motion": "^12.23.24",
     "react": "^19.0.0",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.14.2",
+    "react-router-dom": "^7.15.0",
     "tailwind-merge": "^3.5.0",
     "vite": "^8.0.10"
   },
