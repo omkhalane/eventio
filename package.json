@@ -34,7 +34,7 @@
     "lint": "npm run check"
   },
   "dependencies": {
-    "@google/genai": "^1.29.0",
+    "@google/genai": "^1.52.0",
     "@supabase/supabase-js": "^2.105.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/google.accounts": "^0.0.18",
