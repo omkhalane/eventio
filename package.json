@@ -38,7 +38,7 @@
     "@supabase/supabase-js": "^2.105.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/google.accounts": "^0.0.18",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "^6.0.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.3",
