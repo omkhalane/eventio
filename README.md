@@ -86,6 +86,7 @@ python3 -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
 - [SEO and discoverability](docs/seo.md)
 - [Tooling recommendations](docs/tooling.md)
 - [Asset strategy](docs/asset-strategy.md)
+- [Vercel deployment](docs/vercel.md)
 
 ## Community
 
