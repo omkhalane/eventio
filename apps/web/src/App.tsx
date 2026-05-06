@@ -98,7 +98,8 @@ const CalendarApp = () => {
     } catch (err: any) {
       console.error('Login failed:', err);
       if (err.code === 'auth/unauthorized-domain') {
-        alert('Configuration Error: This domain (localhost) is not authorized in Firebase. Please add it to the Authorized Domains list in your Firebase Console (Authentication -> Settings -> Authorized domains).');
+        const hostname = window.location.hostname;
+        alert(`Configuration Error: This domain (${hostname}) is not authorized in Firebase. Add it in Firebase Console -> Authentication -> Settings -> Authorized domains.`);
       } else {
         alert('Google Sign-In failed. Please try again.');
       }

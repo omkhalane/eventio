@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import {
-  Infinity as InfinityIcon,
   Zap,
   Github,
   ArrowRight,
@@ -13,6 +12,10 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
+
+const HERO_IMAGE = "/assets/hero.png";
+const BANNER_IMAGE = "/assets/banner.png";
+const LOGO_IMAGE = "/assets/logo.svg";
 
 const SOURCES = [
   "Codeforces",
@@ -185,6 +188,12 @@ export const LandingPage: React.FC = () => {
 
       {/* Abstract Animated Geometry Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#020202] hardware-accel">
+        <img
+          src={BANNER_IMAGE}
+          alt=""
+          className="absolute inset-x-0 top-0 h-[70vh] w-full object-cover opacity-20 mix-blend-screen blur-[1px]"
+          aria-hidden="true"
+        />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
         <motion.div
@@ -209,8 +218,8 @@ export const LandingPage: React.FC = () => {
             className="flex items-center gap-3 group cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:rotate-180 transition-transform duration-700 hardware-accel">
-              <InfinityIcon className="w-6 h-6 text-black" strokeWidth={2.5} />
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:rotate-180 transition-transform duration-700 hardware-accel overflow-hidden">
+              <img src={LOGO_IMAGE} alt="" className="h-7 w-7" />
             </div>
             <span className="text-xl font-black tracking-tighter hidden sm:block">
               Eventio
@@ -304,9 +313,9 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
             <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-500 mb-12">
-              Used by{" "}
+              Built for{" "}
               <span className="text-white border-b border-white/20 pb-0.5">
-                1,000+ elite developers
+                builders, competitors, and event hunters
               </span>
             </p>
           </FadeUpText>
@@ -357,8 +366,8 @@ export const LandingPage: React.FC = () => {
               {/* Internal inset shadow to give depth */}
               <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,1)] z-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" />
               <img
-                src="/hero.png"
-                alt="Hero Image"
+                src={HERO_IMAGE}
+                alt="Eventio calendar dashboard preview"
                 className="w-full h-auto object-cover transition-all duration-1000 opacity-60 grayscale-[50%] group-hover:opacity-100 group-hover:grayscale-0 relative z-10 hardware-accel"
                 loading="lazy"
               />
@@ -433,7 +442,8 @@ export const LandingPage: React.FC = () => {
                     Real-time
                   </h3>
                   <p className="text-zinc-400 text-sm lg:text-base font-medium leading-relaxed">
-                    Sub-50ms data updates via Edge caching.
+                    Fresh event data from scraper adapters and Supabase-backed
+                    reads.
                   </p>
                 </div>
               </div>
@@ -502,7 +512,8 @@ export const LandingPage: React.FC = () => {
             Ready to <br /> ship?
           </h2>
           <p className="text-lg md:text-xl text-zinc-400 mb-12 font-medium max-w-2xl px-4">
-            Join 1,000+ elite developers tracking their next big win.
+            Track the next contest, challenge, conference, or hackathon before
+            the deadline gets away.
           </p>
           <Link
             to="/calendar"
@@ -518,11 +529,8 @@ export const LandingPage: React.FC = () => {
       <footer className="py-12 px-6 border-t border-white/5 relative z-10 bg-black">
         <div className="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white flex items-center justify-center">
-              <InfinityIcon
-                className="w-5 h-5 md:w-6 md:h-6 text-black"
-                strokeWidth={2.5}
-              />
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+              <img src={LOGO_IMAGE} alt="" className="h-6 w-6 md:h-7 md:w-7" />
             </div>
             <span className="font-black tracking-tighter text-xl md:text-2xl uppercase">
               Eventio

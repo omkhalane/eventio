@@ -1,46 +1,71 @@
-# Eventio
+<div align="center">
+  <a href="https://eventio-sandy.vercel.app/">
+    <img src="apps/web/public/assets/banner.png" alt="Eventio banner" width="100%" />
+  </a>
 
-[![CI](https://github.com/omkhalane/eventio/actions/workflows/lint.yml/badge.svg)](https://github.com/omkhalane/eventio/actions/workflows/lint.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Repository](https://img.shields.io/badge/GitHub-omkhalane%2Feventio-black)](https://github.com/omkhalane/eventio)
+  <h1>Eventio</h1>
 
-Developer event intelligence in one calendar: coding contests, hackathons,
-AI competitions, security challenges, startup programs, and tech events from
-many public sources.
+  <p>
+    <strong>Developer event intelligence in one fast calendar.</strong>
+    <br />
+    Track coding contests, hackathons, AI competitions, security challenges,
+    startup programs, and tech events from public sources.
+  </p>
 
-Eventio is a monorepo for an event aggregation platform. It includes a React
-web app, a Python scraper service, SEO-ready public metadata, and contributor
-tooling for growing the source catalog safely.
+  <p>
+    <a href="https://github.com/omkhalane/eventio/actions/workflows/lint.yml"><img src="https://github.com/omkhalane/eventio/actions/workflows/lint.yml/badge.svg" alt="CI status" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license" /></a>
+    <a href="https://eventio-sandy.vercel.app/"><img src="https://img.shields.io/badge/Vercel-ready-black?logo=vercel" alt="Vercel ready" /></a>
+    <a href="https://github.com/omkhalane/eventio"><img src="https://img.shields.io/badge/GitHub-omkhalane%2Feventio-black?logo=github" alt="Repository" /></a>
+  </p>
 
-Maintainer: [Om Khalane](https://github.com/omkhalane)  
-Repository: [github.com/omkhalane/eventio](https://github.com/omkhalane/eventio)  
-Contact: [om.khalane.dev@gmail.com](mailto:om.khalane.dev@gmail.com)
+  <p>
+    <a href="https://eventio-sandy.vercel.app/">Live app</a>
+    ·
+    <a href="docs/setup.md">Setup</a>
+    ·
+    <a href="docs/vercel.md">Deploy</a>
+    ·
+    <a href="docs/scraping.md">Add a source</a>
+    ·
+    <a href="CONTRIBUTING.md">Contribute</a>
+  </p>
+</div>
 
-## Why This Exists
+## Overview
 
-Developers should not need to check Codeforces, LeetCode, Devpost, MLH,
-Kaggle, AIcrowd, Unstop, Devfolio, and dozens of event pages manually. Eventio
-normalizes those sources into a searchable, calendar-first experience.
+Eventio is an open-source event aggregation platform for developers. The repo
+contains a React calendar app, a Python scraper service, production-ready public
+assets, Vercel deployment config, SEO metadata, CI, Dependabot updates, and
+contributor workflows.
 
-## Features
+The product goal is simple: developers should not need to manually check
+Codeforces, LeetCode, AtCoder, Devpost, MLH, Kaggle, AIcrowd, Unstop, Devfolio,
+and dozens of other pages to find what is worth joining next.
 
-- Unified calendar for developer events and competitions.
-- Source adapters for competitive programming, hackathons, AI competitions,
-  conferences, and hiring challenges.
-- React + TypeScript frontend with calendar and list views.
-- Python scraper service with reusable retry and deduplication helpers.
-- SEO-ready metadata, sitemap, robots.txt, Open Graph, and JSON-LD.
-- GitHub issue templates, CI workflows, security policy, and contribution docs.
+## Highlights
+
+- Calendar-first React app with month, week, day, and list views.
+- Search and filters for event type, platform, date, mode, and metadata.
+- Google sign-in and Google Calendar event sync.
+- Supabase client integration for event and user preference data.
+- Python scraper registry with source adapters for contests, hackathons,
+  conferences, competitions, and hiring challenges.
+- Vercel static deployment with a serverless `/api/v1/health` endpoint.
+- SEO assets: favicon, manifest, robots.txt, sitemap.xml, Open Graph image, and
+  JSON-LD.
+- GitHub Actions CI, Dependabot, and Dependabot auto-merge after checks pass.
 
 ## Repository Layout
 
 ```text
-apps/web/             React + Vite user-facing calendar app
-services/scraper/     Python scraper service and source adapters
-docs/                 Architecture, setup, scraping, SEO, and scaling notes
-infra/                Future deployment and scheduled-job definitions
-packages/             Future shared packages when duplication justifies them
-.github/              CI, issue templates, and PR workflow
+apps/web/             React + Vite calendar app and public assets
+api/v1/health.ts      Vercel serverless health endpoint
+services/scraper/     Python scraper runner, utilities, and source adapters
+docs/                 Setup, deployment, scraping, SEO, scaling, and tooling
+infra/                Placeholder for future provider-specific infrastructure
+packages/             Placeholder for future shared packages
+.github/              CI, Dependabot, issue templates, CODEOWNERS, PR template
 ```
 
 ## Quick Start
@@ -51,30 +76,61 @@ cp .env.example .env
 npm run dev
 ```
 
-Run quality checks:
+Open the Vite URL printed by the command. Commands are run from the repository
+root even though the frontend source lives in `apps/web`.
 
-```bash
-npm run check
+## Environment
+
+Copy `.env.example` to `.env` and fill in the values you need:
+
+```text
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_APP_ID=
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_FIRESTORE_DATABASE_ID=
+VITE_GOOGLE_CLIENT_ID=
 ```
 
-List scraper sources:
+The app can render without Supabase data, but event loading, user persistence,
+Google authentication, and calendar sync require the matching provider setup.
+
+## Scripts
 
 ```bash
-npm run scraper:list
+npm run dev            # Start the Vite app
+npm run build          # Build apps/web into dist/apps/web
+npm run preview        # Preview the production build locally
+npm run typecheck      # TypeScript check
+npm run scraper:list   # List discovered scraper sources
+npm run scraper:check  # Compile scraper modules
+npm run check          # TypeScript + scraper checks
 ```
 
-Run one scraper:
+Run one scraper and write JSON output:
 
 ```bash
-python3 -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
+python3 -m services.scraper.main --source codeforces --output /tmp/codeforces.json
 ```
 
-## Tech Stack
+## Deployment
 
-- Web: React 19, TypeScript, Vite, Tailwind CSS, Motion
-- Auth and data: Firebase Auth, Supabase
-- Scraping: Python, requests, BeautifulSoup, optional Selenium fallback
-- Tooling: npm scripts, TypeScript checks, Python compile checks, GitHub Actions
+Eventio is configured for Vercel from the repo root.
+
+```text
+Framework Preset: Vite
+Install Command: npm ci
+Build Command: npm run build
+Output Directory: dist/apps/web
+Node.js Version: 20.x
+```
+
+See [docs/vercel.md](docs/vercel.md) for the full dashboard, CLI, Firebase,
+Google OAuth, Supabase, and verification checklist.
 
 ## Documentation
 
@@ -88,6 +144,17 @@ python3 -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
 - [Asset strategy](docs/asset-strategy.md)
 - [Vercel deployment](docs/vercel.md)
 
+## Contributors
+
+Contributions are welcome across UI, scrapers, docs, data quality, CI, SEO, and
+deployment.
+
+<a href="https://github.com/omkhalane/eventio/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=omkhalane/eventio" alt="Eventio contributors" />
+</a>
+
+This image updates automatically from GitHub contributor data.
+
 ## Community
 
 - [Contributing](CONTRIBUTING.md)
@@ -96,6 +163,10 @@ python3 -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
 - [Support](SUPPORT.md)
 - [Governance](GOVERNANCE.md)
 - [Changelog](CHANGELOG.md)
+
+Maintainer: [Om Khalane](https://github.com/omkhalane)  
+Repository: [github.com/omkhalane/eventio](https://github.com/omkhalane/eventio)  
+Contact: [om.khalane.dev@gmail.com](mailto:om.khalane.dev@gmail.com)
 
 ## License
 
