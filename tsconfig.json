@@ -24,6 +24,7 @@
     "noEmit": true
   },
   "include": [
+    "api",
     "apps/web/src",
     "apps/web/server.ts",
     "vite.config.ts"
