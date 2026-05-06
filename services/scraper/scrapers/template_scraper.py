@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from scappers.scraper_utils import request_text_with_retry, merge_unique_events
+from services.scraper.scraper_utils import request_text_with_retry, merge_unique_events
 
 try:
     from selenium import webdriver

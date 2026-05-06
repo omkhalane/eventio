@@ -1,0 +1,30 @@
+name: Scheduled Scraper Smoke Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+jobs:
+  scraper-smoke:
+    name: Scraper registry smoke check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r services/scraper/requirements.txt
+
+      - name: List registered sources
+        run: python -m services.scraper.main --list
+
+      - name: Compile scraper modules
+        run: python -m compileall services/scraper

@@ -1,0 +1,8 @@
+Asset: Logo
+Purpose: Primary brand mark for Eventio across the web app, README, GitHub
+organization surfaces, and future press/social kits.
+Recommended dimensions: SVG source plus 512x512 PNG export.
+Design direction: Clean developer-tool identity. Calendar grid or event signal
+motif, high contrast, legible at small sizes, not overly playful.
+Usage: App header, GitHub README, repository social preview compositions,
+documentation pages, and favicon derivations.

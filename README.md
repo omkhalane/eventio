@@ -1,75 +1,89 @@
-# CALENDAR 🗓️
+# Eventio
 
-**The Universal Tech Event Aggregator for Developers.**
+Developer event intelligence in one calendar: coding contests, hackathons,
+AI competitions, security challenges, startup programs, and tech events from
+many public sources.
 
-CALENDAR is a modern, high-performance calendar web application designed specifically for the developer community. It aggregates competitive programming contests, global hackathons, tech conferences, and hiring challenges into one unified, lightning-fast dashboard.
+Eventio is a monorepo for an event aggregation platform. It includes a React
+web app, a Python scraper service, SEO-ready public metadata, and contributor
+tooling for growing the source catalog safely.
 
-![CALENDAR Preview](https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=2000)
+Maintainer: [Om Khalane](https://github.com/omkhalane)  
+Repository: [github.com/omkhalane/eventio](https://github.com/omkhalane/eventio)  
+Contact: [om.khalane.dev@gmail.com](mailto:om.khalane.dev@gmail.com)
 
-## ✨ Unique Value Propositions
+## Why This Exists
 
-- **The Index of Elite Events**: We track 50+ platforms including Codeforces, LeetCode, Devpost, MLH, and many more.
-- **Developer-First UX**: Keyboard-first navigation inspired by Linear and Raycast.
-- **Zero Latency Discovery**: Optimized React architecture for a buttery-smooth 120fps experience.
-- **Deep Syncing**: One-click synchronization with your Google Calendar for seamless schedule management.
+Developers should not need to check Codeforces, LeetCode, Devpost, MLH,
+Kaggle, AIcrowd, Unstop, Devfolio, and dozens of event pages manually. Eventio
+normalizes those sources into a searchable, calendar-first experience.
 
-## 🚀 Optimized Tech Stack
+Suggested badges for the public repository once CI is enabled:
 
-- **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build System**: [Vite 6](https://vitejs.dev/)
-- **Animations**: [Motion](https://motion.dev/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Backend Architecture**: [Supabase](https://supabase.com/) & [Firebase Auth](https://firebase.google.com/)
-- **Database**: Real-time event indexing from the CALENDAR Scraper Service.
+- CI status
+- License
+- Open issues
+- Good first issues
+- Last commit
 
-## 🛠️ Infrastructure & Setup
+## Repository Layout
 
-### Prerequisites
+```text
+apps/web/             React + Vite user-facing calendar app
+services/scraper/     Python scraper service and source adapters
+docs/                 Architecture, setup, scraping, SEO, and scaling notes
+infra/                Future deployment and scheduled-job definitions
+packages/             Future shared packages when duplication justifies them
+.github/              CI, issue templates, and PR workflow
+```
 
-- Node.js 20+
-- A Google Cloud Project (for Google Calendar API)
-- Firebase Project (for Authentication)
-- Supabase Instance (for Event Storage)
+## Quick Start
 
-### Local Development
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-1. **Clone & Install**:
-   ```bash
-   git clone https://github.com/algorithmicOS/calendar.git
-   cd calendar
-   npm install
-   ```
+Run quality checks:
 
-2. **Secrets Management**:
-   Configure your environment variables in `.env` (see `.env.example`).
-   ```env
-   VITE_FIREBASE_API_KEY=...
-   VITE_SUPABASE_URL=...
-   ```
+```bash
+npm run check
+```
 
-3. **Runtime**:
-   ```bash
-   npm run dev
-   ```
+List scraper sources:
 
-## ⌨️ Developer Shortcuts
+```bash
+npm run scraper:list
+```
 
-| Shortcut | Action |
-| :-- | :-- |
-| `Ctrl + K` | Global Search / Command Palette |
-| `D` | Snap to Today |
-| `A` / `F` | Navigate Month Prev / Next |
-| `M` / `L` | Toggle Month / List View |
-| `Esc` | Clear UI Overlays |
+Run one scraper:
 
-## 🛡️ Security & Privacy
+```bash
+python -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
+```
 
-CALENDAR is built with a **Security-First** philosophy:
-- **Client-Side Encryption**: Authorization tokens never leave your local environment.
-- **Strict SEO**: Optimized with proper `robots.txt` and `sitemap.xml` for indexed visibility.
-- **Private by Design**: Your calendar data is only fetched and synced upon explicit user permission.
+## Tech Stack
 
-## 📄 License
+- Web: React 19, TypeScript, Vite, Tailwind CSS, Motion
+- Auth and data: Firebase Auth, Supabase
+- Scraping: Python, requests, BeautifulSoup, optional Selenium fallback
+- Tooling: npm scripts, TypeScript checks, Python compile checks, GitHub Actions
 
-MIT © [Algorithmic OS](https://github.com/algorithmicOS)
-# eventio
+## SEO and Discovery
+
+Eventio targets searches around developer events, coding contests, hackathons,
+competitive programming calendar, AI competitions, tech conferences, and hiring
+challenges. The web app includes primary metadata, Open Graph tags, Twitter
+cards, robots.txt, sitemap.xml, and JSON-LD.
+
+See [docs/seo.md](docs/seo.md) for the discoverability plan.
+
+## Contributing
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), then read
+[docs/scraping.md](docs/scraping.md) before adding a new source.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 from .template_scraper import normalize_event
-from scappers.scraper_utils import request_json_with_retry
+from services.scraper.scraper_utils import request_json_with_retry
 
 
 def _extract_items(payload: Any, list_key: str) -> List[Dict[str, Any]]:

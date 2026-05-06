@@ -1,14 +1,37 @@
 {
-  "name": "calendar",
+  "name": "eventio",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Om Khalane",
+    "email": "om.khalane.dev@gmail.com",
+    "url": "https://github.com/omkhalane"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omkhalane/eventio.git"
+  },
+  "homepage": "https://github.com/omkhalane/eventio#readme",
+  "bugs": {
+    "url": "https://github.com/omkhalane/eventio/issues"
+  },
+  "license": "MIT",
   "scripts": {
-    "dev": "tsx server.ts",
-    "build": "vite build",
-    "start": "node server.ts",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "dev": "vite --config vite.config.ts --host 0.0.0.0",
+    "dev:server": "tsx apps/web/server.ts",
+    "build": "vite build --config vite.config.ts",
+    "preview": "vite preview --config vite.config.ts --host 0.0.0.0",
+    "start": "NODE_ENV=production tsx apps/web/server.ts",
+    "clean": "rm -rf dist apps/web/.vite .cache .pytest_cache htmlcov coverage",
+    "typecheck": "tsc --noEmit",
+    "scraper:list": "python3 -m services.scraper.main --list",
+    "scraper:check": "python3 -m compileall services/scraper",
+    "check": "npm run typecheck && npm run scraper:check",
+    "lint": "npm run check"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

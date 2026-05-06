@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timezone
 import time
 
-from scappers.scraper_utils import merge_unique_events, request_json_with_retry
+from services.scraper.scraper_utils import merge_unique_events, request_json_with_retry
 
 def process_codechef_contests(contests_data):
     processed = []

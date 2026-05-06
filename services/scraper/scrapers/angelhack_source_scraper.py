@@ -8,8 +8,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scappers.scraper_utils import request_json_with_retry
-from scappers.scrapers.template_scraper import normalize_event
+from services.scraper.scraper_utils import request_json_with_retry
+from services.scraper.scrapers.template_scraper import normalize_event
 
 
 def _extract_dates_from_html(html: str) -> tuple[str | None, str | None]:

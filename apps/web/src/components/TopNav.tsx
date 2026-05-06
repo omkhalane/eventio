@@ -79,7 +79,7 @@ export default function TopNav({
         <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg">
           <InfinityIcon className="w-5 h-5 text-background" strokeWidth={3} />
         </div>
-        <span className="ml-3 font-bold tracking-tighter text-2xl italic">CALENDAR</span>
+        <span className="ml-3 font-bold tracking-tighter text-2xl italic">Eventio</span>
       </Link>
 
       {/* Main Content Area (aligned with MainCalendar) */}
@@ -277,7 +277,7 @@ export default function TopNav({
 
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com/algorithmicOS/calendar"
+            href="https://github.com/omkhalane/eventio"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-3 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-all shadow-sm group"
@@ -295,7 +295,7 @@ export default function TopNav({
           </button>
 
           <a
-            href="https://github.com/algorithmicOS/calendar/issues/2"
+            href="https://github.com/omkhalane/eventio/issues"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2.5 hover:bg-muted rounded-xl transition-all text-muted-foreground hover:text-foreground border border-transparent hover:border-border"

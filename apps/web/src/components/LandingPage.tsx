@@ -213,7 +213,7 @@ export const LandingPage: React.FC = () => {
               <InfinityIcon className="w-6 h-6 text-black" strokeWidth={2.5} />
             </div>
             <span className="text-xl font-black tracking-tighter hidden sm:block">
-              CALENDAR
+              Eventio
             </span>
           </div>
           <div className="flex items-center gap-6 md:gap-10 text-[10px] md:text-xs font-bold text-zinc-400">
@@ -230,7 +230,7 @@ export const LandingPage: React.FC = () => {
               Architecture
             </Link>
             <a
-              href="https://github.com/algorithmicOS/calendar"
+              href="https://github.com/omkhalane/eventio"
               className="hidden sm:inline hover:text-white transition-colors uppercase tracking-widest py-2"
             >
               Source
@@ -321,7 +321,7 @@ export const LandingPage: React.FC = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="https://github.com/algorithmicOS/calendar"
+                href="https://github.com/omkhalane/eventio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full bg-[#0a0a0a] text-white border border-white/10 text-xs md:text-sm uppercase tracking-widest font-black hover:bg-white/10 transition-colors flex items-center justify-center gap-3 group"
@@ -525,15 +525,15 @@ export const LandingPage: React.FC = () => {
               />
             </div>
             <span className="font-black tracking-tighter text-xl md:text-2xl uppercase">
-              CALENDAR
+              Eventio
             </span>
           </div>
           <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-center">
-            © 2026 Algorithmic OS. Built for the elite.
+            © 2026 Om Khalane. Built for developers.
           </p>
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com/algorithmicOS"
+              href="https://github.com/omkhalane"
               className="text-zinc-600 hover:text-white transition-colors"
             >
               <Github className="w-5 h-5 md:w-6 md:h-6" />

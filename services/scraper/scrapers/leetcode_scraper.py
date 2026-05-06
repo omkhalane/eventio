@@ -3,7 +3,7 @@ import json
 import time
 from datetime import datetime, timezone, timedelta
 
-from scappers.scraper_utils import request_json_with_retry
+from services.scraper.scraper_utils import request_json_with_retry
 
 def process_leetcode_contests(contests_data):
     processed = []

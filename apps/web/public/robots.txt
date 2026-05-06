@@ -1,4 +1,4 @@
-# Sitemap: https://nexus-calendar.vercel.app/sitemap.xml
+# Sitemap: https://github.com/omkhalane/eventio/blob/main/apps/web/public/sitemap.xml
 
 # Standard Search Engines
 User-agent: Googlebot

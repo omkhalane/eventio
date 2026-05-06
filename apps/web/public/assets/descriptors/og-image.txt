@@ -1,0 +1,7 @@
+Asset: Open Graph Image
+Purpose: Social sharing preview for the deployed web app and repository links.
+Recommended dimensions: 1200x630.
+Design direction: Clear Eventio wordmark, short value proposition, and a real
+calendar/event dashboard composition. Must remain readable when cropped in
+Slack, X, LinkedIn, Discord, and GitHub previews.
+Usage: og:image, twitter:image, GitHub social preview, product announcements.

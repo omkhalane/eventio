@@ -7,13 +7,13 @@ from datetime import datetime, timezone
 
 from .template_scraper import fetch_static, fetch_rendered, normalize_event
 try:
-    from scappers.scraper_utils import request_text_with_retry
+    from services.scraper.scraper_utils import request_text_with_retry
 except Exception:
     import sys
     from pathlib import Path
 
     sys.path.append(str(Path(__file__).resolve().parents[1]))
-    from scappers.scraper_utils import request_text_with_retry
+    from services.scraper.scraper_utils import request_text_with_retry
 
 
 def _to_iso(value):

@@ -7,7 +7,7 @@ from datetime import datetime, timezone, timedelta
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from scappers.scraper_utils import request_json_with_retry
+from services.scraper.scraper_utils import request_json_with_retry
 
 def get_status(phase):
     """Maps Codeforces phases to universal status values."""

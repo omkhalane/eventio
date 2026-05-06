@@ -6,7 +6,7 @@ import time
 import re
 from typing import List, Optional
 
-from scappers.scraper_utils import merge_unique_events, request_text_with_retry
+from services.scraper.scraper_utils import merge_unique_events, request_text_with_retry
 
 try:
     from selenium import webdriver

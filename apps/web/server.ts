@@ -21,8 +21,8 @@ async function startServer() {
     res.json({
       status: "ok",
       timestamp: new Date().toISOString(),
-      brand: "CALENDAR",
-      owner: "Algorithmic OS",
+      brand: "Eventio",
+      owner: "Om Khalane",
     });
   });
   app.use("/api/v1", apiRouter);
@@ -30,6 +30,8 @@ async function startServer() {
   // Vite / Static Serving
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
+      configFile: path.resolve(__dirname, "../../vite.config.ts"),
+      root: __dirname,
       server: {
         middlewareMode: true,
         host: "0.0.0.0",
@@ -39,7 +41,7 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    const distPath = path.join(process.cwd(), "dist/apps/web");
     app.use(express.static(distPath, { index: false }));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
@@ -48,7 +50,7 @@ async function startServer() {
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(
-      `🚀 CALENDAR by Algorithmic OS running on http://localhost:${PORT}`,
+      `Eventio by Om Khalane running on http://localhost:${PORT}`,
     );
   });
 }

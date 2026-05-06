@@ -13,6 +13,7 @@ node_modules/
 dist/
 build/
 .vite/
+apps/**/.vite/
 .cache/
 
 # Logs
@@ -37,7 +38,7 @@ __pycache__/
 *.pyo
 *.pyd
 *.pyc.*
-
+.venv/
 # Virtual environments
 venv/
 .env/
@@ -73,6 +74,8 @@ logs/
 *.log
 tmp/
 temp/
+*.pid
+*.seed
 
 # =========================
 # Coverage / Testing
@@ -84,10 +87,10 @@ htmlcov/
 # =========================
 # Misc
 # =========================
-*.lock
 *.bak
 *.tmp
 
-# Ignore system generated files
-*.pid
-*.seed
+# Scraper local exports
+*_contests.json
+scraper-output.json
+services/scraper/output/

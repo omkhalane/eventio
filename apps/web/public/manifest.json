@@ -1,6 +1,6 @@
 {
-  "name": "CALENDAR",
-  "short_name": "CALENDAR",
+  "name": "Eventio",
+  "short_name": "Eventio",
   "description": "Universal Tech Event Aggregator for Developers",
   "start_url": "/",
   "display": "standalone",

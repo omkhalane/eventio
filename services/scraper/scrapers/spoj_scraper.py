@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import time
 import re
 
-from scappers.scraper_utils import merge_unique_events, request_text_with_retry
+from services.scraper.scraper_utils import merge_unique_events, request_text_with_retry
 
 
 def parse_spoj_datetime(date_str: str):

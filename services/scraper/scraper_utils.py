@@ -61,11 +61,41 @@ def request_text_with_retry(
                 raise
 
 
-def merge_unique_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Deduplicate events by external_id."""
-    seen: dict[str, dict[str, Any]] = {}
-    for event in events:
+def merge_unique_events(
+    existing_events: list[dict[str, Any]],
+    new_events: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """Merge events by external_id.
+
+    When ``new_events`` is provided, append only unseen events to
+    ``existing_events`` and return the events that were added. When omitted,
+    return a deduplicated copy of ``existing_events``.
+    """
+    seen_ids = {
+        event.get("external_id")
+        for event in existing_events
+        if event.get("external_id")
+    }
+
+    if new_events is None:
+        deduped: list[dict[str, Any]] = []
+        deduped_ids: set[str] = set()
+        for event in existing_events:
+            ext_id = event.get("external_id")
+            if not ext_id:
+                continue
+            if ext_id in deduped_ids:
+                continue
+            deduped.append(event)
+            deduped_ids.add(ext_id)
+        return deduped
+
+    added: list[dict[str, Any]] = []
+    for event in new_events:
         ext_id = event.get("external_id")
-        if ext_id and ext_id not in seen:
-            seen[ext_id] = event
-    return list(seen.values())
+        if not ext_id or ext_id in seen_ids:
+            continue
+        existing_events.append(event)
+        added.append(event)
+        seen_ids.add(ext_id)
+    return added

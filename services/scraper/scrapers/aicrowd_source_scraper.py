@@ -4,8 +4,8 @@ from typing import Any, Dict, List
 
 from bs4 import BeautifulSoup
 
-from scappers.scrapers.template_scraper import normalize_event
-from scappers.scraper_utils import request_text_with_retry
+from services.scraper.scrapers.template_scraper import normalize_event
+from services.scraper.scraper_utils import request_text_with_retry
 
 
 def _status_from_badge(badge_text: str) -> str:

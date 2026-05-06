@@ -4,7 +4,7 @@ from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
 import time
 
-from scappers.scraper_utils import merge_unique_events, request_text_with_retry
+from services.scraper.scraper_utils import merge_unique_events, request_text_with_retry
 
 def process_atcoder_contests(html_content, status):
     processed = []

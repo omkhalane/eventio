@@ -377,7 +377,7 @@ export default function App() {
               </Link>
               <h1 className="text-6xl font-black tracking-tight">Privacy Policy</h1>
               <div className="space-y-6 text-muted-foreground font-medium text-lg leading-relaxed">
-                <p>At Algorithmic OS, we prioritize your data security and privacy.</p>
+                <p>At Eventio, we prioritize your data security and privacy.</p>
                 <h2 className="text-xl font-black text-foreground uppercase tracking-wider">1. Data Collection</h2>
                 <p>We only collect the data necessary to provide you with the best scheduling experience. This includes your Google Calendar integration if explicitly authorized.</p>
                 <h2 className="text-xl font-black text-foreground uppercase tracking-wider">2. Data Usage</h2>
@@ -396,7 +396,7 @@ export default function App() {
               </Link>
               <h1 className="text-6xl font-black tracking-tight">Terms of Service</h1>
               <div className="space-y-6 text-muted-foreground font-medium text-lg leading-relaxed">
-                <p>By using the CALENDAR, you agree to the following terms.</p>
+                <p>By using Eventio, you agree to the following terms.</p>
                 <h2 className="text-xl font-black text-foreground uppercase tracking-wider">1. Acceptance of Terms</h2>
                 <p>By accessing this application, you accept these terms in full. If you disagree, you must not use this application.</p>
                 <h2 className="text-xl font-black text-foreground uppercase tracking-wider">2. Permitted Use</h2>

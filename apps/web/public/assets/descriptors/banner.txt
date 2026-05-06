@@ -1,0 +1,7 @@
+Asset: Repository Banner
+Purpose: Wide visual header for GitHub README and project documentation.
+Recommended dimensions: 1600x600.
+Design direction: Product-led banner showing a dense developer events calendar,
+source/platform signals, and a clean open-source systems feel. Avoid generic
+stock imagery and abstract gradients.
+Usage: README hero image, docs landing pages, launch posts.
