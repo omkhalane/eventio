@@ -1,5 +1,9 @@
 # Eventio
 
+[![CI](https://github.com/omkhalane/eventio/actions/workflows/lint.yml/badge.svg)](https://github.com/omkhalane/eventio/actions/workflows/lint.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Repository](https://img.shields.io/badge/GitHub-omkhalane%2Feventio-black)](https://github.com/omkhalane/eventio)
+
 Developer event intelligence in one calendar: coding contests, hackathons,
 AI competitions, security challenges, startup programs, and tech events from
 many public sources.
@@ -18,13 +22,15 @@ Developers should not need to check Codeforces, LeetCode, Devpost, MLH,
 Kaggle, AIcrowd, Unstop, Devfolio, and dozens of event pages manually. Eventio
 normalizes those sources into a searchable, calendar-first experience.
 
-Suggested badges for the public repository once CI is enabled:
+## Features
 
-- CI status
-- License
-- Open issues
-- Good first issues
-- Last commit
+- Unified calendar for developer events and competitions.
+- Source adapters for competitive programming, hackathons, AI competitions,
+  conferences, and hiring challenges.
+- React + TypeScript frontend with calendar and list views.
+- Python scraper service with reusable retry and deduplication helpers.
+- SEO-ready metadata, sitemap, robots.txt, Open Graph, and JSON-LD.
+- GitHub issue templates, CI workflows, security policy, and contribution docs.
 
 ## Repository Layout
 
@@ -60,7 +66,7 @@ npm run scraper:list
 Run one scraper:
 
 ```bash
-python -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
+python3 -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
 ```
 
 ## Tech Stack
@@ -70,19 +76,25 @@ python -m services.scraper.main --source aicrowd --output /tmp/aicrowd.json
 - Scraping: Python, requests, BeautifulSoup, optional Selenium fallback
 - Tooling: npm scripts, TypeScript checks, Python compile checks, GitHub Actions
 
-## SEO and Discovery
+## Documentation
 
-Eventio targets searches around developer events, coding contests, hackathons,
-competitive programming calendar, AI competitions, tech conferences, and hiring
-challenges. The web app includes primary metadata, Open Graph tags, Twitter
-cards, robots.txt, sitemap.xml, and JSON-LD.
+- [Architecture](ARCHITECTURE.md)
+- [Setup](docs/setup.md)
+- [Scraping guide](docs/scraping.md)
+- [Data flow](docs/data-flow.md)
+- [Scaling notes](docs/scaling.md)
+- [SEO and discoverability](docs/seo.md)
+- [Tooling recommendations](docs/tooling.md)
+- [Asset strategy](docs/asset-strategy.md)
 
-See [docs/seo.md](docs/seo.md) for the discoverability plan.
+## Community
 
-## Contributing
-
-Start with [CONTRIBUTING.md](CONTRIBUTING.md), then read
-[docs/scraping.md](docs/scraping.md) before adding a new source.
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security policy](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Governance](GOVERNANCE.md)
+- [Changelog](CHANGELOG.md)
 
 ## License
 

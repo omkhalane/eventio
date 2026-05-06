@@ -1,0 +1,58 @@
+name: New scraper source
+description: Request or propose a new event source adapter.
+title: "scraper: add "
+labels: ["scraper", "source-request", "needs-triage"]
+body:
+  - type: input
+    id: source_name
+    attributes:
+      label: Source Name
+      placeholder: "Example: Codeforces"
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      placeholder: "https://example.com/events"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: event_type
+    attributes:
+      label: Event Type
+      options:
+        - Coding contests
+        - Hackathons
+        - AI competitions
+        - Security challenges
+        - Tech conferences
+        - Hiring challenges
+        - Mixed / other
+    validations:
+      required: true
+
+  - type: textarea
+    id: access
+    attributes:
+      label: Data Access Notes
+      description: Is there an API, RSS feed, JSON-LD, static HTML, or rendered app?
+      placeholder: "The source exposes JSON-LD on event pages..."
+
+  - type: textarea
+    id: schema
+    attributes:
+      label: Available Fields
+      description: What fields appear to be available?
+      placeholder: "title, start date, end date, URL, location..."
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Source Checks
+      options:
+        - label: The source is public and does not require private credentials.
+        - label: The source appears relevant to developer events.
+        - label: I checked whether an existing scraper already covers this source.

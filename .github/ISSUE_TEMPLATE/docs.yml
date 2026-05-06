@@ -1,0 +1,26 @@
+name: Documentation improvement
+description: Report unclear, missing, or outdated documentation.
+title: "docs: "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or File
+      placeholder: "docs/scraping.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What Needs Improvement?
+      description: What is confusing, missing, or outdated?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_change
+    attributes:
+      label: Suggested Change
+      description: Optional wording, structure, examples, or links.
