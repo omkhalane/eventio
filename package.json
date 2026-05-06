@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.52.0",
-    "@supabase/supabase-js": "^2.105.0",
+    "@supabase/supabase-js": "^2.105.3",
     "@tailwindcss/vite": "^4.1.14",
     "@types/google.accounts": "^0.0.18",
     "@vitejs/plugin-react": "^6.0.1",
