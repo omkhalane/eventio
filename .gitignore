@@ -1,0 +1,93 @@
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# =========================
+# Node / Frontend (Vite)
+# =========================
+node_modules/
+dist/
+build/
+.vite/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# TypeScript
+*.tsbuildinfo
+
+# =========================
+# Python (Scrapers)
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc.*
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Python build
+build/
+dist/
+*.egg-info/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+# Supabase / Secrets
+# =========================
+.supabase/
+supabase/.temp/
+supabase/.branches/
+
+# Never commit secrets
+*.env.local
+*.env.production
+
+# =========================
+# Logs / Temp
+# =========================
+logs/
+*.log
+tmp/
+temp/
+
+# =========================
+# Coverage / Testing
+# =========================
+coverage/
+htmlcov/
+.pytest_cache/
+
+# =========================
+# Misc
+# =========================
+*.lock
+*.bak
+*.tmp
+
+# Ignore system generated files
+*.pid
+*.seed

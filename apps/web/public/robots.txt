@@ -1,0 +1,66 @@
+# Sitemap: https://nexus-calendar.vercel.app/sitemap.xml
+
+# Standard Search Engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Specifically allow SEO/Human helpers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Disallow Aggressive Scrapers & Malicious Bots
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /config/
+Disallow: /node_modules/
+
+# Block generic scrapers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
+User-agent: Dotbot
+Disallow: /
+
+User-agent: exabot
+Disallow: /
+
+User-agent: Gigabot
+Disallow: /
