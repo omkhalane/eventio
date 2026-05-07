@@ -1,13 +1,13 @@
 name: Documentation improvement
 description: Report unclear, missing, or outdated documentation.
-title: "docs: "
-labels: ["documentation", "needs-triage"]
+title: 'docs: '
+labels: ['documentation', 'needs-triage']
 body:
   - type: input
     id: page
     attributes:
       label: Page or File
-      placeholder: "docs/scraping.md"
+      placeholder: 'docs/scraping.md'
     validations:
       required: true
 

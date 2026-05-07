@@ -1,13 +1,13 @@
 name: New scraper source
 description: Request or propose a new event source adapter.
-title: "scraper: add "
-labels: ["scraper", "source-request", "needs-triage"]
+title: 'scraper: add '
+labels: ['scraper', 'source-request', 'needs-triage']
 body:
   - type: input
     id: source_name
     attributes:
       label: Source Name
-      placeholder: "Example: Codeforces"
+      placeholder: 'Example: Codeforces'
     validations:
       required: true
 
@@ -15,7 +15,7 @@ body:
     id: source_url
     attributes:
       label: Source URL
-      placeholder: "https://example.com/events"
+      placeholder: 'https://example.com/events'
     validations:
       required: true
 
@@ -39,14 +39,14 @@ body:
     attributes:
       label: Data Access Notes
       description: Is there an API, RSS feed, JSON-LD, static HTML, or rendered app?
-      placeholder: "The source exposes JSON-LD on event pages..."
+      placeholder: 'The source exposes JSON-LD on event pages...'
 
   - type: textarea
     id: schema
     attributes:
       label: Available Fields
       description: What fields appear to be available?
-      placeholder: "title, start date, end date, URL, location..."
+      placeholder: 'title, start date, end date, URL, location...'
 
   - type: checkboxes
     id: checks

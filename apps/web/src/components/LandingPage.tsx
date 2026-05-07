@@ -1,552 +1,1111 @@
-import React, { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import {
-  Zap,
-  Github,
-  ArrowRight,
-  Terminal,
-  Globe,
-  Command,
-  Sparkles,
   Activity,
-} from "lucide-react";
-import { Link } from "react-router-dom";
-import { cn } from "../lib/utils";
+  ArrowRight,
+  Bot,
+  CalendarCheck,
+  CalendarDays,
+  CheckCircle2,
+  ChevronRight,
+  CircleDot,
+  Clock3,
+  Code2,
+  Database,
+  Flame,
+  Github,
+  GitPullRequest,
+  Layers3,
+  MapPin,
+  Radio,
+  Rocket,
+  Search,
+  Shield,
+  Sparkles,
+  Terminal,
+  Trophy,
+} from 'lucide-react';
+import { AnimatePresence, motion, useScroll, useSpring, useTransform } from 'motion/react';
+import React, { useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const HERO_IMAGE = "/assets/hero.png";
-const BANNER_IMAGE = "/assets/banner.png";
-const LOGO_IMAGE = "/assets/logo.svg";
+import { cn } from '../lib/utils';
+
+const HERO_IMAGE = '/assets/hero.png';
+const BANNER_IMAGE = '/assets/banner.png';
+const OG_IMAGE = '/assets/og-image.png';
+const LOGO_IMAGE = '/assets/logo.svg';
 
 const SOURCES = [
-  "Codeforces",
-  "LeetCode",
-  "AtCoder",
-  "CodeChef",
-  "HackerRank",
-  "Devpost",
-  "MLH",
-  "Kaggle",
-  "Devfolio",
-  "TopCoder",
-  "HackerEarth",
-  "GeeksforGeeks",
-  "CodingNinjas",
-  "ICPC",
-  "Google KickStart",
-  "Unstop",
-  "Taikai",
-  "Luogu",
+  'Codeforces',
+  'LeetCode',
+  'AtCoder',
+  'HackerRank',
+  'Topcoder',
+  'Devpost',
+  'MLH',
+  'Devfolio',
+  'Kaggle',
+  'Zindi',
+  'ETHGlobal',
+  'Gitcoin',
+  'Solana',
+  'AWS',
+  'Google Developers',
+  'Microsoft',
+  'Nvidia',
+  'Eventbrite',
+  'Meetup',
 ];
 
-const PerfStyles = () => (
+const HERO_WIDGETS = [
+  { label: 'Codeforces Round', meta: 'starts in 02:14:33', tone: 'cyan' },
+  { label: 'Kaggle Deadline', meta: 'synced to calendar', tone: 'green' },
+  { label: 'ETHGlobal', meta: 'registration open', tone: 'amber' },
+  { label: 'picoCTF', meta: 'ongoing now', tone: 'red' },
+  { label: 'Google Calendar', meta: 'ready', tone: 'violet' },
+];
+
+const CATEGORIES = [
+  { name: 'Competitive', icon: Trophy, color: '#22d3ee', sample: 'AtCoder Beginner Contest' },
+  { name: 'Hackathons', icon: Rocket, color: '#34d399', sample: 'ETHGlobal Hackathon' },
+  { name: 'AI/Data', icon: Bot, color: '#fbbf24', sample: 'Kaggle AI Challenge' },
+  { name: 'CTF/Security', icon: Shield, color: '#fb7185', sample: 'picoCTF Live' },
+  { name: 'Conferences', icon: MapPin, color: '#a78bfa', sample: 'Google Developer Conf' },
+  { name: 'Open Source', icon: GitPullRequest, color: '#60a5fa', sample: 'Hacktoberfest Window' },
+];
+
+const CALENDAR_EVENTS = [
+  { day: 3, title: 'Codeforces Round', tag: 'contest', tone: 'cyan' },
+  { day: 6, title: 'ETHGlobal Hackathon', tag: 'hackathon', tone: 'green' },
+  { day: 11, title: 'Kaggle AI Challenge', tag: 'ai/data', tone: 'amber' },
+  { day: 15, title: 'picoCTF', tag: 'security', tone: 'red' },
+  { day: 20, title: 'Google Dev Conf', tag: 'conference', tone: 'violet' },
+  { day: 24, title: 'Devpost Deadline', tag: 'deadline', tone: 'amber' },
+  { day: 27, title: 'Nvidia Workshop', tag: 'livestream', tone: 'cyan' },
+  { day: 30, title: 'OpenAI Livestream', tag: 'ai', tone: 'green' },
+];
+
+const WORKFLOWS = [
+  {
+    id: 'discover',
+    label: 'Discover',
+    title: 'Signals arrive from everywhere.',
+    body: 'Search, filter, and scan developer opportunities before they disappear into scattered feeds.',
+  },
+  {
+    id: 'decide',
+    label: 'Decide',
+    title: 'Every event gets context.',
+    body: 'Inspect platform, tags, mode, pricing, deadline, timezone, and raw metadata in one focused view.',
+  },
+  {
+    id: 'sync',
+    label: 'Sync',
+    title: 'Important dates leave the browser.',
+    body: 'Send contests, hackathons, and deadlines into Google Calendar when they are worth protecting.',
+  },
+];
+
+const toneClasses: Record<string, string> = {
+  cyan: 'border-cyan-300/30 bg-cyan-300/10 text-cyan-100 shadow-cyan-500/20',
+  green: 'border-emerald-300/30 bg-emerald-300/10 text-emerald-100 shadow-emerald-500/20',
+  amber: 'border-amber-300/30 bg-amber-300/10 text-amber-100 shadow-amber-500/20',
+  red: 'border-rose-300/30 bg-rose-300/10 text-rose-100 shadow-rose-500/20',
+  violet: 'border-violet-300/30 bg-violet-300/10 text-violet-100 shadow-violet-500/20',
+};
+
+const SceneStyles = () => (
   <style>{`
-    .hardware-accel { transform: translateZ(0); will-change: transform, opacity; }
-    .spin-ultra-slow { animation: spin 150s linear infinite; }
-    .spin-ultra-slow-reverse { animation: spin 150s linear infinite reverse; }
-    .marquee-scroll { animation: scrollLeft 60s linear infinite; }
-    @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    
-    .smoke-anim { animation: smoke 12s ease-in-out infinite alternate; }
-    @keyframes smoke {
-      0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 0.6; }
-      50% { transform: scale(1.1) translate(2%, -2%) rotate(2deg); opacity: 0.9; }
-      100% { transform: scale(1) translate(-2%, 2%) rotate(-2deg); opacity: 0.6; }
+    .eventio-noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
     }
-    
-    .smoke-anim-reverse { animation: smokeReverse 15s ease-in-out infinite alternate; }
-    @keyframes smokeReverse {
-      0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 0.5; }
-      50% { transform: scale(1.15) translate(-3%, 3%) rotate(-3deg); opacity: 0.8; }
-      100% { transform: scale(1) translate(3%, -3%) rotate(3deg); opacity: 0.5; }
+    .signal-marquee { animation: signalMarquee 38s linear infinite; }
+    .signal-marquee-reverse { animation: signalMarquee 46s linear infinite reverse; }
+    .orbit-slow { animation: orbitSlow 34s linear infinite; }
+    .orbit-medium { animation: orbitSlow 24s linear infinite reverse; }
+    .spin-radar { animation: spinRadar 3.2s linear infinite; transform-origin: bottom center; }
+    .scanline { animation: scanline 4.8s ease-in-out infinite; }
+    .packet-flow { animation: packetFlow 3.8s linear infinite; }
+    .pulse-soft { animation: pulseSoft 2.7s ease-in-out infinite; }
+    .float-a { animation: floatA 5.8s ease-in-out infinite; }
+    .float-b { animation: floatB 7.2s ease-in-out infinite; }
+    .clock-hand { animation: spinRadar 9s linear infinite; transform-origin: bottom center; }
+    .terminal-type { animation: typeWidth 4.2s steps(38) infinite alternate; }
+    @keyframes signalMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes orbitSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes spinRadar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes scanline {
+      0%, 100% { transform: translateY(-20%); opacity: 0; }
+      20% { opacity: .75; }
+      60% { transform: translateY(115%); opacity: .25; }
+      85% { opacity: 0; }
     }
-
-    .noise-bg {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    @keyframes packetFlow {
+      0% { transform: translateX(-8%); opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { transform: translateX(108%); opacity: 0; }
     }
-
-    .fluid-text-hero {
-      font-size: clamp(4rem, 12vw, 10rem);
-      line-height: 0.85;
+    @keyframes pulseSoft {
+      0%, 100% { opacity: .45; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+    @keyframes floatA { 0%, 100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-18px,0); } }
+    @keyframes floatB { 0%, 100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(12px,-22px,0); } }
+    @keyframes typeWidth { from { max-width: 12ch; } to { max-width: 38ch; } }
+    @media (prefers-reduced-motion: reduce) {
+      .signal-marquee, .signal-marquee-reverse, .orbit-slow, .orbit-medium, .spin-radar,
+      .scanline, .packet-flow, .pulse-soft, .float-a, .float-b, .clock-hand, .terminal-type {
+        animation: none !important;
+      }
     }
   `}</style>
 );
 
-const Noise = () => (
-  <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay noise-bg hardware-accel" />
-);
-
-// --- Advanced 3D Spotlight Card ---
-const SpotlightCard = ({
-  children,
-  className,
+const SectionIntro = ({
+  eyebrow,
+  title,
+  body,
 }: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  const divRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
-
-  const mouseX = useSpring(0, { stiffness: 300, damping: 50 });
-  const mouseY = useSpring(0, { stiffness: 300, damping: 50 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current) return;
-    const rect = divRef.current.getBoundingClientRect();
-    requestAnimationFrame(() => {
-      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-      // Gentle 3D tilt constraint
-      mouseX.set((e.clientX - rect.left - rect.width / 2) / 40);
-      mouseY.set(-(e.clientY - rect.top - rect.height / 2) / 40);
-    });
-  };
-
-  return (
-    <motion.div
-      ref={divRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setOpacity(1)}
-      onMouseLeave={() => {
-        setOpacity(0);
-        mouseX.set(0);
-        mouseY.set(0);
-      }}
-      style={{
-        rotateX: mouseY,
-        rotateY: mouseX,
-        perspective: 2000,
-      }}
-      className={cn(
-        "relative overflow-hidden rounded-[2rem] bg-[#070707] border border-white/5 group transition-colors duration-500 hover:border-white/20 hardware-accel shadow-2xl",
-        className,
-      )}
-    >
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 z-10 hardware-accel"
-        style={{
-          opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
-        }}
-      />
-      <div className="relative z-20 h-full">{children}</div>
-    </motion.div>
-  );
-};
-
-const FadeUpText = ({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
+  eyebrow: string;
+  title: string;
+  body: string;
 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 32 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.8, delay, ease: [0.25, 1, 0.5, 1] }}
-    className={cn("hardware-accel", className)}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.7 }}
+    className="mx-auto mb-14 max-w-4xl text-center"
   >
-    {children}
+    <p className="mb-5 text-[11px] font-black tracking-[0.34em] text-cyan-200/70 uppercase">
+      {eyebrow}
+    </p>
+    <h2 className="text-4xl leading-[0.92] font-black tracking-tight text-white uppercase md:text-7xl">
+      {title}
+    </h2>
+    <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 md:text-lg">{body}</p>
   </motion.div>
 );
 
+const GlassFrame = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div
+    className={cn(
+      'relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.045] shadow-[0_24px_120px_rgba(0,0,0,0.65)] backdrop-blur-2xl',
+      className,
+    )}
+  >
+    <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(34,211,238,0.16),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.12),transparent_34%)]" />
+    <div className="relative z-10">{children}</div>
+  </div>
+);
+
+const HeroConstellation = () => (
+  <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div className="orbit-slow absolute h-[34rem] w-[34rem] rounded-full border border-white/10 md:h-[48rem] md:w-[48rem]">
+      {SOURCES.slice(0, 7).map((source, index) => (
+        <span
+          key={source}
+          className="absolute rounded-full border border-white/10 bg-black/70 px-3 py-1 text-[10px] font-black tracking-[0.18em] text-white/70 uppercase backdrop-blur-md"
+          style={{
+            top: `${50 + Math.sin((index / 7) * Math.PI * 2) * 48}%`,
+            left: `${50 + Math.cos((index / 7) * Math.PI * 2) * 48}%`,
+          }}
+        >
+          {source}
+        </span>
+      ))}
+    </div>
+    <div className="orbit-medium absolute h-[22rem] w-[22rem] rounded-full border border-dashed border-cyan-200/15 md:h-[34rem] md:w-[34rem]" />
+    <div className="absolute h-56 w-56 rounded-full bg-cyan-300/10 blur-3xl" />
+    {Array.from({ length: 38 }).map((_, index) => (
+      <span
+        key={index}
+        className="pulse-soft absolute h-1 w-1 rounded-full bg-white/60"
+        style={{
+          left: `${(index * 29) % 100}%`,
+          top: `${(index * 47) % 100}%`,
+          animationDelay: `${index * 0.13}s`,
+        }}
+      />
+    ))}
+  </div>
+);
+
+const HeroProduct = ({
+  rotateX,
+  rotateY,
+}: {
+  rotateX: ReturnType<typeof useSpring>;
+  rotateY: ReturnType<typeof useSpring>;
+}) => (
+  <motion.div
+    style={{ rotateX, rotateY }}
+    initial={{ opacity: 0, y: 80, scale: 0.95 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    className="relative mx-auto mt-14 max-w-6xl px-3"
+  >
+    <div className="absolute -inset-8 rounded-[3rem] bg-[conic-gradient(from_90deg,rgba(34,211,238,.22),rgba(16,185,129,.12),rgba(245,158,11,.18),rgba(244,63,94,.12),rgba(34,211,238,.22))] opacity-60 blur-3xl" />
+    <GlassFrame className="rounded-[2rem] p-2 md:rounded-[2.5rem] md:p-3">
+      <div className="absolute top-5 left-6 z-20 hidden gap-2 md:flex">
+        <span className="h-3 w-3 rounded-full bg-rose-400" />
+        <span className="h-3 w-3 rounded-full bg-amber-300" />
+        <span className="h-3 w-3 rounded-full bg-emerald-400" />
+      </div>
+      <div className="scanline pointer-events-none absolute inset-0 z-30 bg-gradient-to-b from-transparent via-cyan-200/25 to-transparent" />
+      <img
+        src={HERO_IMAGE}
+        alt="Eventio calendar dashboard with developer events"
+        className="relative z-10 w-full rounded-[1.4rem] border border-white/10 object-cover opacity-90 shadow-2xl md:rounded-[2rem]"
+      />
+    </GlassFrame>
+    {HERO_WIDGETS.map((widget, index) => (
+      <motion.div
+        key={widget.label}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7 + index * 0.08, duration: 0.6 }}
+        className={cn(
+          'float-a absolute hidden min-w-48 rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur-xl lg:block',
+          toneClasses[widget.tone],
+        )}
+        style={{
+          left: index % 2 === 0 ? `${-2 + index * 4}%` : 'auto',
+          right: index % 2 === 1 ? `${-2 + index * 3}%` : 'auto',
+          top: `${12 + index * 15}%`,
+          animationDelay: `${index * 0.7}s`,
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <span className="h-2 w-2 rounded-full bg-current shadow-[0_0_18px_currentColor]" />
+          <div>
+            <p className="text-xs font-black tracking-wide text-white">{widget.label}</p>
+            <p className="mt-0.5 text-[10px] font-bold tracking-[0.16em] uppercase opacity-70">
+              {widget.meta}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+);
+
+const SourceStream = () => (
+  <section
+    id="sources"
+    className="relative z-10 overflow-hidden border-y border-white/10 bg-black py-10"
+  >
+    <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-28 bg-gradient-to-r from-black to-transparent md:w-56" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-28 bg-gradient-to-l from-black to-transparent md:w-56" />
+    <div className="signal-marquee flex w-max gap-4">
+      {[...SOURCES, ...SOURCES].map((source, index) => (
+        <div
+          key={`${source}-${index}`}
+          className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-xs font-black tracking-[0.18em] text-white/80 uppercase"
+        >
+          <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,.9)]" />
+          {source}
+          <span className="text-cyan-200/60">{String((index * 7) % 91).padStart(2, '0')}</span>
+        </div>
+      ))}
+    </div>
+    <div className="signal-marquee-reverse mt-4 flex w-max gap-4 opacity-60">
+      {[...SOURCES.slice().reverse(), ...SOURCES.slice().reverse()].map((source, index) => (
+        <div
+          key={`${source}-reverse-${index}`}
+          className="flex items-center gap-3 rounded-full border border-cyan-200/10 bg-cyan-200/[0.04] px-5 py-2 text-[10px] font-black tracking-[0.2em] text-cyan-100/70 uppercase"
+        >
+          <Radio className="h-3 w-3" /> packet received
+          <span>{source}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const EventUniverse = () => {
+  const [active, setActive] = useState(0);
+  const category = CATEGORIES[active];
+  const Icon = category.icon;
+
+  return (
+    <section className="relative z-10 overflow-hidden bg-[#030405] px-6 py-28 md:py-36">
+      <SectionIntro
+        eyebrow="Event Universe"
+        title="A living map of developer opportunities"
+        body="Instead of a flat feature list, Eventio turns categories and sources into a navigable signal field."
+      />
+      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <GlassFrame className="min-h-[560px] p-6">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.045)_1px,transparent_1px)] [mask-image:radial-gradient(circle_at_center,black,transparent_82%)] bg-[size:44px_44px]" />
+          <div className="relative flex min-h-[510px] items-center justify-center">
+            <div className="absolute h-[22rem] w-[22rem] rounded-full border border-white/10 md:h-[34rem] md:w-[34rem]" />
+            <div className="orbit-slow absolute h-[22rem] w-[22rem] rounded-full md:h-[34rem] md:w-[34rem]">
+              {CATEGORIES.map((item, index) => {
+                const ItemIcon = item.icon;
+                return (
+                  <button
+                    key={item.name}
+                    onMouseEnter={() => setActive(index)}
+                    className="absolute flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl border border-white/10 bg-black/80 text-white shadow-2xl backdrop-blur-xl transition-transform hover:scale-110 md:h-24 md:w-24"
+                    style={{
+                      top: `${50 + Math.sin((index / CATEGORIES.length) * Math.PI * 2) * 48}%`,
+                      left: `${50 + Math.cos((index / CATEGORIES.length) * Math.PI * 2) * 48}%`,
+                      boxShadow: `0 0 46px ${item.color}30`,
+                    }}
+                  >
+                    <ItemIcon className="h-7 w-7" style={{ color: item.color }} />
+                  </button>
+                );
+              })}
+            </div>
+            {CATEGORIES.map((item, index) => (
+              <span
+                key={`${item.name}-line`}
+                className="absolute h-px w-1/2 origin-left bg-gradient-to-r from-white/25 to-transparent"
+                style={{
+                  transform: `rotate(${index * 60}deg)`,
+                }}
+              />
+            ))}
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative z-10 flex h-56 w-56 flex-col items-center justify-center rounded-full border border-white/15 bg-black/75 text-center shadow-[0_0_90px_rgba(34,211,238,.18)] backdrop-blur-2xl md:h-72 md:w-72"
+            >
+              <Icon className="mb-5 h-11 w-11" style={{ color: category.color }} />
+              <p className="text-2xl font-black tracking-tight text-white">{category.name}</p>
+              <p className="mt-3 max-w-40 text-xs leading-5 text-zinc-400">{category.sample}</p>
+            </motion.div>
+          </div>
+        </GlassFrame>
+        <GlassFrame className="p-6 md:p-8">
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <p className="text-[10px] font-black tracking-[0.25em] text-zinc-500 uppercase">
+                Live category
+              </p>
+              <h3 className="mt-2 text-3xl font-black text-white">{category.name}</h3>
+            </div>
+            <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[10px] font-black tracking-widest text-emerald-200 uppercase">
+              active
+            </span>
+          </div>
+          <div className="space-y-3">
+            {['Detected', 'Normalized', 'Ranked', 'Calendar-ready'].map((step, index) => (
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, x: 28 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08 }}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 p-4"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black">
+                  {index + 1}
+                </span>
+                <div>
+                  <p className="font-bold text-white">{step}</p>
+                  <p className="text-sm text-zinc-500">{category.sample}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </GlassFrame>
+      </div>
+    </section>
+  );
+};
+
+const AliveBento = () => {
+  const cards = [
+    { title: 'Contest Radar', icon: Trophy, tone: 'cyan' },
+    { title: 'Hackathon Launchpad', icon: Rocket, tone: 'green' },
+    { title: 'AI Challenge Tracker', icon: Bot, tone: 'amber' },
+    { title: 'CTF Watch', icon: Shield, tone: 'red' },
+    { title: 'Conference Map', icon: MapPin, tone: 'violet' },
+    { title: 'Sync Engine', icon: CalendarCheck, tone: 'green' },
+  ];
+
+  return (
+    <section id="features" className="relative z-10 bg-black px-6 py-28 md:py-36">
+      <SectionIntro
+        eyebrow="Animated Product Scenes"
+        title="No dead cards. Every feature moves."
+        body="Each surface is a tiny product clip: radar sweeps, timelines slide, terminals type, and sync states glow."
+      />
+      <div className="mx-auto grid max-w-7xl auto-rows-[320px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {cards.map(({ title, icon: Icon, tone }, index) => (
+          <GlassFrame
+            key={title}
+            className={cn('group p-6 transition-transform duration-500 hover:-translate-y-2', {
+              'lg:col-span-2': index === 0 || index === 5,
+            })}
+          >
+            <div className="relative flex h-full flex-col justify-between">
+              <div className="flex items-center justify-between">
+                <div className={cn('rounded-2xl border p-3 shadow-xl', toneClasses[tone])}>
+                  <Icon className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black tracking-[0.22em] text-zinc-500 uppercase">
+                  scene {index + 1}
+                </span>
+              </div>
+              <div className="absolute inset-12 flex items-center justify-center">
+                {index === 0 && (
+                  <div className="relative h-44 w-44 rounded-full border border-cyan-200/20 bg-cyan-200/5">
+                    <div className="spin-radar absolute top-1/2 left-1/2 h-20 w-px origin-bottom bg-gradient-to-t from-cyan-200 to-transparent" />
+                    {[20, 44, 70].map((size) => (
+                      <span
+                        key={size}
+                        className="absolute rounded-full border border-cyan-200/10"
+                        style={{ inset: `${size}px` }}
+                      />
+                    ))}
+                    <span className="pulse-soft absolute top-10 left-24 h-3 w-3 rounded-full bg-cyan-300" />
+                    <span className="pulse-soft absolute right-12 bottom-14 h-2 w-2 rounded-full bg-amber-300 [animation-delay:.7s]" />
+                  </div>
+                )}
+                {index === 1 && (
+                  <div className="grid w-full max-w-xs grid-cols-3 gap-3">
+                    {['Idea', 'Build', 'Ship'].map((lane, laneIndex) => (
+                      <div
+                        key={lane}
+                        className="rounded-2xl border border-white/10 bg-black/40 p-2"
+                      >
+                        <p className="mb-2 text-[9px] font-black text-zinc-500 uppercase">{lane}</p>
+                        {[0, 1, 2].map((card) => (
+                          <motion.div
+                            key={card}
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{
+                              duration: 2.4,
+                              repeat: Infinity,
+                              delay: laneIndex * 0.25 + card * 0.12,
+                            }}
+                            className="mb-2 h-10 rounded-xl bg-emerald-300/10"
+                          />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {index === 2 && (
+                  <div className="w-full max-w-xs space-y-3">
+                    {[78, 62, 91, 48].map((width, bar) => (
+                      <div key={width} className="flex items-center gap-3">
+                        <span className="h-8 w-8 rounded-xl bg-amber-300/10 text-center text-xs leading-8 text-amber-100">
+                          {bar + 1}
+                        </span>
+                        <motion.span
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${width}%` }}
+                          className="h-3 rounded-full bg-gradient-to-r from-amber-300 to-white"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {index === 3 && (
+                  <div className="w-full max-w-sm rounded-2xl border border-rose-300/20 bg-black p-4 font-mono text-xs text-rose-100">
+                    {[
+                      '> source: ctftime',
+                      '> event: picoCTF',
+                      '> status: ongoing',
+                      '> flag: watched',
+                    ].map((line, lineIndex) => (
+                      <p
+                        key={line}
+                        className="terminal-type mb-2 overflow-hidden whitespace-nowrap"
+                        style={{ animationDelay: `${lineIndex * 0.2}s` }}
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
+                {index === 4 && (
+                  <div className="relative h-44 w-full max-w-sm rounded-3xl border border-violet-300/15 bg-[radial-gradient(circle_at_center,rgba(167,139,250,.16),transparent_60%)]">
+                    {['Online', 'SF', 'BLR', 'Berlin'].map((pin, pinIndex) => (
+                      <span
+                        key={pin}
+                        className="pulse-soft absolute rounded-full border border-violet-200/25 bg-violet-300/10 px-3 py-1 text-[10px] font-black text-violet-100"
+                        style={{
+                          left: `${12 + pinIndex * 22}%`,
+                          top: `${22 + ((pinIndex * 19) % 52)}%`,
+                          animationDelay: `${pinIndex * 0.3}s`,
+                        }}
+                      >
+                        {pin}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {index === 5 && (
+                  <div className="relative w-full max-w-lg">
+                    <div className="packet-flow absolute top-1/2 h-1 w-20 rounded-full bg-emerald-300 shadow-[0_0_24px_rgba(52,211,153,.9)]" />
+                    <div className="flex items-center justify-between">
+                      <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
+                        <CalendarDays className="mb-3 h-8 w-8 text-white" />
+                        <p className="text-sm font-bold text-white">Eventio event</p>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-emerald-300/70 to-cyan-300/70" />
+                      <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-4">
+                        <CheckCircle2 className="mb-3 h-8 w-8 text-emerald-200" />
+                        <p className="text-sm font-bold text-white">Calendar synced</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div>
+                <h3 className="text-2xl font-black text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-zinc-400">
+                  A focused animated interface for the moments developers actually care about.
+                </p>
+              </div>
+            </div>
+          </GlassFrame>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const Pipeline = () => (
+  <section className="relative z-10 overflow-hidden bg-[#030405] px-6 py-28 md:py-36">
+    <SectionIntro
+      eyebrow="Scraper Pipeline"
+      title="From scattered pages to one clean timeline"
+      body="The page should explain engineering through motion: adapters, schema, database, calendar, sync."
+    />
+    <GlassFrame className="mx-auto max-w-7xl p-6 md:p-10">
+      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
+        <div className="space-y-3">
+          {SOURCES.slice(0, 6).map((source, index) => (
+            <motion.div
+              key={source}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.06 }}
+              className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/50 p-4"
+            >
+              <span className="font-bold text-white">{source}</span>
+              <CircleDot className="h-4 w-4 text-cyan-200" />
+            </motion.div>
+          ))}
+        </div>
+        <div className="relative overflow-hidden rounded-3xl border border-cyan-200/15 bg-black p-5 font-mono text-xs text-cyan-50">
+          <div className="mb-4 flex items-center gap-2 text-zinc-500">
+            <Terminal className="h-4 w-4" /> normalized CalendarEvent
+          </div>
+          <pre className="leading-6 text-cyan-100/90">{`{
+  "title": "ETHGlobal Hackathon",
+  "platform": "ethglobal",
+  "start_time": "2026-06-18T10:00:00Z",
+  "end_time": "2026-06-20T18:00:00Z",
+  "event_type": "hackathon",
+  "tags": ["web3", "builders"],
+  "is_online": false,
+  "url": "https://...",
+  "status": "upcoming"
+}`}</pre>
+          <div className="packet-flow absolute bottom-0 left-0 h-px w-24 bg-cyan-200 shadow-[0_0_18px_rgba(103,232,249,.8)]" />
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { label: 'Scrapers', icon: Code2 },
+            { label: 'Supabase', icon: Database },
+            { label: 'Eventio', icon: CalendarDays },
+            { label: 'Google Sync', icon: CalendarCheck },
+          ].map(({ label, icon: Icon }, index) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.08 }}
+              className="flex min-h-36 flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.04] p-5"
+            >
+              <Icon className="h-8 w-8 text-white" />
+              <p className="font-black text-white">{label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </GlassFrame>
+  </section>
+);
+
+const Workflow = () => {
+  const [active, setActive] = useState(0);
+  const current = WORKFLOWS[active];
+
+  return (
+    <section id="workflow" className="relative z-10 bg-black px-6 py-28 md:py-36">
+      <SectionIntro
+        eyebrow="Workflow"
+        title="Discover. Decide. Sync."
+        body="A Huly-quality page does not explain with paragraphs alone. It changes the product scene while you read."
+      />
+      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.75fr_1.25fr]">
+        <GlassFrame className="p-5">
+          <div className="mb-6 grid grid-cols-3 gap-2">
+            {WORKFLOWS.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => setActive(index)}
+                className={cn(
+                  'rounded-2xl px-3 py-3 text-xs font-black tracking-widest uppercase transition',
+                  active === index
+                    ? 'bg-white text-black'
+                    : 'bg-white/5 text-zinc-400 hover:text-white',
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <h3 className="text-4xl font-black text-white">{current.title}</h3>
+              <p className="mt-5 leading-7 text-zinc-400">{current.body}</p>
+            </motion.div>
+          </AnimatePresence>
+        </GlassFrame>
+        <GlassFrame className="min-h-[480px] p-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, x: 40, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, x: -40, filter: 'blur(8px)' }}
+              className="h-full"
+            >
+              {active === 0 && <DiscoverMock />}
+              {active === 1 && <DecideMock />}
+              {active === 2 && <SyncMock />}
+            </motion.div>
+          </AnimatePresence>
+        </GlassFrame>
+      </div>
+    </section>
+  );
+};
+
+const DiscoverMock = () => (
+  <div className="flex h-full flex-col">
+    <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-black/60 p-4">
+      <Search className="h-5 w-5 text-cyan-200" />
+      <span className="text-zinc-400">Search hackathons, contests, AI challenges...</span>
+    </div>
+    <div className="mb-5 flex flex-wrap gap-2">
+      {['online', 'free', 'advanced', 'this week', 'AI'].map((filter) => (
+        <span
+          key={filter}
+          className="rounded-full border border-cyan-200/20 bg-cyan-200/10 px-3 py-1 text-xs font-bold text-cyan-100"
+        >
+          {filter}
+        </span>
+      ))}
+    </div>
+    <div className="grid flex-1 gap-3 md:grid-cols-2">
+      {CALENDAR_EVENTS.slice(0, 6).map((event, index) => (
+        <motion.div
+          key={event.title}
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3, repeat: Infinity, delay: index * 0.18 }}
+          className={cn('rounded-2xl border p-4 shadow-xl', toneClasses[event.tone])}
+        >
+          <p className="font-black text-white">{event.title}</p>
+          <p className="mt-2 text-xs tracking-widest uppercase opacity-70">{event.tag}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+);
+
+const DecideMock = () => (
+  <div className="mx-auto max-w-xl rounded-[2rem] border border-white/10 bg-black/70 p-6 shadow-2xl">
+    <div className="mb-5 flex items-start justify-between">
+      <div>
+        <p className="text-[10px] font-black tracking-[0.25em] text-amber-200 uppercase">
+          deadline protected
+        </p>
+        <h3 className="mt-2 text-3xl font-black text-white">Kaggle AI Challenge</h3>
+      </div>
+      <Flame className="h-8 w-8 text-amber-300" />
+    </div>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {[
+        ['Platform', 'Kaggle'],
+        ['Mode', 'Online'],
+        ['Price', 'Free'],
+        ['Status', 'Upcoming'],
+        ['Tags', 'AI, dataset'],
+        ['Timezone', 'UTC'],
+      ].map(([label, value]) => (
+        <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <p className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">{label}</p>
+          <p className="mt-2 font-bold text-white">{value}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const SyncMock = () => (
+  <div className="relative flex min-h-[420px] items-center justify-center">
+    <div className="packet-flow absolute top-1/2 h-1 w-32 rounded-full bg-emerald-300 shadow-[0_0_36px_rgba(52,211,153,.95)]" />
+    <div className="grid w-full max-w-3xl grid-cols-[1fr_80px_1fr] items-center gap-3">
+      <div className="rounded-3xl border border-white/10 bg-black/70 p-6">
+        <CalendarDays className="mb-5 h-10 w-10 text-white" />
+        <h3 className="text-2xl font-black text-white">ETHGlobal Hackathon</h3>
+        <p className="mt-2 text-zinc-400">Eventio event card</p>
+      </div>
+      <div className="flex justify-center">
+        <ChevronRight className="h-10 w-10 text-emerald-200" />
+      </div>
+      <div className="rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-6">
+        <CheckCircle2 className="mb-5 h-10 w-10 text-emerald-200" />
+        <h3 className="text-2xl font-black text-white">Synced</h3>
+        <p className="mt-2 text-emerald-100/70">Google Calendar ready</p>
+      </div>
+    </div>
+  </div>
+);
+
+const CalendarShowcase = () => {
+  const eventByDay = useMemo(() => new Map(CALENDAR_EVENTS.map((event) => [event.day, event])), []);
+
+  return (
+    <section className="relative z-10 overflow-hidden bg-[#030405] px-6 py-28 md:py-36">
+      <SectionIntro
+        eyebrow="Calendar Showcase"
+        title="The product becomes the art"
+        body="A full product mockup, animated states, real event names, and enough detail to feel usable."
+      />
+      <GlassFrame className="mx-auto max-w-7xl p-4 md:p-8">
+        <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <p className="text-[10px] font-black tracking-[0.28em] text-zinc-500 uppercase">
+              June 2026
+            </p>
+            <h3 className="text-3xl font-black text-white">Developer Opportunity Calendar</h3>
+          </div>
+          <div className="flex gap-2">
+            {['Month', 'Week', 'Day', 'List'].map((view, index) => (
+              <span
+                key={view}
+                className={cn(
+                  'rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase',
+                  index === 0 ? 'bg-white text-black' : 'bg-white/5 text-zinc-400',
+                )}
+              >
+                {view}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-7 gap-2">
+          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+            <div
+              key={day}
+              className="py-2 text-center text-[10px] font-black tracking-widest text-zinc-500 uppercase"
+            >
+              {day}
+            </div>
+          ))}
+          {Array.from({ length: 35 }).map((_, index) => {
+            const day = index + 1;
+            const event = eventByDay.get(day);
+            return (
+              <div
+                key={day}
+                className={cn(
+                  'group min-h-28 rounded-2xl border border-white/10 bg-black/40 p-2 transition hover:-translate-y-1 hover:border-white/25 md:min-h-36',
+                  event && 'shadow-2xl',
+                )}
+              >
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-xs font-bold text-zinc-500">{day}</span>
+                  {event && (
+                    <span className="pulse-soft h-2 w-2 rounded-full bg-current text-emerald-300" />
+                  )}
+                </div>
+                {event && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className={cn(
+                      'rounded-xl border p-2 text-[11px] shadow-xl md:p-3',
+                      toneClasses[event.tone],
+                    )}
+                  >
+                    <p className="line-clamp-2 font-black text-white">{event.title}</p>
+                    <p className="mt-2 hidden text-[9px] font-black tracking-widest uppercase opacity-70 md:block">
+                      {event.tag}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </GlassFrame>
+    </section>
+  );
+};
+
+const ArchitectureScene = () => (
+  <section id="architecture" className="relative z-10 bg-black px-6 py-28 md:py-36">
+    <SectionIntro
+      eyebrow="Open Source System"
+      title="Beautiful outside. Real engineering inside."
+      body="Eventio is not a fake landing page. It has scrapers, docs, provider config, CI, and a deployable app."
+    />
+    <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <GlassFrame className="p-6">
+        <Github className="mb-6 h-10 w-10 text-white" />
+        <h3 className="text-3xl font-black text-white">Open-source core</h3>
+        <p className="mt-4 leading-7 text-zinc-400">
+          Source adapters, calendar UI, docs, deployment notes, and health checks live in the repo.
+        </p>
+        <a
+          href="https://github.com/omkhalane/eventio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-xs font-black tracking-widest text-black uppercase"
+        >
+          Star repository <ArrowRight className="h-4 w-4" />
+        </a>
+      </GlassFrame>
+      <GlassFrame className="p-6 font-mono text-sm">
+        {[
+          ['apps/web/src', 'React calendar and landing page'],
+          ['services/scraper', 'Python source adapters'],
+          ['api/v1/health.ts', 'Vercel health endpoint'],
+          ['docs/', 'Setup, scraping, scaling, SEO'],
+          ['Supabase', 'Event and user data'],
+          ['Firebase', 'Google auth and Calendar scope'],
+        ].map(([path, desc], index) => (
+          <motion.div
+            key={path}
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.06 }}
+            className="mb-3 flex items-center justify-between rounded-2xl border border-white/10 bg-black/50 p-4"
+          >
+            <span className="text-cyan-100">{path}</span>
+            <span className="hidden text-zinc-500 md:block">{desc}</span>
+          </motion.div>
+        ))}
+      </GlassFrame>
+    </div>
+  </section>
+);
+
 export const LandingPage: React.FC = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const opacity = useTransform(scrollYProgress, [0, 0.22], [1, 0.2]);
+  const rotateX = useSpring(0, { stiffness: 120, damping: 28 });
+  const rotateY = useSpring(0, { stiffness: 120, damping: 28 });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
-  // Gentle Hero Image 3D Tilt
-  const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
-  const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
-
-  const handleHeroMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    requestAnimationFrame(() => {
-      mouseX.set((clientX - innerWidth / 2) / 60);
-      mouseY.set(-(clientY - innerHeight / 2) / 60);
-    });
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const x = (event.clientX - window.innerWidth / 2) / 70;
+    const yValue = -(event.clientY - window.innerHeight / 2) / 90;
+    rotateY.set(x);
+    rotateX.set(yValue);
   };
 
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleHeroMouseMove}
-      className="min-h-screen bg-[#020202] text-white overflow-x-hidden font-sans selection:bg-white/20 relative hardware-accel"
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen overflow-x-hidden bg-black font-sans text-white selection:bg-cyan-300/25"
     >
-      <PerfStyles />
-      <Noise />
+      <SceneStyles />
+      <div className="eventio-noise pointer-events-none fixed inset-0 z-50 opacity-[0.035] mix-blend-overlay" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,.18),transparent_30%),radial-gradient(circle_at_10%_40%,rgba(16,185,129,.12),transparent_24%),radial-gradient(circle_at_88%_45%,rgba(245,158,11,.10),transparent_26%),#020202]" />
 
-      {/* Abstract Animated Geometry Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#020202] hardware-accel">
-        <img
-          src={BANNER_IMAGE}
-          alt=""
-          className="absolute inset-x-0 top-0 h-[70vh] w-full object-cover opacity-20 mix-blend-screen blur-[1px]"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-
-        <motion.div
-          style={{ y: y1, opacity }}
-          className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-white/5 blur-[120px] hardware-accel"
-        />
-        <motion.div
-          style={{ y: y2 }}
-          className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-white/5 blur-[120px] hardware-accel"
-        />
-
-        <div className="absolute top-[-30vw] right-[-20vw] w-[80vw] h-[80vw] border-[1px] border-white/5 rounded-full spin-ultra-slow opacity-30">
-          <div className="absolute inset-[10%] border-[1px] border-white/5 rounded-full" />
-          <div className="absolute inset-[20%] border-[1px] border-white/5 rounded-full border-dashed" />
-        </div>
-      </div>
-
-      {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/40 backdrop-blur-2xl hardware-accel">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div
-            className="flex items-center gap-3 group cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:rotate-180 transition-transform duration-700 hardware-accel overflow-hidden">
-              <img src={LOGO_IMAGE} alt="" className="h-7 w-7" />
-            </div>
-            <span className="text-xl font-black tracking-tighter hidden sm:block">
-              Eventio
+      <nav className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-black/45 backdrop-blur-2xl">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
+          <Link to="/" className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white shadow-[0_0_36px_rgba(255,255,255,.18)]">
+              <img src={LOGO_IMAGE} alt="Eventio" className="h-7 w-7" />
             </span>
-          </div>
-          <div className="flex items-center gap-6 md:gap-10 text-[10px] md:text-xs font-bold text-zinc-400">
-            <a
-              href="#features"
-              className="hover:text-white transition-colors uppercase tracking-widest py-2"
-            >
+            <span className="text-xl font-black tracking-tight">Eventio</span>
+          </Link>
+          <div className="hidden items-center gap-8 text-xs font-black tracking-[0.18em] text-zinc-400 uppercase md:flex">
+            <a href="#features" className="hover:text-white">
               Features
             </a>
-            <Link
-              to="/architecture"
-              className="hover:text-white transition-colors uppercase tracking-widest py-2"
-            >
+            <a href="#sources" className="hover:text-white">
+              Sources
+            </a>
+            <a href="#workflow" className="hover:text-white">
+              Workflow
+            </a>
+            <Link to="/architecture" className="hover:text-white">
               Architecture
             </Link>
-            <a
-              href="https://github.com/omkhalane/eventio"
-              className="hidden sm:inline hover:text-white transition-colors uppercase tracking-widest py-2"
-            >
-              Source
-            </a>
           </div>
-          <div className="flex items-center gap-4">
-            <Link
-              to="/calendar"
-              className="px-6 py-2.5 rounded-full bg-white text-black text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center gap-2 group hardware-accel"
-            >
-              Launch{" "}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+          <Link
+            to="/calendar"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-xs font-black tracking-widest text-black uppercase"
+          >
+            Launch <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-48 pb-20 md:pb-32 px-6 min-h-[90vh] flex flex-col justify-center">
-        <div className="container mx-auto max-w-7xl text-center flex flex-col items-center relative hardware-accel">
-          <FadeUpText
-            delay={0}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0a0a0a] border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-widest mb-12 shadow-[0_0_40px_rgba(255,255,255,0.02)] hover:border-white/30 transition-colors cursor-default"
-          >
-            <Sparkles className="w-4 h-4 text-white" /> The ultimate dev
-            calendar
-          </FadeUpText>
-
-          <div className="mb-10 relative w-full group cursor-default">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent blur-3xl opacity-50 hardware-accel group-hover:opacity-80 transition-opacity duration-1000" />
-            <motion.h1
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
-              className="fluid-text-hero font-black tracking-tighter uppercase text-white relative z-10 hardware-accel w-full"
-            >
-              Plan.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-400 to-zinc-800 drop-shadow-2xl transition-all duration-700 group-hover:from-white group-hover:via-white group-hover:to-zinc-500">
-                Execute.
-              </span>
-              <br />
-              Win.
-            </motion.h1>
-          </div>
-
-          <FadeUpText delay={0.2}>
-            <p className="text-lg md:text-2xl text-zinc-400 font-medium max-w-3xl mx-auto mb-12 leading-relaxed px-4">
-              The ultra-fast aggregator for competitive programming and
-              hackathons. Built for the top 1%.
-            </p>
-          </FadeUpText>
-
-          <FadeUpText delay={0.3}>
-            <div className="flex -space-x-4 justify-center mb-6 p-2 rounded-full bg-white/5 border border-white/5 w-fit mx-auto backdrop-blur-md">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#020202] bg-zinc-800 flex items-center justify-center overflow-hidden relative z-10 hover:-translate-y-1 transition-transform"
-                >
-                  <img
-                    src={`https://i.pravatar.cc/100?img=${i + 30}`}
-                    alt=""
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#020202] bg-white text-black flex items-center justify-center text-[10px] font-black relative z-10">
-                +1K
-              </div>
-            </div>
-            <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-500 mb-12">
-              Built for{" "}
-              <span className="text-white border-b border-white/20 pb-0.5">
-                builders, competitors, and event hunters
-              </span>
-            </p>
-          </FadeUpText>
-
-          <FadeUpText delay={0.4} className="w-full">
-            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 justify-center w-full px-4">
-              <Link
-                to="/calendar"
-                className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full bg-white text-black text-xs md:text-sm uppercase tracking-widest font-black hover:scale-105 transition-transform flex items-center justify-center gap-4 shadow-[0_0_40px_rgba(255,255,255,0.15)] group hardware-accel"
-              >
-                Enter Dashboard{" "}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="https://github.com/omkhalane/eventio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full bg-[#0a0a0a] text-white border border-white/10 text-xs md:text-sm uppercase tracking-widest font-black hover:bg-white/10 transition-colors flex items-center justify-center gap-3 group"
-              >
-                <Github className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />{" "}
-                Star Repository
-              </a>
-            </div>
-          </FadeUpText>
-        </div>
-      </section>
-
-      {/* Cinematic App Demo Image with Black Fog */}
-      <section className="relative z-20 pb-32 px-4 md:px-8 perspective-[2000px] flex justify-center mt-10 md:mt-0">
-        <div className="relative w-full max-w-6xl">
-          {/* Intense Black Smoke & Glowing Shadow Effects */}
-          <div className="absolute inset-[-100px] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,1)_0%,transparent_70%)] blur-3xl opacity-80 mix-blend-multiply pointer-events-none hardware-accel smoke-anim" />
-          <div className="absolute inset-[-50px] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.9)_0%,transparent_80%)] blur-2xl opacity-60 mix-blend-overlay pointer-events-none hardware-accel smoke-anim-reverse" />
-
-          {/* Pulsing Backlight to contrast the black shadow */}
-          <div className="absolute inset-20 z-0 bg-white/5 blur-[100px] opacity-50 animate-pulse pointer-events-none hardware-accel" />
-
+      <header className="relative z-10 overflow-hidden px-6 pt-36 pb-20 md:pt-44">
+        <HeroConstellation />
+        <motion.div
+          style={{ y, opacity }}
+          className="pointer-events-none absolute inset-x-0 top-0 h-[45rem] bg-[linear-gradient(to_bottom,rgba(255,255,255,.10),transparent)]"
+        />
+        <div className="relative mx-auto max-w-7xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-            style={{ rotateX: mouseY, rotateY: mouseX }}
-            className="relative z-10 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/10 bg-[#000] p-1.5 md:p-3 shadow-[0_0_100px_50px_rgba(0,0,0,0.8)] group hardware-accel"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mx-auto mb-8 inline-flex items-center gap-3 rounded-full border border-cyan-200/20 bg-cyan-200/10 px-5 py-3 text-xs font-black tracking-[0.25em] text-cyan-100 uppercase backdrop-blur-xl"
           >
-            {/* The Image */}
-            <div className="relative overflow-hidden rounded-[1rem] md:rounded-[2rem] w-full bg-[#111]">
-              {/* Internal inset shadow to give depth */}
-              <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,1)] z-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" />
-              <img
-                src={HERO_IMAGE}
-                alt="Eventio calendar dashboard preview"
-                className="w-full h-auto object-cover transition-all duration-1000 opacity-60 grayscale-[50%] group-hover:opacity-100 group-hover:grayscale-0 relative z-10 hardware-accel"
-                loading="lazy"
-              />
-            </div>
+            <Sparkles className="h-4 w-4" /> Live developer event intelligence
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 42 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.8 }}
+            className="mx-auto max-w-6xl text-5xl leading-[0.86] font-black tracking-tight text-white uppercase sm:text-7xl md:text-8xl lg:text-[9.4rem]"
+          >
+            Never miss the next thing worth building.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.8 }}
+            className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-zinc-300 md:text-2xl"
+          >
+            Track contests, hackathons, AI challenges, CTFs, conferences, and developer deadlines
+            from scattered public sources in one fast calendar.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.28, duration: 0.8 }}
+            className="mt-10 flex flex-col justify-center gap-4 sm:flex-row"
+          >
+            <Link
+              to="/calendar"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-xs font-black tracking-widest text-black uppercase shadow-[0_0_50px_rgba(255,255,255,.18)]"
+            >
+              Launch Calendar <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              to="/architecture"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-8 py-4 text-xs font-black tracking-widest text-white uppercase backdrop-blur-xl"
+            >
+              View Architecture <Layers3 className="h-5 w-5" />
+            </Link>
           </motion.div>
         </div>
-      </section>
+        <HeroProduct rotateX={rotateX} rotateY={rotateY} />
+      </header>
 
-      {/* Endless Marquee */}
-      <section className="py-16 md:py-24 border-y border-white/5 bg-[#030303] relative z-10 overflow-hidden flex flex-col items-center justify-center">
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#030303] to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#030303] to-transparent z-20 pointer-events-none" />
-        <p className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-zinc-600 uppercase mb-8 relative z-20">
-          Data streamed from elite sources
-        </p>
-        <div className="flex w-max marquee-scroll hardware-accel">
-          {[...SOURCES, ...SOURCES, ...SOURCES, ...SOURCES].map((src, i) => (
-            <span
-              key={i}
-              className="mx-6 md:mx-12 text-3xl md:text-6xl font-black text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.15)] hover:[-webkit-text-stroke:1px_rgba(255,255,255,0.8)] hover:text-white transition-all duration-300 uppercase tracking-tighter cursor-default drop-shadow-lg"
-            >
-              {src}
-            </span>
-          ))}
+      <SourceStream />
+      <EventUniverse />
+      <AliveBento />
+      <Pipeline />
+      <Workflow />
+      <CalendarShowcase />
+      <section className="relative z-10 overflow-hidden bg-black px-6 py-28">
+        <div className="absolute inset-0 opacity-20">
+          <img src={BANNER_IMAGE} alt="" className="h-full w-full object-cover" />
         </div>
-      </section>
-
-      {/* Elegant Bento Grid */}
-      <section id="features" className="py-32 px-6 relative z-10 bg-[#020202]">
-        <div className="container mx-auto max-w-7xl">
-          <FadeUpText className="mb-20 md:mb-24 max-w-4xl">
-            <h2 className="text-4xl md:text-[80px] font-black tracking-tighter mb-6 uppercase leading-[0.9] text-white">
-              Everything.
-              <br />
-              <span className="text-zinc-700">Nothing you don't.</span>
-            </h2>
-            <p className="text-lg md:text-xl text-zinc-400 font-medium leading-relaxed">
-              A masterfully crafted interface that puts raw data and speed above
-              all else. No distractions.
-            </p>
-          </FadeUpText>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] lg:auto-rows-[350px]">
-            {/* Card 1: Global Sync */}
-            <SpotlightCard className="md:col-span-2 lg:col-span-2 p-8 lg:p-10">
-              <div className="flex flex-col justify-between h-full relative z-20">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-white shadow-lg">
-                  <Globe className="w-6 h-6 lg:w-8 lg:h-8" />
-                </div>
-                <div className="max-w-md">
-                  <h3 className="text-3xl lg:text-4xl font-black tracking-tight mb-3 text-white">
-                    Global Sync
-                  </h3>
-                  <p className="text-zinc-400 text-sm lg:text-lg font-medium leading-relaxed">
-                    Instantly sync events to your Google Calendar. Stay ahead of
-                    every deadline perfectly.
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -right-32 -top-32 w-[500px] h-[500px] border-[1px] border-white/5 rounded-full border-dashed opacity-50 pointer-events-none spin-ultra-slow" />
-              <div className="absolute -right-10 -top-10 w-[300px] h-[300px] border-[1px] border-white/5 rounded-full border-dotted opacity-50 pointer-events-none spin-ultra-slow-reverse" />
-            </SpotlightCard>
-
-            {/* Card 2: Real-time */}
-            <SpotlightCard className="p-8 lg:p-10">
-              <div className="flex flex-col justify-between h-full relative z-20">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-white shadow-lg">
-                  <Zap className="w-6 h-6 lg:w-8 lg:h-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl lg:text-3xl font-black tracking-tight mb-3 text-white">
-                    Real-time
-                  </h3>
-                  <p className="text-zinc-400 text-sm lg:text-base font-medium leading-relaxed">
-                    Fresh event data from scraper adapters and Supabase-backed
-                    reads.
-                  </p>
-                </div>
-              </div>
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent" />
-            </SpotlightCard>
-
-            {/* Card 3: Command-K */}
-            <SpotlightCard className="p-8 lg:p-10">
-              <div className="flex flex-col justify-between h-full relative z-20">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-white shadow-lg">
-                  <Command className="w-6 h-6 lg:w-8 lg:h-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl lg:text-3xl font-black tracking-tight mb-3 text-white">
-                    Command-K
-                  </h3>
-                  <p className="text-zinc-400 text-sm lg:text-base font-medium leading-relaxed">
-                    Navigate instantly via keyboard.
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -right-10 -bottom-10 w-40 h-40 border-[1px] border-white/5 rounded-2xl rotate-12 flex items-center justify-center">
-                <Command className="w-20 h-20 text-white/5" />
-              </div>
-            </SpotlightCard>
-
-            {/* Card 4: Deep Metadata */}
-            <SpotlightCard className="md:col-span-2 lg:col-span-2 p-8 lg:p-10">
-              <div className="absolute right-0 top-0 w-full md:w-2/3 h-full opacity-[0.03] pointer-events-none overflow-hidden [mask-image:linear-gradient(to_right,transparent,black)]">
-                <div className="w-full h-full font-mono text-[8px] md:text-[10px] leading-tight text-white whitespace-pre pt-10 pl-10">
-                  {`{\n  "id": "codeforces_1993",\n  "name": "Codeforces Round 963",\n  "type": "COMPETITIVE_PROGRAMMING",\n  "start_time": "2026-08-04T14:35:00Z"\n}`}
-                </div>
-              </div>
-              <div className="relative flex flex-col justify-between h-full z-20">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-white shadow-lg">
-                  <Terminal className="w-6 h-6 lg:w-8 lg:h-8" />
-                </div>
-                <div className="max-w-md">
-                  <h3 className="text-3xl lg:text-4xl font-black tracking-tight mb-3 text-white">
-                    Deep Metadata
-                  </h3>
-                  <p className="text-zinc-400 text-sm lg:text-lg font-medium leading-relaxed">
-                    Inspect raw JSON payloads directly within the UI to see
-                    exact schemas.
-                  </p>
-                </div>
-              </div>
-            </SpotlightCard>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-32 px-6 relative z-10 border-t border-white/5 overflow-hidden bg-[#020202]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_100%,#000_70%,transparent_110%)]"></div>
-        <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-[linear-gradient(transparent,rgba(255,255,255,0.02))] [transform:perspective(1000px)_rotateX(80deg)] pointer-events-none" />
-
-        <div className="container mx-auto max-w-5xl text-center relative z-20 flex flex-col items-center hardware-accel">
-          <div className="w-16 h-16 lg:w-20 lg:h-20 mb-8 rounded-2xl bg-white flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.2)] animate-pulse">
-            <Activity
-              className="w-8 h-8 lg:w-10 lg:h-10 text-black"
-              strokeWidth={3}
+        <SectionIntro
+          eyebrow="Media Layer"
+          title="Screenshots, signals, and product art"
+          body="The landing page uses the product as imagery, not decoration. This is how Eventio stops feeling text-only."
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
+          <GlassFrame className="p-3">
+            <img
+              src={OG_IMAGE}
+              alt="Eventio visual preview"
+              className="rounded-3xl border border-white/10"
             />
-          </div>
-          <h2 className="text-5xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-6 uppercase leading-[0.85] text-white">
-            Ready to <br /> ship?
-          </h2>
-          <p className="text-lg md:text-xl text-zinc-400 mb-12 font-medium max-w-2xl px-4">
-            Track the next contest, challenge, conference, or hackathon before
-            the deadline gets away.
-          </p>
-          <Link
-            to="/calendar"
-            className="inline-flex items-center gap-3 px-10 py-5 lg:px-12 lg:py-6 rounded-full bg-white text-black text-xs md:text-sm uppercase tracking-widest font-black hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.15)] group hardware-accel"
-          >
-            Launch Dashboard{" "}
-            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform" />
-          </Link>
+          </GlassFrame>
+          <GlassFrame className="p-8">
+            <Activity className="mb-8 h-12 w-12 text-cyan-200" />
+            <h3 className="text-4xl font-black text-white">
+              A designed system, not a decorated page.
+            </h3>
+            <p className="mt-5 leading-7 text-zinc-300">
+              Huly works because each section is a product world. Eventio now follows that rhythm:
+              source streams, category universe, pipeline film, workflow scene, and calendar
+              showcase.
+            </p>
+          </GlassFrame>
         </div>
       </section>
+      <ArchitectureScene />
 
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/5 relative z-10 bg-black">
-        <div className="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">
-              <img src={LOGO_IMAGE} alt="" className="h-6 w-6 md:h-7 md:w-7" />
-            </div>
-            <span className="font-black tracking-tighter text-xl md:text-2xl uppercase">
-              Eventio
-            </span>
+      <section className="relative z-10 overflow-hidden bg-[#030405] px-6 py-32 text-center">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] [mask-image:radial-gradient(circle_at_center,black,transparent_72%)] bg-[size:56px_56px]" />
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center">
+          <div className="relative mb-10 flex h-44 w-44 items-center justify-center rounded-full border border-white/10 bg-black">
+            <div className="absolute h-36 w-36 rounded-full border border-cyan-200/20" />
+            <div className="clock-hand absolute bottom-1/2 h-16 w-1 rounded-full bg-cyan-200" />
+            <Clock3 className="h-16 w-16 text-white" />
           </div>
-          <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-center">
-            © 2026 Om Khalane. Built for developers.
+          <h2 className="text-5xl leading-[0.9] font-black tracking-tight text-white uppercase md:text-8xl">
+            Track the deadline before it tracks you.
+          </h2>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-400">
+            Open the calendar, choose what matters, and protect the next contest, hackathon, or
+            launch window before it slips away.
           </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://github.com/omkhalane"
-              className="text-zinc-600 hover:text-white transition-colors"
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Link
+              to="/calendar"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-9 py-5 text-xs font-black tracking-widest text-black uppercase"
             >
-              <Github className="w-5 h-5 md:w-6 md:h-6" />
+              Launch Calendar <ArrowRight className="h-5 w-5" />
+            </Link>
+            <a
+              href="https://github.com/omkhalane/eventio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-9 py-5 text-xs font-black tracking-widest text-white uppercase"
+            >
+              Star GitHub <Github className="h-5 w-5" />
             </a>
           </div>
+        </div>
+      </section>
+
+      <footer className="relative z-10 border-t border-white/10 bg-black px-6 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white">
+              <img src={LOGO_IMAGE} alt="" className="h-7 w-7" />
+            </span>
+            <span className="text-2xl font-black">Eventio</span>
+          </div>
+          <p className="text-xs font-bold tracking-widest text-zinc-600 uppercase">
+            Built for developers who live by deadlines.
+          </p>
         </div>
       </footer>
     </div>

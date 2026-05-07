@@ -1,17 +1,18 @@
-import React from 'react';
-import { 
-  format, 
-  startOfMonth, 
-  endOfMonth, 
-  startOfWeek, 
-  endOfWeek, 
-  eachDayOfInterval, 
-  isSameMonth, 
-  isSameDay, 
-  isToday 
+import {
+  eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
+  isSameDay,
+  isSameMonth,
+  isToday,
+  startOfMonth,
+  startOfWeek,
 } from 'date-fns';
-import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
+import React from 'react';
+
+import { cn } from '../lib/utils';
 
 interface MiniCalendarProps {
   selectedDate: Date;
@@ -20,7 +21,12 @@ interface MiniCalendarProps {
   setCurrentMonth: (date: Date) => void;
 }
 
-export default function MiniCalendar({ selectedDate, onDateSelect, currentMonth, setCurrentMonth }: MiniCalendarProps) {
+export default function MiniCalendar({
+  selectedDate,
+  onDateSelect,
+  currentMonth,
+  setCurrentMonth,
+}: MiniCalendarProps) {
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -35,9 +41,12 @@ export default function MiniCalendar({ selectedDate, onDateSelect, currentMonth,
 
   return (
     <div className="bg-card w-full">
-      <div className="grid grid-cols-7 gap-1 mb-2">
+      <div className="mb-2 grid grid-cols-7 gap-1">
         {weekDays.map((day, i) => (
-          <div key={`${day}-${i}`} className="text-center text-[11px] font-semibold text-muted-foreground/50 py-1">
+          <div
+            key={`${day}-${i}`}
+            className="text-muted-foreground/50 py-1 text-center text-[11px] font-semibold"
+          >
             {day}
           </div>
         ))}
@@ -55,18 +64,18 @@ export default function MiniCalendar({ selectedDate, onDateSelect, currentMonth,
               whileTap={{ scale: 0.95 }}
               onClick={() => onDateSelect(day)}
               className={cn(
-                "h-9 w-9 flex items-center justify-center text-[11px] rounded-full transition-all relative group border",
+                'group relative flex h-9 w-9 items-center justify-center rounded-full border text-[11px] transition-all',
                 // Base background and text colors - White background, black bold text
-                "bg-white text-black font-black",
-                
+                'bg-white font-black text-black',
+
                 // Today (Golden Border)
-                isTodayDate && "border-amber-500 z-10 text-amber-600",
-                
+                isTodayDate && 'z-10 border-amber-500 text-amber-600',
+
                 // Selected (Black Border)
-                isSelected && "border-black z-20 shadow-sm",
-                
+                isSelected && 'z-20 border-black shadow-sm',
+
                 // Non-current month styling
-                !isCurrentMonth && "opacity-20"
+                !isCurrentMonth && 'opacity-20',
               )}
             >
               {format(day, 'd')}

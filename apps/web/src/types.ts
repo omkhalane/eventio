@@ -1,14 +1,14 @@
-export type EventCategory = 
-  | "competitive_programming"
-  | "global_competition"
-  | "hackathon"
-  | "hiring_challenge"
-  | "data_science"
-  | "community_event"
-  | "conference"
-  | "cybersecurity_ctf"
-  | "open_source"
-  | "live_stream";
+export type EventCategory =
+  | 'competitive_programming'
+  | 'global_competition'
+  | 'hackathon'
+  | 'hiring_challenge'
+  | 'data_science'
+  | 'community_event'
+  | 'conference'
+  | 'cybersecurity_ctf'
+  | 'open_source'
+  | 'live_stream';
 
 export type EventStatus = 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
 

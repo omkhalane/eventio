@@ -15,6 +15,9 @@ build/
 .vite/
 apps/**/.vite/
 .cache/
+.next/
+.turbo/
+.vercel/
 
 # Logs
 npm-debug.log*
@@ -53,6 +56,8 @@ dist/
 # IDE / Editor
 # =========================
 .vscode/
+!.vscode/
+!.vscode/extensions.json
 .idea/
 *.code-workspace
 
@@ -83,6 +88,11 @@ temp/
 coverage/
 htmlcov/
 .pytest_cache/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+gitleaks-report.*
 
 # =========================
 # Misc

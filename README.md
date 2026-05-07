@@ -76,28 +76,34 @@ cp .env.example .env
 npm run dev
 ```
 
-Open the Vite URL printed by the command. Commands are run from the repository
-root even though the frontend source lives in `apps/web`.
+Open the Vite URL printed by the command. It usually starts on
+`http://127.0.0.1:5173/`, but Vite will pick the next open port if that one is
+already in use. Commands are run from the repository root even though the
+frontend source lives in `apps/web`.
 
 ## Environment
 
 Copy `.env.example` to `.env` and fill in the values you need:
 
 ```text
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_APP_ID=
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_FIRESTORE_DATABASE_ID=
-VITE_GOOGLE_CLIENT_ID=
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
+PUBLIC_FIREBASE_PROJECT_ID=
+PUBLIC_FIREBASE_APP_ID=
+PUBLIC_FIREBASE_API_KEY=
+PUBLIC_FIREBASE_AUTH_DOMAIN=
+PUBLIC_FIREBASE_STORAGE_BUCKET=
+PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+PUBLIC_FIREBASE_FIRESTORE_DATABASE_ID=
 ```
 
+`PUBLIC_*` values are delivered to the browser at runtime from `/api/config`.
+Keep private secrets such as `DATABASE_URL`, service-role keys, AI API keys, and
+email provider keys in server-only variables without the `PUBLIC_` prefix.
+
 The app can render without Supabase data, but event loading, user persistence,
-Google authentication, and calendar sync require the matching provider setup.
+Google authentication, and calendar sync require the matching Supabase and
+Firebase provider setup. Google sign-in is handled through Firebase Auth.
 
 ## Scripts
 

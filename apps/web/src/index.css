@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
@@ -81,8 +81,8 @@
 
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .gsi-material-button {
@@ -109,8 +109,14 @@
     padding: 0 12px;
     position: relative;
     text-align: center;
-    -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
-    transition: background-color .218s, border-color .218s, box-shadow .218s;
+    -webkit-transition:
+      background-color 0.218s,
+      border-color 0.218s,
+      box-shadow 0.218s;
+    transition:
+      background-color 0.218s,
+      border-color 0.218s,
+      box-shadow 0.218s;
     vertical-align: middle;
     white-space: nowrap;
     width: auto;
@@ -150,8 +156,8 @@
   }
 
   .gsi-material-button .gsi-material-button-state {
-    -webkit-transition: opacity .218s;
-    transition: opacity .218s;
+    -webkit-transition: opacity 0.218s;
+    transition: opacity 0.218s;
     bottom: 0;
     left: 0;
     opacity: 0;
@@ -174,15 +180,19 @@
     opacity: 20%;
   }
 
-  .gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+  .gsi-material-button:not(:disabled):active .gsi-material-button-state,
   .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
     background-color: #303030;
     opacity: 12%;
   }
 
   .gsi-material-button:not(:disabled):hover {
-    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    -webkit-box-shadow:
+      0 1px 2px 0 rgba(60, 64, 67, 0.3),
+      0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    box-shadow:
+      0 1px 2px 0 rgba(60, 64, 67, 0.3),
+      0 1px 3px 1px rgba(60, 64, 67, 0.15);
   }
 
   .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
@@ -191,8 +201,12 @@
   }
 
   @keyframes golden-border-rotate {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
   }
 
   .animate-golden-border {

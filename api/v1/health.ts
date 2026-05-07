@@ -6,9 +6,9 @@ type JsonResponse = {
 
 export default function handler(_request: unknown, response: JsonResponse) {
   response.status(200).json({
-    status: "ok",
+    status: 'ok',
     timestamp: new Date().toISOString(),
-    brand: "Eventio",
-    owner: "Om Khalane",
+    brand: 'Eventio',
+    owner: 'Om Khalane',
   });
 }
