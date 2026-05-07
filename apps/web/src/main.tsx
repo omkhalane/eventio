@@ -13,6 +13,6 @@ initializeObservability();
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    <Analytics />
+    <Analytics mode="auto" />
   </StrictMode>,
 );
