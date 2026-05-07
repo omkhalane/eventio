@@ -1,41 +1,41 @@
-import React from 'react';
 import { Calendar, Settings, User } from 'lucide-react';
-import { motion } from 'motion/react';
+import React from 'react';
+
 import { cn } from '../lib/utils';
 
-const LOGO_IMAGE = "/assets/logo.svg";
+const LOGO_IMAGE = '/assets/logo.svg';
 
 export default function Sidebar() {
   return (
-    <aside className="w-16 h-screen flex flex-col items-center py-6 border-r border-border bg-card transition-colors duration-300">
+    <aside className="border-border bg-card flex h-screen w-16 flex-col items-center border-r py-6 transition-colors duration-300">
       <div className="mb-12">
-        <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
+        <div className="bg-foreground flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg shadow-lg">
           <img src={LOGO_IMAGE} alt="" className="h-5 w-5 invert" />
         </div>
       </div>
 
-      <nav className="flex-1 flex flex-col gap-8">
-        <SidebarIcon icon={<Calendar className="w-6 h-6" />} active />
+      <nav className="flex flex-1 flex-col gap-8">
+        <SidebarIcon icon={<Calendar className="h-6 w-6" />} active />
       </nav>
 
-      <div className="flex flex-col gap-6 mb-6 items-center">
-        <div className="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 overflow-hidden">
-          <User className="w-5 h-5 m-1.5 text-slate-500" />
+      <div className="mb-6 flex flex-col items-center gap-6">
+        <div className="h-8 w-8 overflow-hidden rounded-full border border-slate-300 bg-slate-200">
+          <User className="m-1.5 h-5 w-5 text-slate-500" />
         </div>
-        <button className="text-slate-400 hover:text-slate-900 transition-colors">
-          <Settings className="w-5 h-5" />
+        <button className="text-slate-400 transition-colors hover:text-slate-900">
+          <Settings className="h-5 w-5" />
         </button>
       </div>
     </aside>
   );
 }
 
-function SidebarIcon({ icon, active = false }: { icon: React.ReactNode, active?: boolean }) {
+function SidebarIcon({ icon, active = false }: { icon: React.ReactNode; active?: boolean }) {
   return (
     <div
       className={cn(
-        "cursor-pointer transition-all duration-200 group relative",
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+        'group relative cursor-pointer transition-all duration-200',
+        active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
       )}
     >
       {icon}

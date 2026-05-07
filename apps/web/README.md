@@ -25,7 +25,8 @@ npm run typecheck
 ```
 
 The root `vite.config.ts` sets `apps/web` as the Vite root and emits production
-files to `dist/apps/web`.
+files to `dist/apps/web`. Local dev usually starts at
+`http://127.0.0.1:5173/`; if the port is busy, use the URL Vite prints.
 
 ## Public Assets
 

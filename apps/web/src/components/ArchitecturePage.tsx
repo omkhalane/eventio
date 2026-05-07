@@ -1,18 +1,19 @@
-import React from "react";
-import { motion } from "motion/react";
 import {
-  Database,
-  Server,
-  Smartphone,
-  Cpu,
-  Shield,
-  Layers,
-  Clock,
-  Filter,
   ChevronLeft,
-} from "lucide-react";
-import { Link } from "react-router-dom";
-import { cn } from "../lib/utils";
+  Clock,
+  Cpu,
+  Database,
+  Filter,
+  Layers,
+  Server,
+  Shield,
+  Smartphone,
+} from 'lucide-react';
+import { motion } from 'motion/react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { cn } from '../lib/utils';
 
 const PerfStyles = () => (
   <style>{`
@@ -31,40 +32,40 @@ const PerfStyles = () => (
 );
 
 const Noise = () => (
-  <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay noise-bg hardware-accel" />
+  <div className="noise-bg hardware-accel pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay" />
 );
 
 const ArchNode = ({ title, subtitle, icon, delay = 0 }: any) => (
   <motion.div
     initial={{ scale: 0.8, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
-    transition={{ delay, duration: 0.5, type: "spring" }}
-    className="flex flex-col items-center gap-6 relative w-32 md:w-48 shrink-0"
+    transition={{ delay, duration: 0.5, type: 'spring' }}
+    className="relative flex w-32 shrink-0 flex-col items-center gap-6 md:w-48"
   >
-    <div className="absolute -inset-12 bg-white/5 rounded-full blur-3xl animate-pulse" />
-    <div className="w-20 h-20 md:w-32 md:h-32 rounded-[2rem] md:rounded-[3rem] bg-[#0a0a0a] border border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)] flex items-center justify-center relative overflow-hidden group hover:scale-110 transition-transform duration-500 z-10 cursor-default">
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+    <div className="absolute -inset-12 animate-pulse rounded-full bg-white/5 blur-3xl" />
+    <div className="group relative z-10 flex h-20 w-20 cursor-default items-center justify-center overflow-hidden rounded-[2rem] border border-white/20 bg-[#0a0a0a] shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-transform duration-500 hover:scale-110 md:h-32 md:w-32 md:rounded-[3rem]">
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
       {icon}
     </div>
-    <div className="text-center relative z-10">
-      <div className="text-sm md:text-xl font-black uppercase tracking-widest text-white whitespace-nowrap">
+    <div className="relative z-10 text-center">
+      <div className="text-sm font-black tracking-widest whitespace-nowrap text-white uppercase md:text-xl">
         {title}
       </div>
-      <div className="text-[10px] md:text-xs text-zinc-500 font-bold uppercase tracking-widest mt-2 border border-white/10 px-3 py-1 rounded-full bg-black/50 whitespace-nowrap">
+      <div className="mt-2 rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[10px] font-bold tracking-widest whitespace-nowrap text-zinc-500 uppercase md:text-xs">
         {subtitle}
       </div>
     </div>
   </motion.div>
 );
 
-const ArchLineHorizontal = ({ direction = "right" }) => (
-  <div className="flex-1 h-px relative mx-4 md:mx-8 mt-10 md:mt-16 min-w-[40px]">
-    <div className="absolute inset-0 bg-white/10 border-t-2 border-dashed border-white/20" />
-    <div className="absolute top-[-3px] w-full h-[6px] overflow-hidden">
+const ArchLineHorizontal = ({ direction = 'right' }) => (
+  <div className="relative mx-4 mt-10 h-px min-w-[40px] flex-1 md:mx-8 md:mt-16">
+    <div className="absolute inset-0 border-t-2 border-dashed border-white/20 bg-white/10" />
+    <div className="absolute top-[-3px] h-[6px] w-full overflow-hidden">
       <div
         className={cn(
-          "w-20 h-full bg-white shadow-[0_0_20px_#fff] rounded-full",
-          direction === "right" ? "line-flow-right" : "line-flow-left",
+          'h-full w-20 rounded-full bg-white shadow-[0_0_20px_#fff]',
+          direction === 'right' ? 'line-flow-right' : 'line-flow-left',
         )}
       />
     </div>
@@ -72,86 +73,86 @@ const ArchLineHorizontal = ({ direction = "right" }) => (
 );
 
 const ArchLineVertical = () => (
-  <div className="w-px h-24 md:h-40 relative mx-auto my-8">
-    <div className="absolute inset-0 bg-white/10 border-l-2 border-dashed border-white/20" />
-    <div className="absolute left-[-3px] w-[6px] h-full overflow-hidden">
-      <div className="w-full h-20 bg-white shadow-[0_0_20px_#fff] rounded-full line-flow-down" />
+  <div className="relative mx-auto my-8 h-24 w-px md:h-40">
+    <div className="absolute inset-0 border-l-2 border-dashed border-white/20 bg-white/10" />
+    <div className="absolute left-[-3px] h-full w-[6px] overflow-hidden">
+      <div className="line-flow-down h-20 w-full rounded-full bg-white shadow-[0_0_20px_#fff]" />
     </div>
   </div>
 );
 
 export const ArchitecturePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-hidden font-sans relative hardware-accel flex flex-col">
+    <div className="hardware-accel relative flex min-h-screen flex-col overflow-hidden bg-[#050505] font-sans text-white">
       <PerfStyles />
       <Noise />
 
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      <div className="absolute top-[-50%] left-[-20%] w-[150%] h-[150%] border-[1px] border-white/5 rounded-full border-dashed opacity-30 pointer-events-none spin-ultra-slow overflow-hidden" />
+      <div className="spin-ultra-slow pointer-events-none absolute top-[-50%] left-[-20%] h-[150%] w-[150%] overflow-hidden rounded-full border-[1px] border-dashed border-white/5 opacity-30" />
 
       {/* Header */}
-      <div className="relative z-20 p-8 md:p-12 flex items-center justify-between">
+      <div className="relative z-20 flex items-center justify-between p-8 md:p-12">
         <Link
           to="/"
-          className="text-[10px] md:text-xs font-black uppercase tracking-widest text-zinc-400 flex items-center gap-2 hover:text-white hover:-translate-x-2 transition-all bg-black/50 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md"
+          className="flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-6 py-3 text-[10px] font-black tracking-widest text-zinc-400 uppercase backdrop-blur-md transition-all hover:-translate-x-2 hover:text-white md:text-xs"
         >
-          <ChevronLeft className="w-4 h-4" /> Back to Home
+          <ChevronLeft className="h-4 w-4" /> Back to Home
         </Link>
         <div className="text-right">
-          <h1 className="text-2xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2 flex items-center gap-4 justify-end">
-            <Layers className="w-8 h-8 text-white" /> System Architecture
+          <h1 className="mb-2 flex items-center justify-end gap-4 text-2xl font-black tracking-tighter text-white uppercase md:text-5xl">
+            <Layers className="h-8 w-8 text-white" /> System Architecture
           </h1>
-          <p className="text-zinc-500 font-black text-[10px] md:text-sm tracking-[0.2em] uppercase">
+          <p className="text-[10px] font-black tracking-[0.2em] text-zinc-500 uppercase md:text-sm">
             High-Performance Data Pipeline
           </p>
         </div>
       </div>
 
       {/* Diagram Container */}
-      <div className="flex-1 relative overflow-hidden flex flex-col items-center justify-center p-6 md:p-20 z-10">
-        <div className="flex flex-col w-full max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center overflow-hidden p-6 md:p-20">
+        <div className="mx-auto flex w-full max-w-7xl flex-col">
           {/* Top Row: Left to Right */}
-          <div className="flex items-start justify-between w-full">
+          <div className="flex w-full items-start justify-between">
             <ArchNode
               title="Cron Jobs"
               subtitle="Schedule"
-              icon={<Clock className="w-8 h-8 md:w-12 md:h-12 text-white" />}
+              icon={<Clock className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0}
             />
             <ArchLineHorizontal direction="right" />
             <ArchNode
               title="Scrapers"
               subtitle="Python API"
-              icon={<Cpu className="w-8 h-8 md:w-12 md:h-12 text-white" />}
+              icon={<Cpu className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0.2}
             />
             <ArchLineHorizontal direction="right" />
             <ArchNode
               title="Data Normalization."
               subtitle="Pipeline"
-              icon={<Filter className="w-8 h-8 md:w-12 md:h-12 text-white" />}
+              icon={<Filter className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0.4}
             />
           </div>
 
           {/* Vertical Drop Aligning with Right Node */}
-          <div className="flex justify-end w-full pr-[4rem] md:pr-[6rem]">
+          <div className="flex w-full justify-end pr-[4rem] md:pr-[6rem]">
             <ArchLineVertical />
           </div>
 
           {/* Bottom Row: Right to Left */}
-          <div className="flex items-start justify-between w-full flex-row-reverse relative mt-8">
+          <div className="relative mt-8 flex w-full flex-row-reverse items-start justify-between">
             <ArchNode
               title="Supabase"
               subtitle="PostgreSQL"
-              icon={<Database className="w-8 h-8 md:w-12 md:h-12 text-white" />}
+              icon={<Database className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0.6}
             />
             <ArchLineHorizontal direction="left" />
             <ArchNode
               title="Edge Index"
               subtitle="Redis Cache"
-              icon={<Server className="w-8 h-8 md:w-12 md:h-12 text-white" />}
+              icon={<Server className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0.8}
             />
             <ArchLineHorizontal direction="left" />
@@ -159,9 +160,7 @@ export const ArchitecturePage: React.FC = () => {
               <ArchNode
                 title="Vite App"
                 subtitle="React Client"
-                icon={
-                  <Smartphone className="w-8 h-8 md:w-12 md:h-12 text-white" />
-                }
+                icon={<Smartphone className="h-8 w-8 text-white md:h-12 md:w-12" />}
                 delay={1.0}
               />
 
@@ -169,14 +168,14 @@ export const ArchitecturePage: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
-                className="absolute -bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+                transition={{ delay: 1.2, duration: 0.8, type: 'spring' }}
+                className="absolute -bottom-40 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4"
               >
-                <div className="w-px h-12 bg-white/20 border-l-2 border-dashed border-white/30" />
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1.5rem] bg-[#111] border border-white/20 flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.1)] group hover:scale-110 transition-transform">
-                  <Shield className="w-8 h-8 md:w-10 md:h-10 text-zinc-300" />
+                <div className="h-12 w-px border-l-2 border-dashed border-white/30 bg-white/20" />
+                <div className="group flex h-16 w-16 items-center justify-center rounded-[1.5rem] border border-white/20 bg-[#111] shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-transform hover:scale-110 md:h-20 md:w-20">
+                  <Shield className="h-8 w-8 text-zinc-300 md:h-10 md:w-10" />
                 </div>
-                <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-zinc-300 bg-black/80 px-4 py-2 rounded-full border border-white/10 whitespace-nowrap backdrop-blur-md">
+                <div className="rounded-full border border-white/10 bg-black/80 px-4 py-2 text-[10px] font-black tracking-widest whitespace-nowrap text-zinc-300 uppercase backdrop-blur-md md:text-xs">
                   Firebase Auth
                 </div>
               </motion.div>
@@ -184,7 +183,7 @@ export const ArchitecturePage: React.FC = () => {
           </div>
         </div>
 
-        <div className="h-40 md:h-52 w-full" />
+        <div className="h-40 w-full md:h-52" />
       </div>
     </div>
   );

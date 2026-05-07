@@ -1,7 +1,7 @@
 name: Bug report
 description: Report a reproducible problem in Eventio.
-title: "bug: "
-labels: ["bug", "needs-triage"]
+title: 'bug: '
+labels: ['bug', 'needs-triage']
 body:
   - type: markdown
     attributes:
@@ -13,7 +13,7 @@ body:
     attributes:
       label: Summary
       description: What is broken?
-      placeholder: "The calendar view fails when..."
+      placeholder: 'The calendar view fails when...'
     validations:
       required: true
 
@@ -63,7 +63,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      placeholder: "OS, browser, Node version, Python version"
+      placeholder: 'OS, browser, Node version, Python version'
 
   - type: textarea
     id: logs

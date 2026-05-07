@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+    env_file:
+      - .env.local
+    ports:
+      - '5175:5175'
+    environment:
+      NODE_ENV: production
+      PORT: 5175

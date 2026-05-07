@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "bradlc.vscode-tailwindcss",
+    "christian-kohler.path-intellisense",
+    "chakrounanas.turbo-console-log",
+    "ms-azuretools.vscode-docker",
+    "ms-playwright.playwright"
+  ]
+}

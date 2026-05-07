@@ -1,7 +1,6 @@
+import { Bell, Check, Mail, ShieldCheck, X, Zap } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Bell, Check, X, ShieldCheck, Zap } from 'lucide-react';
-import { cn } from '../lib/utils';
 
 interface SubscriptionModalProps {
   isOpen: boolean;
@@ -9,7 +8,11 @@ interface SubscriptionModalProps {
   userEmail?: string;
 }
 
-export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, onClose, userEmail }) => {
+export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
+  isOpen,
+  onClose,
+  userEmail,
+}) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -18,52 +21,57 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, on
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-background/60 backdrop-blur-xl"
+            className="bg-background/60 absolute inset-0 backdrop-blur-xl"
             onClick={() => onClose(false)}
           />
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-lg bg-card border border-border shadow-2xl rounded-[2.5rem] overflow-hidden"
+            className="bg-card border-border relative w-full max-w-lg overflow-hidden rounded-[2.5rem] border shadow-2xl"
           >
             {/* Header Art */}
-            <div className="h-32 bg-linear-to-br from-primary/10 via-primary/5 to-transparent relative overflow-hidden">
+            <div className="from-primary/10 via-primary/5 relative h-32 overflow-hidden bg-linear-to-br to-transparent">
               <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Mail className="w-32 h-32 rotate-12 translate-x-8 -translate-y-8" />
+                <Mail className="h-32 w-32 translate-x-8 -translate-y-8 rotate-12" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center pt-8">
-                <div className="w-20 h-20 bg-foreground rounded-3xl flex items-center justify-center shadow-2xl">
-                  <Zap className="w-10 h-10 text-background" fill="currentColor" />
+                <div className="bg-foreground flex h-20 w-20 items-center justify-center rounded-3xl shadow-2xl">
+                  <Zap className="text-background h-10 w-10" fill="currentColor" />
                 </div>
               </div>
             </div>
 
             <div className="p-10 pt-8 text-center">
-              <h2 className="text-3xl font-black tracking-tight mb-3">Stay in the Loop</h2>
-              <p className="text-muted-foreground font-medium mb-8">
-                Join our community to receive updates on new features, upcoming global contests, and official announcements.
+              <h2 className="mb-3 text-3xl font-black tracking-tight">Stay in the Loop</h2>
+              <p className="text-muted-foreground mb-8 font-medium">
+                Join our community to receive updates on new features, upcoming global contests, and
+                official announcements.
               </p>
 
-              <div className="space-y-4 mb-10 text-left">
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-muted/30 border border-border/50">
-                  <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 text-emerald-500" />
+              <div className="mb-10 space-y-4 text-left">
+                <div className="bg-muted/30 border-border/50 flex items-start gap-4 rounded-2xl border p-4">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/10">
+                    <Check className="h-4 w-4 text-emerald-500" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold">Weekly Newsletter</h4>
-                    <p className="text-xs text-muted-foreground">The best events delivered to your inbox every Monday.</p>
+                    <p className="text-muted-foreground text-xs">
+                      The best events delivered to your inbox every Monday.
+                    </p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-muted/30 border border-border/50">
-                  <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Bell className="w-4 h-4 text-blue-500" />
+
+                <div className="bg-muted/30 border-border/50 flex items-start gap-4 rounded-2xl border p-4">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-500/10">
+                    <Bell className="h-4 w-4 text-blue-500" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold">Community Updates</h4>
-                    <p className="text-xs text-muted-foreground">Be the first to know about official community communication.</p>
+                    <p className="text-muted-foreground text-xs">
+                      Be the first to know about official community communication.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -71,29 +79,31 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, on
               <div className="flex flex-col gap-3">
                 <button
                   onClick={() => onClose(true)}
-                  className="w-full bg-foreground text-background dark:bg-white dark:text-black py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-98 transition-all shadow-xl shadow-foreground/10"
+                  className="bg-foreground text-background shadow-foreground/10 w-full rounded-2xl py-5 text-sm font-black tracking-widest uppercase shadow-xl transition-all hover:scale-[1.02] active:scale-98 dark:bg-white dark:text-black"
                 >
                   Yes, subscribe me
                 </button>
                 <button
                   onClick={() => onClose(false)}
-                  className="w-full py-4 text-xs font-bold text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
+                  className="text-muted-foreground hover:text-foreground w-full py-4 text-xs font-bold tracking-widest uppercase transition-colors"
                 >
                   Maybe later
                 </button>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-border/50 flex items-center justify-center gap-2 opacity-50">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">No spam, just quality updates</span>
+              <div className="border-border/50 mt-8 flex items-center justify-center gap-2 border-t pt-6 opacity-50">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                <span className="text-[10px] font-bold tracking-widest uppercase">
+                  No spam, just quality updates
+                </span>
               </div>
             </div>
 
-            <button 
+            <button
               onClick={() => onClose(false)}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-muted transition-colors"
+              className="hover:bg-muted absolute top-6 right-6 rounded-full p-2 transition-colors"
             >
-              <X className="w-5 h-5 text-muted-foreground" />
+              <X className="text-muted-foreground h-5 w-5" />
             </button>
           </motion.div>
         </div>

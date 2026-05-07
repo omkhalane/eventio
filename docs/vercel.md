@@ -28,17 +28,20 @@ Use separate values per environment if you keep separate Firebase or Supabase
 projects for Production, Preview, and Development.
 
 ```text
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_APP_ID=
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_FIRESTORE_DATABASE_ID=
-VITE_GOOGLE_CLIENT_ID=
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
+PUBLIC_FIREBASE_PROJECT_ID=
+PUBLIC_FIREBASE_APP_ID=
+PUBLIC_FIREBASE_API_KEY=
+PUBLIC_FIREBASE_AUTH_DOMAIN=
+PUBLIC_FIREBASE_STORAGE_BUCKET=
+PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+PUBLIC_FIREBASE_FIRESTORE_DATABASE_ID=
 ```
+
+These are browser-readable runtime values served from `/api/config`. Keep
+server-only secrets such as `DATABASE_URL`, Supabase service-role keys, AI API
+keys, and email provider keys out of `PUBLIC_*` variables.
 
 Do not add `NODE_ENV`; Vercel sets it during builds and runtime.
 
@@ -71,8 +74,8 @@ signed-in user's access token.
 
 ## Supabase Setup
 
-The frontend reads from Supabase using `VITE_SUPABASE_URL` and
-`VITE_SUPABASE_ANON_KEY`. Confirm Row Level Security policies allow only the
+The frontend reads from Supabase using `PUBLIC_SUPABASE_URL` and
+`PUBLIC_SUPABASE_ANON_KEY`. Confirm Row Level Security policies allow only the
 intended public reads and authenticated user writes.
 
 If Supabase Auth redirects are added later, configure:

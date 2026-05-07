@@ -1,7 +1,7 @@
 name: Maintenance task
 description: Track repository hygiene, CI, tooling, dependencies, or refactors.
-title: "chore: "
-labels: ["maintenance", "needs-triage"]
+title: 'chore: '
+labels: ['maintenance', 'needs-triage']
 body:
   - type: dropdown
     id: area
