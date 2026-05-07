@@ -1,11 +1,11 @@
 import {
   Filter,
-  Github,
   Infinity as InfinityIcon,
   Info,
   Moon,
   Search,
   Settings,
+  Star,
   Sun,
   User,
   X,
@@ -316,7 +316,7 @@ export default function TopNav({
             rel="noopener noreferrer"
             className="bg-foreground text-background group flex items-center gap-2 rounded-xl px-3 py-2 shadow-sm transition-all hover:opacity-90"
           >
-            <Github className="h-4 w-4 transition-transform group-hover:scale-110" />
+            <Star className="h-4 w-4 transition-transform group-hover:scale-110" />
             <span className="text-[10px] font-black tracking-widest uppercase">Star us</span>
           </a>
 
