@@ -71,6 +71,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Write events as JSON to this file. Defaults to stdout.",
     )
+    parser.add_argument(
+        "--separate-jsons-dir",
+        type=Path,
+        help="Directory to write separate JSON files for each source.",
+    )
     return parser.parse_args()
 
 
@@ -84,6 +89,20 @@ def main() -> None:
         return
 
     selected_sources = args.sources or list(registry)
+    
+    if args.separate_jsons_dir:
+        args.separate_jsons_dir.mkdir(parents=True, exist_ok=True)
+        for source_name in selected_sources:
+            try:
+                print(f"[scraper] running {source_name}")
+                events = registry[source_name]()
+                out_file = args.separate_jsons_dir / f"{source_name}.json"
+                out_file.write_text(json.dumps(events, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+                print(f"[scraper] {source_name}: {len(events)} event(s) written to {out_file}")
+            except Exception as e:
+                print(f"[scraper] {source_name} failed: {e}")
+        return
+
     events = run_sources(selected_sources)
 
     payload = json.dumps(events, indent=2, sort_keys=True)
