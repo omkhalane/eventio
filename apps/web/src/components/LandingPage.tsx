@@ -5,12 +5,12 @@ import {
   Code2,
   Database,
   GitBranch,
-  Github,
   Layers3,
   Radio,
   Search,
   Shield,
   Sparkles,
+  Star,
   Swords,
   Terminal,
   Trophy,
@@ -306,7 +306,7 @@ const HeroVisual = () => (
             <div className="absolute h-[70%] w-[70%] rounded-full border border-dashed border-emerald-400/20" />
             <div className="z-30 flex h-36 w-36 flex-col items-center justify-center rounded-full border border-white/20 bg-black/95 p-4 text-center shadow-[0_0_40px_rgba(0,0,0,1)] backdrop-blur-2xl transition-transform duration-500 group-hover:scale-105 md:h-48 md:w-48">
               <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.4)] md:mb-3 md:h-12 md:w-12">
-                <Github className="h-5 w-5 md:h-6 md:w-6" />
+                <Code2 className="h-5 w-5 md:h-6 md:w-6" />
               </div>
               <p className="text-sm font-bold tracking-tight text-white md:text-lg">
                 omkhalane/
@@ -879,7 +879,7 @@ export const LandingPage: React.FC = () => {
               rel="noopener noreferrer"
               className="group magnetic-link inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.05] px-9 py-4 text-xs font-bold tracking-widest text-stone-100 uppercase shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
             >
-              Star GitHub <Github className="h-5 w-5 transition-transform group-hover:scale-110" />
+              Star GitHub <Star className="h-5 w-5 transition-transform group-hover:scale-110" />
             </a>
           </motion.div>
           <motion.div
@@ -967,7 +967,7 @@ export const LandingPage: React.FC = () => {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-bold tracking-widest text-stone-400 uppercase shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
           >
-            <Github className="h-5 w-5 transition-transform group-hover:scale-125" />
+            <Star className="h-5 w-5 transition-transform group-hover:scale-125" />
             Built by Om Khalane
           </a>
         </div>
