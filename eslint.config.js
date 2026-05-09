@@ -12,6 +12,7 @@ export default tseslint.config(
   {
     ignores: [
       'dist/**',
+      '.venv/**',
       'node_modules/**',
       'coverage/**',
       'htmlcov/**',

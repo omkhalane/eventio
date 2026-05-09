@@ -1,117 +1,22 @@
 {
-  "name": "eventio",
+  "name": "eventio-monorepo",
   "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
-  "version": "0.0.0",
-  "type": "module",
-  "author": {
-    "name": "Om Khalane",
-    "email": "om.khalane.dev@gmail.com",
-    "url": "https://github.com/omkhalane"
+  "engines": {
+    "node": ">=20.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/omkhalane/eventio.git"
-  },
-  "homepage": "https://eventio-sandy.vercel.app/",
-  "bugs": {
-    "url": "https://github.com/omkhalane/eventio/issues"
-  },
-  "license": "MIT",
   "scripts": {
-    "dev": "vite --config vite.config.ts",
-    "dev:server": "tsx apps/web/server.ts",
-    "build": "vite build --config vite.config.ts",
-    "preview": "vite preview --config vite.config.ts",
-    "start": "NODE_ENV=production tsx apps/web/server.ts",
-    "clean": "rm -rf dist apps/web/.vite .cache .pytest_cache htmlcov coverage",
-    "typecheck": "tsc --noEmit",
-    "lint:eslint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "audit": "npm audit",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "scraper:list": "python3 -m services.scraper.main --list",
-    "scraper:check": "python3 -m compileall services/scraper",
-    "check": "npm run lint:eslint && npm run typecheck && npm run test && npm run scraper:check",
-    "lint": "npm run lint:eslint",
-    "lint-staged": "lint-staged",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,css,html,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
-  "dependencies": {
-    "@google/genai": "^1.52.0",
-    "@prisma/client": "^6.19.3",
-    "@supabase/supabase-js": "^2.105.3",
-    "@tailwindcss/vite": "^4.1.14",
-    "@types/google.accounts": "^0.0.18",
-    "@vercel/analytics": "^2.0.1",
-    "@vitejs/plugin-react": "^6.0.1",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "firebase": "^12.12.1",
-    "jwt-decode": "^4.0.0",
-    "lucide-react": "^1.14.0",
-    "motion": "^12.23.24",
-    "posthog-js": "^1.372.9",
-    "react": "^19.0.0",
-    "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.0",
-    "tailwind-merge": "^3.5.0",
-    "vite": "^8.0.10"
+    "dev": "pnpm --parallel run dev",
+    "build": "pnpm --recursive run build",
+    "test": "pnpm --recursive run test",
+    "lint": "pnpm --recursive run lint",
+    "db:push": "pnpm --filter @eventio/db run db:push",
+    "db:generate": "pnpm --filter @eventio/db run db:generate",
+    "scrape:trigger": "pnpm --filter @eventio/workers run scrape:trigger",
+    "check": "pnpm run lint"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
-    "@eslint/js": "^9.39.4",
-    "@playwright/test": "^1.59.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.39.4",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
-    "eslint-plugin-unused-imports": "^4.4.1",
-    "globals": "^17.6.0",
-    "husky": "^8.0.0",
-    "jsdom": "^29.1.1",
-    "lint-staged": "^16.4.0",
-    "prettier": "^3.8.3",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "prisma": "^6.19.3",
-    "tailwindcss": "^4.1.14",
-    "tsx": "^4.21.0",
-    "typescript": "~6.0.3",
-    "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.10",
-    "vitest": "^4.1.5"
+    "typescript": "^5.4.5",
+    "prettier": "^3.2.5",
+    "eslint": "^9.0.0"
   }
 }

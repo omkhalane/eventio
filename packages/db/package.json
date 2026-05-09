@@ -1,0 +1,18 @@
+{
+  "name": "@eventio/db",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "db:push": "drizzle-kit push:pg",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.30.0",
+    "postgres": "^3.4.4"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.14",
+    "typescript": "^5.4.5"
+  }
+}

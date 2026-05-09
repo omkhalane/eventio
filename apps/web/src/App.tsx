@@ -20,6 +20,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter as Router, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 import { ArchitecturePage } from './components/ArchitecturePage';
+import { ApiDocs } from './components/ApiDocs';
 import { CookieConsent } from './components/CookieConsent';
 import EventModal from './components/EventModal';
 import { LandingPage } from './components/LandingPage';
@@ -191,31 +192,46 @@ const CalendarApp = () => {
 
   useEffect(() => {
     async function fetchEvents() {
-      if (!supabase) return;
-
       setIsLoading(true);
       try {
-        const { data, error } = await supabase.from('events').select('*').limit(5000);
-
-        if (error) throw error;
+        const params = new URLSearchParams();
+        if (filters.platforms && filters.platforms.length > 0) {
+          params.set('platforms', filters.platforms.join(','));
+        }
+        if (filters.categories && filters.categories.length > 0) {
+          params.set('categories', filters.categories.join(','));
+        }
+        if (searchQuery && searchQuery.length > 1) {
+          params.set('search', searchQuery);
+        }
+        
+        const res = await fetch(`http://localhost:3000/api/v1/events?${params.toString()}`);
+        if (!res.ok) throw new Error('Failed to fetch events');
+        
+        const json = await res.json();
+        const data = json.data;
 
         if (data) {
-          const formattedEvents: CalendarEvent[] = data.map((ev) => ({
+          const formattedEvents: CalendarEvent[] = data.map((ev: any) => ({
             ...ev,
-            tags: ev.tags || [],
-            extra: ev.extra || {},
+            start_time: ev.startTime || ev.start_time,
+            end_time: ev.endTime || ev.end_time,
+            event_type: ev.event_type || 'contest',
+            platform: ev.platform || 'Unknown',
+            tags: ev.tagsJson || ev.tags || [],
+            extra: ev.platformsJson || ev.extra || {},
           }));
           setEvents(formattedEvents);
         }
       } catch (error) {
-        console.error('Error fetching from Supabase:', error);
+        console.error('Error fetching from API:', error);
       } finally {
         setIsLoading(false);
       }
     }
 
     fetchEvents();
-  }, []);
+  }, [filters, searchQuery]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -446,6 +462,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/architecture" element={<ArchitecturePage />} />
+        <Route path="/api-docs" element={<ApiDocs />} />
         <Route path="/calendar" element={<CalendarApp />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route

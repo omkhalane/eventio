@@ -1,13 +1,29 @@
 import dotenv from 'dotenv';
-import express from 'express';
+import express, { type Request } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
+
+import { handleApiRequest } from '../../api/lib/event-api';
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+function toApiQuery(query: Request['query']) {
+  const out: Record<string, string | string[] | undefined> = {};
+  for (const [key, value] of Object.entries(query)) {
+    if (typeof value === 'string' || typeof value === 'undefined') {
+      out[key] = value;
+    } else if (Array.isArray(value)) {
+      out[key] = value.filter((item): item is string => typeof item === 'string');
+    } else {
+      out[key] = String(value);
+    }
+  }
+  return out;
+}
 
 function getPublicConfigScript() {
   const publicConfig = {
@@ -36,13 +52,12 @@ async function startServer() {
 
   // API Routes
   const apiRouter = express.Router();
-  apiRouter.get('/health', (_req, res) => {
-    res.json({
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-      brand: 'Eventio',
-      owner: 'Om Khalane',
-    });
+  apiRouter.use((req, res) => {
+    const result = handleApiRequest(req.method, req.path, toApiQuery(req.query));
+    for (const [name, value] of Object.entries(result.headers || {})) {
+      res.setHeader(name, value);
+    }
+    res.status(result.status).json(result.body);
   });
   app.use('/api/v1', apiRouter);
 
