@@ -1,0 +1,12 @@
+{
+  "name": "@eventio/observability",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "pino": "^8.20.0"
+  },
+  "devDependencies": {
+    "pino-pretty": "^11.0.0",
+    "typescript": "^5.4.5"
+  }
+}

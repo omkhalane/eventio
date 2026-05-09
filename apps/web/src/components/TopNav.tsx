@@ -63,14 +63,12 @@ export default function TopNav({
   }, [setSearchQuery]);
 
   const availableCategories = useMemo(() => {
-    const present = new Set(allEvents.map((e) => e.event_type));
-    return CATEGORIES.filter((cat) => present.has(cat.id));
-  }, [allEvents]);
+    return CATEGORIES;
+  }, []);
 
   const availablePlatforms = useMemo(() => {
-    const present = new Set(allEvents.map((e) => e.platform.toLowerCase()));
-    return Array.from(new Set(PLATFORMS)).filter((plat) => present.has(plat.toLowerCase()));
-  }, [allEvents]);
+    return Array.from(new Set(PLATFORMS));
+  }, []);
 
   const toggleCategory = (cat: EventCategory) => {
     const newCats = filters.categories.includes(cat)

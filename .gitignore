@@ -104,3 +104,12 @@ gitleaks-report.*
 *_contests.json
 scraper-output.json
 services/scraper/output/
+
+# Temp Agent Scripts
+migrate.js
+checkQueues.js
+dev.log
+
+# Agent Context
+.agents/
+.codex/
