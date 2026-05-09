@@ -11,7 +11,8 @@
     "lint": "pnpm --recursive run lint",
     "db:push": "pnpm --filter @eventio/db run db:push",
     "db:generate": "pnpm --filter @eventio/db run db:generate",
-    "scrape:trigger": "pnpm --filter @eventio/workers run scrape:trigger"
+    "scrape:trigger": "pnpm --filter @eventio/workers run scrape:trigger",
+    "check": "pnpm run lint"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
