@@ -6,7 +6,7 @@
     "start": "tsx --env-file=../../.env src/index.ts"
   },
   "dependencies": {
-    "fastify": "^4.26.2",
+    "fastify": "^5.8.5",
     "@fastify/cors": "^9.0.1",
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*"
