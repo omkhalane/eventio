@@ -1,0 +1,8 @@
+{
+  "name": "@eventio/shared",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
