@@ -1,0 +1,167 @@
+{
+  "platform": "devpost",
+  "generatedAt": "2026-05-11T13:33:11.900Z",
+  "count": 10,
+  "records": [
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://info.devpost.com/guides",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "Planning guides Best practices for planning online and in-person hackathons",
+        "description": "Planning guides Best practices for planning online and in-person hackathons",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "Planning guides Best practices for planning online and in-person hackathons",
+        "detailText": null,
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://info.devpost.com/guides",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://medo.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "Build with MeDo Hackathon 9",
+        "description": "Build with MeDo Hackathon 9 days left Online $50,000 in prizes 6830 participants Baidu Apr 09 - May 20, 2026 Beginner FriendlyLow/No CodeMachine Learning/AI",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "Build with MeDo Hackathon 9 days left Online $50,000 in prizes 6830 participants Baidu Apr 09 - May 20, 2026 Beginner FriendlyLow/No CodeMachine Learning/AI",
+        "detailText": null,
+        "startTime": "2026-04-09T00:00:00.000Z",
+        "endTime": "2026-05-20T23:59:59.000Z",
+        "canonicalUrl": "https://medo.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://rapid-agent.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "Google Cloud Rapid Agent Hackathon",
+        "description": "Google Cloud Rapid Agent Hackathon about 1 month left Online $50,000 in prizes 4143 participants Google May 05 - Jun 11, 2026 Managed by Devpost DatabasesMachine Learning/AIOpen Ended",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "Google Cloud Rapid Agent Hackathon about 1 month left Online $50,000 in prizes 4143 participants Google May 05 - Jun 11, 2026 Managed by Devpost DatabasesMachine Learning/AIOpen Ended",
+        "detailText": null,
+        "startTime": "2026-05-05T00:00:00.000Z",
+        "endTime": "2026-06-11T23:59:59.000Z",
+        "canonicalUrl": "https://rapid-agent.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://agents-assemble.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "Agents Assemble - The Healthcare AI Endgame",
+        "description": "Agents Assemble - The Healthcare AI Endgame about 13 hours left Online $25,000 in prizes 4296 participants Prompt Opinion (Darena Health) Mar 04 - May 11, 2026 HealthMachine Learning/AIBeginner Friendly",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "Agents Assemble - The Healthcare AI Endgame about 13 hours left Online $25,000 in prizes 4296 participants Prompt Opinion (Darena Health) Mar 04 - May 11, 2026 HealthMachine Learning/AIBeginner Friendly",
+        "detailText": null,
+        "startTime": "2026-03-04T00:00:00.000Z",
+        "endTime": "2026-05-11T23:59:59.000Z",
+        "canonicalUrl": "https://agents-assemble.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://findevil.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "FIND EVIL!",
+        "description": "FIND EVIL! about 1 month left Online $22,000 in prizes 3030 participants sans Apr 15 - Jun 15, 2026 CybersecurityMachine Learning/AIBeginner Friendly",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "FIND EVIL! about 1 month left Online $22,000 in prizes 3030 participants sans Apr 15 - Jun 15, 2026 CybersecurityMachine Learning/AIBeginner Friendly",
+        "detailText": null,
+        "startTime": "2026-04-15T00:00:00.000Z",
+        "endTime": "2026-06-15T23:59:59.000Z",
+        "canonicalUrl": "https://findevil.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://mod-tools-migration.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "Reddit Mod Tools and Migrated Apps Hackathon 16",
+        "description": "Reddit Mod Tools and Migrated Apps Hackathon 16 days left Online $45,000 in prizes 1627 participants reddit Apr 29 - May 27, 2026 Beginner FriendlySocial GoodWeb",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "Reddit Mod Tools and Migrated Apps Hackathon 16 days left Online $45,000 in prizes 1627 participants reddit Apr 29 - May 27, 2026 Beginner FriendlySocial GoodWeb",
+        "detailText": null,
+        "startTime": "2026-04-29T00:00:00.000Z",
+        "endTime": "2026-05-27T23:59:59.000Z",
+        "canonicalUrl": "https://mod-tools-migration.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://blueprint-2026.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "BluePrint 2026 - Hackthon for freshers and Students 3",
+        "description": "BluePrint 2026 - Hackthon for freshers and Students 3 days left Online ₹ 18,000 in prizes 804 participants BluePms Software Solutions PVT Apr 13 - May 14, 2026 Low/No CodeProductivityWeb",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "BluePrint 2026 - Hackthon for freshers and Students 3 days left Online ₹ 18,000 in prizes 804 participants BluePms Software Solutions PVT Apr 13 - May 14, 2026 Low/No CodeProductivityWeb",
+        "detailText": null,
+        "startTime": "2026-04-13T00:00:00.000Z",
+        "endTime": "2026-05-14T23:59:59.000Z",
+        "canonicalUrl": "https://blueprint-2026.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://dsh-hacks-v1.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "DSH Hacks V1 22",
+        "description": "DSH Hacks V1 22 days left Online $5,096 in prizes 646 participants DreamWeave Mar 02 - Jun 02, 2026 Beginner FriendlySocial GoodMachine Learning/AI",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "DSH Hacks V1 22 days left Online $5,096 in prizes 646 participants DreamWeave Mar 02 - Jun 02, 2026 Beginner FriendlySocial GoodMachine Learning/AI",
+        "detailText": null,
+        "startTime": "2026-03-02T00:00:00.000Z",
+        "endTime": "2026-06-02T23:59:59.000Z",
+        "canonicalUrl": "https://dsh-hacks-v1.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://hackamerica.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "HackAmerica 12",
+        "description": "HackAmerica 12 days left Online $575 in prizes 479 participants HackAmerica Apr 11 - May 23, 2026 Beginner FriendlyDesignSocial Good",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "HackAmerica 12 days left Online $575 in prizes 479 participants HackAmerica Apr 11 - May 23, 2026 Beginner FriendlyDesignSocial Good",
+        "detailText": null,
+        "startTime": "2026-04-11T00:00:00.000Z",
+        "endTime": "2026-05-23T23:59:59.000Z",
+        "canonicalUrl": "https://hackamerica.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    },
+    {
+      "sourcePlatformId": "devpost",
+      "sourceUrl": "https://luma-hackathon-500.devpost.com/?ref_feature=challenge&ref_medium=discover",
+      "rawPayload": {
+        "platform": "devpost",
+        "title": "LUMA Hackathon: Pitch your idea, win up to $500",
+        "description": "LUMA Hackathon: Pitch your idea, win up to $500 about 1 month left Online 1 non-cash prizes 375 participants LUMA Apr 11 - Jun 19, 2026 Beginner FriendlyMachine Learning/AIOpen Ended",
+        "listingUrl": "https://devpost.com/hackathons",
+        "listingText": "LUMA Hackathon: Pitch your idea, win up to $500 about 1 month left Online 1 non-cash prizes 375 participants LUMA Apr 11 - Jun 19, 2026 Beginner FriendlyMachine Learning/AIOpen Ended",
+        "detailText": null,
+        "startTime": "2026-04-11T00:00:00.000Z",
+        "endTime": "2026-06-19T23:59:59.000Z",
+        "canonicalUrl": "https://luma-hackathon-500.devpost.com/?ref_feature=challenge&ref_medium=discover",
+        "tags": []
+      }
+    }
+  ]
+}

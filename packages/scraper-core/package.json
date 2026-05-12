@@ -4,7 +4,8 @@
   "main": "index.ts",
   "dependencies": {
     "@eventio/db": "workspace:*",
-    "@eventio/observability": "workspace:*"
+    "@eventio/observability": "workspace:*",
+    "playwright": "^1.52.0"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

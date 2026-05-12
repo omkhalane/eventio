@@ -7,6 +7,7 @@ import {
   Settings,
   Star,
   Sun,
+  Terminal,
   User,
   X,
 } from 'lucide-react';
@@ -50,6 +51,14 @@ export default function TopNav({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/v1/stats')
+      .then((res) => res.json())
+      .then(setStats)
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -170,6 +179,14 @@ export default function TopNav({
             </AnimatePresence>
           </div>
 
+          <div className="relative">
+            {stats && (
+              <div className="hidden md:flex items-center gap-4 text-[10px] font-bold tracking-widest text-stone-400 uppercase mr-4">
+                <span><span className="text-emerald-400">{stats.upcoming}</span> upcoming</span>
+                <span><span className="text-stone-300">{stats.past}</span> past</span>
+              </div>
+            )}
+          </div>
           <div className="relative">
             <div className="flex items-center gap-2">
               <button
@@ -308,6 +325,14 @@ export default function TopNav({
         </div>
 
         <div className="flex items-center gap-3">
+          <Link
+            to="/api"
+            className="hover:bg-muted text-muted-foreground hover:text-foreground flex items-center gap-2 rounded-xl px-3 py-2 transition-all"
+          >
+            <Terminal className="h-4 w-4" />
+            <span className="hidden text-[10px] font-black tracking-widest uppercase sm:inline">API</span>
+          </Link>
+          
           <a
             href="https://github.com/omkhalane/eventio"
             target="_blank"

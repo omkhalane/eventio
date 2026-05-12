@@ -1,0 +1,774 @@
+{
+  "platform": "geeksforgeeks",
+  "generatedAt": "2026-05-11T14:10:39.222Z",
+  "count": 59,
+  "records": [
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-noida",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Boost Workshops by GfG | Noida",
+        "description": "Career Boost Workshops by GfG | Noida",
+        "listingText": "Career Boost Workshops by GfG | Noida",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-noida"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-blr",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Boost Workshops by GfG | Bengaluru",
+        "description": "Career Boost Workshops by GfG | Bengaluru",
+        "listingText": "Career Boost Workshops by GfG | Bengaluru",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-blr"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-kolkata",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Boost Workshops by GfG | Kolkata",
+        "description": "Career Boost Workshops by GfG | Kolkata",
+        "listingText": "Career Boost Workshops by GfG | Kolkata",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-kolkata"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-hyd",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Boost Workshops by GfG | Hyderabad",
+        "description": "Career Boost Workshops by GfG | Hyderabad",
+        "listingText": "Career Boost Workshops by GfG | Hyderabad",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-boost-offline-hyd"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-with-ai",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build With AI",
+        "description": "Build With AI",
+        "listingText": "Build With AI",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-with-ai"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/study-abroad-in-2025",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Should you study abroad in 2025? Complete step-by-step guide for students!",
+        "description": "Should you study abroad in 2025? Complete step-by-step guide for students!",
+        "listingText": "Should you study abroad in 2025? Complete step-by-step guide for students!",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/study-abroad-in-2025"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/zero-to-ai-tester-building-end-to-end-automation-with-kaneai",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Zero to AI Tester: Building End-to-End Automation with KaneAI",
+        "description": "Zero to AI Tester: Building End-to-End Automation with KaneAI",
+        "listingText": "Zero to AI Tester: Building End-to-End Automation with KaneAI",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/zero-to-ai-tester-building-end-to-end-automation-with-kaneai"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/UiPath-Llamalndex-Agent-UiPath-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Smarter, Scalable AI Agents — Powered by UiPath and LlamaIndex",
+        "description": "Build Smarter, Scalable AI Agents — Powered by UiPath and LlamaIndex",
+        "listingText": "Build Smarter, Scalable AI Agents — Powered by UiPath and LlamaIndex",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/UiPath-Llamalndex-Agent-UiPath-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/practical-ai-for-developers-advanced-agentic-workflows-with-gitHub-copilot",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Practical AI for Developers: Advanced Agentic Workflows with GitHub Copilot",
+        "description": "Practical AI for Developers: Advanced Agentic Workflows with GitHub Copilot",
+        "listingText": "Practical AI for Developers: Advanced Agentic Workflows with GitHub Copilot",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/practical-ai-for-developers-advanced-agentic-workflows-with-gitHub-copilot"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-noida",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Nation SkillUp Workshops - Noida",
+        "description": "Nation SkillUp Workshops - Noida",
+        "listingText": "Nation SkillUp Workshops - Noida",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-noida"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-hyderabad",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Nation SkillUp Workshops - Hyderabad",
+        "description": "Nation SkillUp Workshops - Hyderabad",
+        "listingText": "Nation SkillUp Workshops - Hyderabad",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-hyderabad"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-patna",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Nation SkillUp Workshops - Patna",
+        "description": "Nation SkillUp Workshops - Patna",
+        "listingText": "Nation SkillUp Workshops - Patna",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-patna"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshops-pune",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Nation SkillUp Workshops - Pune",
+        "description": "Nation SkillUp Workshops - Pune",
+        "listingText": "Nation SkillUp Workshops - Pune",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshops-pune"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-bangalore",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Nation SkillUp Workshops - Bengaluru",
+        "description": "Nation SkillUp Workshops - Bengaluru",
+        "listingText": "Nation SkillUp Workshops - Bengaluru",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/nation-skill-up-workshop-bangalore"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/amazon-the-future-gen-ai",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "The Future of Work with Generative AI || AWS X GeeksforGeeks",
+        "description": "The Future of Work with Generative AI || AWS X GeeksforGeeks",
+        "listingText": "The Future of Work with Generative AI || AWS X GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/amazon-the-future-gen-ai"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-GFG",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce ||  GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce ||  GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce ||  GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-GFG"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/digital-marketing-roadmap",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Digital Marketing Roadmap | GeeksforGeeks",
+        "description": "Digital Marketing Roadmap | GeeksforGeeks",
+        "listingText": "Digital Marketing Roadmap | GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/digital-marketing-roadmap"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-parul-university",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Parul University x GeeksforGeeks ",
+        "description": "Build Your First AI Agent Using Agentforce || Parul University x GeeksforGeeks ",
+        "listingText": "Build Your First AI Agent Using Agentforce || Parul University x GeeksforGeeks ",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-parul-university"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/Be-a-Technical-AI-Agent-Architect-Build-Orchestrate-Deploy-AI-Agents",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Be a Technical AI Agent Architect: Build, Orchestrate & Deploy AI Agents",
+        "description": "Be a Technical AI Agent Architect: Build, Orchestrate & Deploy AI Agents",
+        "listingText": "Be a Technical AI Agent Architect: Build, Orchestrate & Deploy AI Agents",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/Be-a-Technical-AI-Agent-Architect-Build-Orchestrate-Deploy-AI-Agents"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-aditya-university",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Salesforce x GeeksforGeeks ",
+        "description": "Build Your First AI Agent Using Agentforce || Salesforce x GeeksforGeeks ",
+        "listingText": "Build Your First AI Agent Using Agentforce || Salesforce x GeeksforGeeks ",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-aditya-university"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-iit-guwhati-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce  || IIT Guwahati x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce  || IIT Guwahati x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce  || IIT Guwahati x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-iit-guwhati-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-cbit",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || CBIT x GeeksforGeeks ",
+        "description": "Build Your First AI Agent Using Agentforce || CBIT x GeeksforGeeks ",
+        "listingText": "Build Your First AI Agent Using Agentforce || CBIT x GeeksforGeeks ",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-cbit"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-hyderabad-1",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "GeeksforGeeks Tech Talk with Industry Experts – Your Path to Tech Excellence! |  Hyderabad",
+        "description": "GeeksforGeeks Tech Talk with Industry Experts – Your Path to Tech Excellence! |  Hyderabad",
+        "listingText": "GeeksforGeeks Tech Talk with Industry Experts – Your Path to Tech Excellence! |  Hyderabad",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-hyderabad-1"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/unleashing-the-power-of-gitHub-copilot-building-apps-with-agentic-AI",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Unleashing the Power of GitHub Copilot: Building Apps with Agentic AI",
+        "description": "Unleashing the Power of GitHub Copilot: Building Apps with Agentic AI",
+        "listingText": "Unleashing the Power of GitHub Copilot: Building Apps with Agentic AI",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/unleashing-the-power-of-gitHub-copilot-building-apps-with-agentic-AI"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-part-1-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-part-1-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-madanapalle-university",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Madanapalle University x GeeksforGeeks ",
+        "description": "Build Your First AI Agent Using Agentforce || Madanapalle University x GeeksforGeeks ",
+        "listingText": "Build Your First AI Agent Using Agentforce || Madanapalle University x GeeksforGeeks ",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-madanapalle-university"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-UVCE",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || UVCE x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || UVCE x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || UVCE x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-UVCE"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-vit-pune-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || VIT Pune x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || VIT Pune x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || VIT Pune x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-vit-pune-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-bitm-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || BITM x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || BITM x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || BITM x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-bitm-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-manipal-university",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Manipal University x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || Manipal University x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || Manipal University x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-manipal-university"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-JKLU-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || JKLU x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || JKLU x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || JKLU x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-JKLU-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-karnavati-university-gandhinagar",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Karnavati University x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || Karnavati University x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || Karnavati University x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-karnavati-university-gandhinagar"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/future-ready-finance-accounting-accenture",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Future Ready Finance and Accounting",
+        "description": "Future Ready Finance and Accounting",
+        "listingText": "Future Ready Finance and Accounting",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/future-ready-finance-accounting-accenture"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-sr-university-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || SR University x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || SR University x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || SR University x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-sr-university-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-bits-pilani",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || BITS x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || BITS x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || BITS x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/build-your-first-ai-agent-using-agentforce-with-salesforce-bits-pilani"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/gate-preparation-your-path-to-success-haldia-institute-of-technology-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "GATE Preparation: Your Path to Success | Haldia Institute of Technology x GeeksforGeeks",
+        "description": "GATE Preparation: Your Path to Success | Haldia Institute of Technology x GeeksforGeeks",
+        "listingText": "GATE Preparation: Your Path to Success | Haldia Institute of Technology x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/gate-preparation-your-path-to-success-haldia-institute-of-technology-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-sharda-x-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Build Your First AI Agent Using Agentforce || Sharda x GeeksforGeeks",
+        "description": "Build Your First AI Agent Using Agentforce || Sharda x GeeksforGeeks",
+        "listingText": "Build Your First AI Agent Using Agentforce || Sharda x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-agent-with-salesforce-integration-sharda-x-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/unlocking-career-opportunities-strategic-insights-for-success-bvucoe-pune-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Unlocking Career Opportunities: Strategic Insights for Success | BVUCOE Pune x GeeksforGeeks",
+        "description": "Unlocking Career Opportunities: Strategic Insights for Success | BVUCOE Pune x GeeksforGeeks",
+        "listingText": "Unlocking Career Opportunities: Strategic Insights for Success | BVUCOE Pune x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/unlocking-career-opportunities-strategic-insights-for-success-bvucoe-pune-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/hack-the-stack-mern-special-amc-bangalore-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Hack the Stack: MERN Special  | AMC Bangalore with GeeksforGeeks",
+        "description": "Hack the Stack: MERN Special  | AMC Bangalore with GeeksforGeeks",
+        "listingText": "Hack the Stack: MERN Special  | AMC Bangalore with GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/hack-the-stack-mern-special-amc-bangalore-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-pune",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Pune",
+        "description": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Pune",
+        "listingText": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Pune",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-pune"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-hyderabad",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Hyderabad",
+        "description": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Hyderabad",
+        "listingText": "GeeksforGeeks Career Roadmap Session & Scholarship Test – Your Path to Tech Excellence! |  Hyderabad",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/gfg-career-roadmap-hyderabad"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/mastering-aws-sharpen-your-skills-pcce-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Mastering AWS : Sharpen Your Skills | PCCOE x GeeksforGeeks",
+        "description": "Mastering AWS : Sharpen Your Skills | PCCOE x GeeksforGeeks",
+        "listingText": "Mastering AWS : Sharpen Your Skills | PCCOE x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/mastering-aws-sharpen-your-skills-pcce-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-ml-innovate-2025-iiit-bhopal-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "AI/ML Innovate 2025: IIIT Bhopal x GeeksforGeeks",
+        "description": "AI/ML Innovate 2025: IIIT Bhopal x GeeksforGeeks",
+        "listingText": "AI/ML Innovate 2025: IIIT Bhopal x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-ml-innovate-2025-iiit-bhopal-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/complete-web-development-guide-from-basics-to-advanced-kiet-ghaziabad-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Complete Web Development Guide: From Basics to Advanced | KIET Ghaziabad x GeeksforGeeks",
+        "description": "Complete Web Development Guide: From Basics to Advanced | KIET Ghaziabad x GeeksforGeeks",
+        "listingText": "Complete Web Development Guide: From Basics to Advanced | KIET Ghaziabad x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/complete-web-development-guide-from-basics-to-advanced-kiet-ghaziabad-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-ml-pioneering-the-future-of-technology-klu-guntur-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "AI & ML: Pioneering the Future of Technology | KLU Guntur x GeeksforGeeks",
+        "description": "AI & ML: Pioneering the Future of Technology | KLU Guntur x GeeksforGeeks",
+        "listingText": "AI & ML: Pioneering the Future of Technology | KLU Guntur x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-ml-pioneering-the-future-of-technology-klu-guntur-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-guidance-navigating-your-path-to-success-ramco-institute-of-technology-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Guidance: Navigating Your Path to Success | Ramco Institute of Technology x GeeksforGeeks",
+        "description": "Career Guidance: Navigating Your Path to Success | Ramco Institute of Technology x GeeksforGeeks",
+        "listingText": "Career Guidance: Navigating Your Path to Success | Ramco Institute of Technology x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-guidance-navigating-your-path-to-success-ramco-institute-of-technology-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/mastering-data-science-machine-learning-srmcm-lucknow-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Mastering Data Science & Machine Learning | SRMCM - Lucknow x GeeksforGeeks",
+        "description": "Mastering Data Science & Machine Learning | SRMCM - Lucknow x GeeksforGeeks",
+        "listingText": "Mastering Data Science & Machine Learning | SRMCM - Lucknow x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/mastering-data-science-machine-learning-srmcm-lucknow-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/master-mern-full-stack-web-development-bootcamp-psna-cet-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Master MERN: Full Stack Web Development Bootcamp | PSNA CET x GeeksforGeeks",
+        "description": "Master MERN: Full Stack Web Development Bootcamp | PSNA CET x GeeksforGeeks",
+        "listingText": "Master MERN: Full Stack Web Development Bootcamp | PSNA CET x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/master-mern-full-stack-web-development-bootcamp-psna-cet-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-ml-unleashed-the-future-of-intelligent-technology-kls-git-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "AI & ML Unleashed: The Future of Intelligent Technology | KLS GIT x GeeksforGeeks",
+        "description": "AI & ML Unleashed: The Future of Intelligent Technology | KLS GIT x GeeksforGeeks",
+        "listingText": "AI & ML Unleashed: The Future of Intelligent Technology | KLS GIT x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-ml-unleashed-the-future-of-intelligent-technology-kls-git-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ace-your-placements-ultimate-preparation-guide-gec-mosalehosahalli-gfg",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Ace Your Placements: Ultimate Preparation Guide | GEC Mosalehosahalli x GeeksforGeeks",
+        "description": "Ace Your Placements: Ultimate Preparation Guide | GEC Mosalehosahalli x GeeksforGeeks",
+        "listingText": "Ace Your Placements: Ultimate Preparation Guide | GEC Mosalehosahalli x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ace-your-placements-ultimate-preparation-guide-gec-mosalehosahalli-gfg"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/mern-stack-mastery-kls-gogte-institute-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "MERN Stack Mastery at KLS Gogte Institute of Technology with GeeksforGeeks",
+        "description": "MERN Stack Mastery at KLS Gogte Institute of Technology with GeeksforGeeks",
+        "listingText": "MERN Stack Mastery at KLS Gogte Institute of Technology with GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/mern-stack-mastery-kls-gogte-institute-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-guidance-viit-pune-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Guidance Session – VIIT Pune x GeeksforGeeks",
+        "description": "Career Guidance Session – VIIT Pune x GeeksforGeeks",
+        "listingText": "Career Guidance Session – VIIT Pune x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-guidance-viit-pune-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/tech-insights-career-roadmap-geeksforgeeks-tmsl",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Tech Insights & Career Roadmap | GeeksforGeeks x TMSL",
+        "description": "Tech Insights & Career Roadmap | GeeksforGeeks x TMSL",
+        "listingText": "Tech Insights & Career Roadmap | GeeksforGeeks x TMSL",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/tech-insights-career-roadmap-geeksforgeeks-tmsl"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/gate-mastery-amity-jaipur-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "GATE Mastery: Amity Jaipur x GeeksforGeeks",
+        "description": "GATE Mastery: Amity Jaipur x GeeksforGeeks",
+        "listingText": "GATE Mastery: Amity Jaipur x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/gate-mastery-amity-jaipur-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-ml-data-science-revolution-cuj-geeksforgeeks",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "The AI/ML & Data Science Revolution – Central University of Jammu x GeeksforGeeks",
+        "description": "The AI/ML & Data Science Revolution – Central University of Jammu x GeeksforGeeks",
+        "listingText": "The AI/ML & Data Science Revolution – Central University of Jammu x GeeksforGeeks",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-ml-data-science-revolution-cuj-geeksforgeeks"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/code-your-career-geeksforgeeks-chandigarh-university",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Code Your Career: GeeksforGeeks @ Chandigarh University",
+        "description": "Code Your Career: GeeksforGeeks @ Chandigarh University",
+        "listingText": "Code Your Career: GeeksforGeeks @ Chandigarh University",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/code-your-career-geeksforgeeks-chandigarh-university"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/code-your-career-geeksforgeeks-kalinga-institute-of-industrial-technology",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Code Your Career: GeeksforGeeks @ Kalinga Institute of Industrial Technology",
+        "description": "Code Your Career: GeeksforGeeks @ Kalinga Institute of Industrial Technology",
+        "listingText": "Code Your Career: GeeksforGeeks @ Kalinga Institute of Industrial Technology",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/code-your-career-geeksforgeeks-kalinga-institute-of-industrial-technology"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/ai-ml-masterclass-gfg-jmit",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "AI/ML Masterclass | GFG x JMIT",
+        "description": "AI/ML Masterclass | GFG x JMIT",
+        "listingText": "AI/ML Masterclass | GFG x JMIT",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/ai-ml-masterclass-gfg-jmit"
+      }
+    },
+    {
+      "sourcePlatformId": "geeksforgeeks",
+      "sourceUrl": "https://www.geeksforgeeks.org/event/career-compass-geeksforgeeks-banasthali-vidyapith",
+      "rawPayload": {
+        "platform": "geeksforgeeks",
+        "title": "Career Compass: Navigating Success with GeeksforGeeks at Banasthali Vidyapith",
+        "description": "Career Compass: Navigating Success with GeeksforGeeks at Banasthali Vidyapith",
+        "listingText": "Career Compass: Navigating Success with GeeksforGeeks at Banasthali Vidyapith",
+        "startTime": null,
+        "endTime": null,
+        "canonicalUrl": "https://www.geeksforgeeks.org/event/career-compass-geeksforgeeks-banasthali-vidyapith"
+      }
+    }
+  ]
+}

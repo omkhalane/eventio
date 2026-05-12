@@ -1,0 +1,1981 @@
+{
+  "platform": "mlh",
+  "generatedAt": "2026-05-11T14:34:35.278Z",
+  "count": 141,
+  "records": [
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/13816-global-hack-week-genai?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+GenAI",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: GenAI",
+        "description": "Global Hack Week: GenAI MAY 08 - 14 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: GenAI MAY 08 - 14 Everywhere, Worldwide DIGITAL",
+        "startTime": "2026-05-08T00:00:00.000Z",
+        "endTime": "2026-05-14T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/13816-global-hack-week-genai?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+GenAI",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/14061-midnight-hackathon-may-2026?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Midnight+Hackathon",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Midnight Hackathon",
+        "description": "Midnight Hackathon MAY 15 - 17 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "Midnight Hackathon MAY 15 - 17 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2026-05-15T00:00:00.000Z",
+        "endTime": "2026-05-17T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/14061-midnight-hackathon-may-2026?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Midnight+Hackathon",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.designverseucr.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DesignVerse",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DesignVerse",
+        "description": "DesignVerse MAY 16 - 17 Riverside, California, US IN-PERSON DIVERSITY",
+        "listingText": "DesignVerse MAY 16 - 17 Riverside, California, US IN-PERSON DIVERSITY",
+        "startTime": "2026-05-16T00:00:00.000Z",
+        "endTime": "2026-05-17T23:59:59.000Z",
+        "canonicalUrl": "https://www.designverseucr.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DesignVerse",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackhcc.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackHCC",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackHCC",
+        "description": "HackHCC MAY 22 - 23 Houston, TX, US IN-PERSON",
+        "listingText": "HackHCC MAY 22 - 23 Houston, TX, US IN-PERSON",
+        "startTime": "2026-05-22T00:00:00.000Z",
+        "endTime": "2026-05-23T23:59:59.000Z",
+        "canonicalUrl": "https://hackhcc.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackHCC",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.quackhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Quackhacks+3",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Quackhacks 3",
+        "description": "Quackhacks 3 MAY 30 - 31 Eugene, Oregon, US IN-PERSON",
+        "listingText": "Quackhacks 3 MAY 30 - 31 Eugene, Oregon, US IN-PERSON",
+        "startTime": "2026-05-30T00:00:00.000Z",
+        "endTime": "2026-05-31T23:59:59.000Z",
+        "canonicalUrl": "https://www.quackhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Quackhacks+3",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mpchacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MPC+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "MPC Hacks",
+        "description": "MPC Hacks MAY 30 - 31 Montreal, Quebec, CA IN-PERSON",
+        "listingText": "MPC Hacks MAY 30 - 31 Montreal, Quebec, CA IN-PERSON",
+        "startTime": "2026-05-30T00:00:00.000Z",
+        "endTime": "2026-05-31T23:59:59.000Z",
+        "canonicalUrl": "https://mpchacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MPC+Hacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+10",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JAMHacks 10",
+        "description": "JAMHacks 10 JUN 12 - 14 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "listingText": "JAMHacks 10 JUN 12 - 14 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "startTime": "2026-06-12T00:00:00.000Z",
+        "endTime": "2026-06-14T23:59:59.000Z",
+        "canonicalUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+10",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://s3.hackprix.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackPrix+Season+3",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackPrix Season 3",
+        "description": "HackPrix Season 3 JUN 13 - 14 Hyderabad, Telangana, IN IN-PERSON",
+        "listingText": "HackPrix Season 3 JUN 13 - 14 Hyderabad, Telangana, IN IN-PERSON",
+        "startTime": "2026-06-13T00:00:00.000Z",
+        "endTime": "2026-06-14T23:59:59.000Z",
+        "canonicalUrl": "https://s3.hackprix.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackPrix+Season+3",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.kenthackit.co.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KentHackIt",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "KentHackIt",
+        "description": "KentHackIt MAY 09 - 10 Canterbury, Kent, GB IN-PERSON",
+        "listingText": "KentHackIt MAY 09 - 10 Canterbury, Kent, GB IN-PERSON",
+        "startTime": "2026-05-09T00:00:00.000Z",
+        "endTime": "2026-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://www.kenthackit.co.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KentHackIt",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://masseyhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MasseyHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "MasseyHacks",
+        "description": "MasseyHacks MAY 09 - 10 Windsor, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "listingText": "MasseyHacks MAY 09 - 10 Windsor, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "startTime": "2026-05-09T00:00:00.000Z",
+        "endTime": "2026-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://masseyhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MasseyHacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.interhackbcn.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=INTERHACK+BCN",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "INTERHACK BCN",
+        "description": "INTERHACK BCN MAY 09 - 10 Barcelona, Barcelona, ES IN-PERSON",
+        "listingText": "INTERHACK BCN MAY 09 - 10 Barcelona, Barcelona, ES IN-PERSON",
+        "startTime": "2026-05-09T00:00:00.000Z",
+        "endTime": "2026-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://www.interhackbcn.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=INTERHACK+BCN",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2026+Hackathon",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDavis 2026 Hackathon",
+        "description": "HackDavis 2026 Hackathon MAY 09 - 10 Davis, California, US IN-PERSON",
+        "listingText": "HackDavis 2026 Hackathon MAY 09 - 10 Davis, California, US IN-PERSON",
+        "startTime": "2026-05-09T00:00:00.000Z",
+        "endTime": "2026-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2026+Hackathon",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://nmithacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NMIT+Hacks+",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "NMIT Hacks",
+        "description": "NMIT Hacks MAY 08 - 10 Bengaluru, Karnataka, IN IN-PERSON DIVERSITY",
+        "listingText": "NMIT Hacks MAY 08 - 10 Bengaluru, Karnataka, IN IN-PERSON DIVERSITY",
+        "startTime": "2026-05-08T00:00:00.000Z",
+        "endTime": "2026-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://nmithacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NMIT+Hacks+",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://conhacks.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=ConHacks+2026",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "ConHacks 2026",
+        "description": "ConHacks 2026 APR 28 - 30 Waterloo, Ontario, CA IN-PERSON",
+        "listingText": "ConHacks 2026 APR 28 - 30 Waterloo, Ontario, CA IN-PERSON",
+        "startTime": "2026-04-28T00:00:00.000Z",
+        "endTime": "2026-04-30T23:59:59.000Z",
+        "canonicalUrl": "https://conhacks.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=ConHacks+2026",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.broncohacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BroncoHacks+2026",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "BroncoHacks 2026",
+        "description": "BroncoHacks 2026 APR 25 - 26 Pomona, California, US IN-PERSON",
+        "listingText": "BroncoHacks 2026 APR 25 - 26 Pomona, California, US IN-PERSON",
+        "startTime": "2026-04-25T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://www.broncohacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BroncoHacks+2026",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hackabull.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackabull+VII",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackabull VII",
+        "description": "Hackabull VII APR 25 - 26 Tampa, Florida, US IN-PERSON",
+        "listingText": "Hackabull VII APR 25 - 26 Tampa, Florida, US IN-PERSON",
+        "startTime": "2026-04-25T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://www.hackabull.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackabull+VII",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.keanuhackthis.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KeanUHackThis",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "KeanUHackThis",
+        "description": "KeanUHackThis APR 25 - 26 Union, 1075 Morris Ave, Union, NJ 07083, US IN-PERSON",
+        "listingText": "KeanUHackThis APR 25 - 26 Union, 1075 Morris Ave, Union, NJ 07083, US IN-PERSON",
+        "startTime": "2026-04-25T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://www.keanuhackthis.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KeanUHackThis",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hack.arizona.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Arizona+",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack Arizona",
+        "description": "Hack Arizona APR 25 - 26 Tucson, Arizona, US IN-PERSON",
+        "listingText": "Hack Arizona APR 25 - 26 Tucson, Arizona, US IN-PERSON",
+        "startTime": "2026-04-25T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://hack.arizona.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Arizona+",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.bearhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BearHacks+2026",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "BearHacks 2026",
+        "description": "BearHacks 2026 APR 24 - 26 Mississauga, Ontario, CA IN-PERSON",
+        "listingText": "BearHacks 2026 APR 24 - 26 Mississauga, Ontario, CA IN-PERSON",
+        "startTime": "2026-04-24T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://www.bearhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BearHacks+2026",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hack.caltech.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacktech",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hacktech",
+        "description": "Hacktech APR 24 - 26 Pasadena, California, US IN-PERSON",
+        "listingText": "Hacktech APR 24 - 26 Pasadena, California, US IN-PERSON",
+        "startTime": "2026-04-24T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://hack.caltech.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacktech",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackupc.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackUPC",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackUPC",
+        "description": "HackUPC APR 24 - 26 Barcelona, Catalonia, ES IN-PERSON",
+        "listingText": "HackUPC APR 24 - 26 Barcelona, Catalonia, ES IN-PERSON",
+        "startTime": "2026-04-24T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://hackupc.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackUPC",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://lahacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LA+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "LA Hacks",
+        "description": "LA Hacks APR 24 - 26 Los Angeles, California, US IN-PERSON",
+        "listingText": "LA Hacks APR 24 - 26 Los Angeles, California, US IN-PERSON",
+        "startTime": "2026-04-24T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://lahacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LA+Hacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://uwbhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UWB+Hacks+26%3A+The+Future%21",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "UWB Hacks 26: The Future!",
+        "description": "UWB Hacks 26: The Future! APR 24 - 26 Bothell, WA, US IN-PERSON",
+        "listingText": "UWB Hacks 26: The Future! APR 24 - 26 Bothell, WA, US IN-PERSON",
+        "startTime": "2026-04-24T00:00:00.000Z",
+        "endTime": "2026-04-26T23:59:59.000Z",
+        "canonicalUrl": "https://uwbhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UWB+Hacks+26%3A+The+Future%21",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://fullyhacks.acmcsuf.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FullyHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "FullyHacks",
+        "description": "FullyHacks APR 18 - 19 Fullerton, California, US IN-PERSON",
+        "listingText": "FullyHacks APR 18 - 19 Fullerton, California, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://fullyhacks.acmcsuf.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FullyHacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://victorhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Victor+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Victor Hacks",
+        "description": "Victor Hacks APR 18 - 19 Highland Heights, KY, US IN-PERSON",
+        "listingText": "Victor Hacks APR 18 - 19 Highland Heights, KY, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://victorhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Victor+Hacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.cs.oswego.edu/lakerhacks/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LakerHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "LakerHacks",
+        "description": "LakerHacks APR 18 - 19 Oswego, New York, US IN-PERSON",
+        "listingText": "LakerHacks APR 18 - 19 Oswego, New York, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://www.cs.oswego.edu/lakerhacks/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LakerHacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://georgehacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=George+Hacks+Health+Hackathon+2026",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "George Hacks Health Hackathon 2026",
+        "description": "George Hacks Health Hackathon 2026 APR 18 - 19 Washington DC, DMV, US IN-PERSON",
+        "listingText": "George Hacks Health Hackathon 2026 APR 18 - 19 Washington DC, DMV, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://georgehacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=George+Hacks+Health+Hackathon+2026",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Dragonhack+2026",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Dragonhack 2026",
+        "description": "Dragonhack 2026 APR 18 - 19 Ljubljana, Osrednjeslovenska, SI IN-PERSON",
+        "listingText": "Dragonhack 2026 APR 18 - 19 Ljubljana, Osrednjeslovenska, SI IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Dragonhack+2026",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hookemhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hook+%27Em+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hook 'Em Hacks",
+        "description": "Hook 'Em Hacks APR 18 - 19 Austin, TX, US IN-PERSON DIVERSITY",
+        "listingText": "Hook 'Em Hacks APR 18 - 19 Austin, TX, US IN-PERSON DIVERSITY",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://www.hookemhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hook+%27Em+Hacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackkosice.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Kosice",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack Kosice",
+        "description": "Hack Kosice APR 18 - 19 Košice, Košice Region, SK IN-PERSON",
+        "listingText": "Hack Kosice APR 18 - 19 Košice, Košice Region, SK IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://hackkosice.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Kosice",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://datahacks.ds3ucsd.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DataHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DataHacks",
+        "description": "DataHacks APR 18 - 19 La Jolla, CA, US IN-PERSON",
+        "listingText": "DataHacks APR 18 - 19 La Jolla, CA, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://datahacks.ds3ucsd.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DataHacks",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.citrushack.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Citrus+Hack",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Citrus Hack",
+        "description": "Citrus Hack APR 18 - 19 Riverside, California, US IN-PERSON",
+        "listingText": "Citrus Hack APR 18 - 19 Riverside, California, US IN-PERSON",
+        "startTime": "2026-04-18T00:00:00.000Z",
+        "endTime": "2026-04-19T23:59:59.000Z",
+        "canonicalUrl": "https://www.citrushack.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Citrus+Hack",
+        "seasonYear": 2026
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://thesolutionhacks.site/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDG+Solution+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GDG Solution Hacks",
+        "description": "GDG Solution Hacks JUN 27 - 29 Toronto, Canada, CA IN-PERSON",
+        "listingText": "GDG Solution Hacks JUN 27 - 29 Toronto, Canada, CA IN-PERSON",
+        "startTime": "2025-06-27T00:00:00.000Z",
+        "endTime": "2025-06-29T23:59:59.000Z",
+        "canonicalUrl": "https://thesolutionhacks.site/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDG+Solution+Hacks",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://spurhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SpurHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "SpurHacks",
+        "description": "SpurHacks JUN 20 - 22 Waterloo, Ontario, CA IN-PERSON",
+        "listingText": "SpurHacks JUN 20 - 22 Waterloo, Ontario, CA IN-PERSON",
+        "startTime": "2025-06-20T00:00:00.000Z",
+        "endTime": "2025-06-22T23:59:59.000Z",
+        "canonicalUrl": "https://spurhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SpurHacks",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hack4bengal.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack4Bengal+4.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack4Bengal 4.0",
+        "description": "Hack4Bengal 4.0 JUN 20 - 22 Newtown, West Bengal, IN IN-PERSON",
+        "listingText": "Hack4Bengal 4.0 JUN 20 - 22 Newtown, West Bengal, IN IN-PERSON",
+        "startTime": "2025-06-20T00:00:00.000Z",
+        "endTime": "2025-06-22T23:59:59.000Z",
+        "canonicalUrl": "https://www.hack4bengal.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack4Bengal+4.0",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://wit-mty.vercel.app/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+4+Her",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack 4 Her",
+        "description": "Hack 4 Her JUN 14 - 15 Monterrey, Nuevo León, MX IN-PERSON DIVERSITY",
+        "listingText": "Hack 4 Her JUN 14 - 15 Monterrey, Nuevo León, MX IN-PERSON DIVERSITY",
+        "startTime": "2025-06-14T00:00:00.000Z",
+        "endTime": "2025-06-15T23:59:59.000Z",
+        "canonicalUrl": "https://wit-mty.vercel.app/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+4+Her",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/12402-global-hack-week-genai?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+GenAI",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: GenAI",
+        "description": "Global Hack Week: GenAI JUN 13 - 19 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: GenAI JUN 13 - 19 Everywhere, Worldwide DIGITAL",
+        "startTime": "2025-06-13T00:00:00.000Z",
+        "endTime": "2025-06-19T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/12402-global-hack-week-genai?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+GenAI",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+9",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JAMHacks 9",
+        "description": "JAMHacks 9 MAY 16 - 18 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL DIVERSITY",
+        "listingText": "JAMHacks 9 MAY 16 - 18 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL DIVERSITY",
+        "startTime": "2025-05-16T00:00:00.000Z",
+        "endTime": "2025-05-18T23:59:59.000Z",
+        "canonicalUrl": "https://www.jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+9",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://nmithacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NMIT+HACKS+2025",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "NMIT HACKS 2025",
+        "description": "NMIT HACKS 2025 MAY 16 - 18 Bengaluru, Karnataka, IN IN-PERSON",
+        "listingText": "NMIT HACKS 2025 MAY 16 - 18 Bengaluru, Karnataka, IN IN-PERSON",
+        "startTime": "2025-05-16T00:00:00.000Z",
+        "endTime": "2025-05-18T23:59:59.000Z",
+        "canonicalUrl": "https://nmithacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NMIT+HACKS+2025",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.designverseucr.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DesignVerse+at+UCR",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DesignVerse at UCR",
+        "description": "DesignVerse at UCR MAY 10 - 11 Riverside, California, US IN-PERSON",
+        "listingText": "DesignVerse at UCR MAY 10 - 11 Riverside, California, US IN-PERSON",
+        "startTime": "2025-05-10T00:00:00.000Z",
+        "endTime": "2025-05-11T23:59:59.000Z",
+        "canonicalUrl": "https://www.designverseucr.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DesignVerse+at+UCR",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackmesa.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HACKMESA",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HACKMESA",
+        "description": "HACKMESA MAY 09 - 10 Los Angeles, CA, US IN-PERSON DIVERSITY",
+        "listingText": "HACKMESA MAY 09 - 10 Los Angeles, CA, US IN-PERSON DIVERSITY",
+        "startTime": "2025-05-09T00:00:00.000Z",
+        "endTime": "2025-05-10T23:59:59.000Z",
+        "canonicalUrl": "https://hackmesa.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HACKMESA",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/12300-global-hack-week-open-source-week?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Open+Source+Week",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: Open Source Week",
+        "description": "Global Hack Week: Open Source Week MAY 09 - 15 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: Open Source Week MAY 09 - 15 Everywhere, Worldwide DIGITAL",
+        "startTime": "2025-05-09T00:00:00.000Z",
+        "endTime": "2025-05-15T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/12300-global-hack-week-open-source-week?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Open+Source+Week",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.gdghacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDSCHACKS",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GDSCHACKS",
+        "description": "GDSCHACKS MAY 02 - 04 Guelph, Ontario, CA IN-PERSON",
+        "listingText": "GDSCHACKS MAY 02 - 04 Guelph, Ontario, CA IN-PERSON",
+        "startTime": "2025-05-02T00:00:00.000Z",
+        "endTime": "2025-05-04T23:59:59.000Z",
+        "canonicalUrl": "https://www.gdghacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDSCHACKS",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hack-dartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth+X",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDartmouth X",
+        "description": "HackDartmouth X APR 26 - 27 Hanover, New Hampshire, US IN-PERSON",
+        "listingText": "HackDartmouth X APR 26 - 27 Hanover, New Hampshire, US IN-PERSON",
+        "startTime": "2025-04-26T00:00:00.000Z",
+        "endTime": "2025-04-27T23:59:59.000Z",
+        "canonicalUrl": "https://www.hack-dartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth+X",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://jachacks.pages.dev/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JacHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JacHacks",
+        "description": "JacHacks APR 26 - 27 Quebec, Sainte-Anne-de-Bellevue, CA IN-PERSON",
+        "listingText": "JacHacks APR 26 - 27 Quebec, Sainte-Anne-de-Bellevue, CA IN-PERSON",
+        "startTime": "2025-04-26T00:00:00.000Z",
+        "endTime": "2025-04-27T23:59:59.000Z",
+        "canonicalUrl": "https://jachacks.pages.dev/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JacHacks",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://dragonhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHacks+11",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DragonHacks 11",
+        "description": "DragonHacks 11 APR 26 - 27 Philadelphia, PA, US IN-PERSON",
+        "listingText": "DragonHacks 11 APR 26 - 27 Philadelphia, PA, US IN-PERSON",
+        "startTime": "2025-04-26T00:00:00.000Z",
+        "endTime": "2025-04-27T23:59:59.000Z",
+        "canonicalUrl": "https://dragonhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHacks+11",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://morganhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MorganHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "MorganHacks",
+        "description": "MorganHacks APR 26 - 27 Baltimore, Maryland, US IN-PERSON DIVERSITY",
+        "listingText": "MorganHacks APR 26 - 27 Baltimore, Maryland, US IN-PERSON DIVERSITY",
+        "startTime": "2025-04-26T00:00:00.000Z",
+        "endTime": "2025-04-27T23:59:59.000Z",
+        "canonicalUrl": "https://morganhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MorganHacks",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hack.caltech.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacktech+by+Caltech",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hacktech by Caltech",
+        "description": "Hacktech by Caltech APR 25 - 27 Pasadena, CA, US IN-PERSON",
+        "listingText": "Hacktech by Caltech APR 25 - 27 Pasadena, CA, US IN-PERSON",
+        "startTime": "2025-04-25T00:00:00.000Z",
+        "endTime": "2025-04-27T23:59:59.000Z",
+        "canonicalUrl": "https://hack.caltech.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacktech+by+Caltech",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2025",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDavis 2025",
+        "description": "HackDavis 2025 APR 19 - 20 Davis, California, US IN-PERSON",
+        "listingText": "HackDavis 2025 APR 19 - 20 Davis, California, US IN-PERSON",
+        "startTime": "2025-04-19T00:00:00.000Z",
+        "endTime": "2025-04-20T23:59:59.000Z",
+        "canonicalUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2025",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.utadatathon.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UTA+Datathon",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "UTA Datathon",
+        "description": "UTA Datathon APR 12 - 13 Arlington, Texas, US IN-PERSON",
+        "listingText": "UTA Datathon APR 12 - 13 Arlington, Texas, US IN-PERSON",
+        "startTime": "2025-04-12T00:00:00.000Z",
+        "endTime": "2025-04-13T23:59:59.000Z",
+        "canonicalUrl": "https://www.utadatathon.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UTA+Datathon",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hackabull.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackabull",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackabull",
+        "description": "Hackabull APR 12 - 13 Tampa, Florida, US IN-PERSON DIVERSITY",
+        "listingText": "Hackabull APR 12 - 13 Tampa, Florida, US IN-PERSON DIVERSITY",
+        "startTime": "2025-04-12T00:00:00.000Z",
+        "endTime": "2025-04-13T23:59:59.000Z",
+        "canonicalUrl": "https://www.hackabull.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackabull",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://ieee.ics.uci.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bit+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Bit Hacks",
+        "description": "Bit Hacks APR 11 - 13 Irvine, California, US IN-PERSON",
+        "listingText": "Bit Hacks APR 11 - 13 Irvine, California, US IN-PERSON",
+        "startTime": "2025-04-11T00:00:00.000Z",
+        "endTime": "2025-04-13T23:59:59.000Z",
+        "canonicalUrl": "https://ieee.ics.uci.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bit+Hacks",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://bit.camp/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bitcamp+2025",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Bitcamp 2025",
+        "description": "Bitcamp 2025 APR 11 - 13 College Park, Maryland, US IN-PERSON",
+        "listingText": "Bitcamp 2025 APR 11 - 13 College Park, Maryland, US IN-PERSON",
+        "startTime": "2025-04-11T00:00:00.000Z",
+        "endTime": "2025-04-13T23:59:59.000Z",
+        "canonicalUrl": "https://bit.camp/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bitcamp+2025",
+        "seasonYear": 2025
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/11377-global-hack-week-season-launch?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Season+Launch",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: Season Launch",
+        "description": "Global Hack Week: Season Launch JUL 05 - 11 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: Season Launch JUL 05 - 11 Everywhere, Worldwide DIGITAL",
+        "startTime": "2024-07-05T00:00:00.000Z",
+        "endTime": "2024-07-11T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/11377-global-hack-week-season-launch?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Season+Launch",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/11184?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Web3",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: Web3",
+        "description": "Global Hack Week: Web3 JUN 07 - 13 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: Web3 JUN 07 - 13 Everywhere, Worldwide DIGITAL",
+        "startTime": "2024-06-07T00:00:00.000Z",
+        "endTime": "2024-06-13T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/11184?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Web3",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+8",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JAMHacks 8",
+        "description": "JAMHacks 8 JUN 07 - 09 Waterloo, ON, CA IN-PERSON HIGH SCHOOL DIVERSITY",
+        "listingText": "JAMHacks 8 JUN 07 - 09 Waterloo, ON, CA IN-PERSON HIGH SCHOOL DIVERSITY",
+        "startTime": "2024-06-07T00:00:00.000Z",
+        "endTime": "2024-06-09T23:59:59.000Z",
+        "canonicalUrl": "https://www.jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+8",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://lincehacks.net/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Lince+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Lince Hacks",
+        "description": "Lince Hacks MAY 24 - 26 Monterrey, N.L., MX IN-PERSON",
+        "listingText": "Lince Hacks MAY 24 - 26 Monterrey, N.L., MX IN-PERSON",
+        "startTime": "2024-05-24T00:00:00.000Z",
+        "endTime": "2024-05-26T23:59:59.000Z",
+        "canonicalUrl": "https://lincehacks.net/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Lince+Hacks",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://stormhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Stormhacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Stormhacks",
+        "description": "Stormhacks MAY 18 - 19 Burnaby, BC, CA IN-PERSON",
+        "listingText": "Stormhacks MAY 18 - 19 Burnaby, BC, CA IN-PERSON",
+        "startTime": "2024-05-18T00:00:00.000Z",
+        "endTime": "2024-05-19T23:59:59.000Z",
+        "canonicalUrl": "https://stormhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Stormhacks",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hawkhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HawkHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HawkHacks",
+        "description": "HawkHacks MAY 17 - 19 Waterloo, Ontario, CA IN-PERSON",
+        "listingText": "HawkHacks MAY 17 - 19 Waterloo, Ontario, CA IN-PERSON",
+        "startTime": "2024-05-17T00:00:00.000Z",
+        "endTime": "2024-05-19T23:59:59.000Z",
+        "canonicalUrl": "https://hawkhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HawkHacks",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackmhs.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Millburn+High+School",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack Millburn High School",
+        "description": "Hack Millburn High School MAY 17 - 18 Short Hills, New Jersey, US IN-PERSON HIGH SCHOOL DIVERSITY",
+        "listingText": "Hack Millburn High School MAY 17 - 18 Short Hills, New Jersey, US IN-PERSON HIGH SCHOOL DIVERSITY",
+        "startTime": "2024-05-17T00:00:00.000Z",
+        "endTime": "2024-05-18T23:59:59.000Z",
+        "canonicalUrl": "https://hackmhs.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Millburn+High+School",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/11279?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Data+Hackfest",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Data Hackfest",
+        "description": "Data Hackfest MAY 17 - 19 Everywhere, Worldwide DIGITAL",
+        "listingText": "Data Hackfest MAY 17 - 19 Everywhere, Worldwide DIGITAL",
+        "startTime": "2024-05-17T00:00:00.000Z",
+        "endTime": "2024-05-19T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/11279?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Data+Hackfest",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hackathonmorelos.mx/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackathon+Morelos",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackathon Morelos",
+        "description": "Hackathon Morelos MAY 16 - 18 Real del Puente, Mor., MX IN-PERSON",
+        "listingText": "Hackathon Morelos MAY 16 - 18 Real del Puente, Mor., MX IN-PERSON",
+        "startTime": "2024-05-16T00:00:00.000Z",
+        "endTime": "2024-05-18T23:59:59.000Z",
+        "canonicalUrl": "https://www.hackathonmorelos.mx/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackathon+Morelos",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/11065?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Data",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Global Hack Week: Data",
+        "description": "Global Hack Week: Data MAY 10 - 16 Everywhere, Worldwide DIGITAL",
+        "listingText": "Global Hack Week: Data MAY 10 - 16 Everywhere, Worldwide DIGITAL",
+        "startTime": "2024-05-10T00:00:00.000Z",
+        "endTime": "2024-05-16T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/11065?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Data",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://www.gdschacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDSCHACKS+Guelph",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GDSCHACKS Guelph",
+        "description": "GDSCHACKS Guelph MAY 03 - 05 Guelph, Ontario, CA IN-PERSON",
+        "listingText": "GDSCHACKS Guelph MAY 03 - 05 Guelph, Ontario, CA IN-PERSON",
+        "startTime": "2024-05-03T00:00:00.000Z",
+        "endTime": "2024-05-05T23:59:59.000Z",
+        "canonicalUrl": "http://www.gdschacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GDSCHACKS+Guelph",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hackupc.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackUPC",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackUPC",
+        "description": "HackUPC MAY 03 - 05 Barcelona, Catalonia, ES IN-PERSON",
+        "listingText": "HackUPC MAY 03 - 05 Barcelona, Catalonia, ES IN-PERSON",
+        "startTime": "2024-05-03T00:00:00.000Z",
+        "endTime": "2024-05-05T23:59:59.000Z",
+        "canonicalUrl": "https://www.hackupc.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackUPC",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2024",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDavis 2024",
+        "description": "HackDavis 2024 APR 27 - 28 Davis, CA, US IN-PERSON",
+        "listingText": "HackDavis 2024 APR 27 - 28 Davis, CA, US IN-PERSON",
+        "startTime": "2024-04-27T00:00:00.000Z",
+        "endTime": "2024-04-28T23:59:59.000Z",
+        "canonicalUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2024",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/seasons/2024/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=All+In+Hackathon+April",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "All In Hackathon April",
+        "description": "All In Hackathon April APR 27 - 28 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "All In Hackathon April APR 27 - 28 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2024-04-27T00:00:00.000Z",
+        "endTime": "2024-04-28T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/seasons/2024/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=All+In+Hackathon+April",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.tribehacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TribeHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TribeHacks",
+        "description": "TribeHacks APR 20 - 21 Williamsburg, VA, US IN-PERSON",
+        "listingText": "TribeHacks APR 20 - 21 Williamsburg, VA, US IN-PERSON",
+        "startTime": "2024-04-20T00:00:00.000Z",
+        "endTime": "2024-04-21T23:59:59.000Z",
+        "canonicalUrl": "https://www.tribehacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TribeHacks",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.hackdartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth+IX",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDartmouth IX",
+        "description": "HackDartmouth IX APR 20 - 21 Hanover, New Hampshire, US IN-PERSON",
+        "listingText": "HackDartmouth IX APR 20 - 21 Hanover, New Hampshire, US IN-PERSON",
+        "startTime": "2024-04-20T00:00:00.000Z",
+        "endTime": "2024-04-21T23:59:59.000Z",
+        "canonicalUrl": "https://www.hackdartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth+IX",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHack",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DragonHack",
+        "description": "DragonHack APR 20 - 21 Ljubljana, Ljubljana, SI IN-PERSON",
+        "listingText": "DragonHack APR 20 - 21 Ljubljana, Ljubljana, SI IN-PERSON",
+        "startTime": "2024-04-20T00:00:00.000Z",
+        "endTime": "2024-04-21T23:59:59.000Z",
+        "canonicalUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHack",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://bit.camp/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bitcamp+2024",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Bitcamp 2024",
+        "description": "Bitcamp 2024 APR 19 - 21 College Park, Maryland, US IN-PERSON",
+        "listingText": "Bitcamp 2024 APR 19 - 21 College Park, Maryland, US IN-PERSON",
+        "startTime": "2024-04-19T00:00:00.000Z",
+        "endTime": "2024-04-21T23:59:59.000Z",
+        "canonicalUrl": "https://bit.camp/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bitcamp+2024",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackathon.fif-uaq.mx/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackathon+Troyano+2024",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackathon Troyano 2024",
+        "description": "Hackathon Troyano 2024 APR 19 - 20 Santiago de Querétaro, Queretaro, MX IN-PERSON",
+        "listingText": "Hackathon Troyano 2024 APR 19 - 20 Santiago de Querétaro, Queretaro, MX IN-PERSON",
+        "startTime": "2024-04-19T00:00:00.000Z",
+        "endTime": "2024-04-20T23:59:59.000Z",
+        "canonicalUrl": "https://hackathon.fif-uaq.mx/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackathon+Troyano+2024",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/seasons/2024/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Web3Apps+April",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Web3Apps April",
+        "description": "Web3Apps April APR 19 - 21 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "Web3Apps April APR 19 - 21 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2024-04-19T00:00:00.000Z",
+        "endTime": "2024-04-21T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/seasons/2024/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Web3Apps+April",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://austincs.org/riverhacks/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=RiverHacks+2024",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "RiverHacks 2024",
+        "description": "RiverHacks 2024 APR 13 - 14 Austin, Tx, US IN-PERSON",
+        "listingText": "RiverHacks 2024 APR 13 - 14 Austin, Tx, US IN-PERSON",
+        "startTime": "2024-04-13T00:00:00.000Z",
+        "endTime": "2024-04-14T23:59:59.000Z",
+        "canonicalUrl": "https://austincs.org/riverhacks/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=RiverHacks+2024",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://kleincte.wixsite.com/klein-hacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KleinHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "KleinHacks",
+        "description": "KleinHacks APR 13 - 14 Klein/Houston, Texas, US IN-PERSON",
+        "listingText": "KleinHacks APR 13 - 14 Klein/Houston, Texas, US IN-PERSON",
+        "startTime": "2024-04-13T00:00:00.000Z",
+        "endTime": "2024-04-14T23:59:59.000Z",
+        "canonicalUrl": "https://kleincte.wixsite.com/klein-hacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=KleinHacks",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.utadatathon.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UTA+Datathon",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "UTA Datathon",
+        "description": "UTA Datathon APR 13 - 14 Arlington, Tx, US IN-PERSON",
+        "listingText": "UTA Datathon APR 13 - 14 Arlington, Tx, US IN-PERSON",
+        "startTime": "2024-04-13T00:00:00.000Z",
+        "endTime": "2024-04-14T23:59:59.000Z",
+        "canonicalUrl": "https://www.utadatathon.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=UTA+Datathon",
+        "seasonYear": 2024
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://tigerhacks.missouri.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TigerHacks+2023",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TigerHacks 2023",
+        "description": "TigerHacks 2023 NOV 03 - 05 Columbia, Missouri, US IN-PERSON",
+        "listingText": "TigerHacks 2023 NOV 03 - 05 Columbia, Missouri, US IN-PERSON",
+        "startTime": "2023-11-03T00:00:00.000Z",
+        "endTime": "2023-11-05T23:59:59.000Z",
+        "canonicalUrl": "http://tigerhacks.missouri.edu/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TigerHacks+2023",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9610?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Season+Launch",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GH Global Hack Week: Season Launch",
+        "description": "GH Global Hack Week: Season Launch JUL 03 - 10 Everywhere, Worldwide DIGITAL",
+        "listingText": "GH Global Hack Week: Season Launch JUL 03 - 10 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-07-03T00:00:00.000Z",
+        "endTime": "2023-07-10T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9610?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Season+Launch",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://wafflehacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=WaffleHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "WaffleHacks",
+        "description": "WaffleHacks JUN 23 - 25 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "WaffleHacks JUN 23 - 25 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2023-06-23T00:00:00.000Z",
+        "endTime": "2023-06-25T23:59:59.000Z",
+        "canonicalUrl": "http://wafflehacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=WaffleHacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9779?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Digital",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TechTogether Digital",
+        "description": "TechTogether Digital JUN 23 - 25 Everywhere, Worldwide DIGITAL DIVERSITY",
+        "listingText": "TechTogether Digital JUN 23 - 25 Everywhere, Worldwide DIGITAL DIVERSITY",
+        "startTime": "2023-06-23T00:00:00.000Z",
+        "endTime": "2023-06-25T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9779?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Digital",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://organize.mlh.io/participants/events/9621-pridehacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "PrideHacks",
+        "description": "PrideHacks JUN 16 - 18 Everywhere, Worldwide DIGITAL",
+        "listingText": "PrideHacks JUN 16 - 18 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-06-16T00:00:00.000Z",
+        "endTime": "2023-06-18T23:59:59.000Z",
+        "canonicalUrl": "https://organize.mlh.io/participants/events/9621-pridehacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+VII",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JAMHacks VII",
+        "description": "JAMHacks VII JUN 09 - 11 Waterloo, ON, CA IN-PERSON HIGH SCHOOL",
+        "listingText": "JAMHacks VII JUN 09 - 11 Waterloo, ON, CA IN-PERSON HIGH SCHOOL",
+        "startTime": "2023-06-09T00:00:00.000Z",
+        "endTime": "2023-06-11T23:59:59.000Z",
+        "canonicalUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+VII",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9154?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Security+Week",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GH Global Hack Week: Security Week",
+        "description": "GH Global Hack Week: Security Week JUN 05 - 12 Everywhere, Worldwide DIGITAL",
+        "listingText": "GH Global Hack Week: Security Week JUN 05 - 12 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-06-05T00:00:00.000Z",
+        "endTime": "2023-06-12T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9154?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Security+Week",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://organize.mlh.io/participants/events/9619-hack-your-portfolio?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Your+Portfolio",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack Your Portfolio",
+        "description": "Hack Your Portfolio JUN 02 - 04 Everywhere, Worldwide DIGITAL",
+        "listingText": "Hack Your Portfolio JUN 02 - 04 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-06-02T00:00:00.000Z",
+        "endTime": "2023-06-04T23:59:59.000Z",
+        "canonicalUrl": "https://organize.mlh.io/participants/events/9619-hack-your-portfolio?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Your+Portfolio",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://hackp.ac/TechTogetherNewYork?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+New+York",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TechTogether New York",
+        "description": "TechTogether New York MAY 27 - 28 New York, NY, US IN-PERSON DIVERSITY",
+        "listingText": "TechTogether New York MAY 27 - 28 New York, NY, US IN-PERSON DIVERSITY",
+        "startTime": "2023-05-27T00:00:00.000Z",
+        "endTime": "2023-05-28T23:59:59.000Z",
+        "canonicalUrl": "http://hackp.ac/TechTogetherNewYork?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+New+York",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://tigrehacks.me/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Tigre+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Tigre Hacks",
+        "description": "Tigre Hacks MAY 26 - 28 San Nicolás de los Garza, Nuevo Leon, MX IN-PERSON",
+        "listingText": "Tigre Hacks MAY 26 - 28 San Nicolás de los Garza, Nuevo Leon, MX IN-PERSON",
+        "startTime": "2023-05-26T00:00:00.000Z",
+        "endTime": "2023-05-28T23:59:59.000Z",
+        "canonicalUrl": "http://tigrehacks.me/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Tigre+Hacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://organize.mlh.io/participants/events/9494-highschoolhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HighSchoolHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HighSchoolHacks",
+        "description": "HighSchoolHacks MAY 26 - 28 Everywhere, Worldwide DIGITAL",
+        "listingText": "HighSchoolHacks MAY 26 - 28 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-05-26T00:00:00.000Z",
+        "endTime": "2023-05-28T23:59:59.000Z",
+        "canonicalUrl": "https://organize.mlh.io/participants/events/9494-highschoolhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HighSchoolHacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2023",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDavis 2023",
+        "description": "HackDavis 2023 MAY 20 - 21 Davis, CA, US IN-PERSON",
+        "listingText": "HackDavis 2023 MAY 20 - 21 Davis, CA, US IN-PERSON",
+        "startTime": "2023-05-20T00:00:00.000Z",
+        "endTime": "2023-05-21T23:59:59.000Z",
+        "canonicalUrl": "https://hackdavis.io/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDavis+2023",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9493-neighborhoodhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NeighborhoodHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "NeighborhoodHacks",
+        "description": "NeighborhoodHacks MAY 19 - 21 Everywhere, Worldwide DIGITAL",
+        "listingText": "NeighborhoodHacks MAY 19 - 21 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-05-19T00:00:00.000Z",
+        "endTime": "2023-05-21T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9493-neighborhoodhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=NeighborhoodHacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9239?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Seattle",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TechTogether Seattle",
+        "description": "TechTogether Seattle MAY 13 - 14 Everywhere, Worldwide DIGITAL DIVERSITY",
+        "listingText": "TechTogether Seattle MAY 13 - 14 Everywhere, Worldwide DIGITAL DIVERSITY",
+        "startTime": "2023-05-13T00:00:00.000Z",
+        "endTime": "2023-05-14T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9239?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Seattle",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://sbhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SB+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "SB Hacks",
+        "description": "SB Hacks MAY 13 - 14 Isla Vista, California, US IN-PERSON",
+        "listingText": "SB Hacks MAY 13 - 14 Isla Vista, California, US IN-PERSON",
+        "startTime": "2023-05-13T00:00:00.000Z",
+        "endTime": "2023-05-14T23:59:59.000Z",
+        "canonicalUrl": "http://sbhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SB+Hacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHack+2023",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DragonHack 2023",
+        "description": "DragonHack 2023 MAY 13 - 14 Ljubljana, Slovenia, SI IN-PERSON",
+        "listingText": "DragonHack 2023 MAY 13 - 14 Ljubljana, Slovenia, SI IN-PERSON",
+        "startTime": "2023-05-13T00:00:00.000Z",
+        "endTime": "2023-05-14T23:59:59.000Z",
+        "canonicalUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHack+2023",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://organize.mlh.io/participants/events/9491-ai-hackfest?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=AI+Hackfest",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "AI Hackfest",
+        "description": "AI Hackfest MAY 12 - 14 Everywhere, Worldwide DIGITAL",
+        "listingText": "AI Hackfest MAY 12 - 14 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-05-12T00:00:00.000Z",
+        "endTime": "2023-05-14T23:59:59.000Z",
+        "canonicalUrl": "https://organize.mlh.io/participants/events/9491-ai-hackfest?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=AI+Hackfest",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.methacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MetHacks+2023",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "MetHacks 2023",
+        "description": "MetHacks 2023 MAY 05 - 07 Toronto, Ontario, CA IN-PERSON",
+        "listingText": "MetHacks 2023 MAY 05 - 07 Toronto, Ontario, CA IN-PERSON",
+        "startTime": "2023-05-05T00:00:00.000Z",
+        "endTime": "2023-05-07T23:59:59.000Z",
+        "canonicalUrl": "https://www.methacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=MetHacks+2023",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://hackp.ac/TechTogetherMiami?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Miami",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TechTogether Miami",
+        "description": "TechTogether Miami MAY 05 - 06 Miami, FL, US IN-PERSON DIVERSITY",
+        "listingText": "TechTogether Miami MAY 05 - 06 Miami, FL, US IN-PERSON DIVERSITY",
+        "startTime": "2023-05-05T00:00:00.000Z",
+        "endTime": "2023-05-06T23:59:59.000Z",
+        "canonicalUrl": "http://hackp.ac/TechTogetherMiami?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TechTogether+Miami",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/9153?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Game+Week",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GH Global Hack Week: Game Week",
+        "description": "GH Global Hack Week: Game Week MAY 01 - 08 Everywhere, Worldwide DIGITAL",
+        "listingText": "GH Global Hack Week: Game Week MAY 01 - 08 Everywhere, Worldwide DIGITAL",
+        "startTime": "2023-05-01T00:00:00.000Z",
+        "endTime": "2023-05-08T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/9153?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+Game+Week",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://bit.ly/drexel-dragonhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "DragonHacks",
+        "description": "DragonHacks APR 29 - 30 Philadelphia, PA, US IN-PERSON",
+        "listingText": "DragonHacks APR 29 - 30 Philadelphia, PA, US IN-PERSON",
+        "startTime": "2023-04-29T00:00:00.000Z",
+        "endTime": "2023-04-30T23:59:59.000Z",
+        "canonicalUrl": "https://bit.ly/drexel-dragonhacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=DragonHacks",
+        "seasonYear": 2023
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/7950?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+INIT+%282023%29",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GH Global Hack Week: INIT (2023)",
+        "description": "GH Global Hack Week: INIT (2023) JUL 03 - 10 Everywhere, Worldwide DIGITAL",
+        "listingText": "GH Global Hack Week: INIT (2023) JUL 03 - 10 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-07-03T00:00:00.000Z",
+        "endTime": "2022-07-10T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/7950?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Global+Hack+Week%3A+INIT+%282023%29",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackerland",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackerland",
+        "description": "Hackerland JUL 01 - 03 Everywhere, Worldwide DIGITAL",
+        "listingText": "Hackerland JUL 01 - 03 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-07-01T00:00:00.000Z",
+        "endTime": "2022-07-03T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackerland",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hack3.co/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack3",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack3",
+        "description": "Hack3 JUN 25 - 26 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "Hack3 JUN 25 - 26 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2022-06-25T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://hack3.co/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack3",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://ruhacking.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=R.+U.+Hacking",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "R. U. Hacking",
+        "description": "R. U. Hacking JUN 25 - 26 Everywhere, Worldwide, GB DIGITAL",
+        "listingText": "R. U. Hacking JUN 25 - 26 Everywhere, Worldwide, GB DIGITAL",
+        "startTime": "2022-06-25T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://ruhacking.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=R.+U.+Hacking",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackingheist2.web.app/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacking+Heist+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hacking Heist 2.0",
+        "description": "Hacking Heist 2.0 JUN 24 - 26 Everywhere, Worldwide, IN DIGITAL",
+        "listingText": "Hacking Heist 2.0 JUN 24 - 26 Everywhere, Worldwide, IN DIGITAL",
+        "startTime": "2022-06-24T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://hackingheist2.web.app/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hacking+Heist+2.0",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.schoolsimplified.org/simplihacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SimpliHacks+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "SimpliHacks 2.0",
+        "description": "SimpliHacks 2.0 JUN 24 - 26 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "SimpliHacks 2.0 JUN 24 - 26 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2022-06-24T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://www.schoolsimplified.org/simplihacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SimpliHacks+2.0",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks+II",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "PrideHacks II",
+        "description": "PrideHacks II JUN 24 - 26 Everywhere, Worldwide DIGITAL",
+        "listingText": "PrideHacks II JUN 24 - 26 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-06-24T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks+II",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://freyhacks.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FreyHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "FreyHacks",
+        "description": "FreyHacks JUN 24 - 26 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "FreyHacks JUN 24 - 26 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2022-06-24T00:00:00.000Z",
+        "endTime": "2022-06-26T23:59:59.000Z",
+        "canonicalUrl": "https://freyhacks.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FreyHacks",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Mental+Health+Hacks+II",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Mental Health Hacks II",
+        "description": "Mental Health Hacks II JUN 17 - 19 Everywhere, Worldwide DIGITAL",
+        "listingText": "Mental Health Hacks II JUN 17 - 19 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-06-17T00:00:00.000Z",
+        "endTime": "2022-06-19T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Mental+Health+Hacks+II",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://unkn-wn.github.io/onehackswebsite/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=OneHacks+II",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "OneHacks II",
+        "description": "OneHacks II JUN 10 - 12 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "listingText": "OneHacks II JUN 10 - 12 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "startTime": "2022-06-10T00:00:00.000Z",
+        "endTime": "2022-06-12T23:59:59.000Z",
+        "canonicalUrl": "https://unkn-wn.github.io/onehackswebsite/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=OneHacks+II",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Coastal+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Coastal Hacks",
+        "description": "Coastal Hacks JUN 10 - 12 Everywhere, Worldwide DIGITAL",
+        "listingText": "Coastal Hacks JUN 10 - 12 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-06-10T00:00:00.000Z",
+        "endTime": "2022-06-12T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Coastal+Hacks",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bon+Voyage+Hacks+II",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Bon Voyage Hacks II",
+        "description": "Bon Voyage Hacks II JUN 03 - 05 Everywhere, Worldwide DIGITAL",
+        "listingText": "Bon Voyage Hacks II JUN 03 - 05 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-06-03T00:00:00.000Z",
+        "endTime": "2022-06-05T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Bon+Voyage+Hacks+II",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://womentechies.dscvit.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Women+Techies+2022",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Women Techies 2022",
+        "description": "Women Techies 2022 MAY 28 - 29 Everywhere, Worldwide, IN DIGITAL DIVERSITY",
+        "listingText": "Women Techies 2022 MAY 28 - 29 Everywhere, Worldwide, IN DIGITAL DIVERSITY",
+        "startTime": "2022-05-28T00:00:00.000Z",
+        "endTime": "2022-05-29T23:59:59.000Z",
+        "canonicalUrl": "https://womentechies.dscvit.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Women+Techies+2022",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.tohacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TOHacks+2022",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TOHacks 2022",
+        "description": "TOHacks 2022 MAY 28 - 29 Everywhere, Worldwide, CA DIGITAL",
+        "listingText": "TOHacks 2022 MAY 28 - 29 Everywhere, Worldwide, CA DIGITAL",
+        "startTime": "2022-05-28T00:00:00.000Z",
+        "endTime": "2022-05-29T23:59:59.000Z",
+        "canonicalUrl": "https://www.tohacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TOHacks+2022",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/8123-latenighthacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LateNightHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "LateNightHacks",
+        "description": "LateNightHacks MAY 27 - 29 Everywhere, Worldwide DIGITAL",
+        "listingText": "LateNightHacks MAY 27 - 29 Everywhere, Worldwide DIGITAL",
+        "startTime": "2022-05-27T00:00:00.000Z",
+        "endTime": "2022-05-29T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/8123-latenighthacks?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=LateNightHacks",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://tritonhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TritonHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TritonHacks",
+        "description": "TritonHacks MAY 21 - 22 La Jolla, California, US IN-PERSON HIGH SCHOOL",
+        "listingText": "TritonHacks MAY 21 - 22 La Jolla, California, US IN-PERSON HIGH SCHOOL",
+        "startTime": "2022-05-21T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://tritonhacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TritonHacks",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hthshacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=hths.hacks%28%29+2022",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "hths.hacks() 2022",
+        "description": "hths.hacks() 2022 MAY 21 - 22 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "listingText": "hths.hacks() 2022 MAY 21 - 22 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "startTime": "2022-05-21T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://hthshacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=hths.hacks%28%29+2022",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://www.hightechhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=High+Tech+Hacks+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "High Tech Hacks 2.0",
+        "description": "High Tech Hacks 2.0 MAY 21 - 22 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "listingText": "High Tech Hacks 2.0 MAY 21 - 22 Everywhere, Worldwide, US DIGITAL HIGH SCHOOL",
+        "startTime": "2022-05-21T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "http://www.hightechhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=High+Tech+Hacks+2.0",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+6",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "JAMHacks 6",
+        "description": "JAMHacks 6 MAY 20 - 22 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "listingText": "JAMHacks 6 MAY 20 - 22 Waterloo, Ontario, CA IN-PERSON HIGH SCHOOL",
+        "startTime": "2022-05-20T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://jamhacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=JAMHacks+6",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://gryphhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GryphHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "GryphHacks",
+        "description": "GryphHacks MAY 20 - 22 Everywhere, Worldwide, CA DIGITAL",
+        "listingText": "GryphHacks MAY 20 - 22 Everywhere, Worldwide, CA DIGITAL",
+        "startTime": "2022-05-20T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://gryphhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=GryphHacks",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://horizon.istevit.in/technica?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Technica",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Technica",
+        "description": "Technica MAY 20 - 22 Everywhere, Worldwide, IN DIGITAL",
+        "listingText": "Technica MAY 20 - 22 Everywhere, Worldwide, IN DIGITAL",
+        "startTime": "2022-05-20T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://horizon.istevit.in/technica?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Technica",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=RookieHacks+II",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "RookieHacks II",
+        "description": "RookieHacks II MAY 20 - 22 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "RookieHacks II MAY 20 - 22 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2022-05-20T00:00:00.000Z",
+        "endTime": "2022-05-22T23:59:59.000Z",
+        "canonicalUrl": "https://mlh.io/events?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=RookieHacks+II",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Dragonhack",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Dragonhack",
+        "description": "Dragonhack MAY 14 - 15 Ljubljana, Central Slovenia, SI IN-PERSON",
+        "listingText": "Dragonhack MAY 14 - 15 Ljubljana, Central Slovenia, SI IN-PERSON",
+        "startTime": "2022-05-14T00:00:00.000Z",
+        "endTime": "2022-05-15T23:59:59.000Z",
+        "canonicalUrl": "https://dragonhack.si/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Dragonhack",
+        "seasonYear": 2022
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://ruhacking.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=R.+U.+Hacking%3F",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "R. U. Hacking?",
+        "description": "R. U. Hacking? JUN 26 - 27 Everywhere, Worldwide, GB DIGITAL",
+        "listingText": "R. U. Hacking? JUN 26 - 27 Everywhere, Worldwide, GB DIGITAL",
+        "startTime": "2021-06-26T00:00:00.000Z",
+        "endTime": "2021-06-27T23:59:59.000Z",
+        "canonicalUrl": "https://ruhacking.uk/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=R.+U.+Hacking%3F",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackthemountain.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+the+Mountains+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack the Mountains 2.0",
+        "description": "Hack the Mountains 2.0 JUN 26 - 27 Everywhere, Worldwide, IN DIGITAL",
+        "listingText": "Hack the Mountains 2.0 JUN 26 - 27 Everywhere, Worldwide, IN DIGITAL",
+        "startTime": "2021-06-26T00:00:00.000Z",
+        "endTime": "2021-06-27T23:59:59.000Z",
+        "canonicalUrl": "https://hackthemountain.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+the+Mountains+2.0",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://sigmahacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SigmaHacks+3",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "SigmaHacks 3",
+        "description": "SigmaHacks 3 JUN 25 - 27 Everywhere, Worldwide DIGITAL",
+        "listingText": "SigmaHacks 3 JUN 25 - 27 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-06-25T00:00:00.000Z",
+        "endTime": "2021-06-27T23:59:59.000Z",
+        "canonicalUrl": "https://sigmahacks.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SigmaHacks+3",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6802?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "PrideHacks",
+        "description": "PrideHacks JUN 25 - 27 Everywhere, Worldwide DIGITAL",
+        "listingText": "PrideHacks JUN 25 - 27 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-06-25T00:00:00.000Z",
+        "endTime": "2021-06-27T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6802?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=PrideHacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6801?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Garden+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Garden Hacks",
+        "description": "Garden Hacks JUN 18 - 20 Everywhere, Worldwide DIGITAL",
+        "listingText": "Garden Hacks JUN 18 - 20 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-06-18T00:00:00.000Z",
+        "endTime": "2021-06-20T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6801?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Garden+Hacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6800?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SurfsUpHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "SurfsUpHacks",
+        "description": "SurfsUpHacks JUN 11 - 13 Everywhere, Worldwide DIGITAL",
+        "listingText": "SurfsUpHacks JUN 11 - 13 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-06-11T00:00:00.000Z",
+        "endTime": "2021-06-13T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6800?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=SurfsUpHacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/7019?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Girl+Summer+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack Girl Summer 2.0",
+        "description": "Hack Girl Summer 2.0 JUN 04 - 06 Everywhere, Worldwide DIGITAL",
+        "listingText": "Hack Girl Summer 2.0 JUN 04 - 06 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-06-04T00:00:00.000Z",
+        "endTime": "2021-06-06T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/7019?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack+Girl+Summer+2.0",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6798?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackcade",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hackcade",
+        "description": "Hackcade MAY 28 - 30 Everywhere, Worldwide DIGITAL",
+        "listingText": "Hackcade MAY 28 - 30 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-05-28T00:00:00.000Z",
+        "endTime": "2021-05-30T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6798?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hackcade",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackon.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackOn+2.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackOn 2.0",
+        "description": "HackOn 2.0 MAY 28 - 30 Everywhere, Worldwide, IN DIGITAL",
+        "listingText": "HackOn 2.0 MAY 28 - 30 Everywhere, Worldwide, IN DIGITAL",
+        "startTime": "2021-05-28T00:00:00.000Z",
+        "endTime": "2021-05-30T23:59:59.000Z",
+        "canonicalUrl": "https://hackon.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackOn+2.0",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6797?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Mental+Health+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Mental Health Hacks",
+        "description": "Mental Health Hacks MAY 21 - 23 Everywhere, Worldwide DIGITAL",
+        "listingText": "Mental Health Hacks MAY 21 - 23 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-05-21T00:00:00.000Z",
+        "endTime": "2021-05-23T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6797?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Mental+Health+Hacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6796?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Neighborhood+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Neighborhood Hacks",
+        "description": "Neighborhood Hacks MAY 14 - 16 Everywhere, Worldwide DIGITAL",
+        "listingText": "Neighborhood Hacks MAY 14 - 16 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-05-14T00:00:00.000Z",
+        "endTime": "2021-05-16T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6796?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Neighborhood+Hacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.tohacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TOHacks+2021",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "TOHacks 2021",
+        "description": "TOHacks 2021 MAY 08 - 09 Everywhere, Worldwide, CA DIGITAL",
+        "listingText": "TOHacks 2021 MAY 08 - 09 Everywhere, Worldwide, CA DIGITAL",
+        "startTime": "2021-05-08T00:00:00.000Z",
+        "endTime": "2021-05-09T23:59:59.000Z",
+        "canonicalUrl": "https://www.tohacks.ca/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=TOHacks+2021",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6795?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=AbracadabraHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "AbracadabraHacks",
+        "description": "AbracadabraHacks MAY 07 - 09 Everywhere, Worldwide DIGITAL",
+        "listingText": "AbracadabraHacks MAY 07 - 09 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-05-07T00:00:00.000Z",
+        "endTime": "2021-05-09T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6795?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=AbracadabraHacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "http://synergy.iosd.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDTU%2721",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDTU'21",
+        "description": "HackDTU'21 MAY 01 - 02 Everywhere, Worldwide, IN DIGITAL",
+        "listingText": "HackDTU'21 MAY 01 - 02 Everywhere, Worldwide, IN DIGITAL",
+        "startTime": "2021-05-01T00:00:00.000Z",
+        "endTime": "2021-05-02T23:59:59.000Z",
+        "canonicalUrl": "http://synergy.iosd.tech/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDTU%2721",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.venushacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=VenusHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "VenusHacks",
+        "description": "VenusHacks APR 24 - 25 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "VenusHacks APR 24 - 25 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2021-04-24T00:00:00.000Z",
+        "endTime": "2021-04-25T23:59:59.000Z",
+        "canonicalUrl": "https://www.venushacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=VenusHacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.losaltoshacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Los+Altos+Hacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Los Altos Hacks",
+        "description": "Los Altos Hacks APR 24 - 25 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "Los Altos Hacks APR 24 - 25 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2021-04-24T00:00:00.000Z",
+        "endTime": "2021-04-25T23:59:59.000Z",
+        "canonicalUrl": "https://www.losaltoshacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Los+Altos+Hacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6771-hack-ccessible?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack-ccessible",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "Hack-ccessible",
+        "description": "Hack-ccessible APR 23 - 25 Everywhere, Worldwide DIGITAL",
+        "listingText": "Hack-ccessible APR 23 - 25 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-04-23T00:00:00.000Z",
+        "endTime": "2021-04-25T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6771-hack-ccessible?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=Hack-ccessible",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://www.beachhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BeachHacks",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "BeachHacks",
+        "description": "BeachHacks APR 17 - 18 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "BeachHacks APR 17 - 18 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2021-04-17T00:00:00.000Z",
+        "endTime": "2021-04-18T23:59:59.000Z",
+        "canonicalUrl": "https://www.beachhacks.com/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=BeachHacks",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hackdartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackDartmouth",
+        "description": "HackDartmouth APR 16 - 18 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "HackDartmouth APR 16 - 18 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2021-04-16T00:00:00.000Z",
+        "endTime": "2021-04-18T23:59:59.000Z",
+        "canonicalUrl": "https://hackdartmouth.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackDartmouth",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://events.mlh.io/events/6824?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FinHack",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "FinHack",
+        "description": "FinHack APR 16 - 18 Everywhere, Worldwide DIGITAL",
+        "listingText": "FinHack APR 16 - 18 Everywhere, Worldwide DIGITAL",
+        "startTime": "2021-04-16T00:00:00.000Z",
+        "endTime": "2021-04-18T23:59:59.000Z",
+        "canonicalUrl": "https://events.mlh.io/events/6824?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=FinHack",
+        "seasonYear": 2021
+      }
+    },
+    {
+      "sourcePlatformId": "mlh",
+      "sourceUrl": "https://hacktj.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackTJ+8.0",
+      "rawPayload": {
+        "platform": "mlh",
+        "title": "HackTJ 8.0",
+        "description": "HackTJ 8.0 APR 10 - 11 Everywhere, Worldwide, US DIGITAL",
+        "listingText": "HackTJ 8.0 APR 10 - 11 Everywhere, Worldwide, US DIGITAL",
+        "startTime": "2021-04-10T00:00:00.000Z",
+        "endTime": "2021-04-11T23:59:59.000Z",
+        "canonicalUrl": "https://hacktj.org/?utm_source=mlh&utm_medium=referral&utm_campaign=events&utm_content=HackTJ+8.0",
+        "seasonYear": 2021
+      }
+    }
+  ]
+}
