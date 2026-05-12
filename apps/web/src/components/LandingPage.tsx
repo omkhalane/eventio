@@ -20,6 +20,8 @@ import { motion } from 'motion/react';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { SeoHead } from './SeoHead';
+import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 
 const LOGO_IMAGE = '/assets/logo.svg';
@@ -1026,7 +1028,7 @@ export default function LandingPage() {
   const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/stats')
+    fetch(buildApiUrl('/api/v1/stats'))
       .then((res) => res.json())
       .then(setStats)
       .catch(console.error);
@@ -1041,9 +1043,12 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <main
-      className="relative min-h-screen overflow-x-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black"
-    >
+    <main className="relative min-h-screen overflow-x-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black">
+      <SeoHead
+        title="Eventio | Developer Events, Hackathons, and Contests"
+        description="Discover developer events, hackathons, competitions, and coding contests with production-grade search and SEO-friendly event pages."
+        canonicalPath="/"
+      />
       <style>{LANDING_CSS}</style>
       <div
         className="pointer-glow pointer-events-none fixed z-[60] hidden h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full md:block"
@@ -1086,8 +1091,12 @@ export default function LandingPage() {
           <div className="flex items-center gap-6">
             {stats && (
               <div className="hidden items-center gap-4 text-xs font-bold tracking-widest text-stone-400 uppercase md:flex">
-                <span><span className="text-emerald-400">{stats.upcoming}</span> upcoming</span>
-                <span><span className="text-stone-300">{stats.past}</span> past</span>
+                <span>
+                  <span className="text-emerald-400">{stats.upcoming}</span> upcoming
+                </span>
+                <span>
+                  <span className="text-stone-300">{stats.past}</span> past
+                </span>
               </div>
             )}
             <Link
@@ -1339,4 +1348,4 @@ export default function LandingPage() {
       </footer>
     </main>
   );
-};
+}

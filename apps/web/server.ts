@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
 
-import { handleApiRequest } from '../../api/lib/event-api';
+import { handleApiRequest } from '../api/lib/event-api';
 
 dotenv.config();
 
@@ -25,8 +25,16 @@ function toApiQuery(query: Request['query']) {
   return out;
 }
 
-function getPublicConfigScript() {
+function buildPublicConfig(host: string, port: number, apiHost: string, apiPort: number) {
   const publicConfig = {
+    apiBaseUrl:
+      process.env.PUBLIC_API_BASE_URL ||
+      (process.env.NODE_ENV === 'production'
+        ? 'https://event-io.me'
+        : `http://${apiHost}:${apiPort}`),
+    siteUrl:
+      process.env.PUBLIC_SITE_URL ||
+      (process.env.NODE_ENV === 'production' ? 'https://event-io.me' : `http://${host}:${port}`),
     supabaseUrl: process.env.PUBLIC_SUPABASE_URL,
     supabaseAnonKey: process.env.PUBLIC_SUPABASE_ANON_KEY,
     firebaseApiKey: process.env.PUBLIC_FIREBASE_API_KEY,
@@ -47,13 +55,23 @@ function getPublicConfigScript() {
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT || 5175);
+  const HOST = process.env.HOST || '0.0.0.0';
+  const API_PORT = Number(process.env.API_PORT || 3000);
+  const API_HOST = process.env.API_HOST || 'localhost';
 
   app.use(express.json());
+  app.use((_req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    next();
+  });
 
   // API Routes
   const apiRouter = express.Router();
-  apiRouter.use((req, res) => {
-    const result = handleApiRequest(req.method, req.path, toApiQuery(req.query));
+  apiRouter.use(async (req, res) => {
+    const result = await handleApiRequest(req.method, req.path, toApiQuery(req.query));
     for (const [name, value] of Object.entries(result.headers || {})) {
       res.setHeader(name, value);
     }
@@ -65,7 +83,7 @@ async function startServer() {
     res
       .type('application/javascript')
       .set('Cache-Control', 'no-store')
-      .send(getPublicConfigScript());
+      .send(buildPublicConfig(HOST === '0.0.0.0' ? 'localhost' : HOST, PORT, API_HOST, API_PORT));
   });
 
   // Vite / Static Serving
@@ -89,8 +107,12 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Eventio by Om Khalane running on http://localhost:${PORT}`);
+  app.listen(PORT, HOST, () => {
+    const displayHost = HOST === '0.0.0.0' ? 'localhost' : HOST;
+    console.log(`Eventio by Om Khalane running on http://${displayHost}:${PORT}`);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Frontend can use API at http://${API_HOST}:${API_PORT}/api/v1`);
+    }
   });
 }
 

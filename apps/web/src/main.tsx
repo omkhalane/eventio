@@ -7,8 +7,6 @@ import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { initializeObservability } from './lib/observability';
 
-console.log('Eventio: Initializing main application entry...');
-
 try {
   initializeObservability();
 } catch (error) {
