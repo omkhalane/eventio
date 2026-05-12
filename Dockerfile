@@ -1,24 +1,29 @@
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS base
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+RUN corepack enable
 
-FROM node:20-alpine AS build
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN npm run build
+FROM base AS deps
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps ./apps
+COPY packages ./packages
+RUN pnpm install --frozen-lockfile
 
-FROM node:20-alpine AS runner
+FROM deps AS build
+RUN pnpm --filter @eventio/web build
+
+FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=5175
+ENV HOST=0.0.0.0
 
-COPY package.json package-lock.json ./
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/package.json ./package.json
+COPY --from=deps /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=deps /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=deps /app/apps ./apps
+COPY --from=deps /app/packages ./packages
 COPY --from=build /app/dist ./dist
-COPY apps/web/server.ts ./apps/web/server.ts
 
 EXPOSE 5175
-USER node
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "--filter", "@eventio/web", "start"]

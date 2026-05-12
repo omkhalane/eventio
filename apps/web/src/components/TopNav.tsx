@@ -16,6 +16,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES, PLATFORMS } from '../constants';
+import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 import { CalendarEvent, EventCategory, FilterState } from '../types';
 
@@ -54,7 +55,7 @@ export default function TopNav({
   const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/stats')
+    fetch(buildApiUrl('/api/v1/stats'))
       .then((res) => res.json())
       .then(setStats)
       .catch(console.error);
@@ -94,7 +95,7 @@ export default function TopNav({
   };
 
   return (
-    <header className="border-border bg-card sticky top-0 z-40 flex h-[56px] items-center border-b px-6">
+    <header className="border-border bg-card sticky top-0 z-40 flex h-14 items-center border-b px-6">
       {/* Logo Area (aligned with Sidebar) */}
       <Link
         to="/"
@@ -128,7 +129,7 @@ export default function TopNav({
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 4 }}
-                  className="bg-card border-border custom-scrollbar absolute top-full right-0 left-0 z-[60] mt-2 max-h-[400px] overflow-hidden overflow-y-auto rounded-2xl border shadow-2xl"
+                  className="bg-card border-border custom-scrollbar absolute top-full right-0 left-0 z-60 mt-2 max-h-100 overflow-hidden overflow-y-auto rounded-2xl border shadow-2xl"
                 >
                   {allEvents
                     .filter(
@@ -181,9 +182,13 @@ export default function TopNav({
 
           <div className="relative">
             {stats && (
-              <div className="hidden md:flex items-center gap-4 text-[10px] font-bold tracking-widest text-stone-400 uppercase mr-4">
-                <span><span className="text-emerald-400">{stats.upcoming}</span> upcoming</span>
-                <span><span className="text-stone-300">{stats.past}</span> past</span>
+              <div className="mr-4 hidden items-center gap-4 text-[10px] font-bold tracking-widest text-stone-400 uppercase md:flex">
+                <span>
+                  <span className="text-emerald-400">{stats.upcoming}</span> upcoming
+                </span>
+                <span>
+                  <span className="text-stone-300">{stats.past}</span> past
+                </span>
               </div>
             )}
           </div>
@@ -224,7 +229,7 @@ export default function TopNav({
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="bg-card border-border absolute top-full left-0 z-50 mt-2 flex max-h-[85vh] w-[280px] flex-col rounded-2xl border p-4 shadow-2xl md:w-[320px]"
+                    className="bg-card border-border absolute top-full left-0 z-50 mt-2 flex max-h-[85vh] w-70 flex-col rounded-2xl border p-4 shadow-2xl md:w-[320px]"
                   >
                     <div className="mb-4 flex items-center justify-between px-1">
                       <h3 className="text-muted-foreground text-[10px] font-black tracking-[0.2em] uppercase">
@@ -330,9 +335,11 @@ export default function TopNav({
             className="hover:bg-muted text-muted-foreground hover:text-foreground flex items-center gap-2 rounded-xl px-3 py-2 transition-all"
           >
             <Terminal className="h-4 w-4" />
-            <span className="hidden text-[10px] font-black tracking-widest uppercase sm:inline">API</span>
+            <span className="hidden text-[10px] font-black tracking-widest uppercase sm:inline">
+              API
+            </span>
           </Link>
-          
+
           <a
             href="https://github.com/omkhalane/eventio"
             target="_blank"
@@ -386,7 +393,7 @@ export default function TopNav({
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="bg-card border-border absolute top-full right-0 z-50 mt-4 w-[240px] rounded-2xl border p-4 shadow-2xl"
+                  className="bg-card border-border absolute top-full right-0 z-50 mt-4 w-60 rounded-2xl border p-4 shadow-2xl"
                 >
                   {googleUser ? (
                     <div className="space-y-4">
@@ -439,7 +446,7 @@ export default function TopNav({
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 48 48"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
-                              style={{ display: 'block' }}
+                              className="block"
                             >
                               <path
                                 fill="#EA4335"
@@ -475,7 +482,7 @@ export default function TopNav({
 
         <AnimatePresence>
           {isHelpOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -493,6 +500,7 @@ export default function TopNav({
                   <h3 className="text-lg font-bold">Shortcuts</h3>
                   <button
                     onClick={() => setIsHelpOpen(false)}
+                    aria-label="Close shortcuts dialog"
                     className="hover:bg-muted rounded-full p-1"
                   >
                     <X className="h-4 w-4" />

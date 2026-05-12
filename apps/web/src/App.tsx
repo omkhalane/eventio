@@ -26,8 +26,10 @@ import EventModal from './components/EventModal';
 import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
+import { SeoHead } from './components/SeoHead';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
+import { buildApiUrl } from './lib/api';
 import { CATEGORIES } from './constants';
 import { auth, googleProvider } from './lib/firebase';
 import { supabase } from './lib/supabase';
@@ -205,7 +207,7 @@ const CalendarApp = () => {
           params.set('search', searchQuery);
         }
 
-        const res = await fetch(`http://localhost:3000/api/v1/events?${params.toString()}`);
+        const res = await fetch(buildApiUrl(`/api/v1/events?${params.toString()}`));
         if (!res.ok) throw new Error('Failed to fetch events');
 
         const json = await res.json();
@@ -325,7 +327,7 @@ const CalendarApp = () => {
 
       <main className="flex flex-1 overflow-hidden">
         {isLoading && events.length === 0 && (
-          <div className="bg-background/80 fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 backdrop-blur-md">
+          <div className="bg-background/80 fixed inset-0 z-100 flex flex-col items-center justify-center gap-6 backdrop-blur-md">
             <motion.div
               animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
@@ -342,25 +344,28 @@ const CalendarApp = () => {
           </div>
         )}
 
-        <div className="border-border bg-card flex hidden w-[280px] shrink-0 flex-col gap-6 overflow-hidden border-r p-6 pb-0 lg:flex">
+        <div className="border-border bg-card hidden w-70 shrink-0 flex-col gap-6 overflow-hidden border-r p-6 pb-0 lg:flex">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-semibold tracking-tight">Calendar</h3>
               <div className="ml-1 flex gap-0.5">
                 <button
                   onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
+                  aria-label="Previous month"
                   className="hover:bg-muted text-muted-foreground rounded p-1 transition-colors"
                 >
                   <ChevronLeft className="h-3.5 w-3.5" />
                 </button>
                 <button
                   onClick={() => setCurrentMonth(new Date())}
+                  aria-label="Jump to current month"
                   className="hover:bg-muted text-muted-foreground rounded p-1 transition-colors"
                 >
                   <div className="bg-primary h-1.5 w-1.5 rounded-full" />
                 </button>
                 <button
                   onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                  aria-label="Next month"
                   className="hover:bg-muted text-muted-foreground rounded p-1 transition-colors"
                 >
                   <ChevronRight className="h-3.5 w-3.5" />
@@ -463,93 +468,279 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/calendar" element={<CalendarApp />} />
         <Route path="/architecture" element={<ArchitecturePage />} />
-        <Route path="/api" element={<ApiDocs />} />
+        <Route path="/docs" element={<ApiDocs />} />
+        <Route path="/api" element={<Navigate to="/docs" replace />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route
-          path="/privacy"
-          element={
-            <div className="bg-background flex min-h-screen flex-col items-center p-10 md:p-20">
-              <div className="w-full max-w-3xl space-y-12">
-                <Link
-                  to="/"
-                  className="text-primary flex w-fit items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-transform hover:translate-x-1"
-                >
-                  <ChevronLeft className="h-3 w-3" /> Back to Home
-                </Link>
-                <h1 className="text-6xl font-black tracking-tight">Privacy Policy</h1>
-                <div className="text-muted-foreground space-y-6 text-lg leading-relaxed font-medium">
-                  <p>At Eventio, we prioritize your data security and privacy.</p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    1. Data Collection
-                  </h2>
-                  <p>
-                    We only collect the data necessary to provide you with the best scheduling
-                    experience. This includes your Google Calendar integration if explicitly
-                    authorized.
-                  </p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    2. Data Usage
-                  </h2>
-                  <p>
-                    Your event data is used solely for display and synchronization purposes. We
-                    never sell or share your personal information with third parties.
-                  </p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    3. Security
-                  </h2>
-                  <p>
-                    We use industry-standard encryption and security protocols to ensure your data
-                    remains protected at all times.
-                  </p>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <Route
-          path="/terms"
-          element={
-            <div className="bg-background flex min-h-screen flex-col items-center p-10 md:p-20">
-              <div className="w-full max-w-3xl space-y-12">
-                <Link
-                  to="/"
-                  className="text-primary flex w-fit items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-transform hover:translate-x-1"
-                >
-                  <ChevronLeft className="h-3 w-3" /> Back to Home
-                </Link>
-                <h1 className="text-6xl font-black tracking-tight">Terms of Service</h1>
-                <div className="text-muted-foreground space-y-6 text-lg leading-relaxed font-medium">
-                  <p>By using Eventio, you agree to the following terms.</p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    1. Acceptance of Terms
-                  </h2>
-                  <p>
-                    By accessing this application, you accept these terms in full. If you disagree,
-                    you must not use this application.
-                  </p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    2. Permitted Use
-                  </h2>
-                  <p>
-                    You may use this tool for personal, non-commercial purposes only. Any automated
-                    scraping of our dashboard is strictly prohibited.
-                  </p>
-                  <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
-                    3. Disclaimer
-                  </h2>
-                  <p>
-                    While we strive for accuracy, we cannot guarantee the correctness of all event
-                    data fetched from external sources.
-                  </p>
-                </div>
-              </div>
-            </div>
-          }
-        />
+        <Route path="/privacy" element={<LegalPage kind="privacy" />} />
+        <Route path="/terms" element={<LegalPage kind="terms" />} />
+        <Route path="/cookies" element={<LegalPage kind="cookies" />} />
+        <Route path="/api-usage" element={<LegalPage kind="api-usage" />} />
+        <Route path="/disclaimer" element={<LegalPage kind="disclaimer" />} />
+        <Route path="/contact" element={<LegalPage kind="contact" />} />
+        <Route path="/about" element={<LegalPage kind="about" />} />
+        <Route path="/opensource" element={<LegalPage kind="opensource" />} />
+        <Route path="/security" element={<LegalPage kind="security" />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <CookieConsent />
     </Router>
   );
+}
+
+type LegalKind =
+  | 'privacy'
+  | 'terms'
+  | 'cookies'
+  | 'api-usage'
+  | 'disclaimer'
+  | 'contact'
+  | 'about'
+  | 'opensource'
+  | 'security';
+
+function LegalPage({ kind }: { kind: LegalKind }) {
+  const content = getLegalContent(kind);
+
+  return (
+    <div className="bg-background min-h-screen p-8 md:p-20">
+      <SeoHead
+        title={content.title}
+        description={content.description}
+        canonicalPath={content.path}
+      />
+      <div className="mx-auto w-full max-w-4xl space-y-10">
+        <Link
+          to="/"
+          className="text-primary flex w-fit items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-transform hover:translate-x-1"
+        >
+          <ChevronLeft className="h-3 w-3" /> Back to Home
+        </Link>
+        <header className="space-y-4">
+          <h1 className="text-5xl font-black tracking-tight md:text-6xl">{content.title}</h1>
+          <p className="text-muted-foreground max-w-3xl text-lg leading-relaxed">
+            {content.description}
+          </p>
+        </header>
+        <div className="space-y-8 text-base leading-7 md:text-lg">
+          {content.sections.map((section) => (
+            <section key={section.heading} className="space-y-3">
+              <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
+                {section.heading}
+              </h2>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-muted-foreground">
+                  {paragraph}
+                </p>
+              ))}
+            </section>
+          ))}
+        </div>
+        <footer className="border-border text-muted-foreground flex flex-wrap gap-4 border-t pt-6 text-sm">
+          <Link to="/docs" className="hover:text-foreground transition-colors">
+            API docs
+          </Link>
+          <Link to="/architecture" className="hover:text-foreground transition-colors">
+            Architecture
+          </Link>
+          <Link to="/contact" className="hover:text-foreground transition-colors">
+            Contact
+          </Link>
+          <Link to="/security" className="hover:text-foreground transition-colors">
+            Security
+          </Link>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function getLegalContent(kind: LegalKind) {
+  const base = {
+    privacy: {
+      title: 'Privacy Policy',
+      path: '/privacy',
+      description:
+        'How Eventio handles account data, event preferences, analytics, and integrations.',
+      sections: [
+        {
+          heading: 'Data Collection',
+          paragraphs: [
+            'We only collect data required to operate the product, including authentication state, event preferences, and optional integration settings.',
+          ],
+        },
+        {
+          heading: 'Data Usage',
+          paragraphs: [
+            'Your event data is used to power search, calendar views, and synchronization workflows. We do not sell personal information.',
+          ],
+        },
+        {
+          heading: 'Security',
+          paragraphs: [
+            'Eventio uses production-grade authentication, HTTPS transport, and defensive browser headers to protect user sessions and API access.',
+          ],
+        },
+      ],
+    },
+    terms: {
+      title: 'Terms of Service',
+      path: '/terms',
+      description:
+        'Usage terms for Eventio, including acceptable use, warranties, and service limitations.',
+      sections: [
+        {
+          heading: 'Acceptance',
+          paragraphs: [
+            'By using Eventio you agree to these terms. If you do not accept them, do not use the service.',
+          ],
+        },
+        {
+          heading: 'Permitted Use',
+          paragraphs: [
+            'Use the product for lawful purposes only. Do not abuse the API, attempt unauthorized access, or interfere with platform operations.',
+          ],
+        },
+        {
+          heading: 'Service Limits',
+          paragraphs: [
+            'We provide best-effort event aggregation and may update, rate-limit, or remove features to maintain reliability.',
+          ],
+        },
+      ],
+    },
+    cookies: {
+      title: 'Cookie Policy',
+      path: '/cookies',
+      description:
+        'How Eventio uses cookies and similar technologies for auth, preferences, and analytics.',
+      sections: [
+        {
+          heading: 'Cookie Categories',
+          paragraphs: [
+            'Essential cookies keep sessions secure and maintain application state. Preference cookies store theme and filter choices.',
+          ],
+        },
+        {
+          heading: 'Analytics',
+          paragraphs: [
+            'Analytics cookies help us understand usage patterns and improve performance. You can disable non-essential cookies in the browser.',
+          ],
+        },
+      ],
+    },
+    'api-usage': {
+      title: 'API Usage Policy',
+      path: '/api-usage',
+      description: 'Rules for using the Eventio API safely and fairly.',
+      sections: [
+        {
+          heading: 'Rate Limits',
+          paragraphs: [
+            'Use caching, exponential backoff, and incremental refreshes when polling the API.',
+          ],
+        },
+        {
+          heading: 'Attribution',
+          paragraphs: [
+            'If you surface Eventio data externally, preserve source attribution and link back to the canonical event page.',
+          ],
+        },
+      ],
+    },
+    disclaimer: {
+      title: 'Disclaimer',
+      path: '/disclaimer',
+      description: 'Important limitations about third-party event data and platform availability.',
+      sections: [
+        {
+          heading: 'Accuracy',
+          paragraphs: [
+            'Event data is aggregated from third-party sources and may change without notice. Verify critical details before relying on them.',
+          ],
+        },
+        {
+          heading: 'Availability',
+          paragraphs: [
+            'We may experience outages or source changes. Use the product with appropriate operational safeguards.',
+          ],
+        },
+      ],
+    },
+    contact: {
+      title: 'Contact',
+      path: '/contact',
+      description: 'How to reach the Eventio team for support, security, or partnership questions.',
+      sections: [
+        {
+          heading: 'Email',
+          paragraphs: ['General and partnership inquiries: om.khalane@gmail.com'],
+        },
+        {
+          heading: 'Security',
+          paragraphs: [
+            'Report vulnerabilities privately via the security policy page before disclosing publicly.',
+          ],
+        },
+      ],
+    },
+    about: {
+      title: 'About Eventio',
+      path: '/about',
+      description: 'The story and mission behind Eventio.',
+      sections: [
+        {
+          heading: 'Mission',
+          paragraphs: [
+            'Eventio helps developers discover, monitor, and act on events, hackathons, and competitions with fast search and high-signal organization.',
+          ],
+        },
+        {
+          heading: 'Author',
+          paragraphs: ['Built by Om Khalane for modern event discovery and developer workflows.'],
+        },
+      ],
+    },
+    opensource: {
+      title: 'Open Source Attribution',
+      path: '/opensource',
+      description: 'Third-party licenses and attribution for packages used by Eventio.',
+      sections: [
+        {
+          heading: 'Dependencies',
+          paragraphs: [
+            'This project depends on open-source libraries across React, Fastify, Vite, and related tooling.',
+          ],
+        },
+        {
+          heading: 'License Review',
+          paragraphs: [
+            'Review the repository license and package manifests before redistributing the platform.',
+          ],
+        },
+      ],
+    },
+    security: {
+      title: 'Security Policy',
+      path: '/security',
+      description:
+        'How to report vulnerabilities and what to expect from Eventio security handling.',
+      sections: [
+        {
+          heading: 'Reporting',
+          paragraphs: [
+            'Please report security issues privately by email with reproduction steps, affected surface area, and potential impact.',
+          ],
+        },
+        {
+          heading: 'Response',
+          paragraphs: [
+            'We triage and remediate confirmed issues as quickly as possible and coordinate disclosure where appropriate.',
+          ],
+        },
+      ],
+    },
+  } as const;
+
+  return base[kind];
 }

@@ -1,4 +1,4 @@
-Sitemap: https://eventio-sandy.vercel.app/sitemap.xml
+Sitemap: https://event-io.me/sitemap.xml
 
 # Standard Search Engines
 User-agent: Googlebot

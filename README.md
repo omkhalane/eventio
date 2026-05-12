@@ -49,7 +49,7 @@ docs/
 
 ## Setup Instructions
 
-See [docs/setup/local-development.md](docs/setup/local-development.md) to run the entire stack locally using `docker-compose` and `pnpm`.
+See [API docs](API.md), [Deployment](DEPLOYMENT.md), [Architecture](ARCHITECTURE.md), and [SEO](SEO.md) for the production-ready overview.
 
 ## Quick Start
 
@@ -65,6 +65,7 @@ See [docs/setup/local-development.md](docs/setup/local-development.md) to run th
    ```bash
    pnpm dev
    ```
+4. Open the main app at https://event-io.me/ or the interactive docs at https://event-io.me/docs.
 
 ## Features
 
@@ -84,3 +85,7 @@ Please refer to the `docs/` directory for detailed engineering standards:
 - **Architecture:** [System Overview](docs/architecture/system-overview.md)
 - **Deployment:** [Production Strategy](docs/deployment/production-deployment.md)
 - **Operations:** [Scraper Reliability](docs/operations/scraper-reliability.md)
+
+## Contact
+
+For support or security reports, email: contact@event-io.me

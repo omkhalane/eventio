@@ -104,6 +104,7 @@ gitleaks-report.*
 *_contests.json
 scraper-output.json
 services/scraper/output/
+apps/workers/scraper-output/
 
 # Temp Agent Scripts
 migrate.js
