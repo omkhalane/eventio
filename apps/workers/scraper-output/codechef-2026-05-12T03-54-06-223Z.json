@@ -1,0 +1,1125 @@
+{
+  "platform": "codechef",
+  "generatedAt": "2026-05-12T03:54:06.223Z",
+  "count": 86,
+  "records": [
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/learn#header",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Learn to Code - Online Coding Learning Platform - CodeChef",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:53:33.218Z",
+        "endTime": "2026-05-12T03:53:33.218Z",
+        "canonicalUrl": "https://www.codechef.com/learn#header",
+        "contestCode": "learn"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/pro#header",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Get the Skills to Land Your First Job in Tech!",
+        "description": "Get the Skills to Land Your First Job in Tech! Join 5 Million+ developers transforming their careers with us! Free Plan Limited Access Start Now What's included ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ Monthly Yearly Pro Plan All courses + AI Mentor Buy now What's included ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ Why CodeChef 🤔 Stuck in the Endless Loop of Tutorial Hell? Countless browser tabs of half-finished tutorials Hours of video courses, but still can't write real code The frustration of not knowing if you're learning the right things That sinking feeling when you can't solve real programming problems Finished multiple courses but no real project built out yet You're not alone. Thousands of aspiring developers have been there. But here's the truth: Real programming skills aren't built by watching – they're built by doing. That's where CodeChef Pro changes everything. We've reimagined tech learning from the ground up. No more passive watching. Instead, you get: Bite-sized, Practical, hands-on coding from day one Intelligent feedback on every piece of code you write Clear, structured paths from beginner to job-ready AI-powered help when you're stuck, available 24/7 Our platform spans 60+ technologies – from Python, C, C++, Java to DSA, SQL, HTML, CSS, JS etc. Soon, we will have the best content on React JS, Node JS, Django and Data science to make you a full stack developer. But we don't just throw content at you. We guide you through a carefully crafted journey where every lesson builds on the last. Picture this: One year from now, you could be: Confidently tackling complex programming challenges Building full-scale applications that solve real problems Standing out in job interviews with a portfolio of practical skills Part of the top 1% who actually master programming, not just by heart it The Math is Simple: 1 hour a day + CodeChef Pro = Transformed Career in 2026 Think about it: While others will spend 2026 jumping between random tutorials and wondering if they're making progress, you could be following a proven path to mastery. The question isn't whether you should learn to code. The question is: Are you ready to stop watching and start doing? Join thousands of successful CodeChef developers who took control of their learning journey. Your future self will thank you. Level Up Now ✨ WHY CODECHEF PRO? Learn more. Learn fast. More tools that help you at every step to learn faster. AI Assistant 24/7 AI Learning Companion: Get unstuck instantly with intelligent help that explains solutions step-by-step, just like a personal mentor Video Solutions Get step-by-step video solutions for 1600+ problems. Watch and learn from the best coders Test Cases Identify failed test cases, visualize where your code is failing and fix it in seconds Real world projects Learn by building real world projects on web development, Python, Data analytics, and more Step-by-Step Roadmaps to Get Hired in Tech My Python skills have improved because of the interactive learning and problem solving approach on your platform. - kherabhishek I really like the learning challenges and interface. It's like a textbook come to life. I also really appreciate the roadmaps providing a clear cut way up as starting out, things can get overwhelming otherwise. Well worth the fee. - Suryanshu Banerjee suryanshub I recently graduated from University and find CodeChef useful in helping me practice coding. I am learning new ideas and improving on the ones I studied in school. The debugger tells you which test cases you are getting wrong with Pro which I find really useful to identify inputs I may not have considered. I am also following the progression it suggests for me and finding that useful as well. - Jeremy Spencer jer111 So far I'm glad that I upgraded to pro, 2 weeks ago Hello world program was the max I could code and now I'm nearly at 1100 rating on codechef (gave 2 contests). I don't know how good of a progress that is compared to others but one thing I'm sure about is, I've started to",
+        "startTime": "2026-05-12T03:53:25.778Z",
+        "endTime": "2026-05-12T03:53:25.778Z",
+        "canonicalUrl": "https://www.codechef.com/pro#header",
+        "contestCode": "pro"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START238",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 238 Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 238 Participate in the contest based on your rating If you're a new user, please register, or if an existing user, please login to participate accordingly based on your ratings. Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS No announcement STARTERS 238 - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 13th May, 2026 at 20:00 HRS (IST) End Date: Wednesday, 13th May, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Starts In: 1 Days 10 Hrs 35 Min 58 Sec Master DSA Contest Reminder Set Reminder for the contest Live Ratings Graph We have introduced live ratings graph, that tells your live rating during the contest. Visit your division and make a submission to generate live ratings graph. Know more Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQ",
+        "startTime": "2026-05-13T14:30:00.000Z",
+        "endTime": "2026-05-13T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START238",
+        "contestCode": "START238"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START239",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 239 Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 239 Participate in the contest based on your rating If you're a new user, please register, or if an existing user, please login to participate accordingly based on your ratings. Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS No announcement STARTERS 239 - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 20th May, 2026 at 20:00 HRS (IST) End Date: Wednesday, 20th May, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Starts In: 8 Days 10 Hrs 36 Min 7 Sec Master DSA Contest Reminder Set Reminder for the contest Live Ratings Graph We have introduced live ratings graph, that tells your live rating during the contest. Visit your division and make a submission to generate live ratings graph. Know more Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL",
+        "startTime": "2026-05-20T14:30:00.000Z",
+        "endTime": "2026-05-20T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START239",
+        "contestCode": "START239"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START240",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:35.728Z",
+        "endTime": "2026-05-12T03:53:35.728Z",
+        "canonicalUrl": "https://www.codechef.com/START240",
+        "contestCode": "START240"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START241",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:31.233Z",
+        "endTime": "2026-05-12T03:53:31.233Z",
+        "canonicalUrl": "https://www.codechef.com/START241",
+        "contestCode": "START241"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY002",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 002 (Rated) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Monday Munch - DSA Challenge 002 (Rated) Name Code Successful Submissions Accuracy Chef need runs CHEFRUNS 868 84.52 Is the i-th bit set ITHBITSET 749 65.98 Largest Odd Substring LARGODDSTRIN 630 60 Chef Builds Subsets CVDMX01 526 80.61 Floor and Ceil in a Binary Search Tree FLOORANDCEIL 385 80.99 Shortest Palindrome SHORTPALINDR 282 38.5 ANNOUNCEMENTS This is our first RATED contest of our Monday Munch DSA Challenge Series. You will need to attempt 6 DSA problems this week. There will be: 2 Easy 2 Medium 2 Hard This Monday’s Munch contains problems from the topics: Arrays Strings Bit Manipulation Trees and BST Contest rules - This is RATED contest. Note: DSA rating will be separate from your Competitive programming rating. Use this as an opportunity to test and improve your DSA knowledge. The use of AI tools is strictly prohibited for solving problems. Please refer to CodeChef's Code of Conduct Cheating is strictly prohibited during the test For feedback on problems, suggestions for future topics, or improvement ideas, feel free to reach out at abhay@codechef.com MONDAY MUNCH - DSA CHALLENGE 002 (RATED) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 3.00 hours Start Date: Monday, 11th May, 2026 at 18:00 HRS (IST) End Date: Monday, 11th May, 2026 at 21:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Tex",
+        "startTime": "2026-05-11T12:30:00.000Z",
+        "endTime": "2026-05-11T15:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY002",
+        "contestCode": "DSAMONDAY002"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND49",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 49: Golang Projects",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.741Z",
+        "endTime": "2026-05-12T03:54:05.741Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND49",
+        "contestCode": "DEVWEEKEND49"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START237",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 237 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:44.260Z",
+        "endTime": "2026-05-12T03:53:44.260Z",
+        "canonicalUrl": "https://www.codechef.com/START237",
+        "contestCode": "START237"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY001",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:29.201Z",
+        "endTime": "2026-05-12T03:53:29.201Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY001",
+        "contestCode": "DSAMONDAY001"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND48",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 48: Golang Projects",
+        "description": "1% better everyday can lead to big results.",
+        "startTime": "2026-05-12T03:53:38.394Z",
+        "endTime": "2026-05-12T03:53:38.394Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND48",
+        "contestCode": "DEVWEEKEND48"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START236",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 236 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 236 (Rated till 5 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS No announcement STARTERS 236 (RATED TILL 5 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 29th April, 2026 at 20:00 HRS (IST) End Date: Wednesday, 29th April, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Textual Problem Solutions Master DSA Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compil",
+        "startTime": "2026-04-29T14:30:00.000Z",
+        "endTime": "2026-04-29T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START236",
+        "contestCode": "START236"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY35",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 35",
+        "description": "Set your own goal to finish each modules",
+        "startTime": "2026-05-12T03:54:05.305Z",
+        "endTime": "2026-05-12T03:54:05.305Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY35",
+        "contestCode": "DSAMONDAY35"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND47",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 47: Cybersecurity",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.706Z",
+        "endTime": "2026-05-12T03:54:05.706Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND47",
+        "contestCode": "DEVWEEKEND47"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START235",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 235 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:45.567Z",
+        "endTime": "2026-05-12T03:53:45.567Z",
+        "canonicalUrl": "https://www.codechef.com/START235",
+        "contestCode": "START235"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY34",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 34",
+        "description": "Pro tip: Pseudo code first, then code with ease.",
+        "startTime": "2026-05-12T03:53:36.091Z",
+        "endTime": "2026-05-12T03:53:36.091Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY34",
+        "contestCode": "DSAMONDAY34"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND46",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 46: Cybersecurity",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.590Z",
+        "endTime": "2026-05-12T03:54:05.590Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND46",
+        "contestCode": "DEVWEEKEND46"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START234",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:34.934Z",
+        "endTime": "2026-05-12T03:53:34.934Z",
+        "canonicalUrl": "https://www.codechef.com/START234",
+        "contestCode": "START234"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY33",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 33",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:54:05.481Z",
+        "endTime": "2026-05-12T03:54:05.481Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY33",
+        "contestCode": "DSAMONDAY33"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND45",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 45: Cybersecurity",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:53:36.962Z",
+        "endTime": "2026-05-12T03:53:36.962Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND45",
+        "contestCode": "DEVWEEKEND45"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START233",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 233 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 233 (Rated till 6 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS NxtWave is hiring: Job Title: Tech Instructor - DSA Experience: 0 to 1 year Location: Pan-India (Stationed at NIAT-collaborated universities) Compensation: 10 - 12 LPA At NxtWave, we believe in delivering practical, industry-relevant training that empowers students to become elite problem solvers. We are seeking DSA Instructors who possess exceptional algorithmic thinking and a deep passion for teaching. Apply Here Salesforce is hiring: Job Title: Success Engineer - JAVA Experience: 2+ years Location: Hyderabad, Bangalore Compensation: 18 LPA Apply Here CodeChef is hiring: Job Title: Learning Team Associate Experience: 0 to 3 years Location: Bengaluru Compensation: 6 - 7 LPA At CodeChef, we are building a platform for practical Computer Science education. Courses and problems on CodeChef across domains like Programming, Data Structures & Algorithms, Analytics, and Web Development follow a Learn by Doing approach. We are looking for individuals to join our Learning/Content Team. (Note: This is not a Development/Tech role.) Apply Here STARTERS 233 (RATED TILL 6 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 8th April, 2026 at 20:00 HRS (IST) End Date: Wednesday, 8th April, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE.",
+        "startTime": "2026-04-08T14:30:00.000Z",
+        "endTime": "2026-04-08T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START233",
+        "contestCode": "START233"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY32",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 32",
+        "description": "Pro tip: Pseudo code first, then code with ease.",
+        "startTime": "2026-05-12T03:53:52.754Z",
+        "endTime": "2026-05-12T03:53:52.754Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY32",
+        "contestCode": "DSAMONDAY32"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND44",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 44: Cybersecurity",
+        "description": "Coding is not difficult, you need to try hard enough",
+        "startTime": "2026-05-12T03:54:05.793Z",
+        "endTime": "2026-05-12T03:54:05.793Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND44",
+        "contestCode": "DEVWEEKEND44"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START232",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:36.684Z",
+        "endTime": "2026-05-12T03:53:36.684Z",
+        "canonicalUrl": "https://www.codechef.com/START232",
+        "contestCode": "START232"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY31",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 31",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:54:05.792Z",
+        "endTime": "2026-05-12T03:54:05.792Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY31",
+        "contestCode": "DSAMONDAY31"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND43",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 43: DevOps",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:54:05.793Z",
+        "endTime": "2026-05-12T03:54:05.793Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND43",
+        "contestCode": "DEVWEEKEND43"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START231",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 231 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 231 (Rated till 5 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS CodeChef is hiring: Job Title: Corporate Relations Intern Experience: Freshers Location: Remote Compensation: 15,000 to 25,000 INR Apply Here ------------------------------------------------------------------------------------------------------ CodeChef is hiring: Job Title: DSA & Competitive Programming Trainer at Partner Colleges Experience: 0 to 1 year Location:Karnataka Compensation: 7 - 8 LPA As part of CodeChef's College Program, CodeChef conducts Training and Labs at Engineering Colleges. Our Partner colleges are currently hiring multiple members as a part of CodeChef's Learning Team to be based at the College campus at the following locations Apply Here STARTERS 231 (RATED TILL 5 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 25th March, 2026 at 20:00 HRS (IST) End Date: Wednesday, 25th March, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Textual Problem",
+        "startTime": "2026-03-25T14:30:00.000Z",
+        "endTime": "2026-03-25T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START231",
+        "contestCode": "START231"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY30",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 30",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:54:04.751Z",
+        "endTime": "2026-05-12T03:54:04.751Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY30",
+        "contestCode": "DSAMONDAY30"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND42",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 42: DevOps",
+        "description": "Set the pace, set the goal, Maintain your streak by solving problem everyday",
+        "startTime": "2026-05-12T03:53:44.691Z",
+        "endTime": "2026-05-12T03:53:44.691Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND42",
+        "contestCode": "DEVWEEKEND42"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START230",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:54:05.908Z",
+        "endTime": "2026-05-12T03:54:05.908Z",
+        "canonicalUrl": "https://www.codechef.com/START230",
+        "contestCode": "START230"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY29",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 29",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:54:05.791Z",
+        "endTime": "2026-05-12T03:54:05.791Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY29",
+        "contestCode": "DSAMONDAY29"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND41",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 41: DevOps",
+        "description": "Don't stop until you are in the top 1%",
+        "startTime": "2026-05-12T03:54:05.795Z",
+        "endTime": "2026-05-12T03:54:05.795Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND41",
+        "contestCode": "DEVWEEKEND41"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START229",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:32.035Z",
+        "endTime": "2026-05-12T03:53:32.035Z",
+        "canonicalUrl": "https://www.codechef.com/START229",
+        "contestCode": "START229"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY28",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 28",
+        "description": "Pro tip: Pseudo code first, then code with ease.",
+        "startTime": "2026-05-12T03:53:33.339Z",
+        "endTime": "2026-05-12T03:53:33.339Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY28",
+        "contestCode": "DSAMONDAY28"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND40",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 40: Linux & Shell Scripting Challenges",
+        "description": "Don't stop until you are in the top 1%",
+        "startTime": "2026-05-12T03:53:39.029Z",
+        "endTime": "2026-05-12T03:53:39.029Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND40",
+        "contestCode": "DEVWEEKEND40"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START228",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 228 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 228 (Rated till 6 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS CodeChef is hiring: Job Title: Operations Associate at CodeChef College Team Experience: 0 to 1 year Location: Bangalore Compensation: 4 - 5 LPA As part of CodeChef’s College Program, CodeChef conducts Training and Labs at Engineering Colleges. As part of our College Team, we are looking for individuals who can support College operational requirements and help CodeChef's mission of delivering exceptional experiences for our users. Apply Here STARTERS 228 (RATED TILL 6 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 4th March, 2026 at 20:00 HRS (IST) End Date: Wednesday, 4th March, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Textual Problem Solutions Master DSA Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Le",
+        "startTime": "2026-03-04T14:30:00.000Z",
+        "endTime": "2026-03-04T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START228",
+        "contestCode": "START228"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY27",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 27",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:54:05.709Z",
+        "endTime": "2026-05-12T03:54:05.709Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY27",
+        "contestCode": "DSAMONDAY27"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND39",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 39: Spring Boot Projects",
+        "description": "1% better everyday can lead to big results.",
+        "startTime": "2026-05-12T03:54:05.708Z",
+        "endTime": "2026-05-12T03:54:05.708Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND39",
+        "contestCode": "DEVWEEKEND39"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START227",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:28.040Z",
+        "endTime": "2026-05-12T03:53:28.040Z",
+        "canonicalUrl": "https://www.codechef.com/START227",
+        "contestCode": "START227"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY26",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 26",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.670Z",
+        "endTime": "2026-05-12T03:54:05.670Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY26",
+        "contestCode": "DSAMONDAY26"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND38",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 38: Spring Boot Projects",
+        "description": "Becoming the best coder is easy! Just keep doing CodeChef.",
+        "startTime": "2026-05-12T03:53:38.347Z",
+        "endTime": "2026-05-12T03:53:38.347Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND38",
+        "contestCode": "DEVWEEKEND38"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START226",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:31.774Z",
+        "endTime": "2026-05-12T03:53:31.774Z",
+        "canonicalUrl": "https://www.codechef.com/START226",
+        "contestCode": "START226"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY25",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 25",
+        "description": "Set the pace, set the goal, Maintain your streak by solving problem everyday",
+        "startTime": "2026-05-12T03:53:29.047Z",
+        "endTime": "2026-05-12T03:53:29.047Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY25",
+        "contestCode": "DSAMONDAY25"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND37",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 37: Spring Boot Projects",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:54:05.710Z",
+        "endTime": "2026-05-12T03:54:05.710Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND37",
+        "contestCode": "DEVWEEKEND37"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START225",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 225 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 225 (Rated till 5 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS No announcement STARTERS 225 (RATED TILL 5 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 11th February , 2026 at 20:00 HRS (IST) End Date: Wednesday, 11th February, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Textual Problem Solutions Master DSA Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online",
+        "startTime": "2026-02-11T16:30:00.000Z",
+        "endTime": "2026-02-11T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START225",
+        "contestCode": "START225"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY24",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 24",
+        "description": "Pro tip: Pseudo code first, then code with ease.",
+        "startTime": "2026-05-12T03:53:42.257Z",
+        "endTime": "2026-05-12T03:53:42.257Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY24",
+        "contestCode": "DSAMONDAY24"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND36",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 36: Spring Boot Projects",
+        "description": "Coding is not difficult, you need to try hard enough",
+        "startTime": "2026-05-12T03:53:32.444Z",
+        "endTime": "2026-05-12T03:53:32.444Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND36",
+        "contestCode": "DEVWEEKEND36"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START224",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 224 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:47.129Z",
+        "endTime": "2026-05-12T03:53:47.129Z",
+        "canonicalUrl": "https://www.codechef.com/START224",
+        "contestCode": "START224"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY23",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 23",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:54:05.708Z",
+        "endTime": "2026-05-12T03:54:05.708Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY23",
+        "contestCode": "DSAMONDAY23"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND35",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 35: Data Analysis & Visualization Projects",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:53:56.323Z",
+        "endTime": "2026-05-12T03:53:56.323Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND35",
+        "contestCode": "DEVWEEKEND35"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START223",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 223 (Unrated) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 223 (Unrated) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS 9:15 PM: Due to an issue with our servers this contest has been marked as Unrated for all. STARTERS 223 (UNRATED) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 28th January , 2026 at 20:00 HRS (IST) End Date: Wednesday, 28th January, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Master DSA Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python",
+        "startTime": "2026-01-28T16:30:00.000Z",
+        "endTime": "2026-01-28T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START223",
+        "contestCode": "START223"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY22",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 22",
+        "description": "Explored our courses yet? Enroll now! Over 500k learners have already enrolled.",
+        "startTime": "2026-05-12T03:53:35.167Z",
+        "endTime": "2026-05-12T03:53:35.167Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY22",
+        "contestCode": "DSAMONDAY22"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND34",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 34: Data Analysis & Visualization Projects",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:53:37.175Z",
+        "endTime": "2026-05-12T03:53:37.175Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND34",
+        "contestCode": "DEVWEEKEND34"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START222",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 222 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 222 (Rated till 6 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS Encraft AI is hiring! At Encraft AI, we partner closely with enterprise clients to design secure, scalable, and practical AI solutions. Our mission is to blend deep technical expertise with business-first thinking, ensuring every solution we deliver drives measurable impact and aligns with our clients’ strategic goals. Job Title: SDE1 Intern Experience: 0 - 2 years (Final year students can apply) Location: Remote Compensation: 30,000 INR - 50,000 INR / month Apply Here Emprotek is hiring! At Emprotek (via Zepcruit), we are focused on embedded IoT design and development, building reliable firmware that powers innovative hardware solutions. Job Title: Embedded Firmware Developer Experience: 1 – 3 years Location: Pune, Maharashtra, India Compensation: 3,00,000 – 6,00,000 INR / year Apply Here Excel Tools & Automations is hiring! At Excel Tools & Automations (via Zepcruit), we specialize in providing cutting tools and automation solutions that enhance manufacturing productivity. Job Title: Sales Engineer Location: Pune, Maharashtra, India Compensation: 4,00,000 – 7,00,000 INR / year Apply Here USIL Technologies is hiring! At USIL Technologies, we build advanced AI-powered solutions and cloud engineering products. We are expanding our team to include cutting-edge roles in AI and data engineering. Job Title: Computer Vision Engineer Experience: 4+ years Location: Gurgaon, India Compensation: 10,00,000 – 40,00,000 INR / year Apply Here Blue Tea is hiring! At Blue Tea (via Zepcruit), we craft natural herbal teas and are now strengthening our creative team to drive video content that boosts engagement and sales. Job Title: Video Editor & Videographer Location: Noida Sector 125, India Compensation: 2,00,000 – 4,50,000 INR / year Apply Here USIL Technologies is hiring! At USIL Technologies, we are looking for experienced data engineers to build scalable cloud data platforms powering industrial analytics. Job Title: Lead Data Engineer Experience: 7+ years Location: Pune, Maharashtra, India Compensation: 10,00,000 – 32,00,000 INR / year Apply Here USIL Technologies is hiring! At USIL Technologies, we build industrial AI and SaaS applications, transforming manufacturing with scalable software and AI integration. Job Title: Full-stack Developer Experience: 5+ years Location: Pune, Maharashtra, India Compensation: 30,00,000 – 35,00,000 INR / year Apply Here STARTERS 222 (RATED TILL 6 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 21st January , 2026 at 20:00 HRS (IST) End Date: Wednesday, 21st January, 2026 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or",
+        "startTime": "2026-01-21T16:30:00.000Z",
+        "endTime": "2026-01-21T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START222",
+        "contestCode": "START222"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY21",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 21",
+        "description": "Coding is not difficult, you need to try hard enough",
+        "startTime": "2026-05-12T03:54:05.670Z",
+        "endTime": "2026-05-12T03:54:05.670Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY21",
+        "contestCode": "DSAMONDAY21"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND33",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 33: Data Analysis & Visualization Projects",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:54:05.704Z",
+        "endTime": "2026-05-12T03:54:05.704Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND33",
+        "contestCode": "DEVWEEKEND33"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START221",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 221 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:58.552Z",
+        "endTime": "2026-05-12T03:53:58.552Z",
+        "canonicalUrl": "https://www.codechef.com/START221",
+        "contestCode": "START221"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY20",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 20",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:53:38.994Z",
+        "endTime": "2026-05-12T03:53:38.994Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY20",
+        "contestCode": "DSAMONDAY20"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND32",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 32: Data Analysis & Visualization Projects",
+        "description": "1% better everyday can lead to big results.",
+        "startTime": "2026-05-12T03:54:05.628Z",
+        "endTime": "2026-05-12T03:54:05.628Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND32",
+        "contestCode": "DEVWEEKEND32"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START220",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:29.222Z",
+        "endTime": "2026-05-12T03:53:29.222Z",
+        "canonicalUrl": "https://www.codechef.com/START220",
+        "contestCode": "START220"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY19",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 19",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:53:38.653Z",
+        "endTime": "2026-05-12T03:53:38.653Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY19",
+        "contestCode": "DSAMONDAY19"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/ICPCAMRRP25",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "ICPC Amritapuri 2025 - Onsite Round Replay Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » ICPC Amritapuri 2025 - Onsite Round Replay Name Code Successful Submissions Accuracy B - Fair Removals REMNSM 116 45.95 J - Varied Subsequences ALLDSUB 96 66.01 F - Red Green Game RGG 56 33.15 L - X To Y MAKEXY 15 10.19 D - Point Mirror MIRSWAP 10 20.41 C - Path Pair Maximization MAXPRS 7 7.41 E - Preventative Measures PAIRKDIS 6 33.33 K - XOR Product MST XORPRODMST 5 31.58 G - Score Queries SCQR 3 42.86 H - Segment Elimination SEGELIM 3 33.33 I - Sequence Domination SEQDOM 3 50 ANNOUNCEMENTS No announcement ICPC AMRITAPURI 2025 - ONSITE ROUND REPLAY - DETAILS Contest Ended Master DSA Contest Ranks Go to Contest Ranks Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:54:05.536Z",
+        "endTime": "2026-05-12T03:54:05.536Z",
+        "canonicalUrl": "https://www.codechef.com/ICPCAMRRP25",
+        "contestCode": "ICPCAMRRP25"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND31",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 31: Data Analysis & Visualization Projects",
+        "description": "Transform every day with the habit of learning",
+        "startTime": "2026-05-12T03:54:05.791Z",
+        "endTime": "2026-05-12T03:54:05.791Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND31",
+        "contestCode": "DEVWEEKEND31"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START219",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:34.932Z",
+        "endTime": "2026-05-12T03:53:34.932Z",
+        "canonicalUrl": "https://www.codechef.com/START219",
+        "contestCode": "START219"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/ICPCCHNRP25",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "ICPC Chennai 2025 Onsite - Replay Round Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » ICPC Chennai 2025 Onsite - Replay Round Name Code Successful Submissions Accuracy K - X Makes the Difference EQOPPX 88 28.66 F - Minimum Divides Maximum MINDIVMAX 57 26.24 C - Deletion Minimization MINGCDEL 54 55.24 H - Robin Hood INCEQ 24 25.81 E - Mex and Max MEXMAXCT 19 63.33 D - Game of Three REPDIF3 17 15.89 I - Set Merging STMRG 8 27.59 A - All Distinct DISTRE 5 13.16 J - Vertex Separation SEPV 5 8.47 G - Palindrome and Permutation PALPERM 3 50 B - Connect 3 CONN3 1 12.5 ANNOUNCEMENTS No announcement ICPC CHENNAI 2025 ONSITE - REPLAY ROUND - DETAILS Contest Ended Master DSA Contest Ranks Go to Contest Ranks Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:57.024Z",
+        "endTime": "2026-05-12T03:53:57.024Z",
+        "canonicalUrl": "https://www.codechef.com/ICPCCHNRP25",
+        "contestCode": "ICPCCHNRP25"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY18",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 18",
+        "description": "Set your own goal to finish each modules",
+        "startTime": "2026-05-12T03:53:35.414Z",
+        "endTime": "2026-05-12T03:53:35.414Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY18",
+        "contestCode": "DSAMONDAY18"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/ICPCKANRP25",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:35.132Z",
+        "endTime": "2026-05-12T03:53:35.132Z",
+        "canonicalUrl": "https://www.codechef.com/ICPCKANRP25",
+        "contestCode": "ICPCKANRP25"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND30",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 30: SQL Projects",
+        "description": "Coding is not difficult, you need to try hard enough",
+        "startTime": "2026-05-12T03:54:01.262Z",
+        "endTime": "2026-05-12T03:54:01.262Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND30",
+        "contestCode": "DEVWEEKEND30"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START218",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 218 (Rated till 5 stars) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 218 (Rated till 5 stars) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS Our Partner Colleges are hiring: As part of CodeChef's College Program, CodeChef conducts Training and Labs at Engineering Colleges. Our Partner colleges are currently hiring multiple members as a part of CodeChef's Learning Team to be based at the College campus at the locations given below Job Title: Learning Team Associate (Note: This is NOT an SDE role) Experience: 0 to 2 years Location: Pune, Karnataka, Andhra Pradesh, Tamil Nadu Compensation: 7 - 9 LPA Apply Here Want to get hired? Recruiters are looking to hire from the CodeChef community. Upload your CV and unlock job opportunities. Update profile STARTERS 218 (RATED TILL 5 STARS) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 24th December , 2025 at 20:00 HRS (IST) End Date: Wednesday, 24th December, 2025 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit. If you use Ideone, make sure to mark your submission \"private\" (not secret)\". Contest Ended Important links Contest Introduction Textual Problem Solutions Master DSA Bizzhub Workspaces, 6th Flo",
+        "startTime": "2025-12-24T16:30:00.000Z",
+        "endTime": "2025-12-24T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START218",
+        "contestCode": "START218"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY17",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 17",
+        "description": "Set the pace, set the goal, Maintain your streak by solving problem everyday",
+        "startTime": "2026-05-12T03:54:05.671Z",
+        "endTime": "2026-05-12T03:54:05.671Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY17",
+        "contestCode": "DSAMONDAY17"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND29",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 29: SQL Projects",
+        "description": "Don't stop until you are in the top 1%",
+        "startTime": "2026-05-12T03:53:37.726Z",
+        "endTime": "2026-05-12T03:53:37.726Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND29",
+        "contestCode": "DEVWEEKEND29"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START217",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 217 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:44.589Z",
+        "endTime": "2026-05-12T03:53:44.589Z",
+        "canonicalUrl": "https://www.codechef.com/START217",
+        "contestCode": "START217"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY16",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 16",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.673Z",
+        "endTime": "2026-05-12T03:54:05.673Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY16",
+        "contestCode": "DSAMONDAY16"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND28",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 28: SQL Projects",
+        "description": "Set the pace, set the goal, Maintain your streak by solving problem everyday",
+        "startTime": "2026-05-12T03:54:05.794Z",
+        "endTime": "2026-05-12T03:54:05.794Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND28",
+        "contestCode": "DEVWEEKEND28"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START216",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 216 (Rated till 5 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 216 (Rated till 5 star) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS ServiceNow is Hiring! ServiceNow is looking for Full-stack engineers from the CodeChef community. Job Title: Full-stack engineer Experience: 2 - 4 years Location: Hyderabad Work mode: Hybrid Apply Here Want to get hired? Recruiters are looking to hire from the CodeChef community. Upload your CV and unlock job opportunities. Update profile Our Partner Colleges are hiring: As part of CodeChef's College Program, CodeChef conducts Training and Labs at Engineering Colleges. Our Partner colleges are currently hiring multiple members as a part of CodeChef's Learning Team to be based at the College campus at the locations given below Job Title: Learning Team Associate (Note: This is NOT an SDE role) Experience: 0 to 2 years Location: Karnataka, Tamil Nadu, and Andhra Pradesh Compensation: 7 LPA Apply Here STARTERS 216 (RATED TILL 5 STAR) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 10th December , 2025 at 20:00 HRS (IST) End Date: Wednesday, 10th December, 2025 at 22:00 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestants don't have access to your code. As a contestant, you are responsible for making sure others don't access the code that you submit.",
+        "startTime": "2025-12-10T16:30:00.000Z",
+        "endTime": "2025-12-10T16:30:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START216",
+        "contestCode": "START216"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY15",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 15",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.541Z",
+        "endTime": "2026-05-12T03:54:05.541Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY15",
+        "contestCode": "DSAMONDAY15"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND27",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 27: SQL Projects",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:53:59.916Z",
+        "endTime": "2026-05-12T03:53:59.916Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND27",
+        "contestCode": "DEVWEEKEND27"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START215",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 215 (Rated till 6 star) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:44.580Z",
+        "endTime": "2026-05-12T03:53:44.580Z",
+        "canonicalUrl": "https://www.codechef.com/START215",
+        "contestCode": "START215"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY14",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 14",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:54:05.597Z",
+        "endTime": "2026-05-12T03:54:05.597Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY14",
+        "contestCode": "DSAMONDAY14"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND26",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 26: Frontend Essentials - HTML,CSS,JS",
+        "description": "Hard work and consistency is the only way to success",
+        "startTime": "2026-05-12T03:54:05.632Z",
+        "endTime": "2026-05-12T03:54:05.632Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND26",
+        "contestCode": "DEVWEEKEND26"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START214",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Starters 214 (Unrated) Coding Competition | CodeChef",
+        "description": "Courses Practice Compete Compiler Upgrade to Pro Login Sign Up Home » Compete » Starters 214 (Unrated) Participate in the contest based on your rating Division 1 Rating: >= 2000 Div-1 Division 2 Rating: >= 1600 and <= 1999 Div-2 Division 3 Rating: >= 1400 and <= 1599 Div-3 Division 4 Rating: <= 1399 Div-4 About Division & Rating System Introduced DIV-4 We have newly introduced DIV-4 for users with Rating <= 1399 More about Division & Rating System ANNOUNCEMENTS The contest will start from 20:15. Unfortunately, our solution and tests for the problem Scam (VTAR) turned out to be wrong. Hence this contest will be unrated for all. Our Partner Colleges are hiring: As part of CodeChef's College Program, CodeChef conducts Training and Labs at Engineering Colleges. Our Partner colleges are currently hiring multiple members as a part of CodeChef's Learning Team to be based at the College campus at the locations given below Job Title: Learning Team Associate (Note: This is NOT an SDE role) Experience: 0 to 2 years Location: Karnataka, Tamil Nadu, and Andhra Pradesh Compensation: 7 LPA Apply Here Our Client is Hiring! Biz Staffing Comrade is a Recruitment Consultant. One of our Clients - a US Based MNC is hiring for Embedded software Engineers with 2 - 4 years of work experience. Job Title: Embedded Software Engineer Experience: 2 - 4 years Location: Bangalore (Work from Office) Compensation: 20 - 30 LPA Apply Here STARTERS 214 (UNRATED) - DETAILS CodeChef: A Platform for Aspiring Programmers CodeChef was created as a platform to help programmers make it big in the world of algorithms, computer programming, and programming contests. At CodeChef, our dedicated efforts are aimed at reviving the inner geek within you, as we proudly host a thrilling programming (coding) contest every Wednesday. About CodeChef Starters: CodeChef Starters is a short programming contest which takes place on every Wednesday Contest Details: Duration: 2.00 hours Start Date: Wednesday, 26th November , 2025 at 20:15 HRS (IST) End Date: Wednesday, 26th November, 2025 at 22:15 HRS (IST) Check your timezone here. Eligibility Criteria: Anyone with a knack for programming Our contests are open to all programmers across the globe. What's in it for you? The idea behind these programming contests is that we want you to learn while competing. Also, we believe that it is alright to refer to tutorials, books, and other materials, learn a concept, and then apply the same to solve a problem during a contest. But it is not alright to copy other people's solutions or seek other people's help to solve a problem. All the participants are expected to abide to CodeChef's Code Of Conduct . Rules and Regulations: This is an IOI-style contest. This means that the problems will be partially graded. You will get the score for passing certain test data. The details of the failed test cases will also be visible on your solution page. You can submit solutions as many times as you'd like, there are no penalties for incorrect submissions. Only your best correct submission will be considered. Those who achieve the score first will be placed higher in the ranklist in case of a tie. We have removed all the Institutions that we could not identify from our database. We request you to update your institutions once again by going to your profile page. You can also send in your queries in an email to help@codechef.com, during the contest. Please do not discuss strategy, suggestions, or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok. If you are unsure, email us at feedback@codechef.com. Discussing CodeChef's problems or any aspect of a problem, on any other platform on the web, on identification, could lead to the disabling of the respective account and banning from the community. Note: You can now \"Code, Compile, and Run\" your codes on our Online IDE. However, if you are using any other online development environment, make sure that other contestan",
+        "startTime": "2025-11-26T16:45:00.000Z",
+        "endTime": "2025-11-26T16:45:00.000Z",
+        "canonicalUrl": "https://www.codechef.com/START214",
+        "contestCode": "START214"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY13",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 13",
+        "description": "Compete in the XP Weekly Leaderboard and see where you rank!",
+        "startTime": "2026-05-12T03:54:05.742Z",
+        "endTime": "2026-05-12T03:54:05.742Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY13",
+        "contestCode": "DSAMONDAY13"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND25",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 25: Frontend Essentials - HTML,CSS,JS",
+        "description": "Coding is not difficult, you need to try hard enough",
+        "startTime": "2026-05-12T03:54:05.707Z",
+        "endTime": "2026-05-12T03:54:05.707Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND25",
+        "contestCode": "DEVWEEKEND25"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/START213",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Contest Page | CodeChef",
+        "description": "Bizzhub Workspaces, 6th Floor, MSR North Tower, Outer Ring Rd, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045 help@codechef.com +91 95911 47880 Find us online ROADMAPS Learn Python Learn Java Learn C Learn C++ Data structures and Algorithms Competitive Programming More Roadmaps CAREER PATHS React JS Developer Full stack Developer SQL for Data Analysis Frontend Developer Java Backend Developer Data Analysis using Python Python Backend Developer C++ Developer Machine Learning using Python COMPILERS HTML online compiler C++ online compiler C online compiler Java online compiler Python online compiler SQL online compiler JavaScript online compiler React online compiler More compilers COMPANY About us For colleges Coding Contests Blogs Hire from us Contact us Privacy Policy Frequently Asked Questions © 2026 CodeChef Inc. All rights reserved.",
+        "startTime": "2026-05-12T03:53:35.073Z",
+        "endTime": "2026-05-12T03:53:35.073Z",
+        "canonicalUrl": "https://www.codechef.com/START213",
+        "contestCode": "START213"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DSAMONDAY12",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Monday Munch - DSA Challenge 12",
+        "description": "Set the pace, set the goal, Maintain your streak by solving problem everyday",
+        "startTime": "2026-05-12T03:54:05.480Z",
+        "endTime": "2026-05-12T03:54:05.480Z",
+        "canonicalUrl": "https://www.codechef.com/DSAMONDAY12",
+        "contestCode": "DSAMONDAY12"
+      }
+    },
+    {
+      "sourcePlatformId": "codechef",
+      "sourceUrl": "https://www.codechef.com/DEVWEEKEND24",
+      "rawPayload": {
+        "platform": "codechef",
+        "title": "Weekend Dev Challenge 24: Frontend Essentials - HTML,CSS,JS",
+        "description": "Pro tip: Facing a challenge while solving problem? Tap into AI Help",
+        "startTime": "2026-05-12T03:54:05.740Z",
+        "endTime": "2026-05-12T03:54:05.740Z",
+        "canonicalUrl": "https://www.codechef.com/DEVWEEKEND24",
+        "contestCode": "DEVWEEKEND24"
+      }
+    }
+  ]
+}

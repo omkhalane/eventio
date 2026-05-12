@@ -23,7 +23,7 @@ import { ArchitecturePage } from './components/ArchitecturePage';
 import { ApiDocs } from './components/ApiDocs';
 import { CookieConsent } from './components/CookieConsent';
 import EventModal from './components/EventModal';
-import { LandingPage } from './components/LandingPage';
+import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
 import { SubscriptionModal } from './components/SubscriptionModal';
@@ -204,10 +204,10 @@ const CalendarApp = () => {
         if (searchQuery && searchQuery.length > 1) {
           params.set('search', searchQuery);
         }
-        
+
         const res = await fetch(`http://localhost:3000/api/v1/events?${params.toString()}`);
         if (!res.ok) throw new Error('Failed to fetch events');
-        
+
         const json = await res.json();
         const data = json.data;
 
@@ -461,9 +461,10 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/architecture" element={<ArchitecturePage />} />
-        <Route path="/api-docs" element={<ApiDocs />} />
         <Route path="/calendar" element={<CalendarApp />} />
+        <Route path="/architecture" element={<ArchitecturePage />} />
+        <Route path="/api" element={<ApiDocs />} />
+        <Route path="/landing" element={<LandingPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route
           path="/privacy"
