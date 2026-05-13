@@ -117,3 +117,19 @@ export const searchDocuments = pgTable(
     startIdx: index('idx_search_documents_start_time').on(table.startTime),
   }),
 );
+
+export const users = pgTable(
+  'users',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    googleId: varchar('google_id').notNull().unique(),
+    email: varchar('email').notNull().unique(),
+    isSubscribed: boolean('is_subscribed').notNull().default(false),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    googleIdx: index('idx_users_google_id').on(table.googleId),
+    emailIdx: index('idx_users_email').on(table.email),
+  }),
+);

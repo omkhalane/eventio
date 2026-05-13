@@ -5,6 +5,7 @@ This document provides a quick reference for deploying Eventio to production.
 ## ✅ What's Ready for Production
 
 ### Code
+
 - ✅ Full TypeScript codebase (100% type-safe)
 - ✅ All tests passing
 - ✅ Production builds optimized
@@ -12,6 +13,7 @@ This document provides a quick reference for deploying Eventio to production.
 - ✅ Rate limiting configured
 
 ### Infrastructure
+
 - ✅ PostgreSQL schema with migrations
 - ✅ Redis queue system (BullMQ)
 - ✅ Multi-stage Docker builds
@@ -19,6 +21,7 @@ This document provides a quick reference for deploying Eventio to production.
 - ✅ Health checks configured
 
 ### Documentation
+
 - ✅ README.md - Project overview
 - ✅ ARCHITECTURE.md - System design
 - ✅ DEPLOYMENT.md - Deployment options
@@ -28,12 +31,14 @@ This document provides a quick reference for deploying Eventio to production.
 - ✅ SEO.md - SEO configuration
 
 ### Environment Configuration
+
 - ✅ .env.example - Complete variable template
 - ✅ .env - Local development (pre-configured)
 - ✅ .env.staging - Staging environment template
 - ✅ .env.production - Production environment template
 
 ### Monitoring & Logging
+
 - ✅ Structured JSON logging
 - ✅ Sentry integration ready
 - ✅ PostHog analytics ready
@@ -162,14 +167,14 @@ docker-compose logs workers -f
 
 ### Key Metrics to Monitor
 
-| Metric | Target | Alert Threshold |
-|--------|--------|-----------------|
-| API Response Time (p95) | <200ms | >500ms |
-| Error Rate | <0.1% | >1% |
-| Database Connections | <20 | >25 |
-| Redis Memory | <500MB | >800MB |
-| Queue Depth | <100 | >1000 |
-| Scraper Success | >95% | <90% |
+| Metric                  | Target | Alert Threshold |
+| ----------------------- | ------ | --------------- |
+| API Response Time (p95) | <200ms | >500ms          |
+| Error Rate              | <0.1%  | >1%             |
+| Database Connections    | <20    | >25             |
+| Redis Memory            | <500MB | >800MB          |
+| Queue Depth             | <100   | >1000           |
+| Scraper Success         | >95%   | <90%            |
 
 ### Setup Monitoring
 
@@ -184,6 +189,7 @@ docker-compose logs workers -f
 ## 🐛 Common Issues & Solutions
 
 ### Database Connection Failed
+
 ```bash
 # Check connection string format
 # Format: postgresql://user:pass@host/db?sslmode=require
@@ -193,6 +199,7 @@ psql $DATABASE_URL -c "SELECT version();"
 ```
 
 ### Redis Connection Failed
+
 ```bash
 # Check Redis URL format
 # Format: redis://:password@host:port
@@ -202,6 +209,7 @@ redis-cli -u $REDIS_URL ping
 ```
 
 ### API Not Responding
+
 ```bash
 # Check API logs
 docker-compose logs -f api
@@ -214,6 +222,7 @@ docker-compose restart api
 ```
 
 ### Workers Not Processing
+
 ```bash
 # Check queue depth
 redis-cli -u $REDIS_URL KEYS bull:scraping*
@@ -229,15 +238,15 @@ pnpm scrape:trigger codeforces
 
 ## 📚 Documentation Links
 
-| Document | Purpose |
-|----------|---------|
-| [README.md](README.md) | Project overview & features |
+| Document                                 | Purpose                           |
+| ---------------------------------------- | --------------------------------- |
+| [README.md](README.md)                   | Project overview & features       |
 | [GETTING_STARTED.md](GETTING_STARTED.md) | Setup instructions (local & prod) |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | System design & components |
-| [DEPLOYMENT.md](DEPLOYMENT.md) | Deployment platform options |
-| [PRODUCTION.md](PRODUCTION.md) | Production setup checklist |
-| [API.md](API.md) | API endpoint documentation |
-| [SEO.md](SEO.md) | SEO configuration |
+| [ARCHITECTURE.md](ARCHITECTURE.md)       | System design & components        |
+| [DEPLOYMENT.md](DEPLOYMENT.md)           | Deployment platform options       |
+| [PRODUCTION.md](PRODUCTION.md)           | Production setup checklist        |
+| [API.md](API.md)                         | API endpoint documentation        |
+| [SEO.md](SEO.md)                         | SEO configuration                 |
 
 ---
 
@@ -351,6 +360,6 @@ Your production deployment is ready. You now have:
 ✅ Comprehensive documentation  
 ✅ Production-ready infrastructure  
 ✅ Monitoring and logging  
-✅ Automated deployment pipelines  
+✅ Automated deployment pipelines
 
 **Happy deploying!** 🚀

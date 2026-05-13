@@ -149,7 +149,7 @@ export const ArchitecturePage: React.FC = () => {
           {/* Bottom Row: Right to Left */}
           <div className="relative mt-8 flex w-full flex-row-reverse items-start justify-between">
             <ArchNode
-              title="Supabase"
+              title="Neon DB"
               subtitle="PostgreSQL"
               icon={<Database className="h-8 w-8 text-white md:h-12 md:w-12" />}
               delay={0.6}

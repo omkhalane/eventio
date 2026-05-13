@@ -1,8 +1,6 @@
 export type PublicConfig = {
   apiBaseUrl?: string;
   siteUrl?: string;
-  supabaseUrl?: string;
-  supabaseAnonKey?: string;
   firebaseApiKey?: string;
   firebaseAuthDomain?: string;
   firebaseProjectId?: string;

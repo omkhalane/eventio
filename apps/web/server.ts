@@ -35,8 +35,6 @@ function buildPublicConfig(host: string, port: number, apiHost: string, apiPort:
     siteUrl:
       process.env.PUBLIC_SITE_URL ||
       (process.env.NODE_ENV === 'production' ? 'https://event-io.me' : `http://${host}:${port}`),
-    supabaseUrl: process.env.PUBLIC_SUPABASE_URL,
-    supabaseAnonKey: process.env.PUBLIC_SUPABASE_ANON_KEY,
     firebaseApiKey: process.env.PUBLIC_FIREBASE_API_KEY,
     firebaseAuthDomain: process.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
     firebaseProjectId: process.env.PUBLIC_FIREBASE_PROJECT_ID,

@@ -50,13 +50,14 @@ fastify.setErrorHandler((error, _request, reply) => {
 });
 
 fastify.route({
-  method: ['GET'],
+  method: ['GET', 'POST'],
   url: '/api/v1/*',
   handler: async (request, reply) => {
     const result = await handleApiRequest(
       request.method,
       request.url,
       request.query as Record<string, string | string[] | undefined>,
+      request.body,
     );
 
     for (const [name, value] of Object.entries(result.headers || {})) {
