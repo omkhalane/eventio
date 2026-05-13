@@ -7,9 +7,10 @@
     Aggregate, normalize, and serve developer event data reliably across multiple sources.
   </p>
 
-  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/omkhalane/eventio/blob/main/LICENSE)
-  [![Node.js](https://img.shields.io/badge/node-v20+-green)](https://nodejs.org/)
-  [![TypeScript](https://img.shields.io/badge/typescript-5.4+-blue)](https://www.typescriptlang.org/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/omkhalane/eventio/blob/main/LICENSE)
+[![Node.js](https://img.shields.io/badge/node-v20+-green)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/typescript-5.4+-blue)](https://www.typescriptlang.org/)
+
 </div>
 
 ---
@@ -58,6 +59,7 @@ docs/
 ### Setup
 
 1. **Clone and install**:
+
    ```bash
    git clone https://github.com/omkhalane/eventio.git
    cd eventio
@@ -65,16 +67,19 @@ docs/
    ```
 
 2. **Start infrastructure**:
+
    ```bash
    docker-compose up -d
    ```
 
 3. **Setup database**:
+
    ```bash
    pnpm db:push
    ```
 
 4. **Start development**:
+
    ```bash
    pnpm dev
    ```
@@ -109,22 +114,22 @@ pnpm scrape:run
 ✅ **Real-Time Ingestion** - BullMQ-powered asynchronous processors  
 ✅ **High Performance** - Optimized queries, smart caching, proper indexing  
 ✅ **Comprehensive Search** - Full-text search with advanced filtering  
-✅ **Well Documented** - Architecture guides, API docs, deployment guides  
+✅ **Well Documented** - Architecture guides, API docs, deployment guides
 
 ## Technology Stack
 
-| Layer | Stack |
-|-------|-------|
-| **Frontend** | React 19, TypeScript, Tailwind CSS, Vite |
-| **API** | Fastify, TypeScript, Node.js 20+ |
-| **Workers** | BullMQ, Redis, Node.js |
-| **Database** | PostgreSQL, Drizzle ORM |
-| **Deployment** | Docker, Vercel, Railway, Neon |
+| Layer          | Stack                                    |
+| -------------- | ---------------------------------------- |
+| **Frontend**   | React 19, TypeScript, Tailwind CSS, Vite |
+| **API**        | Fastify, TypeScript, Node.js 20+         |
+| **Workers**    | BullMQ, Redis, Node.js                   |
+| **Database**   | PostgreSQL, Drizzle ORM                  |
+| **Deployment** | Docker, Vercel, Railway, Neon            |
 
 ## Documentation
 
 - **[API Documentation](API.md)** - REST endpoints and usage examples
-- **[Architecture](ARCHITECTURE.md)** - System design and data flow  
+- **[Architecture](ARCHITECTURE.md)** - System design and data flow
 - **[Deployment Guide](DEPLOYMENT.md)** - Production deployment
 - **[Production Setup](PRODUCTION.md)** - Pre-deployment checklist
 - **[SEO Guide](SEO.md)** - SEO optimization details
