@@ -9,8 +9,6 @@ function getPublicConfigScript(env: Record<string, string>) {
       env.PUBLIC_API_BASE_URL ||
       (env.NODE_ENV === 'production' ? 'https://event-io.me' : 'http://localhost:3000'),
     siteUrl: env.PUBLIC_SITE_URL,
-    supabaseUrl: env.PUBLIC_SUPABASE_URL,
-    supabaseAnonKey: env.PUBLIC_SUPABASE_ANON_KEY,
     firebaseApiKey: env.PUBLIC_FIREBASE_API_KEY,
     firebaseAuthDomain: env.PUBLIC_FIREBASE_AUTH_DOMAIN,
     firebaseProjectId: env.PUBLIC_FIREBASE_PROJECT_ID,

@@ -903,7 +903,7 @@ const Pipeline = () => (
     <SectionHeader
       kicker="How it works"
       title="From source noise to calendar signal."
-      copy="A simple data path: public event pages, scraper adapters, normalized schema, Supabase, then a calendar you can use."
+      copy="A simple data path: public event pages, scraper adapters, normalized schema, Neon DB, then a calendar you can use."
     />
     <Shell className="mx-auto max-w-7xl rounded-[32px] p-4 md:p-6">
       <div className="absolute top-1/2 right-8 left-8 hidden h-px bg-white/10 md:block" />
@@ -912,7 +912,7 @@ const Pipeline = () => (
           { label: 'Sources', icon: Radio, color: 'text-rose-400', bg: 'bg-rose-400/10' },
           { label: 'Scrapers', icon: Code2, color: 'text-amber-400', bg: 'bg-amber-400/10' },
           { label: 'Schema', icon: Terminal, color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
-          { label: 'Supabase', icon: Database, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
+          { label: 'Neon DB', icon: Database, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
           {
             label: 'Calendar',
             icon: CalendarCheck,
@@ -942,7 +942,7 @@ const Pipeline = () => (
                 {index === 0 && 'Contests, hackathons, CTFs, conferences.'}
                 {index === 1 && 'Adapters collect clean event data.'}
                 {index === 2 && 'Fields become predictable and searchable.'}
-                {index === 3 && 'Events and preferences are persisted.'}
+                {index === 3 && 'Events and preferences are persisted in Neon.'}
                 {index === 4 && 'Month, week, day, list, and sync.'}
               </p>
               <span

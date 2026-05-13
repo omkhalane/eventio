@@ -88,10 +88,10 @@ const validateSupportedValues = (values: string[], allowed: readonly string[]) =
 
 const escapeSqlLiteral = (value: string) => `'${value.replace(/'/g, "''")}'`;
 
-const buildJsonbArrayContains = (column: unknown, values: string[]) => {
+const buildListMatchCondition = (column: any, values: string[]) => {
   if (values.length === 0) return null;
-  const jsonArray = JSON.stringify(values);
-  return sql`${column}::text[] ?| ${jsonArray}::text[]`;
+  // Use the PostgreSQL ?| operator which checks if any of the elements in the text array exist as keys in the JSONB
+  return sql`${column} ?| array[${sql.raw(values.map((v) => `'${v}'`).join(','))}]`;
 };
 
 const buildTextSearchCondition = (term: string) => {

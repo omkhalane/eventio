@@ -1,35 +1,40 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "installCommand": "npm ci",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/apps/web",
-  "devCommand": "npm run dev",
-  "regions": ["bom1"],
-  "headers": [
+  "crons": [
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "path": "/api/v1/cron/scrape?platform=codeforces",
+      "schedule": "0 */4 * * *"
     },
     {
-      "source": "/(.*).(png|jpg|jpeg|gif|svg|webp|ico|css|js)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
+      "path": "/api/v1/cron/scrape?platform=leetcode",
+      "schedule": "30 */4 * * *"
+    },
     {
-      "source": "/((?!api/|assets/|favicon\\.svg|manifest\\.json|robots\\.txt|sitemap\\.xml).*)",
-      "destination": "/index.html"
+      "path": "/api/v1/cron/scrape?platform=hackerrank",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=unstop",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=devpost",
+      "schedule": "30 2 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=atcoder",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=codechef",
+      "schedule": "20 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=geeksforgeeks",
+      "schedule": "40 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=mlh",
+      "schedule": "0 3 * * *"
     }
   ]
 }

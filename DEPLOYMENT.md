@@ -18,7 +18,6 @@ Eventio is deployed as three independent services:
 ### Optional Integrations
 
 - **Firebase**: Google auth and calendar integration
-- **Supabase**: Database and auth (alternative to Firebase)
 - **PostHog**: Analytics and event tracking
 - **Sentry**: Error tracking and monitoring
 

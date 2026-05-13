@@ -4,6 +4,9 @@ import {
   buildStats,
   parseEventsQuery,
 } from '../src/lib/query';
+import { getUser, syncUser } from '../src/lib/users';
+import { scrapingQueue } from '@eventio/queue';
+import { logger } from '@eventio/observability';
 
 export type ApiQueryValue = string | string[] | undefined;
 export type ApiQuery = Record<string, ApiQueryValue>;
@@ -20,14 +23,15 @@ export async function handleApiRequest(
   method: string,
   path: string,
   query: ApiQuery,
+  body?: any,
 ): Promise<ApiResponse> {
   const normalizedPath = normalizePath(path);
   const upperMethod = method.toUpperCase();
 
-  if (upperMethod !== 'GET') {
+  if (upperMethod !== 'GET' && upperMethod !== 'POST') {
     return {
       status: 405,
-      headers: { Allow: 'GET' },
+      headers: { Allow: 'GET, POST' },
       body: { success: false, error: 'Method Not Allowed' },
     };
   }
@@ -39,6 +43,26 @@ export async function handleApiRequest(
   if (normalizedPath === '/stats') {
     const data = await buildStats();
     return { status: 200, body: { data } };
+  }
+
+  if (normalizedPath === '/cron/scrape') {
+    logger.info({ query }, 'Vercel Cron Triggered');
+    
+    const allPlatforms = [
+      'codeforces', 'leetcode', 'hackerrank', 'unstop', 
+      'devpost', 'atcoder', 'codechef', 'geeksforgeeks', 'mlh'
+    ];
+
+    const platform = query.platform as string;
+    const platformsToScrape = platform ? [platform] : allPlatforms;
+
+    for (const p of platformsToScrape) {
+      if (allPlatforms.includes(p)) {
+        await scrapingQueue.add(`vercel-cron-${p}`, { platform: p });
+      }
+    }
+
+    return { status: 200, body: { success: true, message: `Scrapers queued: ${platformsToScrape.join(', ')}` } };
   }
 
   if (normalizedPath === '/events') {
@@ -55,6 +79,41 @@ export async function handleApiRequest(
     const data = rows.map(buildEventResponse);
 
     return { status: 200, body: { data, pagination } };
+  }
+
+  // User routes
+  if (normalizedPath.startsWith('/users')) {
+    const parts = normalizedPath.split('/').filter(Boolean);
+    
+    // GET /users/:googleId
+    if (upperMethod === 'GET' && parts.length === 2) {
+      const googleId = parts[1];
+      const user = await getUser(googleId);
+      if (!user) {
+        return { status: 404, body: { success: false, error: 'User not found' } };
+      }
+      return { status: 200, body: { data: user } };
+    }
+
+    // POST /users
+    if (upperMethod === 'POST') {
+      const userData = (body || query) as {
+        googleId?: string;
+        email?: string;
+        isSubscribed?: string | boolean;
+      };
+
+      const googleId = userData.googleId;
+      const email = userData.email;
+      const isSubscribed = userData.isSubscribed === 'true' || userData.isSubscribed === true;
+
+      if (!googleId || !email) {
+        return { status: 400, body: { success: false, error: 'googleId and email are required' } };
+      }
+
+      const user = await syncUser({ googleId, email, isSubscribed });
+      return { status: 200, body: { data: user } };
+    }
   }
 
   return { status: 404, body: { success: false, error: 'Not Found' } };

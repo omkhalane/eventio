@@ -14,6 +14,7 @@ import {
   signInWithPopup,
   signOut as firebaseSignOut,
 } from 'firebase/auth';
+import { Analytics } from '@vercel/analytics/react';
 import { ChevronLeft, ChevronRight, Infinity as InfinityIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -32,7 +33,6 @@ import TopNav from './components/TopNav';
 import { buildApiUrl } from './lib/api';
 import { CATEGORIES } from './constants';
 import { auth, googleProvider } from './lib/firebase';
-import { supabase } from './lib/supabase';
 import { cn } from './lib/utils';
 import { setGoogleAccessToken } from './services/googleCalendarService';
 import { CalendarEvent, FilterState, ViewMode } from './types';
@@ -145,21 +145,11 @@ const CalendarApp = () => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setGoogleUser(user);
 
-      if (user && supabase) {
+      if (user) {
         try {
-          const { data: existingUser, error: fetchError } = await supabase
-            .from('users')
-            .select('is_subscribed')
-            .eq('google_id', user.uid)
-            .single();
-
-          if (fetchError && fetchError.code === 'PGRST116') {
+          const res = await fetch(buildApiUrl(`/api/v1/users/${user.uid}`));
+          if (res.status === 404) {
             setShowSubModal(true);
-          } else if (!fetchError && existingUser) {
-            await supabase
-              .from('users')
-              .update({ updated_at: new Date().toISOString() })
-              .eq('google_id', user.uid);
           }
         } catch (err) {
           console.error('User check error:', err);
@@ -171,21 +161,21 @@ const CalendarApp = () => {
 
   const handleSubModalClose = async (subscribed: boolean) => {
     setShowSubModal(false);
-    if (googleUser && supabase) {
+    if (googleUser) {
       try {
-        const { error } = await supabase.from('users').upsert(
-          {
-            email: googleUser.email,
-            google_id: googleUser.uid,
-            is_subscribed: subscribed,
-            updated_at: new Date().toISOString(),
+        const res = await fetch(buildApiUrl('/api/v1/users'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-          {
-            onConflict: 'email',
-          },
-        );
+          body: JSON.stringify({
+            googleId: googleUser.uid,
+            email: googleUser.email || '',
+            isSubscribed: subscribed,
+          }),
+        });
 
-        if (error) console.error('Error saving subscription preference:', error);
+        if (!res.ok) console.error('Error saving subscription preference');
       } catch (err) {
         console.error('Subscription save error:', err);
       }
@@ -484,6 +474,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <CookieConsent />
+      <Analytics />
     </Router>
   );
 }
