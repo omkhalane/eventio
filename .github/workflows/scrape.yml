@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Run All Scrapers
-        run: pnpm scrape:run
+        run: pnpm scrape:run:ci
         env:
           # IMPORTANT: Add these to your GitHub Repository Secrets
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
