@@ -1,10 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleApiRequest } from '../apps/api/lib/event-api';
+import { handleApiRequest } from '../../../apps/api/lib/event-api';
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
   const { method, url, query, body } = request;
 
   try {
+    // Normalize path for internal handler
+    const path = url?.replace('/api/v1', '') || '/';
+    
     const result = await handleApiRequest(
       method || 'GET',
       url || '/',
