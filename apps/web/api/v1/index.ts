@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleApiRequest } from '../../../apps/api/lib/event-api';
+import { handleApiRequest } from '../../../../api/lib/event-api';
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
   const { method, url, query, body } = request;

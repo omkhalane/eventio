@@ -14,11 +14,11 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
-      "@eventio/*": ["../../packages/*/src"]
+      "@eventio/*": ["../../packages/*/src", "../../packages/*"]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src", "server.ts", "vite.config.ts"],
-  "exclude": ["node_modules", "dist", ".vite", "api"]
+  "include": ["src", "api", "server.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", ".vite"]
 }
