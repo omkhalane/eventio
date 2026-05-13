@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { logger } from '@eventio/observability';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';

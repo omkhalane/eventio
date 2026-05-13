@@ -2,19 +2,20 @@
   "name": "@eventio/workers",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx watch --env-file=../../.env src/index.ts",
-    "start": "tsx --env-file=../../.env src/index.ts",
-    "start:scheduler": "tsx --env-file=../../.env src/scheduler.ts",
-    "scrape:trigger": "tsx --env-file=../../.env src/scripts/triggerScraper.ts",
-    "scrape:run": "tsx --env-file=../../.env src/scripts/runScrapers.ts",
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "start:scheduler": "tsx src/scheduler.ts",
+    "scrape:trigger": "tsx src/scripts/triggerScraper.ts",
+    "scrape:run": "tsx src/scripts/runScrapers.ts",
     "scrape:run:ci": "tsx src/scripts/runScrapers.ts",
-    "scrape:temp": "tsx --env-file=../../.env ../../temp/scraperRunner.ts"
+    "scrape:temp": "tsx ../../temp/scraperRunner.ts"
   },
   "dependencies": {
     "@eventio/db": "workspace:*",
     "@eventio/queue": "workspace:*",
     "@eventio/observability": "workspace:*",
-    "@eventio/scraper-core": "workspace:*"
+    "@eventio/scraper-core": "workspace:*",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "tsx": "^4.7.2",

@@ -7,6 +7,7 @@ import { createServer as createViteServer } from 'vite';
 import { handleApiRequest } from '../api/lib/event-api';
 
 dotenv.config();
+dotenv.config({ path: path.resolve(process.cwd(), '../../.env') });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,7 +59,7 @@ async function startServer() {
   const API_HOST = process.env.API_HOST || 'localhost';
 
   app.use(express.json());
-  app.use((_req, res, next) => {
+  app.use((_req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -68,7 +69,7 @@ async function startServer() {
 
   // API Routes
   const apiRouter = express.Router();
-  apiRouter.use(async (req, res) => {
+  apiRouter.use(async (req: express.Request, res: express.Response) => {
     const result = await handleApiRequest(req.method, req.path, toApiQuery(req.query));
     for (const [name, value] of Object.entries(result.headers || {})) {
       res.setHeader(name, value);
@@ -77,7 +78,7 @@ async function startServer() {
   });
   app.use('/api/v1', apiRouter);
 
-  app.get('/api/config', (_req, res) => {
+  app.get('/api/config', (_req: express.Request, res: express.Response) => {
     res
       .type('application/javascript')
       .set('Cache-Control', 'no-store')
@@ -100,7 +101,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist/apps/web');
     app.use(express.static(distPath, { index: false }));
-    app.get('*', (_req, res) => {
+    app.get('*', (_req: express.Request, res: express.Response) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

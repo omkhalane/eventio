@@ -2,14 +2,15 @@
   "name": "@eventio/api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx watch --env-file=../../.env src/index.ts",
-    "start": "tsx --env-file=../../.env src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts"
   },
   "dependencies": {
     "fastify": "^5.8.5",
     "@fastify/cors": "^9.0.1",
     "@eventio/db": "workspace:*",
-    "@eventio/observability": "workspace:*"
+    "@eventio/observability": "workspace:*",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "tsx": "^4.7.2",

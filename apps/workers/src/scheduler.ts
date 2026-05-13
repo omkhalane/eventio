@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { scrapingQueue } from '@eventio/queue';
 import { logger } from '@eventio/observability';
 
