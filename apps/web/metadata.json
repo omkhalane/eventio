@@ -1,6 +1,6 @@
 {
   "name": "Eventio",
-  "description": "The elite event aggregator for developers. Track competitive programming, hackathons, and tech conferences worldwide in one high-performance dashboard.",
+  "description": "Developer event discovery platform for competitions, hackathons, and tech conferences.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }

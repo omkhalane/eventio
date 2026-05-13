@@ -1,4 +1,6 @@
 export type PublicConfig = {
+  apiBaseUrl?: string;
+  siteUrl?: string;
   supabaseUrl?: string;
   supabaseAnonKey?: string;
   firebaseApiKey?: string;
@@ -24,5 +26,24 @@ export function getPublicConfig(): PublicConfig {
     return {};
   }
 
-  return window.__EVENTIO_CONFIG__ ?? {};
+  const cfg = { ...(window.__EVENTIO_CONFIG__ ?? {}) };
+
+  const isLocalHost =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname === '::1';
+
+  if (!cfg.apiBaseUrl) {
+    if (isLocalHost) {
+      cfg.apiBaseUrl = 'http://localhost:3000';
+    } else {
+      cfg.apiBaseUrl = window.location.origin;
+    }
+  }
+
+  if (!cfg.siteUrl) {
+    cfg.siteUrl = window.location.origin;
+  }
+
+  return cfg;
 }
