@@ -19,6 +19,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["api", "apps/web/src", "apps/web/server.ts", "vite.config.ts"],
-  "exclude": ["node_modules", "dist", "apps/web/.vite"]
+  "include": ["src", "server.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", ".vite", "api"]
 }
