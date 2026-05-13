@@ -6,86 +6,199 @@
     <br />
     Aggregate, normalize, and serve developer event data reliably across multiple sources.
   </p>
+
+  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/omkhalane/eventio/blob/main/LICENSE)
+  [![Node.js](https://img.shields.io/badge/node-v20+-green)](https://nodejs.org/)
+  [![TypeScript](https://img.shields.io/badge/typescript-5.4+-blue)](https://www.typescriptlang.org/)
 </div>
+
+---
 
 ## Architecture Overview
 
-Eventio is structured as a modular monolith monorepo, optimized for reliable data ingestion, strict normalization, and blazing fast frontend performance.
+Eventio is a production-grade event aggregation platform built with modern TypeScript, featuring a modular monolith architecture optimized for reliability, performance, and scalability.
 
-The pipeline architecture:
-**Scrapers** -> **PostgreSQL Raw Storage** -> **Normalization Workers** -> **Dedupe Service** -> **PostgreSQL Canonical Tables** -> **Search Index** -> **API** -> **React Frontend**
+### The Pipeline
+
+```
+Scrapers → Raw Storage → Normalization → Deduplication → Canonical DB → Search Index → API → Frontend
+```
 
 ## Monorepo Layout
 
-```text
+```
 apps/
-  web/         # React + Vite + Tailwind frontend
-  api/         # Fastify API (Reads only)
-  workers/     # BullMQ background processors (Writes & Ingestion)
+├── web/              # React 19 + Vite + Tailwind SPA
+├── api/              # Fastify REST API (read-only)
+└── workers/          # BullMQ background processors
 
 packages/
-  db/          # Drizzle ORM schemas and migrations
-  queue/       # BullMQ and Redis connections
-  shared/      # Common TypeScript types
-  scraper-core/# Scraper base interfaces
-  normalization/# Schema parsers
-  dedupe/      # Identity matching logic
-  search/      # Search abstraction layer
-  config/      # Env var validation
-  observability/# Structured JSON logging
-
-infra/
-  docker/      # Container configurations
-  scripts/     # Helper bash scripts
-  railway/     # Deployment templates
-  neon/        # Postgres setup scripts
+├── db/               # Drizzle ORM schema & migrations
+├── queue/            # BullMQ & Redis connections
+├── config/           # Environment validation (Zod)
+├── observability/    # Structured JSON logging
+├── scraper-core/     # Platform-specific scrapers
+├── dedupe/           # Duplicate detection logic
+└── shared/           # Common TypeScript types
 
 docs/
-  architecture/# System and Database designs
-  setup/       # Local and cloud setup instructions
-  deployment/  # Production and scaling guides
-  operations/  # Monitoring and debugging runbooks
+├── ARCHITECTURE.md   # System design details
+├── DEPLOYMENT.md     # Deployment instructions
+└── PRODUCTION.md     # Production checklist
 ```
-
-## Setup Instructions
-
-See [API docs](API.md), [Deployment](DEPLOYMENT.md), [Architecture](ARCHITECTURE.md), and [SEO](SEO.md) for the production-ready overview.
 
 ## Quick Start
 
-1. Start Postgres and Redis:
+### Prerequisites
+
+- **Node.js** v20+
+- **pnpm** v8+ (`npm install -g pnpm`)
+- **Docker** (for PostgreSQL & Redis)
+
+### Setup
+
+1. **Clone and install**:
+   ```bash
+   git clone https://github.com/omkhalane/eventio.git
+   cd eventio
+   pnpm install
+   ```
+
+2. **Start infrastructure**:
    ```bash
    docker-compose up -d
    ```
-2. Install dependencies:
+
+3. **Setup database**:
    ```bash
-   pnpm install
+   pnpm db:push
    ```
-3. Start all applications (Migrations and scrapers run automatically on startup!):
+
+4. **Start development**:
    ```bash
    pnpm dev
    ```
-4. Open the main app at https://event-io.me/ or the interactive docs at https://event-io.me/docs.
 
-## Features
+   Available at:
+   - **Frontend**: http://localhost:5175
+   - **API**: http://localhost:3000
+   - **Docs**: http://localhost:5175/docs
 
-- **Automated Scrapers**: Built-in workers automatically fetch data from **Codeforces** and **LeetCode**, normalize the payload, and insert into the database.
-- **Advanced Backend API Filtering**: Fetch events using Drizzle ORM and Postgres JSONB logic. Filter by:
-  - `platforms` (e.g. ?platforms=codeforces,leetcode)
-  - `categories` (e.g. ?categories=competitive-programming)
-  - `search` text
-  - `startDate` & `endDate`
-- **Dynamic Frontend Dashboard**: The React frontend passes user selections directly to the Fastify API.
-- **Interactive API Documentation**: Explore the API specifications directly from the UI by navigating to `/api-docs`.
+### Trigger Scrapers
+
+```bash
+# Trigger specific platform
+pnpm scrape:trigger codeforces
+
+# Run all scrapers
+pnpm scrape:run
+```
+
+## Supported Platforms
+
+- **Competitive Programming**: Codeforces, LeetCode, AtCoder, CodeChef
+- **Hackathons**: Devpost, MLH, Unstop, Devfolio
+- **Hiring**: HackerRank, GeeksforGeeks
+- More platforms added regularly!
+
+## Key Features
+
+✅ **Production-Ready** - Fully typed TypeScript, tested, documented  
+✅ **Horizontally Scalable** - Stateless services, distributed queue processing  
+✅ **Type-Safe** - 100% TypeScript across frontend, API, and workers  
+✅ **Real-Time Ingestion** - BullMQ-powered asynchronous processors  
+✅ **High Performance** - Optimized queries, smart caching, proper indexing  
+✅ **Comprehensive Search** - Full-text search with advanced filtering  
+✅ **Well Documented** - Architecture guides, API docs, deployment guides  
+
+## Technology Stack
+
+| Layer | Stack |
+|-------|-------|
+| **Frontend** | React 19, TypeScript, Tailwind CSS, Vite |
+| **API** | Fastify, TypeScript, Node.js 20+ |
+| **Workers** | BullMQ, Redis, Node.js |
+| **Database** | PostgreSQL, Drizzle ORM |
+| **Deployment** | Docker, Vercel, Railway, Neon |
 
 ## Documentation
 
-Please refer to the `docs/` directory for detailed engineering standards:
+- **[API Documentation](API.md)** - REST endpoints and usage examples
+- **[Architecture](ARCHITECTURE.md)** - System design and data flow  
+- **[Deployment Guide](DEPLOYMENT.md)** - Production deployment
+- **[Production Setup](PRODUCTION.md)** - Pre-deployment checklist
+- **[SEO Guide](SEO.md)** - SEO optimization details
 
-- **Architecture:** [System Overview](docs/architecture/system-overview.md)
-- **Deployment:** [Production Strategy](docs/deployment/production-deployment.md)
-- **Operations:** [Scraper Reliability](docs/operations/scraper-reliability.md)
+## Environment Configuration
 
-## Contact
+### Development
 
-For support or security reports, email: contact@event-io.me
+Pre-configured `.env` file for local development:
+
+```bash
+NODE_ENV=development
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/eventio
+REDIS_URL=redis://localhost:6379
+PUBLIC_SITE_URL=http://localhost:5175
+PUBLIC_API_BASE_URL=http://localhost:3000
+```
+
+### Production
+
+See [PRODUCTION.md](PRODUCTION.md) for comprehensive production setup guide.
+
+## Commands
+
+```bash
+# Development
+pnpm dev              # Start all services
+pnpm build            # Build production bundles
+pnpm test             # Run test suite
+pnpm lint             # Lint codebase
+
+# Database
+pnpm db:push          # Apply schema changes
+pnpm db:generate      # Create migration
+
+# Scrapers
+pnpm scrape:trigger <platform>  # Trigger scraper
+pnpm scrape:run                 # Run all scrapers
+
+# Utilities
+pnpm inspect-db       # View database contents
+```
+
+## Project Stats
+
+- **Languages**: TypeScript (100%)
+- **Frontend**: React 19 + Vite
+- **Backend**: Fastify + Node.js 20+
+- **Database**: PostgreSQL + Drizzle ORM
+- **Queue**: BullMQ + Redis
+- **Platforms**: 8+ event sources
+- **API Endpoints**: 2 main endpoints
+- **Rate Limit**: 120/min public, 30/min anonymous
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/omkhalane/eventio/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/omkhalane/eventio/discussions)
+- **Security**: See [SECURITY.md](SECURITY.md)
+- **Email**: om.khalane.dev@gmail.com
+
+## License
+
+MIT - See [LICENSE](LICENSE) for details
+
+## Author
+
+**Om Khalane**  
+Portfolio: [omkhalane.dev](https://omkhalane.dev)  
+Twitter: [@omkhalane](https://twitter.com/omkhalane)  
+Email: om.khalane.dev@gmail.com
+
+---
+
+<div align="center">
+  <p>Built with ❤️ for the developer community</p>
+</div>

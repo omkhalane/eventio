@@ -1,30 +1,111 @@
 version: '3.8'
 
+# ============================================================================
+# Eventio - Complete Development Stack
+# ============================================================================
+# For production, use managed services (Neon, Upstash, Railway, Vercel)
+# ============================================================================
+
 services:
+  # PostgreSQL Database
   postgres:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
+    container_name: eventio-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: eventio
+      POSTGRES_INITDB_ARGS: "-c max_connections=200 -c shared_buffers=256MB"
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./packages/db/drizzle:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
+    networks:
+      - eventio-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
+  # Redis Cache & Queue
   redis:
     image: redis:7-alpine
+    container_name: eventio-redis
+    restart: unless-stopped
     ports:
       - "6379:6379"
-    command: redis-server --maxmemory-policy noeviction
+    command: redis-server --maxmemory-policy noeviction --appendonly yes --requirepass redis-dev-password
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - eventio-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: PgBouncer for connection pooling
+  pgbouncer:
+    image: pgbouncer:latest
+    container_name: eventio-pgbouncer
+    restart: unless-stopped
+    ports:
+      - "6432:6432"
+    environment:
+      PGBOUNCER_DATABASES: "eventio = host=postgres port=5432 user=postgres password=postgres dbname=eventio"
+      PGBOUNCER_POOL_MODE: "transaction"
+      PGBOUNCER_MAX_CLIENT_CONN: "1000"
+      PGBOUNCER_MIN_POOL_SIZE: "10"
+      PGBOUNCER_DEFAULT_POOL_SIZE: "25"
+      PGBOUNCER_RESERVE_POOL_SIZE: "5"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - eventio-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
 
 volumes:
   postgres_data:
+    driver: local
   redis_data:
+    driver: local
+
+networks:
+  eventio-network:
+    driver: bridge
+
+# ============================================================================
+# Usage:
+# 
+# Start all services:
+#   docker-compose up -d
+#
+# View logs:
+#   docker-compose logs -f
+#
+# Stop services:
+#   docker-compose down
+#
+# Remove volumes (careful!):
+#   docker-compose down -v
+#
+# ============================================================================
