@@ -13,8 +13,8 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./apps/web/src/*"],
-      "@eventio/*": ["./packages/*/src"]
+      "@/*": ["./src/*"],
+      "@eventio/*": ["../../packages/*/src"]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
