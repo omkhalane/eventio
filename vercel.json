@@ -1,8 +1,40 @@
 {
   "crons": [
     {
-      "path": "/api/v1/cron/scrape",
+      "path": "/api/v1/cron/scrape?platform=codeforces",
+      "schedule": "0 */4 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=leetcode",
+      "schedule": "30 */4 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=hackerrank",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=unstop",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=devpost",
+      "schedule": "30 2 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=atcoder",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=codechef",
+      "schedule": "20 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=geeksforgeeks",
+      "schedule": "40 */6 * * *"
+    },
+    {
+      "path": "/api/v1/cron/scrape?platform=mlh",
+      "schedule": "0 3 * * *"
     }
   ]
 }
