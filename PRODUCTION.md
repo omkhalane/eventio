@@ -17,6 +17,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 ## Pre-Deployment Checklist
 
 ### Code Quality
+
 - [ ] All tests pass: `pnpm test`
 - [ ] Linting passes: `pnpm lint`
 - [ ] No TypeScript errors: `pnpm build`
@@ -25,6 +26,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 - [ ] Latest code merged to main branch
 
 ### Database
+
 - [ ] Database migrations are tested locally
 - [ ] Schema changes are backward compatible
 - [ ] Backup strategy is in place
@@ -33,6 +35,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 - [ ] SSL/TLS is enabled for database connections
 
 ### Security
+
 - [ ] All secrets are stored securely (never in .env files)
 - [ ] API keys are rotated
 - [ ] HTTPS is enforced everywhere
@@ -43,6 +46,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 - [ ] Redis auth is enabled
 
 ### Performance
+
 - [ ] Build size is optimized
 - [ ] Database queries are indexed
 - [ ] Caching strategies are in place
@@ -51,6 +55,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 - [ ] CDN configuration is ready
 
 ### Documentation
+
 - [ ] README is up-to-date
 - [ ] API documentation is current
 - [ ] Deployment steps are documented
@@ -79,6 +84,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 ```
 
 **Recommended Settings**:
+
 - Enable autoscaling (compute auto-scaling)
 - Set up Point-in-Time Recovery (7+ days)
 - Enable daily automated backups
@@ -99,6 +105,7 @@ This guide covers everything needed to deploy Eventio to production, including p
 ```
 
 **Recommended Settings**:
+
 - Enable TLS
 - Set up automatic backups
 - Monitor memory usage
@@ -156,9 +163,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - '5432:5432'
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -169,9 +176,9 @@ services:
     volumes:
       - redis_data:/data
     ports:
-      - "6379:6379"
+      - '6379:6379'
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -187,7 +194,7 @@ services:
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL}
       PUBLIC_API_BASE_URL: ${PUBLIC_API_BASE_URL}
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       postgres:
         condition: service_healthy
@@ -213,8 +220,8 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl:/etc/nginx/ssl:ro
@@ -301,12 +308,14 @@ pnpm inspect-db
 ### Step 2: API Deployment
 
 **Railway Option**:
+
 ```bash
 # Automatic on push to main
 # OR manually trigger via Railway dashboard
 ```
 
 **Docker Option**:
+
 ```bash
 # Build and push image
 docker build -t eventio-api:latest .
@@ -330,12 +339,14 @@ docker logs eventio-workers -f
 ### Step 4: Frontend Deployment
 
 **Vercel Option**:
+
 ```bash
 # Automatic on push to main
 # OR manually trigger from Vercel dashboard
 ```
 
 **Docker/Self-hosted Option**:
+
 ```bash
 # Build frontend
 cd apps/web
@@ -405,7 +416,7 @@ curl https://event-io.me/api/v1/stats
 
 ```javascript
 // Configured in api and workers
-import * as Sentry from "@sentry/node";
+import * as Sentry from '@sentry/node';
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -427,30 +438,33 @@ posthog.init(process.env.PUBLIC_POSTHOG_KEY, {
 
 Monitor these key metrics:
 
-| Metric | Target | Alert |
-|--------|--------|-------|
+| Metric                  | Target | Alert  |
+| ----------------------- | ------ | ------ |
 | API Response Time (p95) | <200ms | >500ms |
-| Error Rate | <0.1% | >1% |
-| Database Connections | <20 | >25 |
-| Redis Memory | <500MB | >800MB |
-| Queue Depth | <100 | >1000 |
-| Scraper Success Rate | >95% | <90% |
+| Error Rate              | <0.1%  | >1%    |
+| Database Connections    | <20    | >25    |
+| Redis Memory            | <500MB | >800MB |
+| Queue Depth             | <100   | >1000  |
+| Scraper Success Rate    | >95%   | <90%   |
 
 ### Maintenance Tasks
 
 **Weekly**:
+
 - [ ] Review error logs
 - [ ] Check database size
 - [ ] Monitor queue depth
 - [ ] Verify all scrapers ran
 
 **Monthly**:
+
 - [ ] Review performance metrics
 - [ ] Update dependencies
 - [ ] Rotate API keys
 - [ ] Backup database
 
 **Quarterly**:
+
 - [ ] Security audit
 - [ ] Performance optimization
 - [ ] Capacity planning

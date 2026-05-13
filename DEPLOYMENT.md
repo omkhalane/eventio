@@ -11,10 +11,12 @@ Eventio is deployed as three independent services:
 ## Required Services
 
 ### Infrastructure
+
 - **PostgreSQL** v14+: Primary data store (Neon recommended for serverless)
 - **Redis**: Queue management and API caching (Upstash recommended)
 
 ### Optional Integrations
+
 - **Firebase**: Google auth and calendar integration
 - **Supabase**: Database and auth (alternative to Firebase)
 - **PostHog**: Analytics and event tracking
@@ -53,12 +55,14 @@ PUBLIC_POSTHOG_KEY=...
 ### Option 1: Railway + Neon + Upstash (Recommended)
 
 **Frontend (Vercel)**:
+
 1. Connect GitHub repo to Vercel
 2. Set root directory: `apps/web`
 3. Build command: `pnpm build`
 4. Environment variables: Copy from `.env.example`
 
 **API & Workers (Railway)**:
+
 1. Create Railway project
 2. Connect GitHub repo
 3. Create two services:
@@ -68,11 +72,13 @@ PUBLIC_POSTHOG_KEY=...
 5. Add PostgreSQL (Neon) and Redis (Upstash) connections
 
 **Database (Neon)**:
+
 1. Create Neon project
 2. Copy pooled connection string to `DATABASE_URL`
 3. Run migrations from Railway
 
 **Queue (Upstash)**:
+
 1. Create Upstash Redis instance
 2. Copy connection URL to `REDIS_URL`
 
@@ -107,6 +113,7 @@ docker-compose down
 ## Post-Deployment
 
 1. **Verify API Health**:
+
    ```bash
    curl https://your-domain/api/v1/healthz
    ```
