@@ -20,6 +20,8 @@ import { motion } from 'motion/react';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { SeoHead } from './SeoHead';
+import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 
 const LOGO_IMAGE = '/assets/logo.svg';
@@ -1021,14 +1023,32 @@ const CategoryGrid = () => (
   </section>
 );
 
-export const LandingPage: React.FC = () => {
-  const [pointer, setPointer] = useState({ x: -400, y: -400 });
+export default function LandingPage() {
+  const [pointer, setPointer] = useState({ x: -100, y: -100 });
+  const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
+
+  useEffect(() => {
+    fetch(buildApiUrl('/api/v1/stats'))
+      .then((res) => res.json())
+      .then(setStats)
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const handlePointerMove = (e: PointerEvent) => {
+      setPointer({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('pointermove', handlePointerMove);
+    return () => window.removeEventListener('pointermove', handlePointerMove);
+  }, []);
 
   return (
-    <div
-      onMouseMove={(event) => setPointer({ x: event.clientX, y: event.clientY })}
-      className="relative min-h-screen overflow-x-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black"
-    >
+    <main className="relative min-h-screen overflow-x-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black">
+      <SeoHead
+        title="Eventio | Developer Events, Hackathons, and Contests"
+        description="Discover developer events, hackathons, competitions, and coding contests with production-grade search and SEO-friendly event pages."
+        canonicalPath="/"
+      />
       <style>{LANDING_CSS}</style>
       <div
         className="pointer-glow pointer-events-none fixed z-[60] hidden h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full md:block"
@@ -1064,18 +1084,33 @@ export const LandingPage: React.FC = () => {
             <Link to="/architecture" className="transition-colors hover:text-emerald-400">
               Architecture
             </Link>
+            <Link to="/api" className="transition-colors hover:text-emerald-400">
+              API Docs
+            </Link>
           </div>
-          <Link
-            to="/calendar"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-xs font-bold tracking-widest text-black uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform hover:scale-105 active:scale-95"
-          >
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-emerald-200 via-white to-cyan-200 opacity-0 transition-opacity group-hover:opacity-100"></div>
-            <div className="absolute inset-x-0 h-[unset] bg-gradient-to-r from-transparent via-white/50 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative z-10 flex items-center gap-2">
-              Launch{' '}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
+          <div className="flex items-center gap-6">
+            {stats && (
+              <div className="hidden items-center gap-4 text-xs font-bold tracking-widest text-stone-400 uppercase md:flex">
+                <span>
+                  <span className="text-emerald-400">{stats.upcoming}</span> upcoming
+                </span>
+                <span>
+                  <span className="text-stone-300">{stats.past}</span> past
+                </span>
+              </div>
+            )}
+            <Link
+              to="/calendar"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-xs font-bold tracking-widest text-black uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform hover:scale-105 active:scale-95"
+            >
+              <div className="absolute inset-0 z-0 bg-gradient-to-r from-emerald-200 via-white to-cyan-200 opacity-0 transition-opacity group-hover:opacity-100"></div>
+              <div className="absolute inset-x-0 h-[unset] bg-gradient-to-r from-transparent via-white/50 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+              <span className="relative z-10 flex items-center gap-2">
+                Launch{' '}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -1311,6 +1346,6 @@ export const LandingPage: React.FC = () => {
           </a>
         </div>
       </footer>
-    </div>
+    </main>
   );
-};
+}

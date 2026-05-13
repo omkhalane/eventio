@@ -5,6 +5,10 @@ import { defineConfig, loadEnv, type Plugin } from 'vite';
 
 function getPublicConfigScript(env: Record<string, string>) {
   const publicConfig = {
+    apiBaseUrl:
+      env.PUBLIC_API_BASE_URL ||
+      (env.NODE_ENV === 'production' ? 'https://event-io.me' : 'http://localhost:3000'),
+    siteUrl: env.PUBLIC_SITE_URL,
     supabaseUrl: env.PUBLIC_SUPABASE_URL,
     supabaseAnonKey: env.PUBLIC_SUPABASE_ANON_KEY,
     firebaseApiKey: env.PUBLIC_FIREBASE_API_KEY,
@@ -61,7 +65,7 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
     },
     server: {
-      host: '127.0.0.1',
+      host: '0.0.0.0',
       port: 5173,
       strictPort: false,
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
@@ -69,7 +73,7 @@ export default defineConfig(({ mode }) => {
       hmr: process.env.DISABLE_HMR !== 'true',
     },
     preview: {
-      host: '127.0.0.1',
+      host: '0.0.0.0',
       port: 4173,
       strictPort: false,
     },

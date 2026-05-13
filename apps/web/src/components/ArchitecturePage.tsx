@@ -13,6 +13,7 @@ import { motion } from 'motion/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { SeoHead } from './SeoHead';
 import { cn } from '../lib/utils';
 
 const PerfStyles = () => (
@@ -84,6 +85,11 @@ const ArchLineVertical = () => (
 export const ArchitecturePage: React.FC = () => {
   return (
     <div className="hardware-accel relative flex min-h-screen flex-col overflow-hidden bg-[#050505] font-sans text-white">
+      <SeoHead
+        title="Eventio Architecture"
+        description="Explore the production architecture behind Eventio's scraping, normalization, indexing, and frontend delivery pipeline."
+        canonicalPath="/architecture"
+      />
       <PerfStyles />
       <Noise />
 

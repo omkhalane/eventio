@@ -7,9 +7,12 @@ export const ConfigSchema = z.object({
   databaseUrl: z.string().url('Invalid database URL'),
   // Optional Redis for later phases
   redisUrl: z.string().url('Invalid redis URL').optional(),
+  siteUrl: z.string().url('Invalid site URL').default('https://event-io.me'),
+  frontendUrl: z.string().url('Invalid frontend URL').default('https://event-io.me'),
+  apiBaseUrl: z.string().url('Invalid API base URL').optional(),
   // API
-  apiPort: z.number().int().positive().default(3000),
-  apiHost: z.string().default('localhost'),
+  apiPort: z.coerce.number().int().positive().default(3000),
+  apiHost: z.string().default('0.0.0.0'),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;
@@ -38,6 +41,9 @@ export function loadConfig(): AppConfig {
     logLevel: process.env.LOG_LEVEL,
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
+    siteUrl: process.env.PUBLIC_SITE_URL,
+    frontendUrl: process.env.FRONTEND_URL,
+    apiBaseUrl: process.env.PUBLIC_API_BASE_URL,
     apiPort: process.env.API_PORT ? parseInt(process.env.API_PORT, 10) : undefined,
     apiHost: process.env.API_HOST,
   };
