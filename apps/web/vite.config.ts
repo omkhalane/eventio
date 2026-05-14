@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      outDir: path.resolve(__dirname, '../../dist/apps/web'),
+      outDir: 'dist',
       emptyOutDir: true,
     },
     server: {
