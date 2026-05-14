@@ -1,12 +1,5 @@
 {
-  "functions": {
-    "api/v1/index.ts": {
-      "runtime": "@vercel/node"
-    },
-    "api/config.ts": {
-      "runtime": "@vercel/node"
-    }
-  },
+
   "rewrites": [
     {
       "source": "/api/v1/:path*",
