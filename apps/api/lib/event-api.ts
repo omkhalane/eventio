@@ -1,3 +1,6 @@
+import { logger } from '@eventio/observability';
+import { scrapingQueue } from '@eventio/queue';
+
 import {
   buildEventResponse,
   buildEventsQuery,
@@ -5,8 +8,6 @@ import {
   parseEventsQuery,
 } from '../src/lib/query';
 import { getUser, syncUser } from '../src/lib/users';
-import { scrapingQueue } from '@eventio/queue';
-import { logger } from '@eventio/observability';
 
 export type ApiQueryValue = string | string[] | undefined;
 export type ApiQuery = Record<string, ApiQueryValue>;

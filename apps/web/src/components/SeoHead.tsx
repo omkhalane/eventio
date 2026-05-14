@@ -1,5 +1,6 @@
-import { getPublicConfig } from '../lib/publicConfig';
 import { useEffect } from 'react';
+
+import { getPublicConfig } from '../lib/publicConfig';
 
 type SeoHeadProps = {
   title: string;

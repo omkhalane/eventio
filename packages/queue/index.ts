@@ -1,4 +1,4 @@
-import { Queue, Worker, QueueEvents } from 'bullmq';
+import { Queue, QueueEvents,Worker } from 'bullmq';
 import IORedis from 'ioredis';
 
 const connection = new IORedis(process.env.REDIS_URL || 'redis://localhost:6379', {
@@ -19,4 +19,4 @@ export const dedupeQueue = new Queue(QUEUES.DEDUPE, { connection });
 export const indexingQueue = new Queue(QUEUES.INDEXING, { connection });
 
 // Export to allow apps to create their own workers
-export { Worker, QueueEvents, connection };
+export { connection,QueueEvents, Worker };

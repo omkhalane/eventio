@@ -25,7 +25,7 @@ export default function MiniCalendar({
   selectedDate,
   onDateSelect,
   currentMonth,
-  setCurrentMonth,
+  setCurrentMonth: _setCurrentMonth,
 }: MiniCalendarProps) {
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
@@ -53,7 +53,7 @@ export default function MiniCalendar({
       </div>
 
       <div className="grid grid-cols-7 gap-1">
-        {calendarDays.map((day, idx) => {
+        {calendarDays.map((day, _idx) => {
           const isSelected = isSameDay(day, selectedDate);
           const isCurrentMonth = isSameMonth(day, monthStart);
           const isTodayDate = isToday(day);

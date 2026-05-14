@@ -129,16 +129,19 @@ export default function MainCalendar({
     });
   }, [events, searchQuery, filters]);
 
-  const getEventsForDay = (day: Date) => {
-    return filteredEvents.filter((event) => isSameDay(new Date(event.start_time), day));
-  };
+  const getEventsForDay = React.useCallback(
+    (day: Date) => {
+      return filteredEvents.filter((event) => isSameDay(new Date(event.start_time), day));
+    },
+    [filteredEvents],
+  );
 
   const [eventsPopupDay, setEventsPopupDay] = React.useState<Date | null>(null);
 
   const popupEvents = useMemo(() => {
     if (!eventsPopupDay) return [];
     return getEventsForDay(eventsPopupDay);
-  }, [eventsPopupDay, filteredEvents]);
+  }, [eventsPopupDay, getEventsForDay]);
 
   const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

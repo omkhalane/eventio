@@ -1,6 +1,7 @@
 {
   "name": "eventio-monorepo",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=20.0.0"
   },

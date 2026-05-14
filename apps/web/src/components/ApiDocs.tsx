@@ -1,10 +1,10 @@
+import { CheckCircle2,ChevronLeft, Copy, Terminal } from 'lucide-react';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronLeft, Terminal, Copy, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { SeoHead } from './SeoHead';
 import { buildApiUrl } from '../lib/api';
+import { SeoHead } from './SeoHead';
 
 export const ApiDocs = () => {
   const [copied, setCopied] = useState(false);

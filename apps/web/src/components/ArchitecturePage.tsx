@@ -13,8 +13,8 @@ import { motion } from 'motion/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SeoHead } from './SeoHead';
 import { cn } from '../lib/utils';
+import { SeoHead } from './SeoHead';
 
 const PerfStyles = () => (
   <style>{`

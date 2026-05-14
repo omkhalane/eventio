@@ -1,14 +1,14 @@
 import 'dotenv/config';
+
+import { loadConfig } from '@eventio/config';
 import { logger } from '@eventio/observability';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
-import { loadConfig } from '@eventio/config';
-
+import { handleApiRequest } from '../lib/event-api';
 import { applyApiAuth } from './lib/auth';
 import { runMigrations } from './lib/migrations';
 import { sendError } from './lib/response';
-import { handleApiRequest } from '../lib/event-api';
 
 const config = loadConfig();
 
