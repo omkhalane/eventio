@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Code2, Mail, MessageCircle, Send } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -48,17 +48,17 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a href="https://github.com/omkhalane/eventio" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
-                  <Github className="h-4 w-4" /> GitHub
+                  <Code2 className="h-4 w-4" /> GitHub
                 </a>
               </li>
               <li>
                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
-                  <Linkedin className="h-4 w-4" /> LinkedIn
+                  <Send className="h-4 w-4" /> LinkedIn
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
-                  <Twitter className="h-4 w-4" /> Twitter/X
+                  <MessageCircle className="h-4 w-4" /> Twitter/X
                 </a>
               </li>
               <li>

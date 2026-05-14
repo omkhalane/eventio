@@ -2,6 +2,7 @@ import {
   ArrowRight,
   CalendarCheck,
   CheckCircle2,
+  Database,
   GitBranch,
   Search,
   Shield,
