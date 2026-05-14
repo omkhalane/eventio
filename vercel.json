@@ -1,10 +1,10 @@
 {
   "functions": {
     "api/v1/index.ts": {
-      "runtime": "vercel-node@5.8.1"
+      "runtime": "@vercel/node"
     },
     "api/config.ts": {
-      "runtime": "vercel-node@5.8.1"
+      "runtime": "@vercel/node"
     }
   },
   "rewrites": [
