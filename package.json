@@ -14,6 +14,7 @@
     "db:generate": "pnpm --filter @eventio/db run db:generate",
     "scrape:trigger": "pnpm --filter @eventio/workers run scrape:trigger",
     "scrape:run": "pnpm --filter @eventio/workers run scrape:run",
+    "scrape:run:ci": "pnpm --filter @eventio/workers run scrape:run:ci",
     "scrape:temp": "pnpm --filter @eventio/workers run scrape:temp",
     "check": "pnpm run lint"
   },
