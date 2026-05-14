@@ -7,6 +7,25 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@eventio/api':
+        specifier: workspace:*
+        version: link:apps/api
+      '@eventio/config':
+        specifier: workspace:*
+        version: link:packages/config
+      '@eventio/db':
+        specifier: workspace:*
+        version: link:packages/db
+      '@eventio/observability':
+        specifier: workspace:*
+        version: link:packages/observability
+      '@eventio/queue':
+        specifier: workspace:*
+        version: link:packages/queue
+      '@eventio/scraper-core':
+        specifier: workspace:*
+        version: link:packages/scraper-core
     devDependencies:
       '@types/node':
         specifier: ^20.12.7

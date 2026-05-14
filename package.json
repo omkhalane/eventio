@@ -18,6 +18,14 @@
     "scrape:temp": "pnpm --filter @eventio/workers run scrape:temp",
     "check": "pnpm run lint"
   },
+  "dependencies": {
+    "@eventio/api": "workspace:*",
+    "@eventio/config": "workspace:*",
+    "@eventio/db": "workspace:*",
+    "@eventio/observability": "workspace:*",
+    "@eventio/queue": "workspace:*",
+    "@eventio/scraper-core": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "@vercel/node": "^5.0.0",
