@@ -1,4 +1,4 @@
-import { handleApiRequest } from '@eventio/api/lib/event-api';
+import { handleApiRequest } from '../../apps/api/lib/event-api';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
