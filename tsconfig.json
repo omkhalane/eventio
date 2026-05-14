@@ -15,7 +15,8 @@
       "@eventio/config": ["packages/config"]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["node"]
   },
   "include": ["api/**/*", "apps/api/lib/**/*", "packages/**/*"]
 }
