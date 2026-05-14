@@ -5,12 +5,12 @@ export default async function handler(request: VercelRequest, response: VercelRe
   const { method, url, query, body } = request;
 
   try {
-    // Normalize path for internal handler
-    const _normalizedPath = url?.replace('/api/v1', '') || '/';
+    // Extract pathname without query string
+    const pathname = url ? url.split('?')[0] : '/';
     
     const result = await handleApiRequest(
       method || 'GET',
-      url || '/',
+      pathname,
       query as Record<string, string | string[] | undefined>,
       body
     );
