@@ -8,10 +8,14 @@ export default async function handler(request: VercelRequest, response: VercelRe
     // Extract pathname without query string
     const pathname = url ? url.split('?')[0] : '/';
     
+    // Remove the Vercel-injected `path` parameter from the rewrite
+    const cleanQuery = { ...query };
+    delete cleanQuery.path;
+
     const result = await handleApiRequest(
       method || 'GET',
       pathname,
-      query as Record<string, string | string[] | undefined>,
+      cleanQuery as Record<string, string | string[] | undefined>,
       body
     );
 

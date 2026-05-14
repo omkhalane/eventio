@@ -8,6 +8,10 @@
     {
       "source": "/api/config",
       "destination": "/api/config"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ],
   "cleanUrls": true,
