@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
@@ -14,7 +14,6 @@
       "@eventio/scraper-core": ["packages/scraper-core"],
       "@eventio/config": ["packages/config"]
     },
-    "allowImportingTsExtensions": true,
     "noEmit": true,
     "types": ["node"]
   },
