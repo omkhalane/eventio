@@ -21,13 +21,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter as Router, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 import { ApiDocs } from './components/ApiDocs';
-import { ArchitecturePage } from './components/ArchitecturePage';
 import { CookieConsent } from './components/CookieConsent';
 import EventModal from './components/EventModal';
+import { Footer } from './components/Footer';
+import { SeoHead } from './components/SeoHead';
 import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
-import { SeoHead } from './components/SeoHead';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
 import { CATEGORIES } from './constants';
@@ -464,9 +464,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/calendar" element={<CalendarApp />} />
-        <Route path="/architecture" element={<ArchitecturePage />} />
         <Route path="/docs" element={<ApiDocs />} />
         <Route path="/api" element={<Navigate to="/docs" replace />} />
+        <Route path="/hackathons" element={<PlaceholderPage title="Hackathons" />} />
+        <Route path="/contests" element={<PlaceholderPage title="Contests" />} />
+        <Route path="/resources" element={<PlaceholderPage title="Resources" />} />
+        <Route path="/submit" element={<PlaceholderPage title="Submit Event" />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/privacy" element={<LegalPage kind="privacy" />} />
@@ -478,11 +481,47 @@ export default function App() {
         <Route path="/about" element={<LegalPage kind="about" />} />
         <Route path="/opensource" element={<LegalPage kind="opensource" />} />
         <Route path="/security" element={<LegalPage kind="security" />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <CookieConsent />
       <Analytics />
     </Router>
+  );
+}
+
+function PlaceholderPage({ title }: { title: string }) {
+  return (
+    <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <SeoHead title={`${title} | Eventio`} description={`${title} on Eventio.`} />
+      <div className="flex flex-1 flex-col items-center justify-center gap-4">
+        <h1 className="text-4xl font-black">{title}</h1>
+        <p className="text-muted-foreground">This page is under construction.</p>
+        <Link to="/" className="text-primary hover:underline">
+          Go back home
+        </Link>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <div className="bg-background text-foreground flex min-h-screen flex-col">
+      <SeoHead
+        title="404 Not Found | Eventio"
+        description="The page you are looking for does not exist."
+      />
+      <div className="flex flex-1 flex-col items-center justify-center gap-4">
+        <h1 className="text-primary text-6xl font-black">404</h1>
+        <h2 className="text-2xl font-bold">Page not found</h2>
+        <p className="text-muted-foreground">The page you're looking for doesn't exist.</p>
+        <Link to="/" className="text-primary hover:underline">
+          Return home
+        </Link>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

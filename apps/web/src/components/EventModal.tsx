@@ -11,6 +11,10 @@ import {
   Users,
   Video,
   X,
+  Share2,
+  Bookmark,
+  Twitter,
+  Linkedin,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React, { useMemo, useState } from 'react';
@@ -110,6 +114,26 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
   const isServiceDisabled = error?.includes('enable it') || error?.includes('disabled');
 
   const category = CATEGORIES.find((c) => c.id === event.event_type);
+
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const handleShare = async () => {
+    const shareData = {
+      title: event.title,
+      text: `Check out ${event.title} on Eventio!`,
+      url: window.location.origin + `/calendar?event=${event.id}`,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error('Share failed', err);
+      }
+    } else {
+      navigator.clipboard.writeText(shareData.url);
+      alert('Link copied to clipboard!');
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -371,6 +395,21 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                       </>
                     )}
                   </button>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <button onClick={handleShare} className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
+                    <Share2 className="h-4 w-4" /> Share
+                  </button>
+                  <button onClick={() => setIsBookmarked(!isBookmarked)} className={cn("flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition-colors", isBookmarked ? "border-emerald-500 bg-emerald-500/10 text-emerald-500" : "border-border bg-background/50 hover:bg-muted")}>
+                    <Bookmark className="h-4 w-4" /> {isBookmarked ? 'Saved' : 'Bookmark'}
+                  </button>
+                  <a href={`https://twitter.com/intent/tweet?text=Check out ${encodeURIComponent(event.title)}&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
+                    <Twitter className="h-4 w-4" /> Tweet
+                  </a>
+                  <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}&title=${encodeURIComponent(event.title)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
+                    <Linkedin className="h-4 w-4" /> Post
+                  </a>
                 </div>
 
                 {error && (

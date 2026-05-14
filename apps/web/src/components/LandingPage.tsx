@@ -2,17 +2,12 @@ import {
   ArrowRight,
   CalendarCheck,
   CheckCircle2,
-  Code2,
-  Database,
   GitBranch,
-  Layers3,
-  Radio,
   Search,
   Shield,
   Sparkles,
   Star,
   Swords,
-  Terminal,
   Trophy,
   Users,
 } from 'lucide-react';
@@ -22,6 +17,7 @@ import { Link } from 'react-router-dom';
 
 import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
+import { Footer } from './Footer';
 import { SeoHead } from './SeoHead';
 
 const LOGO_IMAGE = '/assets/logo.svg';
@@ -898,65 +894,6 @@ const CalendarShowcase = () => (
   </section>
 );
 
-const Pipeline = () => (
-  <section className="relative overflow-hidden bg-[#090909] px-6 py-28 md:py-36">
-    <SectionHeader
-      kicker="How it works"
-      title="From source noise to calendar signal."
-      copy="A simple data path: public event pages, scraper adapters, normalized schema, Neon DB, then a calendar you can use."
-    />
-    <Shell className="mx-auto max-w-7xl rounded-[32px] p-4 md:p-6">
-      <div className="absolute top-1/2 right-8 left-8 hidden h-px bg-white/10 md:block" />
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-5">
-        {[
-          { label: 'Sources', icon: Radio, color: 'text-rose-400', bg: 'bg-rose-400/10' },
-          { label: 'Scrapers', icon: Code2, color: 'text-amber-400', bg: 'bg-amber-400/10' },
-          { label: 'Schema', icon: Terminal, color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
-          { label: 'Neon DB', icon: Database, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
-          {
-            label: 'Calendar',
-            icon: CalendarCheck,
-            color: 'text-violet-400',
-            bg: 'bg-violet-400/10',
-          },
-        ].map(({ label, icon: Icon, color, bg }, index) => (
-          <motion.div
-            key={label}
-            {...fadeUp}
-            transition={{ duration: 0.65, delay: index * 0.05 }}
-            className="group relative"
-          >
-            <div className="soft-card-hover relative z-10 min-h-[160px] overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent p-4 backdrop-blur-sm transition-all hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] md:min-h-[220px] md:rounded-[28px] md:p-6">
-              <div
-                className={`absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-gradient-to-bl from-white/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100 md:h-32 md:w-32`}
-              />
-              <div
-                className={`mb-6 flex h-10 w-10 items-center justify-center rounded-xl md:mb-10 md:h-14 md:w-14 md:rounded-2xl ${bg} border border-white/10 transition-transform group-hover:scale-110`}
-              >
-                <Icon className={`h-5 w-5 md:h-7 md:w-7 ${color}`} />
-              </div>
-              <p className="text-xl font-bold tracking-tight text-white transition-colors group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-stone-400 group-hover:bg-clip-text group-hover:text-transparent md:text-2xl">
-                {label}
-              </p>
-              <p className="mt-1 text-xs leading-5 font-medium text-stone-400 md:mt-2 md:text-sm md:leading-6">
-                {index === 0 && 'Contests, hackathons, CTFs, conferences.'}
-                {index === 1 && 'Adapters collect clean event data.'}
-                {index === 2 && 'Fields become predictable and searchable.'}
-                {index === 3 && 'Events and preferences are persisted in Neon.'}
-                {index === 4 && 'Month, week, day, list, and sync.'}
-              </p>
-              <span
-                className={`absolute top-4 right-4 text-base font-black tracking-tighter md:top-6 md:right-6 md:text-xl ${color} opacity-20 transition-opacity group-hover:opacity-100`}
-              >
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </Shell>
-  </section>
-);
 
 const CategoryGrid = () => (
   <section className="bg-black px-6 py-28 md:py-36">
@@ -1092,22 +1029,14 @@ export default function LandingPage() {
               Eventio
             </span>
           </Link>
-          <div className="hidden items-center gap-8 text-xs font-bold tracking-[0.2em] text-stone-400 uppercase md:flex">
-            <a href="#product" className="transition-colors hover:text-emerald-400">
-              Product
-            </a>
-            <a href="#pipeline" className="transition-colors hover:text-emerald-400">
-              Pipeline
-            </a>
-            <a href="#coverage" className="transition-colors hover:text-emerald-400">
-              Coverage
-            </a>
-            <Link to="/architecture" className="transition-colors hover:text-emerald-400">
-              Architecture
-            </Link>
-            <Link to="/api" className="transition-colors hover:text-emerald-400">
-              API Docs
-            </Link>
+          <div className="hidden items-center gap-6 text-xs font-bold tracking-[0.2em] text-stone-400 uppercase lg:flex">
+            <Link to="/" className="transition-colors hover:text-emerald-400">Home</Link>
+            <Link to="/calendar" className="transition-colors hover:text-emerald-400">Calendar</Link>
+            <Link to="/hackathons" className="transition-colors hover:text-emerald-400">Hackathons</Link>
+            <Link to="/contests" className="transition-colors hover:text-emerald-400">Contests</Link>
+            <Link to="/resources" className="transition-colors hover:text-emerald-400">Resources</Link>
+            <Link to="/about" className="transition-colors hover:text-emerald-400">About</Link>
+            <Link to="/api" className="transition-colors hover:text-emerald-400">API Docs</Link>
           </div>
           <div className="flex items-center gap-6">
             {stats && (
@@ -1308,9 +1237,6 @@ export default function LandingPage() {
       <div id="product">
         <CalendarShowcase />
       </div>
-      <div id="pipeline">
-        <Pipeline />
-      </div>
       <div id="coverage">
         <CategoryGrid />
       </div>
@@ -1335,38 +1261,11 @@ export default function LandingPage() {
               Launch Calendar{' '}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              to="/architecture"
-              className="group magnetic-link inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.05] px-9 py-5 text-xs font-bold tracking-widest text-stone-100 uppercase shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
-            >
-              View Architecture{' '}
-              <Layers3 className="h-5 w-5 transition-transform group-hover:scale-110" />
-            </Link>
           </div>
         </motion.div>
       </section>
 
-      <footer className="relative border-t border-white/10 bg-[#050505] px-6 py-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-          <div className="group flex cursor-pointer items-center gap-4">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-transform group-hover:scale-110">
-              <img src={LOGO_IMAGE} alt="" className="h-7 w-7 rounded-md" />
-            </span>
-            <span className="bg-gradient-to-r from-stone-50 to-stone-500 bg-clip-text text-2xl font-black tracking-tighter text-transparent">
-              Eventio
-            </span>
-          </div>
-          <a
-            href="https://github.com/omkhalane"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-bold tracking-widest text-stone-400 uppercase shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
-          >
-            <Star className="h-5 w-5 transition-transform group-hover:scale-125" />
-            Built by Om Khalane
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
