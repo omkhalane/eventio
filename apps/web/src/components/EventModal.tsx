@@ -1,20 +1,20 @@
 import { format } from 'date-fns';
 import {
+  Bookmark,
   Calendar as CalendarIcon,
   Check,
   ChevronRight,
   Clock,
   Infinity as InfinityIcon,
+  MessageCircle,
+  Send,
+  Share2,
   Star,
   Terminal,
   Trophy,
   Users,
   Video,
   X,
-  Share2,
-  Bookmark,
-  Twitter,
-  Linkedin,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React, { useMemo, useState } from 'react';
@@ -56,6 +56,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSynced, setIsSynced] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const faviconUrl = useMemo(() => {
     if (!event?.url) return null;
@@ -114,8 +115,6 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
   const isServiceDisabled = error?.includes('enable it') || error?.includes('disabled');
 
   const category = CATEGORIES.find((c) => c.id === event.event_type);
-
-  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const handleShare = async () => {
     const shareData = {
@@ -405,10 +404,10 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                     <Bookmark className="h-4 w-4" /> {isBookmarked ? 'Saved' : 'Bookmark'}
                   </button>
                   <a href={`https://twitter.com/intent/tweet?text=Check out ${encodeURIComponent(event.title)}&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
-                    <Twitter className="h-4 w-4" /> Tweet
+                    <MessageCircle className="h-4 w-4" /> Tweet
                   </a>
                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}&title=${encodeURIComponent(event.title)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
-                    <Linkedin className="h-4 w-4" /> Post
+                    <Send className="h-4 w-4" /> Post
                   </a>
                 </div>
 
