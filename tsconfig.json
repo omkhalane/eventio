@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@eventio/api/*": ["apps/api/*"],
+      "@eventio/db": ["packages/db"],
+      "@eventio/queue": ["packages/queue"],
+      "@eventio/observability": ["packages/observability"],
+      "@eventio/scraper-core": ["packages/scraper-core"],
+      "@eventio/config": ["packages/config"]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["api/**/*", "apps/api/lib/**/*", "packages/**/*"]
+}

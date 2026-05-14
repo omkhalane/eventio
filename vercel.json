@@ -1,20 +1,20 @@
 {
   "functions": {
-    "apps/web/api/v1/index.ts": {
+    "api/v1/index.ts": {
       "runtime": "vercel-node@5.8.1"
     },
-    "apps/web/api/config.ts": {
+    "api/config.ts": {
       "runtime": "vercel-node@5.8.1"
     }
   },
   "rewrites": [
     {
       "source": "/api/v1/:path*",
-      "destination": "/apps/web/api/v1/index.ts"
+      "destination": "/api/v1/index.ts"
     },
     {
       "source": "/api/config",
-      "destination": "/apps/web/api/config.ts"
+      "destination": "/api/config.ts"
     }
   ],
   "cleanUrls": true,
