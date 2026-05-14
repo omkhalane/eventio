@@ -17,12 +17,12 @@ import {
   Users,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { SeoHead } from './SeoHead';
 import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
+import { SeoHead } from './SeoHead';
 
 const LOGO_IMAGE = '/assets/logo.svg';
 
@@ -1042,6 +1042,27 @@ export default function LandingPage() {
     return () => window.removeEventListener('pointermove', handlePointerMove);
   }, []);
 
+  const [particles, setParticles] = useState<
+    {
+      initialX: string;
+      initialY: string;
+      animateX: string;
+      duration: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setParticles(
+      [...Array(6)].map(() => ({
+        initialX: Math.random() * 100 + '%',
+        initialY: Math.random() * 100 + '%',
+        animateX: (Math.random() - 0.5) * 200 + 'px',
+        duration: 15 + Math.random() * 10,
+      })),
+    );
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black">
       <SeoHead
@@ -1146,21 +1167,21 @@ export default function LandingPage() {
           <div className="absolute inset-0 [background-image:url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] brightness-150 contrast-150" />
 
           {/* Floating artistic particles */}
-          {[...Array(6)].map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
               initial={{
-                x: Math.random() * 100 + '%',
-                y: Math.random() * 100 + '%',
+                x: p.initialX,
+                y: p.initialY,
                 opacity: 0,
               }}
               animate={{
                 y: ['-20%', '120%'],
                 opacity: [0, 0.2, 0],
-                x: (Math.random() - 0.5) * 200 + 'px',
+                x: p.animateX,
               }}
               transition={{
-                duration: 15 + Math.random() * 10,
+                duration: p.duration,
                 repeat: Infinity,
                 delay: i * 2,
                 ease: 'linear',

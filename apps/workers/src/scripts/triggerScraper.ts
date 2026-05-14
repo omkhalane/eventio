@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import { scrapingQueue } from '@eventio/queue';
+
 import { logger } from '@eventio/observability';
+import { scrapingQueue } from '@eventio/queue';
 
 const trigger = async () => {
   const rawArg = process.argv[2];

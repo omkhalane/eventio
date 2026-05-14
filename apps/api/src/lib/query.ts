@@ -86,7 +86,6 @@ const parseDate = (value: string | string[] | undefined) => {
 const validateSupportedValues = (values: string[], allowed: readonly string[]) =>
   values.filter((value) => !allowed.includes(value));
 
-const escapeSqlLiteral = (value: string) => `'${value.replace(/'/g, "''")}'`;
 
 const buildListMatchCondition = (column: any, values: string[]) => {
   if (values.length === 0) return null;

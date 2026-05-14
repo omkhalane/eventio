@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import { scrapingQueue } from '@eventio/queue';
+
 import { logger } from '@eventio/observability';
+import { scrapingQueue } from '@eventio/queue';
 
 const CRON_SCHEDULES = [
   { platform: 'codeforces', pattern: '0 */4 * * *' }, // Every 4 hours

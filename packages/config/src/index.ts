@@ -1,3 +1,3 @@
 export { loadConfig, validateConfig } from './config';
 export { getEnv } from './env';
-export type { Config, AppConfig } from './types';
+export type { AppConfig,Config } from './types';

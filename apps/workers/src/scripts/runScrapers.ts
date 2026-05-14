@@ -1,12 +1,14 @@
+/* eslint-disable no-console */
 import 'dotenv/config';
+
+import { db, events, rawScrapedEvents } from '@eventio/db';
 import {
-  scrapingQueue,
-  normalizationQueue,
+  connection,
   dedupeQueue,
   indexingQueue,
-  connection,
+  normalizationQueue,
+  scrapingQueue,
 } from '@eventio/queue';
-import { logger } from '@eventio/observability';
 import {
   scrapeAtcoder,
   scrapeCodechef,
@@ -16,10 +18,9 @@ import {
   scrapeUnstop,
   writeScraperOutput,
 } from '@eventio/scraper-core';
-import { db, events, rawScrapedEvents } from '@eventio/db';
 import { Worker } from 'bullmq';
-import { count, desc, eq } from 'drizzle-orm';
 import crypto from 'crypto';
+import { count, desc, eq } from 'drizzle-orm';
 
 /**
  * Comprehensive scraper runner with terminal output
@@ -62,7 +63,7 @@ const persistScrapedEvents = async (
   return insertedCount;
 };
 
-let eventStats = {
+const eventStats = {
   scraped: 0,
   normalized: 0,
   deduped: 0,
@@ -392,7 +393,7 @@ const initializeWorkers = async () => {
     'indexing',
     async (job) => {
       try {
-        const { eventId } = job.data;
+        const { eventId: _eventId } = job.data;
 
         // Just mark as indexed
         eventStats.indexed++;

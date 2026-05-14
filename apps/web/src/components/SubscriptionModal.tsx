@@ -11,7 +11,7 @@ interface SubscriptionModalProps {
 export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
   isOpen,
   onClose,
-  userEmail,
+  userEmail: _userEmail,
 }) => {
   return (
     <AnimatePresence>

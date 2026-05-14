@@ -1,4 +1,4 @@
-import { db, users, eq, sql } from '@eventio/db';
+import { db, eq,users } from '@eventio/db';
 
 export async function syncUser(userData: {
   googleId: string;

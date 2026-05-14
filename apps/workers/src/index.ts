@@ -1,13 +1,15 @@
 import 'dotenv/config';
+
+import { db, events, rawScrapedEvents, searchDocuments, sql } from '@eventio/db';
+import { logger } from '@eventio/observability';
 import {
-  Worker,
-  QUEUES,
   connection,
-  normalizationQueue,
   dedupeQueue,
   indexingQueue,
+  normalizationQueue,
+  QUEUES,
+  Worker,
 } from '@eventio/queue';
-import { logger } from '@eventio/observability';
 import {
   scrapeAtcoder,
   scrapeCodechef,
@@ -16,7 +18,6 @@ import {
   scrapeMlh,
   scrapeUnstop,
 } from '@eventio/scraper-core';
-import { db, rawScrapedEvents, events, searchDocuments, sql } from '@eventio/db';
 import crypto from 'crypto';
 
 const persistScrapedEvents = async (

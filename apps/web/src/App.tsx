@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import {
   addDays,
   addMonths,
@@ -14,14 +15,13 @@ import {
   signInWithPopup,
   signOut as firebaseSignOut,
 } from 'firebase/auth';
-import { Analytics } from '@vercel/analytics/react';
 import { ChevronLeft, ChevronRight, Infinity as InfinityIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter as Router, Link, Navigate, Route, Routes } from 'react-router-dom';
 
-import { ArchitecturePage } from './components/ArchitecturePage';
 import { ApiDocs } from './components/ApiDocs';
+import { ArchitecturePage } from './components/ArchitecturePage';
 import { CookieConsent } from './components/CookieConsent';
 import EventModal from './components/EventModal';
 import LandingPage from './components/LandingPage';
@@ -30,8 +30,8 @@ import MiniCalendar from './components/MiniCalendar';
 import { SeoHead } from './components/SeoHead';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
-import { buildApiUrl } from './lib/api';
 import { CATEGORIES } from './constants';
+import { buildApiUrl } from './lib/api';
 import { auth, googleProvider } from './lib/firebase';
 import { cn } from './lib/utils';
 import { setGoogleAccessToken } from './services/googleCalendarService';

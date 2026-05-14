@@ -61,7 +61,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     } catch {
       return null;
     }
-  }, [event?.url]);
+  }, [event]);
 
   const CategoryIcon = useMemo(() => {
     if (!event) return Star;
@@ -79,7 +79,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
       default:
         return Star;
     }
-  }, [event?.event_type]);
+  }, [event]);
 
   if (!event) return null;
 
