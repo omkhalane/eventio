@@ -6,6 +6,7 @@
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
     "strict": true,
     "isolatedModules": true,
@@ -14,6 +15,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
+      "@eventio/api/*": ["../api/*"],
       "@eventio/*": ["../../packages/*/src", "../../packages/*"]
     },
     "allowImportingTsExtensions": true,
