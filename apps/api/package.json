@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts"
+    "start": "tsx src/index.ts",
+    "lint": "eslint . --ext ts --max-warnings 0"
   },
   "dependencies": {
     "fastify": "^5.8.5",

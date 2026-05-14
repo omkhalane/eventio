@@ -8,7 +8,8 @@
     "scrape:trigger": "tsx src/scripts/triggerScraper.ts",
     "scrape:run": "tsx src/scripts/runScrapers.ts",
     "scrape:run:ci": "tsx src/scripts/runScrapers.ts",
-    "scrape:temp": "tsx ../../temp/scraperRunner.ts"
+    "scrape:temp": "tsx ../../temp/scraperRunner.ts",
+    "lint": "eslint . --ext ts --max-warnings 0"
   },
   "dependencies": {
     "@eventio/db": "workspace:*",
