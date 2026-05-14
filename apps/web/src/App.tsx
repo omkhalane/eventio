@@ -197,6 +197,13 @@ const CalendarApp = () => {
           params.set('search', searchQuery);
         }
 
+        // Fetch events for the current calendar view context
+        const fetchStart = subMonths(currentMonth, 1).toISOString();
+        const fetchEnd = addMonths(currentMonth, 2).toISOString();
+        params.set('startDate', fetchStart);
+        params.set('endDate', fetchEnd);
+        params.set('limit', '500');
+
         const res = await fetch(buildApiUrl(`/api/v1/events?${params.toString()}`));
         if (!res.ok) throw new Error('Failed to fetch events');
 
@@ -223,7 +230,7 @@ const CalendarApp = () => {
     }
 
     fetchEvents();
-  }, [filters, searchQuery]);
+  }, [filters, searchQuery, currentMonth]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
