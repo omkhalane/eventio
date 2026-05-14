@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/v1/:path*",
-      "destination": "/api/v1/index.ts"
+      "destination": "/api/v1"
     },
     {
       "source": "/api/config",
-      "destination": "/api/config.ts"
+      "destination": "/api/config"
     }
   ],
   "cleanUrls": true,
