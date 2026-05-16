@@ -3,22 +3,22 @@ import {
   Bookmark,
   Calendar as CalendarIcon,
   Check,
-  ChevronRight,
+  ChevronDown,
   Clock,
+  CreditCard,
   ExternalLink,
-  Infinity as InfinityIcon,
-  MessageCircle,
-  Send,
+  Eye,
+  MapPin,
+  MousePointerClick,
   Share2,
-  Star,
-  Terminal,
   Trophy,
+  User,
+  UserCheck,
   Users,
-  Video,
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
@@ -55,68 +55,24 @@ const GoogleIcon = () => (
 );
 
 export default function EventModal({ event, onClose, isAuthorized, onSignIn }: EventModalProps) {
-  const [isSyncing, setIsSyncing] = useState(false);
   const [isSynced, setIsSynced] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [isBookmarked, setIsBookmarked] = useState(false);
-
-  const faviconUrl = useMemo(() => {
-    if (!event?.url) return null;
-    try {
-      const url = new URL(event.url);
-      return `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=128`;
-    } catch {
-      return null;
-    }
-  }, [event]);
-
-  const CategoryIcon = useMemo(() => {
-    if (!event) return Star;
-    switch (event.event_type) {
-      case 'hackathon':
-        return Trophy;
-      case 'competitive_programming':
-        return Terminal;
-      case 'global_competition':
-        return Trophy;
-      case 'live_stream':
-        return Video;
-      case 'community_event':
-        return Users;
-      default:
-        return Star;
-    }
-  }, [event]);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(true);
 
   if (!event) return null;
 
   const handleSync = async () => {
-    setIsSyncing(true);
-    setError(null);
     try {
       if (!isAuthorized && onSignIn) {
         await onSignIn();
       }
-      // Map to old format for sync service if needed or update service
       await syncEventToGoogle(event);
       setIsSynced(true);
       setTimeout(() => setIsSynced(false), 3000);
     } catch (err: any) {
       console.error('Failed to sync event:', err);
-      let errorMsg = err.message || 'Failed to sync to Google Calendar.';
-      if (errorMsg.includes('disabled') || errorMsg.includes('not been used')) {
-        errorMsg =
-          'Google Calendar API is not enabled. Please enable it in Google Cloud Console to use sync.';
-      }
-      setError(errorMsg);
-    } finally {
-      setIsSyncing(false);
     }
   };
-
-  const isServiceDisabled = error?.includes('enable it') || error?.includes('disabled');
-
-  const category = CATEGORIES.find((c) => c.id === event.event_type);
 
   const handleShare = async () => {
     const shareData = {
@@ -136,306 +92,307 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     }
   };
 
+  const category = CATEGORIES.find((c) => c.id === event.event_type);
+  const startDate = new Date(event.start_time);
+  const endDate = event.end_time ? new Date(event.end_time) : null;
+
+  const badges = [
+    event.platform.toUpperCase(),
+    category?.label.toUpperCase(),
+    event.mode?.toUpperCase(),
+    isBookmarked ? 'REGISTERED' : null,
+    event.is_free ? 'FREE' : null,
+  ].filter(Boolean);
+
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="bg-background/40 absolute inset-0 backdrop-blur-3xl"
+          className="bg-black/60 absolute inset-0 backdrop-blur-md"
         />
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className={cn(
-            'bg-background/60 relative flex max-h-[85vh] w-full max-w-xl flex-col overflow-hidden rounded-[2.5rem] border border-white/20 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)] backdrop-blur-2xl',
-          )}
+          exit={{ opacity: 0, scale: 0.9, y: 40 }}
+          className="bg-zinc-50 dark:bg-zinc-950 relative flex max-h-[95vh] w-full max-w-4xl flex-col overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)]"
         >
-          <div
-            className={cn(
-              'relative z-10 flex flex-col overflow-hidden rounded-[calc(2.5rem-2px)]',
-              category?.color.replace('bg-', 'bg-').replace('-500', '-500/10') ||
-                'bg-background/20',
-            )}
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 z-[110] bg-black/20 hover:bg-black/40 text-white rounded-full p-2 backdrop-blur-md transition-colors"
           >
-            {/* Background Art */}
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.03] transition-colors">
-              <CategoryIcon
-                className={cn(
-                  'h-[120%] w-[120%] translate-x-10 translate-y-20 -rotate-12',
-                  category?.color.replace('bg-', 'text-').replace('-500', '-500/10') ||
-                    'text-foreground',
-                )}
-              />
-            </div>
+            <X className="h-5 w-5" />
+          </button>
 
-            <div
-              className={cn(
-                'custom-scrollbar relative flex flex-col overflow-y-auto rounded-[calc(2.5rem-2px)] border-t border-l border-white/20 p-5 sm:p-8',
-                category?.color.replace('bg-', 'bg-').replace('-500', '-500/5') || 'bg-transparent',
-              )}
-            >
-              <button
-                onClick={onClose}
-                className="hover:bg-muted text-foreground hover:text-foreground absolute top-5 right-5 z-20 rounded-full p-2 transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
-              <div className="relative z-10 space-y-4">
-                {/* Logo & Platform & Category Badges */}
-                <div className="flex items-start gap-4">
-                  {faviconUrl ? (
-                    <div className="border-border flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-white p-2 shadow-lg">
-                      <img src={faviconUrl} alt="Logo" className="h-6 w-6 object-contain" />
-                    </div>
-                  ) : (
-                    <div className="bg-muted border-border flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border p-2 shadow-lg">
-                      <CategoryIcon className="text-foreground h-5 w-5" />
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap gap-2">
-                    <span
-                      className={cn(
-                        'rounded-lg px-3 py-1 text-[9px] font-black tracking-widest text-white uppercase shadow-sm',
-                        category?.color || 'bg-zinc-800',
-                      )}
-                    >
-                      {category?.label || event.event_type}
-                    </span>
-                    <span className="rounded-lg bg-zinc-900 px-3 py-1 text-[9px] font-black tracking-widest text-zinc-100 uppercase shadow-sm dark:bg-white dark:text-black">
-                      {event.platform}
-                    </span>
-                    <span className="rounded-lg border border-black/5 bg-zinc-100 px-3 py-1 text-[9px] font-black tracking-widest text-zinc-900 uppercase shadow-sm dark:border-white/5 dark:bg-zinc-800 dark:text-zinc-100">
-                      Timezone: {event.timezone || 'UTC'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Title & Tags */}
-                <div className="space-y-4">
-                  <h2 className="text-foreground text-3xl leading-[1.1] font-black tracking-tighter italic sm:text-4xl">
-                    {event.title}
-                  </h2>
-
-                  {event.tags && event.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-x-3 gap-y-1">
-                      {event.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className={cn(
-                            'text-xs font-black tracking-widest uppercase',
-                            category?.color
-                              .replace('bg-', 'text-')
-                              .replace('-500', '-600 dark:text-')
-                              .concat('-400') || 'text-primary',
-                          )}
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Status & Price */}
-                <div className="flex items-center gap-3">
-                  {event.is_free ? (
-                    <span className="rounded-full bg-emerald-600 px-4 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-md">
-                      Free Access
-                    </span>
-                  ) : (
-                    event.price && (
-                      <span className="rounded-full bg-amber-600 px-4 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-md">
-                        {event.price}
-                      </span>
-                    )
-                  )}
-                  {event.status && (
-                    <span
-                      className={cn(
-                        'rounded-full px-4 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-md',
-                        event.status === 'ongoing'
-                          ? 'bg-primary animate-pulse'
-                          : event.status === 'upcoming'
-                            ? 'bg-blue-600'
-                            : 'bg-zinc-600',
-                      )}
-                    >
-                      {event.status}
-                    </span>
-                  )}
-                </div>
-
-                {/* Timeline - No Containers */}
-                <div className="border-border grid grid-cols-1 gap-x-8 gap-y-3 border-y py-3 sm:grid-cols-2">
-                  <div className="space-y-3">
-                    <div className="flex flex-col gap-0.5">
-                      <span className="text-foreground text-[9px] font-black tracking-[0.3em] uppercase">
-                        Start
-                      </span>
-                      <div className="text-foreground flex items-center gap-2 text-xs font-black tracking-tight">
-                        <CalendarIcon className="text-primary h-3.5 w-3.5" />
-                        <span>
-                          {format(new Date(event.start_time), 'EEEE, d MMM yyyy • HH:mm')}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {event.end_time && (
-                    <div className="space-y-3">
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-foreground text-[9px] font-black tracking-[0.3em] uppercase">
-                          End
-                        </span>
-                        <div className="text-foreground flex items-center gap-2 text-xs font-black tracking-tight">
-                          <Clock className="text-primary h-3.5 w-3.5" />
-                          <span>
-                            {format(new Date(event.end_time), 'EEEE, d MMM yyyy • HH:mm')}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Dynamic Extra Details - JSON Editor View */}
-                {event.extra && Object.keys(event.extra).length > 0 && (
-                  <div className="space-y-2 pt-2">
-                    <div className="flex items-center justify-between px-1">
-                      <div className="flex items-center gap-2">
-                        <div className="flex gap-1.5">
-                          <div className="h-2.5 w-2.5 rounded-full bg-red-500 shadow-sm" />
-                          <div className="h-2.5 w-2.5 rounded-full bg-amber-500 shadow-sm" />
-                          <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-sm" />
-                        </div>
-                        <span className="text-foreground ml-3 text-[12px] font-black tracking-[0.4em] uppercase">
-                          metadata.json
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="relative rounded-2xl border border-white/10 bg-black p-6 font-mono text-[11px] leading-[1.6] shadow-2xl">
-                      <div className="custom-scrollbar max-h-[180px] overflow-y-auto pr-4 break-all whitespace-pre-wrap">
-                        <span className="text-zinc-500">{'{'}</span>
-                        {Object.entries(event.extra || {})
-                          .filter(([key]) => !['description', 'title'].includes(key))
-                          .map(([key, value], index, array) => (
-                            <div key={key} className="flex gap-4 py-0.5 pl-4">
-                              <span className="shrink-0 font-bold text-sky-400">"{key}":</span>
-                              <span
-                                className={cn(
-                                  'flex-1 font-bold',
-                                  typeof value === 'number'
-                                    ? 'text-amber-400'
-                                    : typeof value === 'boolean'
-                                      ? 'text-purple-400'
-                                      : 'text-emerald-400',
-                                )}
-                              >
-                                {typeof value === 'string' ? `"${value}"` : String(value)}
-                                {index < array.length - 1 ? (
-                                  <span className="text-zinc-500">,</span>
-                                ) : (
-                                  ''
-                                )}
-                              </span>
-                            </div>
-                          ))}
-                        <span className="text-zinc-500">{'}'}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Buttons */}
-                  <div className="flex flex-col gap-3 pt-4 sm:flex-row">
-                    <Link
-                      to={`/events/${event.slug}`}
-                      className="bg-zinc-100 text-zinc-900 hover:bg-white flex flex-[2] items-center justify-center gap-3 rounded-[2rem] px-6 py-4 text-[13px] font-black tracking-widest uppercase transition-all hover:scale-[1.02] active:scale-98 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
-                    >
-                      View Page
-                      <ChevronRight className="h-5 w-5" />
-                    </Link>
-                    {event.url && (
-                      <a
-                        href={event.url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="bg-foreground text-background flex flex-[3] items-center justify-center gap-3 rounded-[2rem] px-6 py-4 text-[13px] font-black tracking-widest uppercase shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.02] active:scale-98 dark:bg-white dark:text-black dark:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.2)]"
-                      >
-                        Register Now
-                        <ExternalLink className="h-5 w-5" />
-                      </a>
-                    )}
-                  <button
-                    onClick={handleSync}
-                    disabled={isSyncing || isSynced}
+          <div className="custom-scrollbar overflow-y-auto">
+            {/* Hero Section */}
+            <div className="relative min-h-[340px] w-full overflow-hidden p-8 sm:p-12 flex flex-col justify-end">
+              {/* Background Image/Gradient */}
+              <div className="absolute inset-0 z-0">
+                {event.bannerImage ? (
+                  <>
+                    <img
+                      src={event.bannerImage}
+                      alt=""
+                      className="h-full w-full object-cover opacity-60"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-50 via-zinc-50/80 to-transparent dark:from-zinc-950 dark:via-zinc-950/80" />
+                  </>
+                ) : (
+                  <div
                     className={cn(
-                      'flex flex-[2] items-center justify-center gap-3 rounded-[2rem] border-2 px-6 py-4 text-[13px] font-black tracking-widest uppercase transition-all disabled:opacity-50',
-                      isSynced
-                        ? 'border-emerald-400 bg-emerald-500 text-white shadow-[0_10px_40px_-10px_rgba(16,185,129,0.5)]'
-                        : 'bg-background/80 text-foreground border-border shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]',
+                      'h-full w-full opacity-20',
+                      category?.color || 'bg-primary'
                     )}
                   >
-                    {isSyncing ? (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                      >
-                        <InfinityIcon className="h-5 w-5" />
-                      </motion.div>
-                    ) : isSynced ? (
-                      <>
-                        <Check className="h-5 w-5" />
-                        Done
-                      </>
-                    ) : (
-                      <>
-                        <GoogleIcon />
-                        {isAuthorized ? 'Sync' : 'Connect'}
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                  <button onClick={handleShare} className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
-                    <Share2 className="h-4 w-4" /> Share
-                  </button>
-                  <button onClick={() => setIsBookmarked(!isBookmarked)} className={cn("flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition-colors", isBookmarked ? "border-emerald-500 bg-emerald-500/10 text-emerald-500" : "border-border bg-background/50 hover:bg-muted")}>
-                    <Bookmark className="h-4 w-4" /> {isBookmarked ? 'Saved' : 'Bookmark'}
-                  </button>
-                  <a href={`https://twitter.com/intent/tweet?text=Check out ${encodeURIComponent(event.title)}&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
-                    <MessageCircle className="h-4 w-4" /> Tweet
-                  </a>
-                  <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.origin + '/calendar?event=' + event.id)}&title=${encodeURIComponent(event.title)}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 text-xs font-bold transition-colors hover:bg-muted">
-                    <Send className="h-4 w-4" /> Post
-                  </a>
-                </div>
-
-                {error && (
-                  <div className="mt-4 space-y-3">
-                    <p className="text-destructive px-4 text-center text-xs font-bold">{error}</p>
-                    {isServiceDisabled && (
-                      <a
-                        href="https://console.developers.google.com/apis/api/calendar-json.googleapis.com/overview?project=490341439860"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-primary block w-full text-center text-[10px] font-black tracking-widest uppercase hover:underline"
-                      >
-                        Click here to enable the API
-                      </a>
-                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-50 dark:from-zinc-950" />
                   </div>
                 )}
               </div>
+
+              {/* Floating Badges */}
+              <div className="absolute top-8 left-8 sm:left-12 flex flex-wrap gap-2 z-10">
+                {badges.map((badge, i) => (
+                  <motion.span
+                    key={badge}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.1 }}
+                    className="bg-white/10 dark:bg-white/5 border border-white/20 backdrop-blur-xl px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest text-zinc-900 dark:text-zinc-100 uppercase"
+                  >
+                    {badge}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Title & Info */}
+              <div className="relative z-10 space-y-6">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-4xl sm:text-6xl font-black tracking-tighter leading-[0.9] text-zinc-900 dark:text-zinc-50 uppercase max-w-2xl"
+                >
+                  {event.title}
+                </motion.h2>
+
+                <div className="flex items-center gap-4">
+                  {event.organizerLogo && (
+                    <div className="h-14 w-14 rounded-2xl bg-white border border-black/5 p-2 shadow-xl flex items-center justify-center overflow-hidden">
+                      <img src={event.organizerLogo} alt="" className="object-contain" />
+                    </div>
+                  )}
+                  <div className="flex flex-col">
+                    <p className="text-zinc-500 dark:text-zinc-400 text-xs font-bold tracking-widest uppercase">
+                      Organized by
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-zinc-900 dark:text-zinc-100 font-black tracking-wider uppercase text-sm">
+                        {event.organizerName || event.platform}
+                      </span>
+                      {event.organizerName && (
+                        <Check className="h-3.5 w-3.5 bg-blue-500 text-white rounded-full p-0.5" />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Meta Information Strip */}
+            <div className="border-y border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-white/[0.02] backdrop-blur-sm px-8 py-4 flex flex-wrap items-center gap-x-8 gap-y-4 text-[10px] font-black tracking-widest text-zinc-600 dark:text-zinc-400 uppercase">
+              <div className="flex items-center gap-2">
+                <CalendarIcon className="h-3.5 w-3.5 text-zinc-400" />
+                {format(startDate, 'MMM d')}
+                {endDate && ` - ${format(endDate, 'd, yyyy')}`}
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-3.5 w-3.5 text-zinc-400" />
+                {format(startDate, 'h:mm a')} {event.timezone || 'PST'}
+              </div>
+              {event.location && (
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-3.5 w-3.5 text-zinc-400" />
+                  {event.location}
+                </div>
+              )}
+              <div className="flex-1" />
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <Eye className="h-3.5 w-3.5 text-zinc-400" />
+                  {event.views || 0}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <MousePointerClick className="h-3.5 w-3.5 text-zinc-400" />
+                  {event.clicks || 0}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Bookmark className="h-3.5 w-3.5 text-zinc-400" />
+                  {event.bookmarks || 0}
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
+              {/* Left Column: Description */}
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <div
+                    onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                    className="flex items-center justify-between cursor-pointer group"
+                  >
+                    <h3 className="text-xs font-black tracking-widest text-zinc-400 uppercase">Description</h3>
+                    <ChevronDown className={cn("h-4 w-4 text-zinc-400 transition-transform", isDescriptionExpanded ? "rotate-180" : "")} />
+                  </div>
+                  <AnimatePresence>
+                    {isDescriptionExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="space-y-6">
+                          <h4 className="text-xl font-black tracking-tight text-zinc-900 dark:text-zinc-100">About the event</h4>
+                          <div className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed whitespace-pre-wrap">
+                            {event.description || event.shortDescription || "No detailed description available."}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Skills/Tags */}
+                {(event.skills?.length || event.tags?.length) ? (
+                  <div className="space-y-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                     <div className="flex flex-wrap gap-2">
+                        {[...(event.skills || []), ...(event.tags || [])].map((item, i) => (
+                          <span key={i} className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-3 py-1 rounded-lg text-[11px] font-bold text-zinc-600 dark:text-zinc-400">
+                            #{item.toUpperCase()}
+                          </span>
+                        ))}
+                     </div>
+                  </div>
+                ) : null}
+              </div>
+
+              {/* Right Column: Info Cards */}
+              <div className="space-y-4">
+                {event.eligibility && (
+                  <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-2">
+                    <div className="flex items-center gap-2 text-zinc-400">
+                      <UserCheck className="h-3.5 w-3.5" />
+                      <span className="text-[9px] font-black tracking-widest uppercase">Eligibility</span>
+                    </div>
+                    <p className="text-zinc-900 dark:text-zinc-100 text-xs font-black uppercase">{event.eligibility}</p>
+                  </div>
+                )}
+
+                {event.maxTeamSize && (
+                  <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-2">
+                    <div className="flex items-center gap-2 text-zinc-400">
+                      <Users className="h-3.5 w-3.5" />
+                      <span className="text-[9px] font-black tracking-widest uppercase">Team Size</span>
+                    </div>
+                    <p className="text-zinc-900 dark:text-zinc-100 text-xs font-black uppercase">
+                      {event.minTeamSize || 1}-{event.maxTeamSize} Members
+                    </p>
+                  </div>
+                )}
+
+                {event.prizes && (
+                  <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-2">
+                    <div className="flex items-center gap-2 text-zinc-400">
+                      <Trophy className="h-3.5 w-3.5" />
+                      <span className="text-[9px] font-black tracking-widest uppercase">Prizes</span>
+                    </div>
+                    <p className="text-zinc-900 dark:text-zinc-100 text-xs font-black uppercase">{event.prizes}</p>
+                  </div>
+                )}
+
+                <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-2">
+                  <div className="flex items-center gap-2 text-zinc-400">
+                    <CreditCard className="h-3.5 w-3.5" />
+                    <span className="text-[9px] font-black tracking-widest uppercase">Price</span>
+                  </div>
+                  <p className="text-zinc-900 dark:text-zinc-100 text-xs font-black uppercase">
+                    {event.is_free ? 'Free for all' : (event.price || 'Check source')}
+                  </p>
+                </div>
+
+                {event.organizerName && (
+                  <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-4">
+                    <div className="flex items-center gap-2 text-zinc-400">
+                      <User className="h-3.5 w-3.5" />
+                      <span className="text-[9px] font-black tracking-widest uppercase">Organizer</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                       {event.organizerLogo ? (
+                         <img src={event.organizerLogo} alt="" className="h-8 w-8 rounded-full border border-black/10 p-0.5" />
+                       ) : (
+                         <div className="h-8 w-8 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
+                            <User className="h-4 w-4 text-zinc-400" />
+                         </div>
+                       )}
+                       <div className="flex flex-col">
+                          <span className="text-zinc-900 dark:text-zinc-100 text-[11px] font-black uppercase tracking-tight leading-none">
+                            {event.organizerName}
+                          </span>
+                          {event.organizerUrl && (
+                            <a href={event.organizerUrl} target="_blank" rel="noreferrer" className="text-blue-500 text-[10px] font-bold hover:underline">Link to profile</a>
+                          )}
+                       </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Action Area */}
+            <div className="p-8 sm:p-12 pt-0 flex flex-wrap gap-4">
+              <a
+                href={event.url}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-8 py-4 rounded-full text-xs font-black tracking-widest uppercase shadow-xl hover:scale-[1.02] active:scale-95 transition-transform flex items-center justify-center min-w-[200px]"
+              >
+                Register Now
+              </a>
+              <Link
+                to={`/events/${event.slug}`}
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 px-8 py-4 rounded-full text-xs font-black tracking-widest uppercase hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+              >
+                Visit Source <ExternalLink className="h-3.5 w-3.5" />
+              </Link>
+              <button
+                onClick={handleShare}
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 px-8 py-4 rounded-full text-xs font-black tracking-widest uppercase hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+              >
+                <Share2 className="h-3.5 w-3.5" /> Share
+              </button>
+              <button
+                onClick={() => setIsBookmarked(!isBookmarked)}
+                className={cn(
+                  "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-8 py-4 rounded-full text-xs font-black tracking-widest uppercase hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2",
+                  isBookmarked ? "text-emerald-500 border-emerald-500/20" : "text-zinc-900 dark:text-zinc-100"
+                )}
+              >
+                <Bookmark className={cn("h-3.5 w-3.5", isBookmarked ? "fill-current" : "")} />
+                {isBookmarked ? 'Saved' : 'Bookmark'}
+              </button>
+              <button
+                onClick={handleSync}
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 px-8 py-4 rounded-full text-xs font-black tracking-widest uppercase hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+              >
+                {isSynced ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <GoogleIcon />}
+                {isSynced ? 'Synced' : 'Add to Calendar'}
+              </button>
             </div>
           </div>
         </motion.div>
@@ -443,3 +400,4 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     </AnimatePresence>
   );
 }
+
