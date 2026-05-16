@@ -1,13 +1,12 @@
 import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(req: NextRequest) {
+export default async function handler(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
+    const { searchParams, origin } = new URL(req.url);
     const slug = searchParams.get('slug');
 
     if (!slug) {
@@ -15,7 +14,7 @@ export default async function handler(req: NextRequest) {
     }
 
     // Fetch event data from the API
-    const apiUrl = `${req.nextUrl.origin}/api/v1/events/${slug}`;
+    const apiUrl = `${origin}/api/v1/events/${slug}`;
     const res = await fetch(apiUrl);
     const json = await res.json();
     const event = json.data;
@@ -141,7 +140,7 @@ export default async function handler(req: NextRequest) {
             </div>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-               <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyCenter: 'center' }}>
+               <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div style={{ width: '20px', height: '20px', backgroundColor: 'black', borderRadius: '50%' }} />
                </div>
                <span style={{ color: 'white', fontSize: '24px', fontWeight: 'black', textTransform: 'uppercase', letterSpacing: '0.2em' }}>EventIO</span>
