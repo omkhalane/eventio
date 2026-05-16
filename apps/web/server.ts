@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { handleApiRequest } from '@eventio/api/lib/event-api';
+import { handleApiRequest } from '@eventio/api/src/lib/event-api.js';
 import dotenv from 'dotenv';
 import express, { type Request } from 'express';
 import path from 'path';

@@ -7,8 +7,8 @@ import {
   buildStats,
   getEventBySlug,
   parseEventsQuery,
-} from '../src/lib/query';
-import { getUser, syncUser } from '../src/lib/users';
+} from './query.js';
+import { getUser, syncUser } from './users.js';
 
 export type ApiQueryValue = string | string[] | undefined;
 export type ApiQuery = Record<string, ApiQueryValue>;
