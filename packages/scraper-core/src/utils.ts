@@ -1,4 +1,4 @@
-import type { ParsedDateRange } from './types';
+import type { ParsedDateRange } from './types.js';
 
 const MONTH_LOOKUP: Record<string, number> = {
   jan: 0,

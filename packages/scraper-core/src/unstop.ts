@@ -1,7 +1,7 @@
-import { collectAnchors, createBrowser, createPage } from './browser';
-import { parseDateRangeFromText, parseRelativeDeadline, uniqueBy } from './utils';
-import type { ScrapedEventRecord } from './types';
-import { writeScraperOutput } from './output';
+import { collectAnchors, createBrowser, createPage } from './browser.js';
+import { parseDateRangeFromText, parseRelativeDeadline, uniqueBy } from './utils.js';
+import type { ScrapedEventRecord } from './types.js';
+import { writeScraperOutput } from './output.js';
 
 export const UNSTOP_URLS = [
   'https://unstop.com/competitions',

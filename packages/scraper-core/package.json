@@ -2,7 +2,7 @@
   "name": "@eventio/scraper-core",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.ts",
+  "main": "index.js",
   "dependencies": {
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",
