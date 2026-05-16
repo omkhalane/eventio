@@ -1,0 +1,36 @@
+import { z } from 'zod';
+
+export const NormalizedEventSchema = z.object({
+  title: z.string(),
+  description: z.string().optional().nullable(),
+  shortDescription: z.string().optional().nullable(),
+  platform: z.string(),
+  platformEventId: z.string().optional().nullable(),
+  sourceUrl: z.string().url(),
+  bannerImage: z.string().optional().nullable(),
+  thumbnailImage: z.string().optional().nullable(),
+  category: z.string().optional().nullable(),
+  subcategory: z.string().optional().nullable(),
+  mode: z.enum(['online', 'offline', 'hybrid']).optional().nullable(),
+  startDate: z.string().optional().nullable(),
+  endDate: z.string().optional().nullable(),
+  registrationDeadline: z.string().optional().nullable(),
+  timezone: z.string().optional().nullable(),
+  isFree: z.boolean().optional().nullable(),
+  price: z.string().optional().nullable(),
+  location: z.string().optional().nullable(),
+  city: z.string().optional().nullable(),
+  country: z.string().optional().nullable(),
+  organizerName: z.string().optional().nullable(),
+  organizerLogo: z.string().optional().nullable(),
+  organizerUrl: z.string().optional().nullable(),
+  tags: z.array(z.string()).optional().nullable(),
+  skills: z.array(z.string()).optional().nullable(),
+  eligibility: z.string().optional().nullable(),
+  prizes: z.string().optional().nullable(),
+  minTeamSize: z.number().optional().nullable(),
+  maxTeamSize: z.number().optional().nullable(),
+  rawData: z.any().optional().nullable(),
+});
+
+export type NormalizedEvent = z.infer<typeof NormalizedEventSchema>;

@@ -5,10 +5,9 @@
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
     "start:scheduler": "tsx src/scheduler.ts",
-    "scrape:trigger": "tsx src/scripts/triggerScraper.ts",
-    "scrape:run": "tsx src/scripts/runScrapers.ts",
-    "scrape:run:ci": "tsx src/scripts/runScrapers.ts",
-    "scrape:temp": "tsx ../../temp/scraperRunner.ts",
+    "scrape:trigger": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/scripts/triggerScraper.ts",
+    "scrape:run": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/scripts/runScrapers.ts",
+    "scrape:run:ci": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/scripts/runScrapers.ts",
     "lint": "eslint . --ext ts --max-warnings 0"
   },
   "dependencies": {

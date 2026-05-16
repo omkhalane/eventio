@@ -7,6 +7,7 @@ import {
   timestamp,
   uuid,
   varchar,
+  integer,
 } from 'drizzle-orm/pg-core';
 
 export const rawScrapedEvents = pgTable(
@@ -30,91 +31,49 @@ export const events = pgTable(
   'events',
   {
     id: uuid('id').primaryKey().defaultRandom(),
-    title: varchar('title').notNull(),
+    slug: text('slug').unique().notNull(),
+    title: text('title').notNull(),
+    shortDescription: text('short_description'),
     description: text('description'),
-    startTime: timestamp('start_time', { withTimezone: true }).notNull(),
-    endTime: timestamp('end_time', { withTimezone: true }),
-    timezone: varchar('timezone').notNull().default('UTC'),
-    canonicalUrl: varchar('canonical_url').notNull(),
-    dedupeHash: varchar('dedupe_hash').notNull().unique(),
-    createdAt: timestamp('created_at').notNull().defaultNow(),
-    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+    platform: text('platform').notNull(),
+    platformEventId: text('platform_event_id'),
+    sourceUrl: text('source_url').notNull(),
+    bannerImage: text('banner_image'),
+    thumbnailImage: text('thumbnail_image'),
+    mode: text('mode'),
+    category: text('category'),
+    subcategory: text('subcategory'),
+    startDate: timestamp('start_date', { withTimezone: true }),
+    endDate: timestamp('end_date', { withTimezone: true }),
+    registrationDeadline: timestamp('registration_deadline', { withTimezone: true }),
+    timezone: text('timezone').default('UTC'),
+    isFree: boolean('is_free').default(true),
+    price: text('price'),
+    location: text('location'),
+    city: text('city'),
+    country: text('country'),
+    organizerName: text('organizer_name'),
+    organizerLogo: text('organizer_logo'),
+    organizerUrl: text('organizer_url'),
+    tags: text('tags').array(),
+    skills: text('skills').array(),
+    eligibility: text('eligibility'),
+    prizes: text('prizes'),
+    maxTeamSize: integer('max_team_size'),
+    minTeamSize: integer('min_team_size'),
+    status: text('status').default('active'),
+    views: integer('views').default(0),
+    clicks: integer('clicks').default(0),
+    bookmarks: integer('bookmarks').default(0),
+    scrapedAt: timestamp('scraped_at').defaultNow(),
+    updatedAt: timestamp('updated_at').defaultNow(),
+    rawData: jsonb('raw_data'),
   },
   (table) => ({
-    timeIdx: index('idx_events_start_time').on(table.startTime),
-    hashIdx: index('idx_events_dedupe_hash').on(table.dedupeHash),
-  }),
-);
-
-export const platforms = pgTable('platforms', {
-  id: varchar('id').primaryKey(),
-  name: varchar('name').notNull(),
-  websiteUrl: varchar('website_url').notNull(),
-});
-
-export const eventSources = pgTable(
-  'event_sources',
-  {
-    id: uuid('id').primaryKey().defaultRandom(),
-    eventId: uuid('event_id')
-      .references(() => events.id)
-      .notNull(),
-    platformId: varchar('platform_id')
-      .references(() => platforms.id)
-      .notNull(),
-    url: varchar('url').notNull(),
-    externalId: varchar('external_id'),
-    lastSyncedAt: timestamp('last_synced_at').notNull().defaultNow(),
-  },
-  (table) => ({
-    eventIdx: index('idx_event_sources_event_id').on(table.eventId),
-    platformExtIdx: index('idx_event_sources_platform_ext').on(table.platformId, table.externalId),
-  }),
-);
-
-export const categories = pgTable('categories', {
-  id: varchar('id').primaryKey(),
-  name: varchar('name').notNull(),
-});
-
-export const tags = pgTable('tags', {
-  id: varchar('id').primaryKey(),
-  name: varchar('name').notNull(),
-});
-
-export const eventTags = pgTable(
-  'event_tags',
-  {
-    eventId: uuid('event_id')
-      .references(() => events.id)
-      .notNull(),
-    tagId: varchar('tag_id')
-      .references(() => tags.id)
-      .notNull(),
-  },
-  (table) => ({
-    eventTagPk: index('idx_event_tags_pk').on(table.eventId, table.tagId), // using index instead of composite pk for simple drizzle queries
-  }),
-);
-
-export const searchDocuments = pgTable(
-  'event_search_documents',
-  {
-    id: uuid('id')
-      .primaryKey()
-      .references(() => events.id),
-    title: varchar('title').notNull(),
-    descriptionText: text('description_text'),
-    organizerText: text('organizer_text'),
-    tagsJson: jsonb('tags_json'),
-    platformsJson: jsonb('platforms_json'),
-    startTime: timestamp('start_time', { withTimezone: true }).notNull(),
-    documentTsVector: text('document_tsvector'), // Used for postgres FTS if avoiding raw raw tsvector
-  },
-  (table) => ({
-    ftsIdx: index('idx_search_documents_fts').on(table.documentTsVector),
-    titleIdx: index('idx_search_documents_title').on(table.title),
-    startIdx: index('idx_search_documents_start_time').on(table.startTime),
+    platformIdx: index('idx_events_platform').on(table.platform),
+    categoryIdx: index('idx_events_category').on(table.category),
+    slugIdx: index('idx_events_slug').on(table.slug),
+    startDateIdx: index('idx_events_start_date').on(table.startDate),
   }),
 );
 

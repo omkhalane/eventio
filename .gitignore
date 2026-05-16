@@ -5,6 +5,7 @@
 Thumbs.db
 *.swp
 *.swo
+*.orig
 
 # =========================
 # Node / Frontend (Vite)
@@ -14,6 +15,7 @@ dist/
 build/
 .vite/
 apps/**/.vite/
+apps/*/dist/
 .cache/
 .next/
 .turbo/
@@ -103,10 +105,13 @@ gitleaks-report.*
 *.tmp
 
 # Scraper local exports
+outputs/
+dump.rdb
 *_contests.json
 scraper-output.json
 services/scraper/output/
 apps/workers/scraper-output/
+apps/workers/outputs/
 
 # Temp Agent Scripts
 migrate.js

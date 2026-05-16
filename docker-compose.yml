@@ -1,13 +1,12 @@
-version: '3.8'
-
 # ============================================================================
-# Eventio - Complete Development Stack
+# Eventio - Local Development Stack
 # ============================================================================
-# For production, use managed services (Neon, Upstash, Railway, Vercel)
+# Default: PostgreSQL + Redis only.
+# Optional app image: docker compose --profile app up --build api
+# Optional pooler:    docker compose --profile pooling up -d pgbouncer
 # ============================================================================
 
 services:
-  # PostgreSQL Database
   postgres:
     image: postgres:16-alpine
     container_name: eventio-postgres
@@ -35,14 +34,13 @@ services:
         max-size: '10m'
         max-file: '3'
 
-  # Redis Cache & Queue
   redis:
     image: redis:7-alpine
     container_name: eventio-redis
     restart: unless-stopped
     ports:
       - '6379:6379'
-    command: redis-server --maxmemory-policy noeviction --appendonly yes --requirepass redis-dev-password
+    command: redis-server --maxmemory-policy noeviction --appendonly yes
     volumes:
       - redis_data:/data
     healthcheck:
@@ -58,10 +56,11 @@ services:
         max-size: '10m'
         max-file: '3'
 
-  # Optional: PgBouncer for connection pooling
   pgbouncer:
-    image: pgbouncer:latest
+    image: edoburu/pgbouncer:latest
     container_name: eventio-pgbouncer
+    profiles:
+      - pooling
     restart: unless-stopped
     ports:
       - '6432:6432'
@@ -83,6 +82,39 @@ services:
         max-size: '5m'
         max-file: '3'
 
+  api:
+    build:
+      context: .
+      target: runner
+    container_name: eventio-api
+    profiles:
+      - app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      API_HOST: 0.0.0.0
+      API_PORT: 3000
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/eventio
+      DIRECT_DATABASE_URL: postgresql://postgres:postgres@postgres:5432/eventio
+      REDIS_URL: redis://redis:6379
+      PUBLIC_SITE_URL: http://localhost:5175
+      PUBLIC_API_BASE_URL: http://localhost:3000
+      LOG_LEVEL: info
+    ports:
+      - '3000:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - eventio-network
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+
 volumes:
   postgres_data:
     driver: local
@@ -96,16 +128,19 @@ networks:
 # ============================================================================
 # Usage:
 #
-# Start all services:
-#   docker-compose up -d
+# Start local infrastructure:
+#   docker compose up -d
+#
+# Start infrastructure plus API container:
+#   docker compose --profile app up --build
 #
 # View logs:
-#   docker-compose logs -f
+#   docker compose logs -f
 #
 # Stop services:
-#   docker-compose down
+#   docker compose down
 #
 # Remove volumes (careful!):
-#   docker-compose down -v
+#   docker compose down -v
 #
 # ============================================================================

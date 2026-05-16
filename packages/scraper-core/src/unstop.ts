@@ -11,7 +11,7 @@ export const UNSTOP_URLS = [
   'https://unstop.com/conferences',
 ];
 
-const UNSTOP_STALE_PAGE_THRESHOLD = 100;
+const UNSTOP_STALE_PAGE_THRESHOLD = 9999999; // effectively no limit
 
 const LISTING_PATH_PREFIXES = [
   '/competitions/',
@@ -201,7 +201,7 @@ export async function scrapeUnstop(): Promise<ScrapedEventRecord[]> {
         }
         previousCount = listings.length;
 
-        if (stableIterations >= 200) {
+        if (stableIterations >= 1000) {
           break;
         }
 
@@ -258,7 +258,5 @@ export async function scrapeUnstop(): Promise<ScrapedEventRecord[]> {
       },
     };
   });
-
-  await writeScraperOutput('unstop', results);
   return results;
 }

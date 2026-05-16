@@ -54,9 +54,10 @@ fastify.route({
   method: ['GET', 'POST'],
   url: '/api/v1/*',
   handler: async (request, reply) => {
+    const pathname = request.url.split('?')[0] || '/';
     const result = await handleApiRequest(
       request.method,
-      request.url,
+      pathname,
       request.query as Record<string, string | string[] | undefined>,
       request.body,
     );

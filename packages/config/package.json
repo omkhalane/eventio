@@ -1,7 +1,7 @@
 {
   "name": "@eventio/config",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "dependencies": {
     "zod": "^3.23.8",
     "dotenv": "^16.4.5"

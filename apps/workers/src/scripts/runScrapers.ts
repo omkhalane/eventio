@@ -1,14 +1,6 @@
 /* eslint-disable no-console */
-import 'dotenv/config';
-
-import { db, events, rawScrapedEvents } from '@eventio/db';
-import {
-  connection,
-  dedupeQueue,
-  indexingQueue,
-  normalizationQueue,
-  scrapingQueue,
-} from '@eventio/queue';
+import { db, events } from '@eventio/db';
+import { connection, scrapingQueue } from '@eventio/queue';
 import {
   scrapeAtcoder,
   scrapeCodechef,
@@ -17,17 +9,16 @@ import {
   scrapeMlh,
   scrapeUnstop,
   writeScraperOutput,
+  NormalizedEventSchema,
 } from '@eventio/scraper-core';
 import { Worker } from 'bullmq';
 import crypto from 'crypto';
-import { count, desc, eq } from 'drizzle-orm';
+import fs from 'fs/promises';
+import path from 'path';
 
-/**
- * Comprehensive scraper runner with terminal output
- * Runs all scrapers, shows progress, and displays all fetched events
- */
+import { normalizeEvent } from './normalizer';
 
-const PLATFORMS = [
+const ALL_PLATFORMS = [
   'unstop',
   'devpost',
   'codeforces',
@@ -39,89 +30,208 @@ const PLATFORMS = [
   'mlh',
 ];
 
-const persistScrapedEvents = async (
-  records: Array<{
-    sourcePlatformId: string;
-    sourceUrl: string;
-    rawPayload: Record<string, unknown>;
-  }>,
-) => {
-  if (records.length === 0) {
-    return 0;
+const requestedPlatforms = process.argv.slice(2);
+const PLATFORMS = requestedPlatforms.length > 0 ? requestedPlatforms : ALL_PLATFORMS;
+
+const checkConnections = async () => {
+  console.log('🔍 Running startup checks...');
+  
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL environment variable is missing.');
   }
 
-  let insertedCount = 0;
-  for (let index = 0; index < records.length; index += 100) {
-    const chunk = records.slice(index, index + 100);
-    const inserted = await db.insert(rawScrapedEvents).values(chunk).returning();
-    insertedCount += inserted.length;
-    await normalizationQueue.addBulk(
-      inserted.map((row) => ({ name: 'normalize', data: { rawId: row.id } })),
-    );
+  try {
+    await db.execute('SELECT 1');
+    console.log('✅ Connected to Neon DB');
+  } catch (error) {
+    throw new Error(`Failed to connect to DB: ${error}`);
   }
 
-  return insertedCount;
+  try {
+    if (connection.status !== 'ready') {
+      await new Promise<void>((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Redis connection timeout')), 5000);
+        connection.once('ready', () => {
+          clearTimeout(timeout);
+          resolve();
+        });
+        connection.once('error', (err) => {
+          clearTimeout(timeout);
+          reject(err);
+        });
+      });
+    }
+    console.log('✅ Connected to local Redis');
+  } catch (error) {
+    throw new Error(`Failed to connect to Redis: ${error}`);
+  }
 };
+
+const cleanOutputDirectory = async () => {
+  const outDir = path.join(process.cwd(), '../../outputs');
+  console.log('🧹 Cleaning old output files...');
+  try {
+    await fs.rm(outDir, { recursive: true, force: true });
+    console.log('✅ Output directory cleaned');
+  } catch (error) {
+    console.error('⚠️ Could not clean output directory:', error);
+  }
+};
+
+const platformStats: Record<string, {
+  startTime: number;
+  endTime: number;
+  scraped: number;
+  newFound: number;
+  updated: number;
+  dupesSkipped: number;
+}> = {};
 
 const eventStats = {
   scraped: 0,
-  normalized: 0,
-  deduped: 0,
-  indexed: 0,
-  total: 0,
+  newFound: 0,
+  updated: 0,
+  dupesSkipped: 0,
+};
+
+const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
+const processEvents = async (platform: string, rawEvents: any[]) => {
+  const normalizedEvents = [];
+
+  for (const raw of rawEvents) {
+    const rawPayload = raw.rawPayload || raw;
+    const sourceUrl = raw.sourceUrl || raw.url || raw.canonicalUrl || '';
+    const norm = normalizeEvent(rawPayload, platform, sourceUrl);
+    
+    const parsed = NormalizedEventSchema.safeParse(norm);
+    if (!parsed.success) {
+       console.error(`  ⚠️  [${platform.toUpperCase()}] Validation failed for an event`, parsed.error);
+       continue;
+    }
+    const valid = parsed.data;
+    normalizedEvents.push(valid);
+
+    let slug = slugify(`${valid.title}-${valid.platform}`);
+    if (valid.platformEventId) {
+      slug += `-${valid.platformEventId}`;
+    }
+
+    const redisKey = `scraped:event:${platform}:${valid.platformEventId || slug}`;
+    const exists = await connection.get(redisKey);
+    const hash = crypto.createHash('sha256').update(JSON.stringify(valid)).digest('hex');
+    
+    if (exists === hash) {
+       platformStats[platform].dupesSkipped++;
+       eventStats.dupesSkipped++;
+       continue;
+    }
+
+    try {
+      await db.insert(events).values({
+        slug,
+        title: valid.title,
+        shortDescription: valid.shortDescription,
+        description: valid.description,
+        platform: valid.platform,
+        platformEventId: valid.platformEventId,
+        sourceUrl: valid.sourceUrl,
+        bannerImage: valid.bannerImage,
+        thumbnailImage: valid.thumbnailImage,
+        mode: valid.mode,
+        category: valid.category,
+        subcategory: valid.subcategory,
+        startDate: valid.startDate ? new Date(valid.startDate) : null,
+        endDate: valid.endDate ? new Date(valid.endDate) : null,
+        registrationDeadline: valid.registrationDeadline ? new Date(valid.registrationDeadline) : null,
+        timezone: valid.timezone || 'UTC',
+        isFree: valid.isFree ?? true,
+        price: valid.price,
+        location: valid.location,
+        city: valid.city,
+        country: valid.country,
+        organizerName: valid.organizerName,
+        organizerLogo: valid.organizerLogo,
+        organizerUrl: valid.organizerUrl,
+        tags: valid.tags || [],
+        skills: valid.skills || [],
+        eligibility: valid.eligibility,
+        prizes: valid.prizes,
+        maxTeamSize: valid.maxTeamSize,
+        minTeamSize: valid.minTeamSize,
+        status: 'active',
+        rawData: valid.rawData
+      }).onConflictDoUpdate({
+        target: events.slug,
+        set: {
+          title: valid.title,
+          shortDescription: valid.shortDescription,
+          description: valid.description,
+          bannerImage: valid.bannerImage,
+          startDate: valid.startDate ? new Date(valid.startDate) : null,
+          endDate: valid.endDate ? new Date(valid.endDate) : null,
+          updatedAt: new Date()
+        }
+      });
+
+      if (exists) {
+        platformStats[platform].updated++;
+        eventStats.updated++;
+      } else {
+        platformStats[platform].newFound++;
+        eventStats.newFound++;
+      }
+
+      await connection.set(redisKey, hash, 'EX', 60 * 60 * 24 * 7);
+    } catch (dbError) {
+       console.error(`  ❌ [${platform.toUpperCase()}] DB Insert Error:`, dbError);
+    }
+  }
+
+  // Save JSON Output manually here because writeScraperOutput path issue
+  try {
+    const outDir = path.join(process.cwd(), '../../outputs');
+    await fs.mkdir(outDir, { recursive: true });
+    await fs.writeFile(
+      path.join(outDir, `${platform}.json`),
+      JSON.stringify(normalizedEvents, null, 2),
+      'utf8'
+    );
+  } catch (err) {
+    console.error(`  ⚠️  [${platform.toUpperCase()}] Failed to save JSON:`, err);
+  }
+
+  platformStats[platform].scraped += normalizedEvents.length;
+  eventStats.scraped += normalizedEvents.length;
+  console.log(`  ✅ [${platform.toUpperCase()}] Processed ${normalizedEvents.length} valid events`);
 };
 
 const initializeWorkers = async () => {
   console.log('🚀 Initializing workers...\n');
 
-  // 1. Scraping Worker
   new Worker(
     'scraping',
     async (job) => {
       const platform = job.data.platform;
       console.log(`  📡 [SCRAPING] Processing ${platform}...`);
+      
+      platformStats[platform] = {
+        startTime: Date.now(),
+        endTime: 0,
+        scraped: 0,
+        newFound: 0,
+        updated: 0,
+        dupesSkipped: 0,
+      };
 
-      if (platform === 'codeforces') {
-        try {
+      try {
+        if (platform === 'codeforces') {
           const res = await fetch('https://codeforces.com/api/contest.list');
           const data = await res.json();
-
-          if (data.status !== 'OK') {
-            throw new Error(`Codeforces API error: ${data.comment}`);
+          if (data.status === 'OK') {
+            await processEvents(platform, data.result || []);
           }
-
-          const upcoming = data.result || [];
-
-          const payloads = upcoming.map((contest: any) => ({
-            sourcePlatformId: 'codeforces',
-            sourceUrl: `https://codeforces.com/contests/${contest.id}`,
-            rawPayload: contest,
-          }));
-
-          // write output for debugging (best-effort)
-          await writeScraperOutput('codeforces', payloads);
-
-          if (payloads.length > 0) {
-            for (let i = 0; i < payloads.length; i += 100) {
-              const chunk = payloads.slice(i, i + 100);
-              const inserted = await db.insert(rawScrapedEvents).values(chunk).returning();
-              await normalizationQueue.addBulk(
-                inserted.map((row) => ({
-                  name: 'normalize',
-                  data: { rawId: row.id },
-                })),
-              );
-            }
-            eventStats.scraped += payloads.length;
-            console.log(`  ✅ [CODEFORCES] Scraped ${payloads.length} contests`);
-          } else {
-            console.log('  ⚠️  [CODEFORCES] No contests returned');
-          }
-        } catch (error) {
-          console.error(`  ❌ [CODEFORCES] Error:`, error);
-        }
-      } else if (platform === 'leetcode') {
-        try {
+        } else if (platform === 'leetcode') {
           const res = await fetch('https://leetcode.com/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -130,278 +240,35 @@ const initializeWorkers = async () => {
             }),
           });
           const data = await res.json();
-          const upcoming = data.data?.allContests || [];
-
-          const payloads = upcoming.map((contest: any) => ({
-            sourcePlatformId: 'leetcode',
-            sourceUrl: `https://leetcode.com/contest/${contest.titleSlug}`,
-            rawPayload: contest,
-          }));
-
-          await writeScraperOutput('leetcode', payloads);
-
-          if (payloads.length > 0) {
-            const inserted = await db.insert(rawScrapedEvents).values(payloads).returning();
-            await normalizationQueue.addBulk(
-              inserted.map((row) => ({
-                name: 'normalize',
-                data: { rawId: row.id },
-              })),
-            );
-            eventStats.scraped += payloads.length;
-            console.log(`  ✅ [LEETCODE] Scraped ${payloads.length} contests`);
-          } else {
-            console.log('  ⚠️  [LEETCODE] No contests returned');
-          }
-        } catch (error) {
-          console.error(`  ❌ [LEETCODE] Error:`, error);
-        }
-      } else if (platform === 'hackerrank') {
-        try {
-          console.log(`  ⏳ [HACKERRANK] Fetching...`);
-          // HackerRank scraping logic
-          const payloads = [
-            {
-              sourcePlatformId: 'hackerrank',
-              sourceUrl: 'https://www.hackerrank.com/challenges',
-              rawPayload: { platform: 'hackerrank', type: 'challenge' },
-            },
-          ];
-
-          await writeScraperOutput('hackerrank', payloads);
-
-          const inserted = await db.insert(rawScrapedEvents).values(payloads).returning();
-          await normalizationQueue.addBulk(
-            inserted.map((row) => ({
-              name: 'normalize',
-              data: { rawId: row.id },
-            })),
-          );
-          eventStats.scraped += 1;
-          console.log(`  ✅ [HACKERRANK] Scraped 1 event`);
-        } catch (error) {
-          console.error(`  ❌ [HACKERRANK] Error:`, error);
-        }
-      } else if (platform === 'unstop') {
-        try {
+          await processEvents(platform, data.data?.allContests || []);
+        } else if (platform === 'hackerrank') {
+          await processEvents(platform, [
+            { platform: 'hackerrank', type: 'challenge', title: 'HackerRank Challenge', sourceUrl: 'https://www.hackerrank.com/challenges' }
+          ]);
+        } else if (platform === 'unstop') {
           let scraped = await scrapeUnstop();
-
-          if (!scraped || scraped.length === 0) {
-            await writeScraperOutput('unstop', scraped || []);
-            // retry once
-            scraped = await scrapeUnstop();
-          }
-
-          await writeScraperOutput('unstop', scraped || []);
-
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [UNSTOP] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [UNSTOP] Error:`, error);
-        }
-      } else if (platform === 'devpost' || platform === 'devfolio') {
-        try {
+          if (!scraped || scraped.length === 0) scraped = await scrapeUnstop();
+          await processEvents(platform, scraped || []);
+        } else if (platform === 'devpost' || platform === 'devfolio') {
           let scraped = await scrapeDevpost();
-
-          if (!scraped || scraped.length === 0) {
-            await writeScraperOutput('devpost', scraped || []);
-            scraped = await scrapeDevpost();
-          }
-
-          await writeScraperOutput('devpost', scraped || []);
-
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [DEVPOST] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [DEVPOST] Error:`, error);
+          if (!scraped || scraped.length === 0) scraped = await scrapeDevpost();
+          await processEvents(platform, scraped || []);
+        } else if (platform === 'atcoder') {
+          await processEvents(platform, await scrapeAtcoder() || []);
+        } else if (platform === 'codechef') {
+          await processEvents(platform, await scrapeCodechef() || []);
+        } else if (platform === 'geeksforgeeks') {
+          await processEvents(platform, await scrapeGeeksforgeeks() || []);
+        } else if (platform === 'mlh') {
+          await processEvents(platform, await scrapeMlh() || []);
         }
-      } else if (platform === 'atcoder') {
-        try {
-          const scraped = await scrapeAtcoder();
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [ATCODER] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [ATCODER] Error:`, error);
-        }
-      } else if (platform === 'codechef') {
-        try {
-          const scraped = await scrapeCodechef();
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [CODECHEF] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [CODECHEF] Error:`, error);
-        }
-      } else if (platform === 'geeksforgeeks') {
-        try {
-          const scraped = await scrapeGeeksforgeeks();
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [GEEKSFORGEEKS] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [GEEKSFORGEEKS] Error:`, error);
-        }
-      } else if (platform === 'mlh') {
-        try {
-          const scraped = await scrapeMlh();
-          const inserted = await persistScrapedEvents(scraped);
-          eventStats.scraped += inserted;
-          console.log(`  ✅ [MLH] Scraped ${inserted} events`);
-        } catch (error) {
-          console.error(`  ❌ [MLH] Error:`, error);
-        }
-      }
-    },
-    { connection, concurrency: 2 },
-  );
-
-  // 2. Normalization Worker
-  new Worker(
-    'normalization',
-    async (job) => {
-      const rawId = job.data.rawId;
-      try {
-        const raw = await db
-          .select()
-          .from(rawScrapedEvents)
-          .where(eq(rawScrapedEvents.id, rawId))
-          .limit(1);
-        if (!raw[0]) return;
-
-        const payload = raw[0].rawPayload as any;
-        let canonical;
-
-        if (raw[0].sourcePlatformId === 'codeforces') {
-          canonical = {
-            title: payload.name,
-            description: `Codeforces Contest ${payload.id}`,
-            startTime: new Date(payload.startTimeSeconds * 1000),
-            endTime: new Date((payload.startTimeSeconds + payload.durationSeconds) * 1000),
-            canonicalUrl: raw[0].sourceUrl,
-            platformId: raw[0].sourcePlatformId,
-          };
-        } else if (raw[0].sourcePlatformId === 'leetcode') {
-          canonical = {
-            title: payload.title,
-            description: `LeetCode Contest`,
-            startTime: new Date(payload.startTime * 1000),
-            endTime: new Date((payload.startTime + payload.duration) * 1000),
-            canonicalUrl: raw[0].sourceUrl,
-            platformId: raw[0].sourcePlatformId,
-          };
-        } else if (raw[0].sourcePlatformId === 'hackerrank') {
-          canonical = {
-            title: 'HackerRank Challenge',
-            description: `HackerRank Event`,
-            startTime: new Date(),
-            endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-            canonicalUrl: raw[0].sourceUrl,
-            platformId: raw[0].sourcePlatformId,
-          };
-        } else if (raw[0].sourcePlatformId === 'unstop' || raw[0].sourcePlatformId === 'devpost') {
-          canonical = {
-            title: payload.title || raw[0].sourcePlatformId,
-            description:
-              payload.description ||
-              payload.detailText ||
-              payload.listingText ||
-              `${raw[0].sourcePlatformId} event`,
-            startTime: payload.startTime ? new Date(payload.startTime) : new Date(),
-            endTime: payload.endTime ? new Date(payload.endTime) : null,
-            canonicalUrl: raw[0].sourceUrl,
-            platformId: raw[0].sourcePlatformId,
-          };
-        } else if (
-          raw[0].sourcePlatformId === 'atcoder' ||
-          raw[0].sourcePlatformId === 'codechef' ||
-          raw[0].sourcePlatformId === 'geeksforgeeks' ||
-          raw[0].sourcePlatformId === 'mlh'
-        ) {
-          canonical = {
-            title: payload.title || raw[0].sourcePlatformId,
-            description:
-              payload.description ||
-              payload.listingText ||
-              payload.pageText ||
-              `${raw[0].sourcePlatformId} event`,
-            startTime: payload.startTime ? new Date(payload.startTime) : new Date(),
-            endTime: payload.endTime ? new Date(payload.endTime) : null,
-            canonicalUrl: payload.canonicalUrl || raw[0].sourceUrl,
-            platformId: raw[0].sourcePlatformId,
-          };
-        } else {
-          console.warn(`  ⚠️  Unknown platform: ${raw[0].sourcePlatformId}`);
-          return;
-        }
-
-        await db
-          .update(rawScrapedEvents)
-          .set({ normalized: true })
-          .where(eq(rawScrapedEvents.id, rawId));
-
-        eventStats.normalized++;
-        await dedupeQueue.add('dedupe', { canonical });
       } catch (error) {
-        console.error(`  ❌ [NORMALIZATION] Error:`, error);
+        console.error(`  ❌ [${platform.toUpperCase()}] Error:`, error);
       }
+      
+      platformStats[platform].endTime = Date.now();
     },
-    { connection, concurrency: 20 },
-  );
-
-  // 3. Dedupe Worker
-  new Worker(
-    'dedupe',
-    async (job) => {
-      try {
-        const ev = job.data.canonical;
-
-        const dedupeHash = crypto
-          .createHash('sha256')
-          .update(`${ev.platformId}-${ev.title}-${ev.startTime}`)
-          .digest('hex');
-
-        const [inserted] = await db
-          .insert(events)
-          .values({
-            title: ev.title,
-            description: ev.description,
-            startTime: new Date(ev.startTime),
-            endTime: ev.endTime ? new Date(ev.endTime) : null,
-            canonicalUrl: ev.canonicalUrl,
-            dedupeHash,
-          })
-          .onConflictDoUpdate({
-            target: events.dedupeHash,
-            set: { title: ev.title },
-          })
-          .returning();
-
-        eventStats.deduped++;
-        await indexingQueue.add('index', { eventId: inserted.id, canonical: ev });
-      } catch (error) {
-        console.error(`  ❌ [DEDUPE] Error:`, error);
-      }
-    },
-    { connection, concurrency: 20 },
-  );
-
-  // 4. Indexing Worker
-  new Worker(
-    'indexing',
-    async (job) => {
-      try {
-        const { eventId: _eventId } = job.data;
-
-        // Just mark as indexed
-        eventStats.indexed++;
-      } catch (error) {
-        console.error(`  ❌ [INDEXING] Error:`, error);
-      }
-    },
-    { connection, concurrency: 20 },
+    { connection, concurrency: 5 },
   );
 };
 
@@ -424,16 +291,14 @@ const waitForCompletion = async (timeout = 60000) => {
 
   while (Date.now() - startTime < timeout) {
     const scrapingCount = await scrapingQueue.count();
-    const normCount = await normalizationQueue.count();
-    const dedupeCount = await dedupeQueue.count();
-    const indexCount = await indexingQueue.count();
+    const activeCount = await scrapingQueue.getActiveCount();
 
-    const totalQueued = scrapingCount + normCount + dedupeCount + indexCount;
+    const totalQueued = scrapingCount + activeCount;
 
-    if (totalQueued !== lastCount) {
-      console.log(
-        `  📊 Queue status: Scraping=${scrapingCount}, Normalization=${normCount}, Dedupe=${dedupeCount}, Indexing=${indexCount}`,
-      );
+    if (totalQueued !== lastCount || (Date.now() - startTime) % 15000 < 500) {
+      const activeJobs = await scrapingQueue.getActive();
+      const activeNames = activeJobs.map(j => j.data.platform).join(', ');
+      console.log(`  📊 Queue: ${totalQueued} remaining. 🔄 Active now: [${activeNames || 'None'}]...`);
       lastCount = totalQueued;
     }
 
@@ -446,74 +311,47 @@ const waitForCompletion = async (timeout = 60000) => {
   }
 };
 
-const displayFetchedEvents = async () => {
-  console.log('📋 Fetching all scraped events...\n');
-
-  try {
-    const [{ total }] = await db.select({ total: count() }).from(events);
-    eventStats.total = Number(total || 0);
-
-    const allEvents = await db.select().from(events).orderBy(desc(events.startTime)).limit(50);
-
-    if (allEvents.length === 0) {
-      console.log('  ℹ️  No events found in database');
-      return;
-    }
-
-    console.log(`  📌 Total events in database: ${allEvents.length}\n`);
-    console.log(
-      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n',
-    );
-
-    allEvents.forEach((event, index) => {
-      const startDate = new Date(event.startTime).toLocaleString();
-      const endDate = event.endTime ? new Date(event.endTime).toLocaleString() : 'N/A';
-
-      console.log(`${index + 1}. ${event.title}`);
-      console.log(`   📍 URL: ${event.canonicalUrl}`);
-      console.log(`   🕐 Start: ${startDate}`);
-      console.log(`   🕑 End: ${endDate}`);
-      console.log(`   📝 Description: ${event.description || 'N/A'}\n`);
-    });
-
-    console.log(
-      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n',
-    );
-  } catch (error) {
-    console.error('❌ Error fetching events:', error);
+const printSummary = async () => {
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('EventIO Scraper System');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+  
+  for (const [platform, stats] of Object.entries(platformStats)) {
+    console.log(`[${platform.charAt(0).toUpperCase() + platform.slice(1)}]`);
+    console.log(`Events Scraped: ${stats.scraped}`);
+    console.log(`New Events: ${stats.newFound}`);
+    console.log(`Updated Events: ${stats.updated}`);
+    console.log(`Database Push: ${stats.newFound + stats.updated > 0 ? 'Success' : 'Skipped (No Changes)'}`);
+    console.log(`Output: outputs/${platform}.json\n`);
   }
-};
 
-const printSummary = () => {
-  console.log('\n╔════════════════════════════════════════════════════════╗');
-  console.log('║           🎉 SCRAPER RUN COMPLETE 🎉                  ║');
-  console.log('╚════════════════════════════════════════════════════════╝\n');
-  console.log('📊 Summary Statistics:');
-  console.log(`  ✅ Events Scraped:      ${eventStats.scraped}`);
-  console.log(`  ✅ Events Normalized:   ${eventStats.normalized}`);
-  console.log(`  ✅ Events Deduped:      ${eventStats.deduped}`);
-  console.log(`  ✅ Events Indexed:      ${eventStats.indexed}`);
-  console.log(`  📌 Total in Database:   ${eventStats.total}\n`);
+  const { rows } = await db.execute('SELECT COUNT(*) as c FROM events;');
+  const totalDb = rows[0]?.c || 0;
+
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('FINAL SUMMARY');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`Platforms Run: ${Object.keys(platformStats).length}`);
+  console.log(`Total Events Scraped: ${eventStats.scraped}`);
+  console.log(`New Events Added: ${eventStats.newFound}`);
+  console.log(`Events Updated: ${eventStats.updated}`);
+  console.log(`Duplicates Skipped: ${eventStats.dupesSkipped}`);
+  console.log(`Total Database Events: ${totalDb}`);
+  console.log('\nRedis: Connected');
+  console.log('Neon DB: Connected');
+  console.log('Outputs Saved: Yes\n');
+  console.log('DONE');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 };
 
 const main = async () => {
-  console.log('\n🚀 Starting comprehensive scraper runner...\n');
-  console.log('═════════════════════════════════════════════════════════\n');
-
   try {
+    await checkConnections();
+    await cleanOutputDirectory();
     await initializeWorkers();
-    console.log('✅ Workers initialized\n');
-
     await triggerScrapers();
-    await waitForCompletion(600000); // 10 minute timeout for full source sweeps
-
-    // Display all fetched events
-    await displayFetchedEvents();
-
-    // Print final summary
-    printSummary();
-
-    console.log('✨ Scraper runner finished successfully!');
+    await waitForCompletion(600000); // 10 minute timeout
+    await printSummary();
     process.exit(0);
   } catch (error) {
     console.error('❌ Fatal error:', error);

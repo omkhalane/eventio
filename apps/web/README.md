@@ -1,36 +1,61 @@
 # Eventio Web App
 
-React + Vite frontend for browsing, filtering, and syncing developer events.
+`apps/web` is the public Eventio experience: landing page, calendar, event detail modal, API docs, public metadata, and browser-side integrations.
 
-## Source
+<p align="center">
+  <img src="public/assets/og-image.png" alt="Eventio web preview" width="86%" />
+</p>
+
+## Stack
+
+| Layer | Tooling |
+| --- | --- |
+| UI | React 19 |
+| Build | Vite 8 |
+| Styling | Tailwind CSS 4 |
+| Motion | Motion for React |
+| Icons | Lucide React |
+| Routing | React Router |
+| Analytics | Vercel Analytics, optional PostHog |
+| Auth/sync | Firebase config and Google Calendar sync service |
+
+## Source Map
 
 ```text
-apps/web/index.html       HTML shell, SEO tags, JSON-LD, manifest link
-apps/web/public/          Static public assets copied into the Vite build
-apps/web/src/App.tsx      Routes and calendar app state
-apps/web/src/components/  Landing page, calendar, modal, nav, and UI pieces
-apps/web/src/lib/         Firebase, Supabase, and utility setup
-apps/web/src/services/    Browser-side Google Calendar sync service
+apps/web/
+  index.html             HTML shell
+  public/                Static assets copied by Vite
+  server.ts              Optional Express/Vite server integration
+  src/
+    App.tsx              Main app routes and calendar state
+    components/          Landing, nav, calendar, event modal, docs
+    lib/                 API config, Firebase, public config, utils
+    services/            Google Calendar sync service
+    types.ts             Frontend event and filter types
 ```
 
 ## Commands
 
-Run from the repository root:
+From the repository root:
 
 ```bash
-npm run dev
-npm run build
-npm run preview
-npm run typecheck
+pnpm --filter @eventio/web run dev
+pnpm --filter @eventio/web run build
+pnpm --filter @eventio/web run preview
+pnpm --filter @eventio/web run lint
 ```
 
-The root `vite.config.ts` sets `apps/web` as the Vite root and emits production
-files to `dist/apps/web`. Local dev usually starts at
-`http://127.0.0.1:5173/`; if the port is busy, use the URL Vite prints.
+The root scripts also work:
+
+```bash
+pnpm dev
+pnpm build
+pnpm lint
+```
 
 ## Public Assets
 
-The app uses these deployed paths:
+Keep these deployed paths stable:
 
 ```text
 /assets/logo.svg
@@ -43,5 +68,53 @@ The app uses these deployed paths:
 /sitemap.xml
 ```
 
-Keep these paths stable because they are referenced by the landing page, social
-metadata, PWA manifest, and docs.
+They are used by the landing page, SEO metadata, Open Graph previews, PWA metadata, and docs.
+
+## Runtime Config
+
+The browser reads public config through environment values and the optional `/api/config` server route.
+
+Important public variables:
+
+```bash
+PUBLIC_SITE_URL=http://localhost:5175
+PUBLIC_API_BASE_URL=http://localhost:3000
+PUBLIC_FIREBASE_API_KEY=
+PUBLIC_FIREBASE_AUTH_DOMAIN=
+PUBLIC_FIREBASE_PROJECT_ID=
+PUBLIC_FIREBASE_STORAGE_BUCKET=
+PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+PUBLIC_FIREBASE_APP_ID=
+PUBLIC_FIREBASE_FIRESTORE_DATABASE_ID=
+PUBLIC_POSTHOG_KEY=
+PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
+Only variables prefixed with `PUBLIC_` should be considered browser-readable.
+
+## UI Areas
+
+| Component | Role |
+| --- | --- |
+| `LandingPage` | Public product page and source/category story. |
+| `TopNav` | Global navigation. |
+| `MainCalendar` | Primary event browsing surface. |
+| `MiniCalendar` | Compact date navigation. |
+| `EventModal` | Event details, sharing, bookmark state, Google Calendar sync. |
+| `ApiDocs` | In-app API reference. |
+| `SeoHead` | Metadata and canonical URL behavior. |
+
+## Frontend Quality Checklist
+
+Before shipping UI changes:
+
+- Run `pnpm --filter @eventio/web run lint`.
+- Run `pnpm --filter @eventio/web run build`.
+- Check mobile and desktop layouts.
+- Confirm images load from `public/assets`.
+- Confirm text does not overflow buttons, cards, modals, or navigation.
+- Capture screenshots for visible PRs.
+
+## Notes
+
+This app is intentionally visual, but it should stay functional first. The calendar, search, filters, event modal, API docs, and public metadata are product surfaces, not decoration.

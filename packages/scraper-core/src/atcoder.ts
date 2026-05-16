@@ -155,7 +155,5 @@ export async function scrapeAtcoder(): Promise<ScrapedEventRecord[]> {
       },
     };
   });
-
-  await writeScraperOutput('atcoder', results);
   return results;
 }
