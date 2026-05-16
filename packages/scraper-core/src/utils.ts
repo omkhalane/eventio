@@ -160,10 +160,13 @@ export const parseUnstopDateRange = (value: string): ParsedDateRange | null => {
     return null;
   }
 
-  return parsedRanges.reduce<ParsedDateRange>((current, candidate) => ({
-    startTime: candidate.startTime < current.startTime ? candidate.startTime : current.startTime,
-    endTime: candidate.endTime > current.endTime ? candidate.endTime : current.endTime,
-  }));
+  return parsedRanges.reduce<ParsedDateRange>(
+    (current, candidate) => ({
+      startTime: candidate.startTime < current.startTime ? candidate.startTime : current.startTime,
+      endTime: candidate.endTime > current.endTime ? candidate.endTime : current.endTime,
+    }),
+    parsedRanges[0],
+  );
 };
 
 export const parseDateRangeFromText = (value: string): ParsedDateRange | null => {
