@@ -2,14 +2,13 @@
 import { db, events } from '@eventio/db';
 import { connection, scrapingQueue } from '@eventio/queue';
 import {
+  NormalizedEventSchema,
   scrapeAtcoder,
   scrapeCodechef,
   scrapeDevpost,
   scrapeGeeksforgeeks,
   scrapeMlh,
   scrapeUnstop,
-  writeScraperOutput,
-  NormalizedEventSchema,
 } from '@eventio/scraper-core';
 import { Worker } from 'bullmq';
 import crypto from 'crypto';

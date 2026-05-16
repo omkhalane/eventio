@@ -16,7 +16,7 @@ export const runMigrations = async () => {
     migrationFiles = (await fs.readdir(migrationsDir))
       .filter((file) => file.endsWith('.sql'))
       .sort();
-  } catch (err) {
+  } catch {
     logger.info('No migration directory found, skipping migrations.');
     return;
   }
