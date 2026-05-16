@@ -119,5 +119,4 @@ checkQueues.js
 dev.log
 
 # Agent Context
-.agents/
 .codex/
