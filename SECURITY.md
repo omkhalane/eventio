@@ -1,44 +1,61 @@
 # Security Policy
 
-## Reporting a Vulnerability
+Eventio handles public event data, API access, browser configuration, and deployment secrets. Security reports are welcome and should be handled privately.
 
-Please do not open a public issue for security reports.
+## Reporting A Vulnerability
 
-Use GitHub private vulnerability reporting for this repository:
+Please do not open a public GitHub issue for security reports.
+
+Use GitHub private vulnerability reporting:
 
 ```text
 https://github.com/omkhalane/eventio/security/advisories/new
 ```
 
-If GitHub private reporting is unavailable, contact:
+If private reporting is unavailable, contact:
 
 ```text
 om.khalane.dev@gmail.com
 ```
 
-Include:
+## What To Include
 
-- A clear description of the vulnerability.
+Please include:
+
+- A clear summary of the issue.
 - Steps to reproduce.
-- Impact and affected area.
-- Any logs, payloads, or screenshots with secrets removed.
+- Affected package, app, endpoint, or deployment surface.
+- Expected impact.
+- Example payloads, screenshots, or logs with secrets removed.
+- Whether the issue is already public.
 
 ## Scope
 
 In scope:
 
-- Eventio web application code.
-- Scraper service code.
-- CI/CD and repository configuration.
-- Documentation that could cause unsafe deployment.
+- Eventio web app code.
+- Eventio API code.
+- Worker and scraper code.
+- Repository configuration and Docker setup.
+- Documentation that could lead to unsafe deployment.
+- Secret handling and public/private environment variable boundaries.
 
 Out of scope:
 
 - Third-party platforms scraped by Eventio.
-- Vulnerabilities requiring compromised credentials.
-- Spam, social engineering, or denial-of-service attacks.
+- Social engineering.
+- Spam or denial-of-service-only reports.
+- Reports requiring compromised credentials.
+- Vulnerabilities in user-managed infrastructure outside this repository.
 
-## Maintainer Response
+## Handling Expectations
 
-Reports will be reviewed as soon as practical. Valid issues will be fixed with
-appropriate disclosure notes once a patch is available.
+The maintainer will review valid reports as soon as practical, ask clarifying questions if needed, and coordinate a fix before public disclosure when appropriate.
+
+## Security Hygiene For Contributors
+
+- Never commit `.env` files with real values.
+- Keep server-only secrets out of `PUBLIC_*` variables.
+- Remove tokens, cookies, and private user data from logs before sharing.
+- Avoid adding debug endpoints that expose config or database state.
+- Keep Docker examples development-safe and clearly documented.

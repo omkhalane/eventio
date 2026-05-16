@@ -14,7 +14,9 @@
     "scrape:trigger": "pnpm --filter @eventio/workers run scrape:trigger",
     "scrape:run": "pnpm --filter @eventio/workers run scrape:run",
     "scrape:run:ci": "pnpm --filter @eventio/workers run scrape:run:ci",
-    "scrape:temp": "pnpm --filter @eventio/workers run scrape:temp",
+    "scrape:all": "pnpm --filter @eventio/workers run scrape:run",
+    "scrape:unstop": "pnpm --filter @eventio/workers run scrape:run unstop",
+    "scrape:devfolio": "pnpm --filter @eventio/workers run scrape:run devpost",
     "check": "pnpm run lint"
   },
   "dependencies": {
@@ -23,11 +25,13 @@
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",
     "@eventio/queue": "workspace:*",
-    "@eventio/scraper-core": "workspace:*"
+    "@eventio/scraper-core": "workspace:*",
+    "drizzle-orm": "^0.45.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "@vercel/node": "^5.0.0",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"

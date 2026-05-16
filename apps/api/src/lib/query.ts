@@ -12,7 +12,7 @@ import {
   VALID_QUERY_PARAMS,
 } from './config';
 
-const { and, asc, db, desc, eq, events, searchDocuments, sql } = database;
+const { and, asc, db, desc, events, sql } = database;
 
 export type StatusFilter = (typeof SUPPORTED_STATUS)[number];
 export type SortField = (typeof SUPPORTED_SORT_FIELDS)[number];
@@ -86,11 +86,9 @@ const parseDate = (value: string | string[] | undefined) => {
 const validateSupportedValues = (values: string[], allowed: readonly string[]) =>
   values.filter((value) => !allowed.includes(value));
 
-
-const buildListMatchCondition = (column: any, values: string[]) => {
+const buildArrayOverlapCondition = (column: any, values: string[]) => {
   if (values.length === 0) return null;
-  // Use the PostgreSQL ?| operator which checks if any of the elements in the text array exist as keys in the JSONB
-  return sql`${column} ?| array[${sql.raw(values.map((v) => `'${v}'`).join(','))}]`;
+  return sql`${column} && array[${sql.raw(values.map((v) => `'${v}'`).join(','))}]::text[]`;
 };
 
 const buildTextSearchCondition = (term: string) => {
@@ -98,9 +96,8 @@ const buildTextSearchCondition = (term: string) => {
   return sql`(
     COALESCE(${events.title}, '') ILIKE ${pattern}
     OR COALESCE(${events.description}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.descriptionText}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.organizerText}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.tagsJson}::text, '') ILIKE ${pattern}
+    OR COALESCE(${events.shortDescription}, '') ILIKE ${pattern}
+    OR COALESCE(${events.organizerName}, '') ILIKE ${pattern}
   )`;
 };
 
@@ -109,22 +106,21 @@ const buildTextExclusionCondition = (term: string) => {
   return sql`NOT (
     COALESCE(${events.title}, '') ILIKE ${pattern}
     OR COALESCE(${events.description}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.descriptionText}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.organizerText}, '') ILIKE ${pattern}
-    OR COALESCE(${searchDocuments.tagsJson}::text, '') ILIKE ${pattern}
+    OR COALESCE(${events.shortDescription}, '') ILIKE ${pattern}
+    OR COALESCE(${events.organizerName}, '') ILIKE ${pattern}
   )`;
 };
 
 const statusCondition = (status: StatusFilter, now: string) => {
   switch (status) {
     case 'upcoming':
-      return sql`${events.startTime} > ${now}`;
+      return sql`${events.startDate} > ${now}`;
     case 'ongoing':
-      return sql`${events.startTime} <= ${now} AND ${events.endTime} IS NOT NULL AND ${events.endTime} >= ${now}`;
+      return sql`${events.startDate} <= ${now} AND ${events.endDate} IS NOT NULL AND ${events.endDate} >= ${now}`;
     case 'past':
-      return sql`${events.endTime} IS NOT NULL AND ${events.endTime} < ${now}`;
+      return sql`${events.endDate} IS NOT NULL AND ${events.endDate} < ${now}`;
     case 'unknown':
-      return sql`${events.startTime} IS NULL`;
+      return sql`${events.startDate} IS NULL`;
   }
 };
 
@@ -243,28 +239,28 @@ export const buildEventsQuery = async (query: ParsedEventsQuery) => {
   const conditions: any[] = [];
 
   if (query.platforms.length > 0) {
-    conditions.push(buildListMatchCondition(searchDocuments.platformsJson, query.platforms));
+    conditions.push(sql`${events.platform} IN (${sql.raw(query.platforms.map((v) => `'${v}'`).join(','))})`);
   }
   if (query.categories.length > 0) {
-    conditions.push(buildListMatchCondition(searchDocuments.tagsJson, query.categories));
+    conditions.push(sql`${events.category} IN (${sql.raw(query.categories.map((v) => `'${v}'`).join(','))})`);
   }
   if (query.tags.length > 0) {
-    conditions.push(buildListMatchCondition(searchDocuments.tagsJson, query.tags));
+    conditions.push(buildArrayOverlapCondition(events.tags, query.tags));
   }
   if (query.status) {
     conditions.push(statusCondition(query.status, now));
   }
   if (query.startDate) {
-    conditions.push(sql`${events.startTime} >= ${query.startDate.toISOString()}`);
+    conditions.push(sql`${events.startDate} >= ${query.startDate.toISOString()}`);
   }
   if (query.endDate) {
-    conditions.push(sql`${events.startTime} <= ${query.endDate.toISOString()}`);
+    conditions.push(sql`${events.startDate} <= ${query.endDate.toISOString()}`);
   }
   if (query.search) {
     conditions.push(buildTextSearchCondition(query.search));
   }
   if (query.eventTypes.length > 0) {
-    conditions.push(buildListMatchCondition(searchDocuments.tagsJson, query.eventTypes));
+    conditions.push(buildArrayOverlapCondition(events.tags, query.eventTypes));
   }
   if (query.fees.length > 0) {
     for (const fee of query.fees) {
@@ -272,17 +268,16 @@ export const buildEventsQuery = async (query: ParsedEventsQuery) => {
     }
   }
   if (query.isFree === false) {
-    conditions.push(sql`1 = 0`);
+    conditions.push(sql`${events.isFree} = false`);
   }
   if (query.price !== undefined && query.price > 0) {
-    conditions.push(sql`1 = 0`);
+    conditions.push(sql`${events.isFree} = false`);
   }
 
   const whereClause = conditions.length > 0 ? and(...conditions.filter(Boolean)) : undefined;
   const totalResult = await db
     .select({ total: sql`count(*)` as any })
     .from(events)
-    .leftJoin(searchDocuments, eq(events.id, searchDocuments.id))
     .where(whereClause);
 
   const total = Number(totalResult[0]?.total || 0);
@@ -290,8 +285,8 @@ export const buildEventsQuery = async (query: ParsedEventsQuery) => {
   const offset = (query.page - 1) * query.limit;
 
   const sortColumnMap = {
-    start_date: events.startTime,
-    created_at: events.createdAt,
+    start_date: events.startDate,
+    created_at: events.scrapedAt,
     updated_at: events.updatedAt,
     title: events.title,
   } as const;
@@ -301,19 +296,23 @@ export const buildEventsQuery = async (query: ParsedEventsQuery) => {
       id: events.id,
       title: events.title,
       description: events.description,
-      startTime: events.startTime,
-      endTime: events.endTime,
+      shortDescription: events.shortDescription,
+      startDate: events.startDate,
+      endDate: events.endDate,
       timezone: events.timezone,
-      canonicalUrl: events.canonicalUrl,
-      dedupeHash: events.dedupeHash,
-      createdAt: events.createdAt,
+      canonicalUrl: events.sourceUrl,
+      sourceUrl: events.sourceUrl,
+      slug: events.slug,
+      scrapedAt: events.scrapedAt,
       updatedAt: events.updatedAt,
-      platformsJson: searchDocuments.platformsJson,
-      tagsJson: searchDocuments.tagsJson,
-      organizerText: searchDocuments.organizerText,
+      platform: events.platform,
+      tags: events.tags,
+      organizerName: events.organizerName,
+      category: events.category,
+      bannerImage: events.bannerImage,
+      thumbnailImage: events.thumbnailImage,
     })
     .from(events)
-    .leftJoin(searchDocuments, eq(events.id, searchDocuments.id))
     .where(whereClause)
     .orderBy(
       query.order === 'desc' ? desc(sortColumnMap[query.sort]) : asc(sortColumnMap[query.sort]),
@@ -333,20 +332,17 @@ export const buildEventsQuery = async (query: ParsedEventsQuery) => {
 };
 
 export const buildEventResponse = (row: any) => {
-  const platforms = Array.isArray(row.platformsJson)
-    ? row.platformsJson.filter((item: unknown) => typeof item === 'string')
-    : [];
-  const tags = Array.isArray(row.tagsJson)
-    ? row.tagsJson.filter((item: unknown) => typeof item === 'string')
-    : [];
-  const platform = platforms[0] || 'unknown';
+  const tags = Array.isArray(row.tags) ? row.tags : [];
+  const platform = row.platform || 'unknown';
   const now = new Date();
+  const startTime = row.startDate;
+  const endTime = row.endDate;
   const status =
-    row.startTime > now
+    startTime > now
       ? 'upcoming'
-      : row.endTime && row.startTime <= now && row.endTime >= now
+      : endTime && startTime <= now && endTime >= now
         ? 'ongoing'
-        : row.endTime && row.endTime < now
+        : endTime && endTime < now
           ? 'past'
           : 'unknown';
 
@@ -355,37 +351,42 @@ export const buildEventResponse = (row: any) => {
     external_id: row.id,
     title: row.title,
     description: row.description,
-    startTime: row.startTime.toISOString(),
-    endTime: row.endTime ? row.endTime.toISOString() : null,
-    start_time: row.startTime.toISOString(),
-    end_time: row.endTime ? row.endTime.toISOString() : null,
+    shortDescription: row.shortDescription,
+    startDate: startTime ? startTime.toISOString() : null,
+    endDate: endTime ? endTime.toISOString() : null,
+    start_time: startTime ? startTime.toISOString() : null,
+    end_time: endTime ? endTime.toISOString() : null,
     timezone: row.timezone,
-    url: row.canonicalUrl,
-    canonicalUrl: row.canonicalUrl,
+    url: row.sourceUrl,
+    canonicalUrl: row.sourceUrl,
     platform,
+    category: row.category,
     event_type: tags[0] || 'event',
     tags,
     is_online: tags.includes('online') || platform !== 'unknown',
     is_free: true,
     status,
+    bannerImage: row.bannerImage,
+    thumbnailImage: row.thumbnailImage,
+    slug: row.slug,
     extra: {
-      platforms,
+      platforms: [platform],
       tags,
-      organizer: row.organizerText,
+      organizer: row.organizerName,
     },
-    created_at: row.createdAt.toISOString(),
-    updated_at: row.updatedAt.toISOString(),
-    createdAt: row.createdAt.toISOString(),
-    updatedAt: row.updatedAt.toISOString(),
+    created_at: row.scrapedAt ? row.scrapedAt.toISOString() : null,
+    updated_at: row.updatedAt ? row.updatedAt.toISOString() : null,
+    createdAt: row.scrapedAt ? row.scrapedAt.toISOString() : null,
+    updatedAt: row.updatedAt ? row.updatedAt.toISOString() : null,
   };
 };
 
 export const buildStats = async () => {
   const now = new Date().toISOString();
-  const upcoming = sql<number>`count(*) filter (where ${events.startTime} > ${now})`;
-  const ongoing = sql<number>`count(*) filter (where ${events.startTime} <= ${now} and ${events.endTime} is not null and ${events.endTime} >= ${now})`;
-  const past = sql<number>`count(*) filter (where ${events.endTime} is not null and ${events.endTime} < ${now})`;
-  const unknown = sql<number>`count(*) filter (where ${events.startTime} is null)`;
+  const upcoming = sql<number>`count(*) filter (where ${events.startDate} > ${now})`;
+  const ongoing = sql<number>`count(*) filter (where ${events.startDate} <= ${now} and ${events.endDate} is not null and ${events.endDate} >= ${now})`;
+  const past = sql<number>`count(*) filter (where ${events.endDate} is not null and ${events.endDate} < ${now})`;
+  const unknown = sql<number>`count(*) filter (where ${events.startDate} is null)`;
 
   const totals = await db
     .select({
@@ -395,10 +396,9 @@ export const buildStats = async () => {
       past: past as any,
       unknown: unknown as any,
     })
-    .from(events)
-    .leftJoin(searchDocuments, eq(events.id, searchDocuments.id));
+    .from(events);
 
-  const platformExpression = sql`coalesce(nullif(${searchDocuments.platformsJson} ->> 0, ''), 'unknown')`;
+  const platformExpression = events.platform;
   const platformRows = await db
     .select({
       platform: platformExpression as any,
@@ -409,7 +409,6 @@ export const buildStats = async () => {
       unknown: unknown as any,
     })
     .from(events)
-    .leftJoin(searchDocuments, eq(events.id, searchDocuments.id))
     .groupBy(platformExpression)
     .orderBy(asc(platformExpression));
 

@@ -169,7 +169,7 @@ const collectEventCards = async () => {
   try {
     await page.goto(GFG_URL, { waitUntil: 'domcontentloaded', timeout: 120_000 });
 
-    for (let index = 0; index < 12; index += 1) {
+    while (true) {
       const button = page.getByText(/Load More Events/i).first();
       if ((await button.count()) === 0) {
         break;
@@ -317,8 +317,6 @@ export async function scrapeGeeksforgeeks(): Promise<ScrapedEventRecord[]> {
         },
       };
     });
-
-    await writeScraperOutput('geeksforgeeks', results);
     return results;
   }
 
@@ -326,7 +324,5 @@ export async function scrapeGeeksforgeeks(): Promise<ScrapedEventRecord[]> {
   const httpCards = await collectEventCardsFromHttp();
   const cards = uniqueBy([...browserCards, ...httpCards], (card) => card.href);
   const results = await Promise.all(cards.map((card) => fetchEventDetail(card.href, card.text)));
-
-  await writeScraperOutput('geeksforgeeks', results);
   return results;
 }

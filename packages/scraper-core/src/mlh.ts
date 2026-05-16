@@ -149,7 +149,5 @@ export async function scrapeMlh(): Promise<ScrapedEventRecord[]> {
       },
     };
   });
-
-  await writeScraperOutput('mlh', results);
   return results;
 }

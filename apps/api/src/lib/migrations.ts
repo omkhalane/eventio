@@ -11,12 +11,19 @@ export const runMigrations = async () => {
     throw new Error('DATABASE_URL is missing');
   }
 
-  const migrationFiles = (await fs.readdir(migrationsDir))
-    .filter((file) => file.endsWith('.sql'))
-    .sort();
+  let migrationFiles: string[] = [];
+  try {
+    migrationFiles = (await fs.readdir(migrationsDir))
+      .filter((file) => file.endsWith('.sql'))
+      .sort();
+  } catch (err) {
+    logger.info('No migration directory found, skipping migrations.');
+    return;
+  }
 
   if (migrationFiles.length === 0) {
-    throw new Error(`No SQL migrations found in ${migrationsDir}`);
+    logger.info('No SQL migrations found, skipping migrations.');
+    return;
   }
 
   const client = postgres(databaseUrl, { max: 1 });

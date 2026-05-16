@@ -7,7 +7,7 @@
     "lint": "eslint . --ext ts --max-warnings 0"
   },
   "dependencies": {
-    "fastify": "^5.8.5",
+    "fastify": "^4.26.2",
     "@fastify/cors": "^9.0.1",
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",

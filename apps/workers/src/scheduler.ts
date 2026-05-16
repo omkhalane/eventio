@@ -3,20 +3,11 @@ import 'dotenv/config';
 import { logger } from '@eventio/observability';
 import { scrapingQueue } from '@eventio/queue';
 
-const CRON_SCHEDULES = [
-  { platform: 'codeforces', pattern: '0 */4 * * *' }, // Every 4 hours
-  { platform: 'leetcode', pattern: '30 */4 * * *' }, // Every 4 hours, offset by 30 mins
-  { platform: 'hackerrank', pattern: '0 0 * * *' }, // Once a day
-  { platform: 'unstop', pattern: '0 2 * * *' }, // Once a day
-  { platform: 'devpost', pattern: '30 2 * * *' }, // Once a day, offset by 30 mins
-  { platform: 'atcoder', pattern: '0 */6 * * *' },
-  { platform: 'codechef', pattern: '20 */6 * * *' },
-  { platform: 'geeksforgeeks', pattern: '40 */6 * * *' },
-  { platform: 'mlh', pattern: '0 3 * * *' },
-];
+// Automatic execution disabled per requirement
+const CRON_SCHEDULES: Array<{ platform: string; pattern: string }> = [];
 
 const startScheduler = async () => {
-  logger.info('Starting worker scheduler...');
+  logger.info('Scheduler started (no automatic cron jobs active)...');
 
   for (const job of CRON_SCHEDULES) {
     // Add repeatable job to BullMQ

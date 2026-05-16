@@ -49,9 +49,15 @@ const getContestLinks = async () => {
 
   try {
     await page.goto(CODECHEF_URL, { waitUntil: 'domcontentloaded', timeout: 120_000 });
-    for (let index = 0; index < 10; index += 1) {
-      await page.mouse.wheel(0, 10_000);
-      await page.waitForTimeout(600);
+    let previousHeight = 0;
+    while (true) {
+      await page.mouse.wheel(0, 20_000);
+      await page.waitForTimeout(1000);
+      const currentHeight = await page.evaluate(() => document.body.scrollHeight);
+      if (currentHeight === previousHeight) {
+        break; // No more content loaded
+      }
+      previousHeight = currentHeight;
     }
 
     const anchors = await collectAnchors(page);
@@ -153,7 +159,5 @@ export async function scrapeCodechef(): Promise<ScrapedEventRecord[]> {
   const results = await Promise.all(
     listingLinks.map(async (anchor) => fetchContestDetail(anchor.href, anchor.text)),
   );
-
-  await writeScraperOutput('codechef', results);
   return results;
 }

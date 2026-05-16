@@ -1,68 +1,136 @@
 # Contributing
 
-Thanks for helping make Eventio useful for developers. This project values
-focused changes, clear reasoning, and respectful collaboration.
+Thanks for helping make Eventio sharper. The project values practical changes, clean reasoning, and a repo that stays easy to run after each contribution.
 
-## Ways to Contribute
+## Best First Contributions
 
-- Fix bugs in the web app.
-- Add or improve scraper sources.
-- Improve event normalization and data quality.
-- Strengthen documentation.
-- Improve CI, tooling, accessibility, SEO, and developer experience.
+- Fix a UI bug in `apps/web`.
+- Improve accessibility, keyboard behavior, or responsive layout.
+- Add a scraper source in `packages/scraper-core`.
+- Improve event normalization, dedupe, or API validation.
+- Strengthen docs, Docker setup, tests, or developer tooling.
+- Add focused tests for utility code or API behavior.
 
 ## Local Setup
 
 ```bash
-npm install
+corepack enable
+corepack prepare pnpm@latest --activate
+pnpm install
 cp .env.example .env
-npm run dev
+docker compose up -d
+pnpm db:push
+pnpm dev
 ```
 
-For scraper work:
+Useful URLs:
 
-```bash
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r services/scraper/requirements.txt
-python3 -m services.scraper.main --list
-```
+- Web app: `http://localhost:5175` or the Vite URL printed in the terminal.
+- API health: `http://localhost:3000/healthz`.
+- In-app docs: `/docs`.
 
 ## Quality Checks
 
-Run before opening a PR:
+Run these before opening a PR:
 
 ```bash
-npm run typecheck
-npm run build
-npm run scraper:check
+pnpm lint
+pnpm build
 ```
 
-## Branches and Commits
+Run focused checks when relevant:
 
-- Keep branches focused on one change.
-- Use clear commit messages such as `fix: handle empty event dates` or
-  `docs: clarify scraper contract`.
-- Do not commit generated files, local caches, secrets, or virtual
-  environments.
+```bash
+pnpm --filter @eventio/web run build
+pnpm --filter @eventio/workers run scrape:run
+pnpm --filter @eventio/db run db:generate
+```
 
-## Adding a Scraper
+## Branches And Commits
 
-1. Add a file under `services/scraper/scrapers/`.
-2. Prefer a no-argument `fetch_source_name()` function.
-3. Return normalized events, not raw payloads.
-4. Use `services.scraper.scraper_utils` for retries and deduplication.
-5. Prefer APIs, JSON-LD, and static HTML before Selenium.
-6. Document unusual source behavior in `docs/scraping.md`.
+Use small branches with clear intent:
 
-## Pull Request Checklist
+```text
+fix/web-event-modal-share-buttons
+docs/docker-local-stack
+feat/scraper-new-source
+```
 
-- The PR explains why the change is needed.
-- Tests or checks were run and listed.
-- Screenshots are included for visible UI changes.
-- Source notes are included for scraper changes.
-- Docs are updated for setup, architecture, schema, or behavior changes.
+Use Conventional Commit style:
+
+```text
+fix(web): handle empty event dates
+docs: refresh local setup guide
+feat(scraper): add source adapter
+chore(docker): clean compose profiles
+```
+
+## Pull Request Standard
+
+A strong PR includes:
+
+- What changed.
+- Why it changed.
+- How it was tested.
+- Screenshots for visible UI updates.
+- Example payloads or source notes for scraper/API changes.
+- Migration notes for database changes.
+- Documentation updates when setup, behavior, schema, or architecture changes.
+
+## Adding Or Updating A Scraper
+
+Scraper code belongs in `packages/scraper-core/src`.
+
+Guidelines:
+
+- Prefer stable APIs, JSON-LD, RSS, or static HTML before browser automation.
+- Keep source-specific quirks inside the scraper module.
+- Normalize dates, URLs, platform names, and event types as close to ingestion as possible.
+- Avoid committing local scraper JSON output.
+- Capture a small note in the PR explaining how the source behaves and what can break.
+
+Run:
+
+```bash
+pnpm scrape:run
+```
+
+Local debug exports may appear in `apps/workers/scraper-output/`; that folder is ignored.
+
+## Frontend Guidelines
+
+- Keep the first screen useful, not just decorative.
+- Preserve existing design language and responsive behavior.
+- Use existing assets from `apps/web/public/assets` when possible.
+- Keep text readable on mobile and desktop.
+- Use stable dimensions for buttons, panels, calendars, and repeated cards.
+- Run `pnpm --filter @eventio/web run build` for TypeScript and Vite validation.
+
+## API Guidelines
+
+- Keep route behavior centralized in `apps/api/lib/event-api.ts` when possible.
+- Validate and document query inputs.
+- Preserve security headers and auth hooks.
+- Avoid leaking secrets or internal error details to public responses.
+
+## Database Guidelines
+
+- Keep schema changes in `packages/db`.
+- Generate migrations when the schema changes.
+- Mention migration impact in the PR.
+- Avoid destructive migration behavior unless it is clearly intentional and documented.
+
+## Repo Hygiene
+
+Do not commit:
+
+- `.env` or real credentials.
+- `node_modules/`.
+- `dist/` or app build outputs.
+- local logs.
+- scraper output JSON.
+- temporary scripts or one-off debug files.
 
 ## Security
 
-Do not open public issues for vulnerabilities. Follow [SECURITY.md](SECURITY.md).
+Do not open a public issue for vulnerabilities. Use [SECURITY.md](SECURITY.md).

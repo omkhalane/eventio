@@ -3,17 +3,23 @@ import path from 'path';
 
 export const writeScraperOutput = async (platform: string, records: unknown[]) => {
   try {
-    const outDir = path.join(process.cwd(), 'scraper-output');
+    // Determine the repo root assuming this might be run from various places, but generally process.cwd() is root
+    // Let's explicitly try to go up from current dirname or use process.cwd() /outputs
+    const outDir = path.join(process.cwd(), 'outputs');
     await fs.mkdir(outDir, { recursive: true });
 
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `${platform}-${timestamp}.json`;
+    const filename = `${platform}.json`;
     const fullPath = path.join(outDir, filename);
 
     await fs.writeFile(
       fullPath,
       JSON.stringify(
-        { platform, generatedAt: new Date().toISOString(), count: records.length, records },
+        { 
+          platform, 
+          scrapedAt: new Date().toISOString(), 
+          count: records.length, 
+          events: records 
+        },
         null,
         2,
       ),

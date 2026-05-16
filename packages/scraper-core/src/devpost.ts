@@ -4,7 +4,7 @@ import type { ScrapedEventRecord } from './types';
 import { parseDateRangeFromText, parseDevpostDateRange, uniqueBy } from './utils';
 
 const DEVPOST_BASE_URL = 'https://devpost.com/hackathons';
-const DEVPOST_STALE_PAGE_THRESHOLD = 100;
+const DEVPOST_STALE_PAGE_THRESHOLD = 9999999; // effectively no limit
 
 const DEVPOST_EXCLUDED_HOSTS = new Set([
   'devpost.com',
@@ -182,7 +182,7 @@ export async function scrapeDevpost(): Promise<ScrapedEventRecord[]> {
           }
           previousCount = currentCount;
 
-          if (stableIterations >= 200) {
+          if (stableIterations >= 1000) {
             allListings.push(...listingsBeforeScroll.map((listing) => ({ ...listing, listUrl })));
             break;
           }
@@ -226,7 +226,5 @@ export async function scrapeDevpost(): Promise<ScrapedEventRecord[]> {
       },
     };
   });
-
-  await writeScraperOutput('devpost', results);
   return results;
 }

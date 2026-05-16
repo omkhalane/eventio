@@ -8,3 +8,4 @@ export * from './src/codechef';
 export * from './src/geeksforgeeks';
 export * from './src/mlh';
 export * from './src/output';
+export * from './src/schema';
