@@ -10,7 +10,7 @@ import {
   SUPPORTED_SORT_ORDERS,
   SUPPORTED_STATUS,
   VALID_QUERY_PARAMS,
-} from './config';
+} from './config.js';
 
 const { and, asc, db, desc, events, sql } = database;
 

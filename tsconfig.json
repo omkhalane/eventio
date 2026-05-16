@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "NodeNext",
     "jsx": "react",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "strict": true,
@@ -19,5 +19,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["api/**/*", "apps/api/lib/**/*", "packages/**/*"]
+  "include": ["api/**/*", "apps/api/src/**/*", "packages/**/*"]
 }

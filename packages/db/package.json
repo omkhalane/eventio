@@ -1,6 +1,7 @@
 {
   "name": "@eventio/db",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "db:push": "drizzle-kit push",

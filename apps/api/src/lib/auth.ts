@@ -1,8 +1,8 @@
 import { connection } from '@eventio/queue';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { ANONYMOUS_RATE_LIMIT, API_KEYS, PUBLIC_RATE_LIMIT, RATE_LIMIT_WINDOW_MS } from './config';
-import { sendError } from './response';
+import { ANONYMOUS_RATE_LIMIT, API_KEYS, PUBLIC_RATE_LIMIT, RATE_LIMIT_WINDOW_MS } from './config.js';
+import { sendError } from './response.js';
 
 export type AccessTier = 'anonymous' | 'public' | 'internal';
 

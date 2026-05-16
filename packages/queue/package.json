@@ -1,6 +1,7 @@
 {
   "name": "@eventio/queue",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.ts",
   "dependencies": {
     "bullmq": "^5.7.8",

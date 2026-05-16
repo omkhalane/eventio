@@ -5,10 +5,10 @@ import { logger } from '@eventio/observability';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
-import { handleApiRequest } from '../lib/event-api';
-import { applyApiAuth } from './lib/auth';
-import { runMigrations } from './lib/migrations';
-import { sendError } from './lib/response';
+import { applyApiAuth } from './lib/auth.js';
+import { handleApiRequest } from './lib/event-api.js';
+import { runMigrations } from './lib/migrations.js';
+import { sendError } from './lib/response.js';
 
 const config = loadConfig();
 
