@@ -1,7 +1,7 @@
-import { collectAnchors, createBrowser, createPage } from './browser';
-import { writeScraperOutput } from './output';
-import type { ScrapedEventRecord } from './types';
-import { parseDateRangeFromText, parseDevpostDateRange, uniqueBy } from './utils';
+import { collectAnchors, createBrowser, createPage } from './browser.js';
+import { writeScraperOutput } from './output.js';
+import type { ScrapedEventRecord } from './types.js';
+import { parseDateRangeFromText, parseDevpostDateRange, uniqueBy } from './utils.js';
 
 const DEVPOST_BASE_URL = 'https://devpost.com/hackathons';
 const DEVPOST_STALE_PAGE_THRESHOLD = 9999999; // effectively no limit

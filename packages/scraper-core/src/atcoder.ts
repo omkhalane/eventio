@@ -1,7 +1,7 @@
-import { collectAnchors, createBrowser, createPage } from './browser';
-import type { ScrapedEventRecord } from './types';
-import { cleanText, uniqueBy } from './utils';
-import { writeScraperOutput } from './output';
+import { collectAnchors, createBrowser, createPage } from './browser.js';
+import type { ScrapedEventRecord } from './types.js';
+import { cleanText, uniqueBy } from './utils.js';
+import { writeScraperOutput } from './output.js';
 
 const ATCODER_TOKYO_OFFSET_MS = 9 * 60 * 60 * 1000;
 const ATCODER_BASE_URL = 'https://atcoder.jp/contests/archive?lang=en';

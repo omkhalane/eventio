@@ -2,7 +2,7 @@
   "name": "@eventio/observability",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.ts",
+  "main": "index.js",
   "dependencies": {
     "pino": "^8.20.0"
   },

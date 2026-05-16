@@ -1,7 +1,7 @@
-import type { ScrapedEventRecord } from './types';
-import { createBrowser, createPage } from './browser';
-import { cleanText, uniqueBy } from './utils';
-import { writeScraperOutput } from './output';
+import type { ScrapedEventRecord } from './types.js';
+import { createBrowser, createPage } from './browser.js';
+import { cleanText, uniqueBy } from './utils.js';
+import { writeScraperOutput } from './output.js';
 
 const GFG_URL = 'https://www.geeksforgeeks.org/events';
 
