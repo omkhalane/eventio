@@ -4,12 +4,8 @@ import {
   Calendar as CalendarIcon,
   Clock,
   ExternalLink,
-  Globe,
   Share2,
-  Shield,
-  Tag,
   Trophy,
-  Users,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useEffect, useState } from 'react';
