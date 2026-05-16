@@ -4,6 +4,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "type": "module",
   "scripts": {
     "dev": "pnpm --parallel run dev",
     "build": "pnpm --recursive run build",
