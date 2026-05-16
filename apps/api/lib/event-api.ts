@@ -5,6 +5,7 @@ import {
   buildEventResponse,
   buildEventsQuery,
   buildStats,
+  getEventBySlug,
   parseEventsQuery,
 } from '../src/lib/query';
 import { getUser, syncUser } from '../src/lib/users';
@@ -80,6 +81,17 @@ export async function handleApiRequest(
     const data = rows.map(buildEventResponse);
 
     return { status: 200, body: { data, pagination } };
+  }
+
+  if (normalizedPath.startsWith('/events/')) {
+    const slug = normalizedPath.replace('/events/', '');
+    const event = await getEventBySlug(slug);
+
+    if (!event) {
+      return { status: 404, body: { success: false, error: 'Event not found' } };
+    }
+
+    return { status: 200, body: { data: buildEventResponse(event) } };
   }
 
   // User routes

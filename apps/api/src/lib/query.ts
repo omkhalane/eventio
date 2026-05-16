@@ -381,6 +381,35 @@ export const buildEventResponse = (row: any) => {
   };
 };
 
+export const getEventBySlug = async (slug: string) => {
+  const rows = await db
+    .select({
+      id: events.id,
+      title: events.title,
+      description: events.description,
+      shortDescription: events.shortDescription,
+      startDate: events.startDate,
+      endDate: events.endDate,
+      timezone: events.timezone,
+      canonicalUrl: events.sourceUrl,
+      sourceUrl: events.sourceUrl,
+      slug: events.slug,
+      scrapedAt: events.scrapedAt,
+      updatedAt: events.updatedAt,
+      platform: events.platform,
+      tags: events.tags,
+      organizerName: events.organizerName,
+      category: events.category,
+      bannerImage: events.bannerImage,
+      thumbnailImage: events.thumbnailImage,
+    })
+    .from(events)
+    .where(database.eq(events.slug, slug))
+    .limit(1);
+
+  return rows[0] || null;
+};
+
 export const buildStats = async () => {
   const now = new Date().toISOString();
   const upcoming = sql<number>`count(*) filter (where ${events.startDate} > ${now})`;
