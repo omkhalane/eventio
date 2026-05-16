@@ -14,6 +14,7 @@ export type EventStatus = 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
 
 export interface CalendarEvent {
   id: string;
+  slug: string;
   title: string;
   platform: string;
   external_id: string;
@@ -30,6 +31,10 @@ export interface CalendarEvent {
   price?: number;
   currency?: string;
   status: EventStatus;
+  description?: string;
+  shortDescription?: string;
+  bannerImage?: string;
+  thumbnailImage?: string;
   extra: any;
   created_at: string;
   updated_at: string;

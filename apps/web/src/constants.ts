@@ -8,6 +8,7 @@ const monthStart = startOfMonth(now);
 export const MOCK_EVENTS: CalendarEvent[] = [
   {
     id: '1',
+    slug: 'codeforces-round-930',
     title: 'Codeforces Round #930',
     platform: 'codeforces',
     external_id: '930',
