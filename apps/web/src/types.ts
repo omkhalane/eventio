@@ -17,7 +17,9 @@ export interface CalendarEvent {
   slug: string;
   title: string;
   platform: string;
+  external_id: string;
   platform_event_id?: string;
+  is_online: boolean;
   start_time: string;
   end_time?: string;
   timezone: string;
