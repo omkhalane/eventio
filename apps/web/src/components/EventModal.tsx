@@ -25,6 +25,7 @@ import { CATEGORIES } from '../constants';
 import { cn } from '../lib/utils';
 import { syncEventToGoogle } from '../services/googleCalendarService';
 import { CalendarEvent } from '../types';
+import ShareDialog from './ShareDialog';
 
 interface EventModalProps {
   event: CalendarEvent | null;
@@ -58,6 +59,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
   const [isSynced, setIsSynced] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(true);
+  const [isShareOpen, setIsShareOpen] = useState(false);
 
   if (!event) return null;
 
@@ -74,22 +76,8 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     }
   };
 
-  const handleShare = async () => {
-    const shareData = {
-      title: event.title,
-      text: `Check out ${event.title} on Eventio!`,
-      url: window.location.origin + `/events/${event.slug}`,
-    };
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.error('Share failed', err);
-      }
-    } else {
-      navigator.clipboard.writeText(shareData.url);
-      alert('Link copied to clipboard!');
-    }
+  const handleShare = () => {
+    setIsShareOpen(true);
   };
 
   const category = CATEGORIES.find((c) => c.id === event.event_type);
@@ -397,6 +385,12 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
           </div>
         </motion.div>
       </div>
+
+      <ShareDialog
+        event={event}
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+      />
     </AnimatePresence>
   );
 }

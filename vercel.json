@@ -6,6 +6,10 @@
       "destination": "/api/v1"
     },
     {
+      "source": "/api/og/event/:slug",
+      "destination": "/api/og?slug=:slug"
+    },
+    {
       "source": "/api/config",
       "destination": "/api/config"
     },
