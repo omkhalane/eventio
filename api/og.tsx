@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImageResponse } from '@vercel/og';
 
 export const config = {
@@ -44,8 +43,6 @@ export default async function handler(req: Request) {
     const eventDesc = event.shortDescription || (event.description ? event.description.slice(0, 150) + '...' : '');
     const eventDate = event.start_time ? new Date(event.start_time) : new Date();
 
-    return new ImageResponse(
-      (
     let imageResponse;
     try {
       imageResponse = new ImageResponse(
@@ -172,7 +169,7 @@ export default async function handler(req: Request) {
               </div>
             </div>
           </div>
-        ),
+        ) as any,
         {
           width: 1200,
           height: 630,
