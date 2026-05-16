@@ -5,6 +5,7 @@ import {
   Check,
   ChevronRight,
   Clock,
+  ExternalLink,
   Infinity as InfinityIcon,
   MessageCircle,
   Send,
@@ -18,6 +19,7 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React, { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
 import { cn } from '../lib/utils';
@@ -120,7 +122,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     const shareData = {
       title: event.title,
       text: `Check out ${event.title} on Eventio!`,
-      url: window.location.origin + `/calendar?event=${event.id}`,
+      url: window.location.origin + `/events/${event.slug}`,
     };
     if (navigator.share) {
       try {
@@ -353,18 +355,25 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                 )}
 
                 {/* Buttons */}
-                <div className="flex flex-col gap-3 pt-4 sm:flex-row">
-                  {event.url && (
-                    <a
-                      href={event.url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="bg-foreground text-background flex flex-[3] items-center justify-center gap-3 rounded-[2rem] px-6 py-4 text-[13px] font-black tracking-widest uppercase shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.02] active:scale-98 dark:bg-white dark:text-black dark:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.2)]"
+                  <div className="flex flex-col gap-3 pt-4 sm:flex-row">
+                    <Link
+                      to={`/events/${event.slug}`}
+                      className="bg-zinc-100 text-zinc-900 hover:bg-white flex flex-[2] items-center justify-center gap-3 rounded-[2rem] px-6 py-4 text-[13px] font-black tracking-widest uppercase transition-all hover:scale-[1.02] active:scale-98 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
                     >
-                      Register Now
+                      View Page
                       <ChevronRight className="h-5 w-5" />
-                    </a>
-                  )}
+                    </Link>
+                    {event.url && (
+                      <a
+                        href={event.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="bg-foreground text-background flex flex-[3] items-center justify-center gap-3 rounded-[2rem] px-6 py-4 text-[13px] font-black tracking-widest uppercase shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.02] active:scale-98 dark:bg-white dark:text-black dark:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.2)]"
+                      >
+                        Register Now
+                        <ExternalLink className="h-5 w-5" />
+                      </a>
+                    )}
                   <button
                     onClick={handleSync}
                     disabled={isSyncing || isSynced}
