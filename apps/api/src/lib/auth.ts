@@ -57,15 +57,24 @@ export const applyApiAuth = async (request: FastifyRequest, reply: FastifyReply)
 
   const limit = context.accessTier === 'public' ? PUBLIC_RATE_LIMIT : ANONYMOUS_RATE_LIMIT;
   const identifier = context.apiKey || request.ip || 'anonymous';
-  const redisKey = `eventio:api:rate-limit:${context.accessTier}:${identifier}`;
   const windowSeconds = Math.max(1, Math.ceil(RATE_LIMIT_WINDOW_MS / 1000));
 
-  const count = await connection.incr(redisKey);
-  if (count === 1) {
-    await connection.expire(redisKey, windowSeconds);
+  let count = 0;
+  let ttlSeconds = windowSeconds;
+
+  try {
+    const redisKey = `eventio:api:rate-limit:${context.accessTier}:${identifier}`;
+    count = await connection.incr(redisKey);
+    if (count === 1) {
+      await connection.expire(redisKey, windowSeconds);
+    }
+    ttlSeconds = Math.max(await connection.ttl(redisKey), 0);
+  } catch {
+    // Fail-open: log warning but do not fail the request if Redis is down
+    count = 1;
+    ttlSeconds = windowSeconds;
   }
 
-  const ttlSeconds = Math.max(await connection.ttl(redisKey), 0);
   const resetAt = Date.now() + ttlSeconds * 1000;
   const remaining = Math.max(limit - count, 0);
 
