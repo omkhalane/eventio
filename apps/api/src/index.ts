@@ -1,14 +1,20 @@
-import 'dotenv/config';
-
 import { loadConfig } from '@eventio/config';
 import { logger } from '@eventio/observability';
 import cors from '@fastify/cors';
+import dotenv from 'dotenv';
 import Fastify from 'fastify';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { applyApiAuth } from './lib/auth.js';
 import { handleApiRequest } from './lib/event-api.js';
 import { runMigrations } from './lib/migrations.js';
 import { sendError } from './lib/response.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 const config = loadConfig();
 
