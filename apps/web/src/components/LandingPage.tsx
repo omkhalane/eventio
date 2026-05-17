@@ -13,15 +13,13 @@ import {
   Users,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 import { Footer } from './Footer';
+import Header from './Header';
 import { SeoHead } from './SeoHead';
-
-const LOGO_IMAGE = '/assets/logo.svg';
 
 const ACTIVE_USERS = [
   'https://i.pravatar.cc/80?img=11',
@@ -895,7 +893,6 @@ const CalendarShowcase = () => (
   </section>
 );
 
-
 const CategoryGrid = () => (
   <section className="bg-black px-6 py-28 md:py-36">
     <SectionHeader
@@ -963,14 +960,6 @@ const CategoryGrid = () => (
 
 export default function LandingPage() {
   const [pointer, setPointer] = useState({ x: -100, y: -100 });
-  const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
-
-  useEffect(() => {
-    fetch(buildApiUrl('/api/v1/stats'))
-      .then((res) => res.json())
-      .then(setStats)
-      .catch(console.error);
-  }, []);
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
@@ -1016,54 +1005,7 @@ export default function LandingPage() {
       <div className="eventio-grain pointer-events-none fixed inset-0 z-50 opacity-[0.025] mix-blend-screen" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,.08),transparent_28%),#000]" />
 
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-2xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link to="/" className="group flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/[0.05] shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-colors group-hover:bg-white/10">
-              <img
-                src={LOGO_IMAGE}
-                alt="Eventio"
-                className="h-6 w-6 rounded-md transition-transform group-hover:scale-110"
-              />
-            </span>
-            <span className="bg-gradient-to-r from-stone-50 to-stone-400 bg-clip-text text-2xl font-black tracking-tighter text-transparent">
-              Eventio
-            </span>
-          </Link>
-          <div className="hidden items-center gap-6 text-xs font-bold tracking-[0.2em] text-stone-400 uppercase lg:flex">
-            <Link to="/" className="transition-colors hover:text-emerald-400">Home</Link>
-            <Link to="/calendar" className="transition-colors hover:text-emerald-400">Calendar</Link>
-            <Link to="/hackathons" className="transition-colors hover:text-emerald-400">Hackathons</Link>
-            <Link to="/contests" className="transition-colors hover:text-emerald-400">Contests</Link>
-            <Link to="/resources" className="transition-colors hover:text-emerald-400">Resources</Link>
-            <Link to="/about" className="transition-colors hover:text-emerald-400">About</Link>
-            <Link to="/api" className="transition-colors hover:text-emerald-400">API Docs</Link>
-          </div>
-          <div className="flex items-center gap-6">
-            {stats && (
-              <div className="hidden items-center gap-4 text-xs font-bold tracking-widest text-stone-400 uppercase md:flex">
-                <span>
-                  <span className="text-emerald-400">{stats.upcoming}</span> upcoming
-                </span>
-                <span>
-                  <span className="text-stone-300">{stats.past}</span> past
-                </span>
-              </div>
-            )}
-            <Link
-              to="/calendar"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-xs font-bold tracking-widest text-black uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform hover:scale-105 active:scale-95"
-            >
-              <div className="absolute inset-0 z-0 bg-gradient-to-r from-emerald-200 via-white to-cyan-200 opacity-0 transition-opacity group-hover:opacity-100"></div>
-              <div className="absolute inset-x-0 h-[unset] bg-gradient-to-r from-transparent via-white/50 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-              <span className="relative z-10 flex items-center gap-2">
-                Launch{' '}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       <header className="relative z-10 px-6 pt-36 pb-20 md:pt-44 md:pb-28">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">

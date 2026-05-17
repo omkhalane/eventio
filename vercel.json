@@ -14,7 +14,7 @@
       "destination": "/api/config"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api|robots\\.txt|sitemap\\.xml|graphql|favicon\\.svg|manifest\\.json|assets).*)",
       "destination": "/"
     }
   ],
