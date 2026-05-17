@@ -7,6 +7,11 @@ const connection = new IORedis({
   maxRetriesPerRequest: null,
 });
 
+// Capture Redis error events to prevent unhandled process crashes in dev environment
+connection.on('error', (_err) => {
+  // Silent capture
+});
+
 export const QUEUES = {
   SCRAPING: 'scraping',
   NORMALIZATION: 'normalization',
