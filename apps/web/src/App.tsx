@@ -25,10 +25,12 @@ import { CookieConsent } from './components/CookieConsent';
 import EventDetailPage from './components/EventDetailPage';
 import EventModal from './components/EventModal';
 import { Footer } from './components/Footer';
+import Header from './components/Header';
 import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
 import { SeoHead } from './components/SeoHead';
+import { SubmitEventPage } from './components/SubmitEventPage';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
 import { CATEGORIES } from './constants';
@@ -468,11 +470,12 @@ export default function App() {
         <Route path="/events/:slug" element={<EventDetailPage />} />
         <Route path="/calendar" element={<CalendarApp />} />
         <Route path="/docs" element={<ApiDocs />} />
+        <Route path="/docs/*" element={<ApiDocs />} />
         <Route path="/api" element={<Navigate to="/docs" replace />} />
         <Route path="/hackathons" element={<PlaceholderPage title="Hackathons" />} />
         <Route path="/contests" element={<PlaceholderPage title="Contests" />} />
         <Route path="/resources" element={<PlaceholderPage title="Resources" />} />
-        <Route path="/submit" element={<PlaceholderPage title="Submit Event" />} />
+        <Route path="/submit" element={<SubmitEventPage />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/privacy" element={<LegalPage kind="privacy" />} />
@@ -494,15 +497,32 @@ export default function App() {
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
-    <div className="bg-background text-foreground flex min-h-screen flex-col">
+    <div className="relative min-h-screen overflow-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black flex flex-col">
       <SeoHead title={`${title} | Eventio`} description={`${title} on Eventio.`} />
-      <div className="flex flex-1 flex-col items-center justify-center gap-4">
-        <h1 className="text-4xl font-black">{title}</h1>
-        <p className="text-muted-foreground">This page is under construction.</p>
-        <Link to="/" className="text-primary hover:underline">
-          Go back home
+      {/* Background Effects */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(52,211,153,0.1),transparent_50%)]" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:44px_44px]" />
+      
+      <Header />
+      
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 pt-36 pb-20 px-6 text-center">
+        <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[10px] font-bold tracking-widest text-emerald-300 uppercase shadow-[0_0_15px_rgba(52,211,153,0.2)] animate-pulse">
+          Under Construction
+        </div>
+        <h1 className="bg-linear-to-br from-white to-stone-500 bg-clip-text text-5xl font-black tracking-tighter text-transparent md:text-7xl">
+          {title}
+        </h1>
+        <p className="max-w-md text-stone-400 text-base leading-relaxed md:text-lg">
+          This section is currently under active development. Stay tuned for a highly curated event experience.
+        </p>
+        <Link 
+          to="/" 
+          className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-xs font-bold tracking-widest text-black uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform hover:scale-105 active:scale-95"
+        >
+          Go Back Home
         </Link>
       </div>
+      
       <Footer />
     </div>
   );
@@ -510,19 +530,35 @@ function PlaceholderPage({ title }: { title: string }) {
 
 function NotFoundPage() {
   return (
-    <div className="bg-background text-foreground flex min-h-screen flex-col">
+    <div className="relative min-h-screen overflow-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black flex flex-col">
       <SeoHead
         title="404 Not Found | Eventio"
         description="The page you are looking for does not exist."
       />
-      <div className="flex flex-1 flex-col items-center justify-center gap-4">
-        <h1 className="text-primary text-6xl font-black">404</h1>
-        <h2 className="text-2xl font-bold">Page not found</h2>
-        <p className="text-muted-foreground">The page you're looking for doesn't exist.</p>
-        <Link to="/" className="text-primary hover:underline">
-          Return home
+      {/* Background Effects */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(244,63,94,0.1),transparent_50%)]" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:44px_44px]" />
+      
+      <Header />
+      
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 pt-36 pb-20 px-6 text-center">
+        <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-[10px] font-bold tracking-widest text-rose-300 uppercase shadow-[0_0_15px_rgba(244,63,94,0.2)] animate-pulse">
+          Error 404
+        </div>
+        <h1 className="bg-linear-to-br from-white to-stone-500 bg-clip-text text-5xl font-black tracking-tighter text-transparent md:text-8xl">
+          Lost in Space
+        </h1>
+        <p className="max-w-md text-stone-400 text-base leading-relaxed md:text-lg">
+          The page you are looking for has been moved, deleted, or never existed in the first place.
+        </p>
+        <Link 
+          to="/" 
+          className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-xs font-bold tracking-widest text-black uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform hover:scale-105 active:scale-95"
+        >
+          Return Home
         </Link>
       </div>
+      
       <Footer />
     </div>
   );
@@ -543,54 +579,48 @@ function LegalPage({ kind }: { kind: LegalKind }) {
   const content = getLegalContent(kind);
 
   return (
-    <div className="bg-background min-h-screen p-8 md:p-20">
+    <div className="relative min-h-screen overflow-hidden bg-black font-sans text-stone-50 selection:bg-stone-50 selection:text-black flex flex-col">
       <SeoHead
         title={content.title}
         description={content.description}
         canonicalPath={content.path}
       />
-      <div className="mx-auto w-full max-w-4xl space-y-10">
-        <Link
-          to="/"
-          className="text-primary flex w-fit items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-transform hover:translate-x-1"
-        >
-          <ChevronLeft className="h-3 w-3" /> Back to Home
-        </Link>
+      {/* Background Effects */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(52,211,153,0.1),transparent_50%)]" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:44px_44px]" />
+      
+      <Header />
+      
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 pt-36 pb-20 flex-1 space-y-12">
         <header className="space-y-4">
-          <h1 className="text-5xl font-black tracking-tight md:text-6xl">{content.title}</h1>
-          <p className="text-muted-foreground max-w-3xl text-lg leading-relaxed">
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[10px] font-bold tracking-widest text-emerald-300 uppercase shadow-[0_0_15px_rgba(52,211,153,0.2)]">
+            Legal & Meta
+          </div>
+          <h1 className="bg-linear-to-br from-white to-stone-500 bg-clip-text text-5xl font-black tracking-tighter text-transparent md:text-7xl">
+            {content.title}
+          </h1>
+          <p className="text-stone-400 max-w-3xl text-lg leading-relaxed md:text-xl">
             {content.description}
           </p>
         </header>
-        <div className="space-y-8 text-base leading-7 md:text-lg">
+        
+        <div className="space-y-12 text-base leading-7 md:text-lg">
           {content.sections.map((section) => (
-            <section key={section.heading} className="space-y-3">
-              <h2 className="text-foreground text-xl font-black tracking-wider uppercase">
+            <section key={section.heading} className="space-y-4 rounded-3xl border border-white/5 bg-white/2 p-8 backdrop-blur-md">
+              <h2 className="text-white text-xl font-bold tracking-tight">
                 {section.heading}
               </h2>
               {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-muted-foreground">
+                <p key={paragraph} className="text-stone-400">
                   {paragraph}
                 </p>
               ))}
             </section>
           ))}
         </div>
-        <footer className="border-border text-muted-foreground flex flex-wrap gap-4 border-t pt-6 text-sm">
-          <Link to="/docs" className="hover:text-foreground transition-colors">
-            API docs
-          </Link>
-          <Link to="/architecture" className="hover:text-foreground transition-colors">
-            Architecture
-          </Link>
-          <Link to="/contact" className="hover:text-foreground transition-colors">
-            Contact
-          </Link>
-          <Link to="/security" className="hover:text-foreground transition-colors">
-            Security
-          </Link>
-        </footer>
       </div>
+      
+      <Footer />
     </div>
   );
 }
@@ -601,24 +631,33 @@ function getLegalContent(kind: LegalKind) {
       title: 'Privacy Policy',
       path: '/privacy',
       description:
-        'How Eventio handles account data, event preferences, analytics, and integrations.',
+        'This Privacy Policy outlines how Eventio collects, processes, secures, and manages user account data, event preferences, browser analytics, and platform integrations.',
       sections: [
         {
-          heading: 'Data Collection',
+          heading: '1. Information We Collect',
           paragraphs: [
-            'We only collect data required to operate the product, including authentication state, event preferences, and optional integration settings.',
+            'We strictly collect data essential to power EventIO search engines and calendar sync utilities. This includes your basic Google account details (email address, display name, profile image URI) synchronized via Firebase Google OAuth during authentication.',
+            'In addition, we log client preference tags (like dark/light theme choice, active filters) and programmatic access parameters to offer smooth operations.'
           ],
         },
         {
-          heading: 'Data Usage',
+          heading: '2. How We Process Data',
           paragraphs: [
-            'Your event data is used to power search, calendar views, and synchronization workflows. We do not sell personal information.',
+            'Your identity data is used exclusively to provision your private session, persist your custom schedule entries, and allow event submissions.',
+            'We do not, and will never, monetize, sell, lease, or distribute your email addresses or platform metrics to third-party advertising companies.'
           ],
         },
         {
-          heading: 'Security',
+          heading: '3. Data Security & Storage',
           paragraphs: [
-            'Eventio uses production-grade authentication, HTTPS transport, and defensive browser headers to protect user sessions and API access.',
+            'All data packets in transit are encrypted via HTTPS (TLS 1.3). The platform uses secure database gates on Neon Serverless PostgreSQL and strict security headers to thwart script injections and cross-site scripting vulnerabilities.',
+            'Session state tokens are securely signed on client browsers using Firebase JSON Web Tokens.'
+          ],
+        },
+        {
+          heading: '4. Contact & Deletion Requests',
+          paragraphs: [
+            'To request permanent account deletion, or ask privacy questions, please contact developer Om Khalane directly at om.khalane.dev@gmail.com or send a platform message to support@event-io.me. Requests are processed within 48 hours.'
           ],
         },
       ],
@@ -627,24 +666,31 @@ function getLegalContent(kind: LegalKind) {
       title: 'Terms of Service',
       path: '/terms',
       description:
-        'Usage terms for Eventio, including acceptable use, warranties, and service limitations.',
+        'These Terms of Service govern your usage of Eventio, including search tools, submission forms, scrapers, APIs, and legal warranties.',
       sections: [
         {
-          heading: 'Acceptance',
+          heading: '1. Acceptance of Terms',
           paragraphs: [
-            'By using Eventio you agree to these terms. If you do not accept them, do not use the service.',
+            'By navigating Eventio, connecting via Google OAuth, or invoking API endpoints, you enter a binding legal agreement to comply with these terms. If you do not agree, you are prohibited from using the platform.'
           ],
         },
         {
-          heading: 'Permitted Use',
+          heading: '2. Acceptable Use Policy',
           paragraphs: [
-            'Use the product for lawful purposes only. Do not abuse the API, attempt unauthorized access, or interfere with platform operations.',
+            'You agree to utilize Eventio solely for lawful event exploration and integration purposes. You must not attempt denial-of-service (DoS) attacks, scrape internal database routes destructively, bypass API rate limiting boundaries, or submit false event records.'
           ],
         },
         {
-          heading: 'Service Limits',
+          heading: '3. Intellectual Property & Attribution',
           paragraphs: [
-            'We provide best-effort event aggregation and may update, rate-limit, or remove features to maintain reliability.',
+            'Eventio aggregates event details from diverse web platforms (Codeforces, Devpost, CTFtime, etc.). While third-party trademarks and names belong to their respective owners, all custom design patterns, visual layouts, animations, and source code are the copyright of developer Om Khalane.',
+            'If you showcase data or API outputs from our platform, you must credit EventIO and display a link back to the source.'
+          ],
+        },
+        {
+          heading: '4. Support Contacts',
+          paragraphs: [
+            'For operational disputes, billing inquiries, or general terms issues, please reach our customer support team at support@event-io.me.'
           ],
         },
       ],
@@ -653,18 +699,30 @@ function getLegalContent(kind: LegalKind) {
       title: 'Cookie Policy',
       path: '/cookies',
       description:
-        'How Eventio uses cookies and similar technologies for auth, preferences, and analytics.',
+        'Details regarding how Eventio utilizes cookies, local storage, and local state engines for authentication, customization, and metrics.',
       sections: [
         {
-          heading: 'Cookie Categories',
+          heading: '1. What Are Cookies?',
           paragraphs: [
-            'Essential cookies keep sessions secure and maintain application state. Preference cookies store theme and filter choices.',
+            'Cookies are small text structures stored on your device by the web browser. Eventio uses cookies and HTML5 LocalStorage to remember who you are and maintain your preferences.'
           ],
         },
         {
-          heading: 'Analytics',
+          heading: '2. Essential Cookies',
           paragraphs: [
-            'Analytics cookies help us understand usage patterns and improve performance. You can disable non-essential cookies in the browser.',
+            'We use cookies to maintain your authenticated OAuth state with Firebase. These cookies are critical; without them, customized calendar logs and event submission forms would fail to secure your session details.'
+          ],
+        },
+        {
+          heading: '3. Preference and Speed Analytics',
+          paragraphs: [
+            'We record your selected theme options, dashboard layout filters, and query parameters so they persist when you reload the calendar page. These can be cleared at any time via your browser settings.'
+          ],
+        },
+        {
+          heading: '4. Questions',
+          paragraphs: [
+            'For inquiries regarding cookies and browser cache management, contact our technical team at support@event-io.me.'
           ],
         },
       ],
@@ -672,18 +730,24 @@ function getLegalContent(kind: LegalKind) {
     'api-usage': {
       title: 'API Usage Policy',
       path: '/api-usage',
-      description: 'Rules for using the Eventio API safely and fairly.',
+      description: 'Programmatic directives and fair-use guidelines for the Eventio REST API endpoints.',
       sections: [
         {
-          heading: 'Rate Limits',
+          heading: '1. Rate Limit Safeguards',
           paragraphs: [
-            'Use caching, exponential backoff, and incremental refreshes when polling the API.',
+            'To protect backend systems, standard clients are restricted to 1,000 requests per hour. Developers must implement localized caching (e.g., Redis or in-memory) and robust exponential backoff algorithms to prevent rate-limit bans.'
           ],
         },
         {
-          heading: 'Attribution',
+          heading: '2. Star Us & Attribution',
           paragraphs: [
-            'If you surface Eventio data externally, preserve source attribution and link back to the canonical event page.',
+            'EventIO API is open-source. We require all downstream client portals, dashboard widgets, or discord integrations to attribute EventIO clearly. Please credit "Built by Om Khalane (omkhalane)" and provide a link back to github.com/omkhalane.'
+          ],
+        },
+        {
+          heading: '3. Obtaining an API Key',
+          paragraphs: [
+            'For getting an authorized production API key, custom high-volume quota upgrades, or programmatic webhook registrations, please contact the administrator team at admin@event-io.me. Anonymous requests without a clear project description will be ignored.'
           ],
         },
       ],
@@ -691,35 +755,50 @@ function getLegalContent(kind: LegalKind) {
     disclaimer: {
       title: 'Disclaimer',
       path: '/disclaimer',
-      description: 'Important limitations about third-party event data and platform availability.',
+      description: 'Important legal notices regarding third-party aggregated dates, platform availability, and source synchronization.',
       sections: [
         {
-          heading: 'Accuracy',
+          heading: '1. Data Reliability',
           paragraphs: [
-            'Event data is aggregated from third-party sources and may change without notice. Verify critical details before relying on them.',
+            'Event details, prize pools, and registration deadlines are automatically harvested and crawled from third-party platforms. Eventio does not guarantee the accuracy, completeness, or freshness of these aggregated records.',
+            'Always navigate to the canonical source URL listed under each event details panel to confirm critical contest information before making physical or financial commitments.'
           ],
         },
         {
-          heading: 'Availability',
+          heading: '2. Limitation of Liability',
           paragraphs: [
-            'We may experience outages or source changes. Use the product with appropriate operational safeguards.',
+            'Eventio and developer Om Khalane are not liable for any losses, registration failures, missed competitions, travel issues, or damages arising from incorrect schedule listings on our platform.'
           ],
         },
       ],
     },
     contact: {
-      title: 'Contact',
+      title: 'Contact Information',
       path: '/contact',
-      description: 'How to reach the Eventio team for support, security, or partnership questions.',
+      description: 'Official communication directories for developer inquiries, administrative issues, security, and submissions.',
       sections: [
         {
-          heading: 'Email',
-          paragraphs: ['General and partnership inquiries: om.khalane@gmail.com'],
+          heading: '1. Platform & User Support',
+          paragraphs: [
+            'For general inquiries, user account issues, calendar sync troubles, or dashboard questions, contact support@event-io.me.'
+          ],
         },
         {
-          heading: 'Security',
+          heading: '2. Direct Developer Access',
           paragraphs: [
-            'Report vulnerabilities privately via the security policy page before disclosing publicly.',
+            'To contact the creator of EventIO, Om Khalane, write directly to om.khalane.dev@gmail.com or visit the official repository at github.com/omkhalane.'
+          ],
+        },
+        {
+          heading: '3. API & Enterprise Keys',
+          paragraphs: [
+            'To obtain credentials or upgrade query limits, reach out to admin@event-io.me.'
+          ],
+        },
+        {
+          heading: '4. Submissions & Content Removal',
+          paragraphs: [
+            'For manual event additions, partnerships, or immediate DMCA content removal requests, email events@event-io.me.'
           ],
         },
       ],
@@ -727,35 +806,49 @@ function getLegalContent(kind: LegalKind) {
     about: {
       title: 'About Eventio',
       path: '/about',
-      description: 'The story and mission behind Eventio.',
+      description: 'The story, technology stack, and engineering philosophy behind the Eventio indexer.',
       sections: [
         {
-          heading: 'Mission',
+          heading: '1. The Vision',
           paragraphs: [
-            'Eventio helps developers discover, monitor, and act on events, hackathons, and competitions with fast search and high-signal organization.',
+            'Eventio was engineered to democratize access to global developer competitions. Instead of hopping between dozens of sites to track contests, builders can discover hackathons, CTFs, coding challenges, AI/ML events, workshops, and startup programs in a single unified dashboard.'
           ],
         },
         {
-          heading: 'Author',
-          paragraphs: ['Built by Om Khalane for modern event discovery and developer workflows.'],
+          heading: '2. Under the Hood',
+          paragraphs: [
+            'Eventio leverages an automated background scraper network built in TypeScript that scans tech directories every hour. Incoming event models are parsed, cleaned, and stored in a highly organized Neon Serverless PostgreSQL database using Drizzle ORM. The client utilizes Vite, React, and Vanilla CSS for high-performance minimalist aesthetics.'
+          ],
+        },
+        {
+          heading: '3. The Creator',
+          paragraphs: [
+            'Eventio is designed, developed, and maintained by Om Khalane (omkhalane). Check out the creator\'s work and star the project repository at github.com/omkhalane.'
+          ],
         },
       ],
     },
     opensource: {
-      title: 'Open Source Attribution',
+      title: 'Open Source & Contributions',
       path: '/opensource',
-      description: 'Third-party licenses and attribution for packages used by Eventio.',
+      description: 'Our philosophy of open-source development, packages we use, and how you can join the journey.',
       sections: [
         {
-          heading: 'Dependencies',
+          heading: '1. MIT License Codebase',
           paragraphs: [
-            'This project depends on open-source libraries across React, Fastify, Vite, and related tooling.',
+            'Eventio is built entirely in the spirit of open collaboration. Our scrapers, React templates, and Fastify server structures are fully licensed under the MIT license, encouraging reuse and educational experiments.'
           ],
         },
         {
-          heading: 'License Review',
+          heading: '2. Key Dependencies',
           paragraphs: [
-            'Review the repository license and package manifests before redistributing the platform.',
+            'We are deeply grateful to the open-source community that powers this engine, including React, TypeScript, Vite, Framer Motion, Lucide React, Zod, and Drizzle.'
+          ],
+        },
+        {
+          heading: '3. Join Us on GitHub',
+          paragraphs: [
+            'Want to add a scraper or design a new calendar view? Star us and submit a pull request at github.com/omkhalane. For collaboration proposals, contact om.khalane.dev@gmail.com.'
           ],
         },
       ],
@@ -763,19 +856,18 @@ function getLegalContent(kind: LegalKind) {
     security: {
       title: 'Security Policy',
       path: '/security',
-      description:
-        'How to report vulnerabilities and what to expect from Eventio security handling.',
+      description: 'How we protect the Eventio platform and instructions on how to report suspected vulnerabilities.',
       sections: [
         {
-          heading: 'Reporting',
+          heading: '1. Our Protocols',
           paragraphs: [
-            'Please report security issues privately by email with reproduction steps, affected surface area, and potential impact.',
+            'We run automated dependency audits and secure our infrastructure with Firebase Auth rules, CORS policies, SSL transport, and database query parameters. We never store user password hashes on our platform.'
           ],
         },
         {
-          heading: 'Response',
+          heading: '2. Reporting Vulnerabilities',
           paragraphs: [
-            'We triage and remediate confirmed issues as quickly as possible and coordinate disclosure where appropriate.',
+            'If you discover a security vulnerability, please do not open a public GitHub issue. Instead, report it privately by emailing developer Om Khalane at om.khalane.dev@gmail.com. We investigate and remediate valid threats inside 24 hours.'
           ],
         },
       ],
@@ -784,5 +876,3 @@ function getLegalContent(kind: LegalKind) {
 
   return base[kind];
 }
-
-
