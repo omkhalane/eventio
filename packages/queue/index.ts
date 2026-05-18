@@ -5,6 +5,12 @@ const connection = new IORedis({
   host: process.env.REDIS_HOST || 'localhost',
   port: parseInt(process.env.REDIS_PORT || '6379', 10),
   maxRetriesPerRequest: null,
+  retryStrategy(times) {
+    if (times > 1) {
+      return null;
+    }
+    return 100;
+  },
 });
 
 // Capture Redis error events to prevent unhandled process crashes in dev environment
