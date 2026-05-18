@@ -5,11 +5,11 @@ import {
   Moon,
   Search,
   Settings,
-  Star,
   Sun,
   Terminal,
   User,
   X,
+  Bookmark,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -52,13 +52,21 @@ export default function TopNav({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [stats, setStats] = useState<{ upcoming: number; past: number } | null>(null);
+  const [bookmarkCount, setBookmarkCount] = useState(0);
 
   useEffect(() => {
-    fetch(buildApiUrl('/api/v1/stats'))
-      .then((res) => res.json())
-      .then(setStats)
-      .catch(console.error);
+    const updateCount = () => {
+      try {
+        const bookmarks = JSON.parse(localStorage.getItem('eventio-bookmarks') || '[]');
+        setBookmarkCount(bookmarks.length);
+      } catch (e) {
+        console.warn('LocalStorage blocked:', e);
+      }
+    };
+    
+    updateCount();
+    window.addEventListener('eventio-bookmarks-updated', updateCount);
+    return () => window.removeEventListener('eventio-bookmarks-updated', updateCount);
   }, []);
 
   useEffect(() => {
@@ -99,12 +107,18 @@ export default function TopNav({
       {/* Logo Area (aligned with Sidebar) */}
       <Link
         to="/"
-        className="flex w-[256px] shrink-0 items-center transition-opacity hover:opacity-80"
+        className="group flex w-[256px] shrink-0 items-center transition-opacity hover:opacity-90"
       >
-        <div className="bg-foreground flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg shadow-lg">
-          <img src={LOGO_IMAGE} alt="" className="h-5 w-5 invert" />
-        </div>
-        <span className="ml-3 text-2xl font-bold tracking-tighter italic">Eventio</span>
+        <span className="border-border bg-card group-hover:bg-muted flex h-9 w-9 items-center justify-center rounded-xl border shadow-sm transition-all">
+          <img
+            src={LOGO_IMAGE}
+            alt="Eventio Logo"
+            className="h-6 w-6 rounded-md transition-transform group-hover:scale-110"
+          />
+        </span>
+        <span className="ml-2.5 font-sans text-[20px] font-bold tracking-[-0.03em] text-stone-900 select-none">
+          EventIO
+        </span>
       </Link>
 
       {/* Main Content Area (aligned with MainCalendar) */}
@@ -180,18 +194,6 @@ export default function TopNav({
             </AnimatePresence>
           </div>
 
-          <div className="relative">
-            {stats && (
-              <div className="mr-4 hidden items-center gap-4 text-[10px] font-bold tracking-widest text-stone-400 uppercase md:flex">
-                <span>
-                  <span className="text-emerald-400">{stats.upcoming}</span> upcoming
-                </span>
-                <span>
-                  <span className="text-stone-300">{stats.past}</span> past
-                </span>
-              </div>
-            )}
-          </div>
           <div className="relative">
             <div className="flex items-center gap-2">
               <button
@@ -331,12 +333,16 @@ export default function TopNav({
 
         <div className="flex items-center gap-3">
           <Link
-            to="/api"
-            className="hover:bg-muted text-muted-foreground hover:text-foreground flex items-center gap-2 rounded-xl px-3 py-2 transition-all"
+            to="/events/bookmark"
+            className="hover:bg-muted text-stone-700 dark:text-stone-300 hover:text-foreground flex items-center gap-2 rounded-xl border border-border bg-stone-100/50 dark:bg-stone-900/50 p-2 px-3 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+            title="View Bookmarked Events"
           >
-            <Terminal className="h-4 w-4" />
+            <Bookmark className="h-4 w-4 fill-current text-amber-500" />
             <span className="hidden text-[10px] font-black tracking-widest uppercase sm:inline">
-              API
+              Bookmarks
+            </span>
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1.5 text-[9px] font-black text-white shadow-sm animate-pulse-subtle">
+              {bookmarkCount}
             </span>
           </Link>
 
@@ -346,7 +352,12 @@ export default function TopNav({
             rel="noopener noreferrer"
             className="bg-foreground text-background group flex items-center gap-2 rounded-xl px-3 py-2 shadow-sm transition-all hover:opacity-90"
           >
-            <Star className="h-4 w-4 transition-transform group-hover:scale-110" />
+            <svg
+              viewBox="0 0 24 24"
+              className="h-4 w-4 fill-current transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+            >
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
             <span className="text-[10px] font-black tracking-widest uppercase">Star us</span>
           </a>
 
@@ -373,7 +384,7 @@ export default function TopNav({
           <div className="relative">
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="group bg-muted flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-black transition-transform active:scale-95 dark:border-white"
+              className="group bg-muted flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-black transition-transform active:scale-95"
             >
               {googleUser?.photoURL ? (
                 <img
