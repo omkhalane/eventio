@@ -1,13 +1,10 @@
 /* eslint-disable no-console */
+import './env.js';
 import { handleApiRequest } from '@eventio/api/src/lib/event-api.js';
-import dotenv from 'dotenv';
 import express, { type Request } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
-
-dotenv.config();
-dotenv.config({ path: path.resolve(process.cwd(), '../../.env') });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
