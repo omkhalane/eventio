@@ -34,7 +34,7 @@ export const CookieConsent: React.FC = () => {
           exit={{ y: 100, opacity: 0 }}
           className="fixed bottom-8 left-1/2 z-[200] w-[90vw] max-w-xl -translate-x-1/2"
         >
-          <div className="bg-foreground text-background flex flex-col items-center gap-6 rounded-[2rem] p-6 shadow-2xl sm:flex-row dark:bg-white dark:text-black">
+          <div className="bg-foreground text-background flex flex-col items-center gap-6 rounded-[2rem] p-6 shadow-2xl sm:flex-row">
             <div className="bg-background/10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full">
               <Shield className="h-6 w-6" />
             </div>
@@ -49,7 +49,7 @@ export const CookieConsent: React.FC = () => {
             <div className="flex gap-2">
               <button
                 onClick={accept}
-                className="bg-background text-foreground rounded-full px-6 py-3 text-[10px] font-black tracking-[0.2em] uppercase transition-all hover:opacity-90 dark:bg-black dark:text-white"
+                className="bg-background text-foreground rounded-full px-6 py-3 text-[10px] font-black tracking-[0.2em] uppercase transition-all hover:opacity-90"
               >
                 Accept
               </button>
