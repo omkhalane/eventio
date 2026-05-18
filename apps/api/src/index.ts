@@ -1,20 +1,14 @@
+import './env.js';
+
 import { loadConfig } from '@eventio/config';
 import { logger } from '@eventio/observability';
 import cors from '@fastify/cors';
-import dotenv from 'dotenv';
 import Fastify from 'fastify';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 import { applyApiAuth } from './lib/auth.js';
 import { handleApiRequest } from './lib/event-api.js';
 import { runMigrations } from './lib/migrations.js';
 import { sendError } from './lib/response.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 const config = loadConfig();
 
@@ -22,6 +16,15 @@ function getCorsOrigins() {
   const origins = [config.frontendUrl, config.siteUrl, config.apiBaseUrl].filter(
     (origin): origin is string => typeof origin === 'string' && origin.length > 0,
   );
+
+  if (config.isDevelopment) {
+    origins.push(
+      'http://localhost:5173',
+      'http://localhost:5175',
+      'http://127.0.0.1:5173',
+      'http://127.0.0.1:5175',
+    );
+  }
 
   return Array.from(new Set(origins));
 }
