@@ -79,7 +79,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
               <div className="flex flex-col gap-3">
                 <button
                   onClick={() => onClose(true)}
-                  className="bg-foreground text-background shadow-foreground/10 w-full rounded-2xl py-5 text-sm font-black tracking-widest uppercase shadow-xl transition-all hover:scale-[1.02] active:scale-98 dark:bg-white dark:text-black"
+                  className="bg-foreground text-background shadow-foreground/10 w-full rounded-2xl py-5 text-sm font-black tracking-widest uppercase shadow-xl transition-all hover:scale-[1.02] active:scale-98"
                 >
                   Yes, subscribe me
                 </button>
