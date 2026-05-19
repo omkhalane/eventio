@@ -19,6 +19,7 @@ interface ShareDialogProps {
   event: CalendarEvent;
   isOpen: boolean;
   onClose: () => void;
+  captureSelector?: string;
 }
 
 export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps) {
@@ -93,7 +94,11 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[200] flex items-end justify-center p-0 sm:items-center sm:p-6">
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[200] flex items-end justify-center p-0 sm:items-center sm:p-6"
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
