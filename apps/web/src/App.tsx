@@ -31,12 +31,30 @@ import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
 import { SeoHead } from './components/SeoHead';
+import {
+  AiHackathonsPage,
+  CategoryPage,
+  CityPage,
+  CompanyPage,
+  FreeHackathonsPage,
+  HackathonsPage,
+  IndiaHackathonsPage,
+  OnlineHackathonsPage,
+  OrganizerPage,
+  PuneHackathonsPage,
+  StudentHackathonsPage,
+  ThisMonthPage,
+  ThisWeekPage,
+  TagPage,
+  Web3HackathonsPage,
+} from './components/seo/DiscoveryRoutes';
 import { SubmitEventPage } from './components/SubmitEventPage';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
 import { CATEGORIES } from './constants';
 import { buildApiUrl } from './lib/api';
 import { auth, googleProvider } from './lib/firebase';
+import { clearLastOpenedEvent, getLastOpenedEvent, setLastOpenedEvent } from './lib/recentEvent';
 import { cn } from './lib/utils';
 import { setGoogleAccessToken } from './services/googleCalendarService';
 import { CalendarEvent, FilterState, ViewMode } from './types';
@@ -277,7 +295,16 @@ const CalendarApp = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) {
+        return;
+      }
+
       if (
+        target?.closest(
+          'input, textarea, select, [contenteditable="true"], [role="dialog"], [aria-modal="true"], [data-mini-calendar="true"]',
+        ) ||
         document.activeElement?.tagName === 'INPUT' ||
         document.activeElement?.tagName === 'TEXTAREA'
       ) {
@@ -300,22 +327,6 @@ const CalendarApp = () => {
       }
 
       if (e.key === 'Escape') setSelectedEvent(null);
-
-      const isNav = !e.ctrlKey && !e.metaKey && !e.shiftKey;
-      if (isNav) {
-        if (e.key === 'ArrowLeft' || e.key === 'a') setCurrentMonth((prev) => subMonths(prev, 1));
-        if (e.key === 'ArrowRight' || e.key === 'f') setCurrentMonth((prev) => addMonths(prev, 1));
-        if (e.key === 'ArrowUp' || e.key === 'w') setCurrentMonth((prev) => addMonths(prev, 12));
-        if (e.key === 'ArrowDown' || e.key === 's') setCurrentMonth((prev) => subMonths(prev, 12));
-        if (e.key === 'd' || e.key === 'h' || e.key === 't') {
-          setSelectedDate(new Date());
-          setCurrentMonth(new Date());
-        }
-        if (e.key === 'l') setViewMode('list');
-        if (e.key === 'm') setViewMode('month');
-        if (e.key === 'k') setViewMode('week');
-        if (e.key === 'y') setViewMode('day');
-      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -344,6 +355,22 @@ const CalendarApp = () => {
     }
     return groups;
   }, [events]);
+
+  useEffect(() => {
+    const restored = getLastOpenedEvent();
+    if (!restored?.event || !window.location.pathname.startsWith('/calendar')) return;
+
+    setSelectedEvent(restored.event);
+    setSelectedDate(new Date(restored.event.start_time));
+    setCurrentMonth(new Date(restored.event.start_time));
+    clearLastOpenedEvent();
+  }, []);
+
+  useEffect(() => {
+    if (selectedEvent) {
+      setLastOpenedEvent(selectedEvent, 'calendar');
+    }
+  }, [selectedEvent]);
 
   return (
     <div
@@ -440,7 +467,7 @@ const CalendarApp = () => {
                         <div
                           key={event.id}
                           onClick={() => setSelectedEvent(event)}
-                          className="group flex items-stretch cursor-pointer gap-3"
+                          className="group flex cursor-pointer items-stretch gap-3"
                         >
                           <div
                             className={cn(
@@ -448,13 +475,14 @@ const CalendarApp = () => {
                               (() => {
                                 const cat = CATEGORIES.find((c) => c.id === event.event_type);
                                 if (!cat) return 'bg-stone-300 dark:bg-stone-600';
-                                if (cat.id === 'competitive_programming') return 'bg-zinc-700 dark:bg-zinc-400';
+                                if (cat.id === 'competitive_programming')
+                                  return 'bg-zinc-700 dark:bg-zinc-400';
                                 return cat.color || 'bg-stone-300 dark:bg-stone-600';
-                              })()
+                              })(),
                             )}
                           />
                           <div className="py-0.5">
-                            <h4 className="group-hover:text-primary line-clamp-2 text-xs font-semibold leading-tight transition-colors">
+                            <h4 className="group-hover:text-primary line-clamp-2 text-xs leading-tight font-semibold transition-colors">
                               {event.title}
                             </h4>
                             <p className="text-muted-foreground mt-1 text-[10px]">
@@ -511,14 +539,28 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/events" element={<PlaceholderPage title="Events Explorer" />} />
+        <Route path="/events" element={<ThisMonthPage />} />
         <Route path="/events/bookmark" element={<BookmarkedEventsPage />} />
         <Route path="/events/:slug" element={<EventDetailPage />} />
         <Route path="/calendar" element={<CalendarApp />} />
         <Route path="/docs" element={<ApiDocs />} />
         <Route path="/docs/*" element={<ApiDocs />} />
         <Route path="/api" element={<Navigate to="/docs" replace />} />
-        <Route path="/hackathons" element={<PlaceholderPage title="Hackathons" />} />
+        <Route path="/hackathons" element={<HackathonsPage />} />
+        <Route path="/hackathons/online" element={<OnlineHackathonsPage />} />
+        <Route path="/hackathons/india" element={<IndiaHackathonsPage />} />
+        <Route path="/hackathons/ai" element={<AiHackathonsPage />} />
+        <Route path="/hackathons/web3" element={<Web3HackathonsPage />} />
+        <Route path="/hackathons/pune" element={<PuneHackathonsPage />} />
+        <Route path="/student-hackathons" element={<StudentHackathonsPage />} />
+        <Route path="/free-hackathons" element={<FreeHackathonsPage />} />
+        <Route path="/events/this-week" element={<ThisWeekPage />} />
+        <Route path="/events/this-month" element={<ThisMonthPage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+        <Route path="/tag/:tag" element={<TagPage />} />
+        <Route path="/city/:city" element={<CityPage />} />
+        <Route path="/company/:company" element={<CompanyPage />} />
+        <Route path="/organizer/:organizer" element={<OrganizerPage />} />
         <Route path="/contests" element={<PlaceholderPage title="Contests" />} />
         <Route path="/resources" element={<PlaceholderPage title="Resources" />} />
         <Route path="/submit" element={<SubmitEventPage />} />
