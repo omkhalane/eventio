@@ -1,5 +1,8 @@
 import {
+  addDays,
   addMonths,
+  addWeeks,
+  addYears,
   eachDayOfInterval,
   endOfMonth,
   endOfWeek,
@@ -11,7 +14,10 @@ import {
   startOfDay,
   startOfMonth,
   startOfWeek,
+  subDays,
   subMonths,
+  subWeeks,
+  subYears,
 } from 'date-fns';
 import {
   Calendar as CalendarIcon,
@@ -404,7 +410,116 @@ export default function MainCalendar({
   const monthStart = startOfMonth(currentMonth);
 
   const gridRef = React.useRef<HTMLDivElement>(null);
+  const dayButtonRefs = React.useRef(new Map<string, HTMLButtonElement | null>());
   const [gridHeight, setGridHeight] = React.useState(600);
+  const selectedDayKey = format(selectedDate, 'yyyy-MM-dd');
+
+  const registerDayButton = React.useCallback(
+    (day: Date) => (node: HTMLButtonElement | null) => {
+      const key = format(day, 'yyyy-MM-dd');
+      if (node) {
+        dayButtonRefs.current.set(key, node);
+      } else {
+        dayButtonRefs.current.delete(key);
+      }
+    },
+    [],
+  );
+
+  React.useEffect(() => {
+    if (viewMode === 'list') return;
+
+    const frame = window.requestAnimationFrame(() => {
+      dayButtonRefs.current.get(selectedDayKey)?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [currentMonth, selectedDayKey, viewMode]);
+
+  const navigateByShortcut = React.useCallback(
+    (direction: 'previous' | 'next', span: 'primary' | 'year') => {
+      const targetDate =
+        span === 'year'
+          ? direction === 'next'
+            ? addYears(selectedDate, 1)
+            : subYears(selectedDate, 1)
+          : viewMode === 'month'
+            ? direction === 'next'
+              ? addMonths(selectedDate, 1)
+              : subMonths(selectedDate, 1)
+            : viewMode === 'week'
+              ? direction === 'next'
+                ? addWeeks(selectedDate, 1)
+                : subWeeks(selectedDate, 1)
+              : direction === 'next'
+                ? addDays(selectedDate, 1)
+                : subDays(selectedDate, 1);
+
+      setSelectedDate(targetDate);
+      setCurrentMonth(targetDate);
+    },
+    [selectedDate, setCurrentMonth, setSelectedDate, viewMode],
+  );
+
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      if (
+        target.closest(
+          'input, textarea, select, [contenteditable="true"], [role="dialog"], [aria-modal="true"], [data-calendar-modal="true"]',
+        )
+      ) {
+        return;
+      }
+
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      const key = e.key.toLowerCase();
+
+      if (viewMode !== 'list') {
+        if (key === 'arrowleft' || key === 'a') {
+          e.preventDefault();
+          navigateByShortcut('previous', 'primary');
+          return;
+        }
+
+        if (key === 'arrowright' || key === 'd') {
+          e.preventDefault();
+          navigateByShortcut('next', 'primary');
+          return;
+        }
+
+        if (key === 'arrowup' || key === 'f') {
+          e.preventDefault();
+          navigateByShortcut('previous', 'year');
+          return;
+        }
+
+        if (key === 'arrowdown' || key === 's') {
+          e.preventDefault();
+          navigateByShortcut('next', 'year');
+          return;
+        }
+      }
+
+      if (key === 'l') {
+        e.preventDefault();
+        setViewMode('list');
+      } else if (key === 'm') {
+        e.preventDefault();
+        setViewMode('month');
+      } else if (key === 'k') {
+        e.preventDefault();
+        setViewMode('week');
+      } else if (key === 'y') {
+        e.preventDefault();
+        setViewMode('day');
+      }
+    },
+    [navigateByShortcut, setViewMode, viewMode],
+  );
 
   React.useEffect(() => {
     if (viewMode !== 'month') return;
@@ -441,14 +556,16 @@ export default function MainCalendar({
     if (viewMode !== 'month') return { maxWithoutMore: 100, maxWithMore: 100 };
     const numRows = Math.ceil(days.length / 7);
     const cellHeight = gridHeight / numRows;
-    
+
     // Header/padding takes ~46px, each EventBar is 38px, and '+more' button is 22px
-    const headerAndPadding = 46; 
+    const headerAndPadding = 46;
     const eventRowHeight = 38;
     const moreButtonHeight = 22;
 
     const maxWithoutMore = Math.floor((cellHeight - headerAndPadding) / eventRowHeight);
-    const maxWithMore = Math.floor((cellHeight - headerAndPadding - moreButtonHeight) / eventRowHeight);
+    const maxWithMore = Math.floor(
+      (cellHeight - headerAndPadding - moreButtonHeight) / eventRowHeight,
+    );
 
     return {
       maxWithoutMore: Math.max(1, maxWithoutMore),
@@ -531,6 +648,8 @@ export default function MainCalendar({
 
   return (
     <div
+      data-main-calendar="true"
+      onKeyDown={handleKeyDown}
       className={cn(
         'bg-card border-border relative flex flex-1 flex-col overflow-hidden rounded-3xl border shadow-sm',
         'h-full',
@@ -540,6 +659,7 @@ export default function MainCalendar({
       <AnimatePresence>
         {eventsPopupDay && (
           <div
+            data-calendar-modal="true"
             className="bg-background/40 absolute inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
             onClick={() => setEventsPopupDay(null)}
           >
@@ -741,7 +861,8 @@ export default function MainCalendar({
 
               const fitsAll = dayEvents.length <= cellCapacity.maxWithoutMore;
               const sliceLimit = fitsAll ? dayEvents.length : cellCapacity.maxWithMore;
-              const eventsToShow = viewMode === 'month' ? dayEvents.slice(0, sliceLimit) : dayEvents;
+              const eventsToShow =
+                viewMode === 'month' ? dayEvents.slice(0, sliceLimit) : dayEvents;
               const showMore = viewMode === 'month' && !fitsAll;
               const moreCount = dayEvents.length - sliceLimit;
 
@@ -774,6 +895,7 @@ export default function MainCalendar({
                     )}
                   >
                     <button
+                      ref={registerDayButton(day)}
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedDate(day);
@@ -807,20 +929,18 @@ export default function MainCalendar({
                           : [1, 2].map((i) => (
                               <EventSkeleton key={`skeleton-${i}`} isExpanded={false} />
                             ))
-                        : eventsToShow.map(
-                            (event, idx) => (
-                              <EventBar
-                                key={`${event.id}-${day.toISOString()}-${idx}`}
-                                event={event}
-                                isExpanded={viewMode === 'day'}
-                                viewMode={viewMode}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  onEventClick(event);
-                                }}
-                              />
-                            ),
-                          )}
+                        : eventsToShow.map((event, idx) => (
+                            <EventBar
+                              key={`${event.id}-${day.toISOString()}-${idx}`}
+                              event={event}
+                              isExpanded={viewMode === 'day'}
+                              viewMode={viewMode}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onEventClick(event);
+                              }}
+                            />
+                          ))}
                     </AnimatePresence>
                     {showMore && (
                       <button

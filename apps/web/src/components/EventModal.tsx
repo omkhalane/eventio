@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom';
 import { CATEGORIES } from '../constants';
 import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
+import { setLastOpenedEvent } from '../lib/recentEvent';
 import { syncEventToGoogle } from '../services/googleCalendarService';
 import { CalendarEvent } from '../types';
 import ShareDialog from './ShareDialog';
@@ -209,6 +210,31 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     }
   }, [event?.slug]);
 
+  useEffect(() => {
+    if (event) {
+      setLastOpenedEvent(event, 'modal');
+    }
+  }, [event]);
+
+  useEffect(() => {
+    if (!event) return;
+
+    const handleKeyDown = (keyboardEvent: KeyboardEvent) => {
+      if (keyboardEvent.key !== 'Escape') return;
+
+      keyboardEvent.preventDefault();
+      if (isShareOpen) {
+        setIsShareOpen(false);
+        return;
+      }
+
+      onClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [event, isShareOpen, onClose]);
+
   const handleTrackClick = () => {
     if (!event?.slug) return;
     fetch(buildApiUrl(`/api/v1/events/${event.slug}/track`), {
@@ -222,7 +248,9 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
     if (!event) return;
     try {
       const savedSlugs = JSON.parse(localStorage.getItem('eventio-bookmarks') || '[]');
-      const savedEvents = JSON.parse(localStorage.getItem('eventio-bookmarked-events-data') || '[]');
+      const savedEvents = JSON.parse(
+        localStorage.getItem('eventio-bookmarked-events-data') || '[]',
+      );
 
       let nextSlugs: string[];
       let nextEvents: CalendarEvent[];
@@ -234,7 +262,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
       } else {
         nextSlugs = [...savedSlugs, event.slug];
         nextEvents = [...savedEvents, event];
-        
+
         fetch(buildApiUrl(`/api/v1/events/${event.slug}/track`), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -245,7 +273,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
       localStorage.setItem('eventio-bookmarks', JSON.stringify(nextSlugs));
       localStorage.setItem('eventio-bookmarked-events-data', JSON.stringify(nextEvents));
       setIsBookmarked(isNowBookmarked);
-      
+
       window.dispatchEvent(new Event('eventio-bookmarks-updated'));
     } catch (e) {
       console.warn('LocalStorage blocked:', e);
@@ -292,7 +320,11 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden p-4 sm:p-6">
+      <div
+        role="dialog"
+        aria-modal="true"
+        className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden p-4 sm:p-6"
+      >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -302,6 +334,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
         />
 
         <motion.div
+          data-event-modal-content="true"
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 40 }}
@@ -316,7 +349,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
               onClick={handleToggleBookmark}
               className={cn(
                 'rounded-full bg-black/20 p-2 backdrop-blur-md transition-colors hover:bg-black/40',
-                isBookmarked ? 'text-emerald-400' : 'text-white'
+                isBookmarked ? 'text-emerald-400' : 'text-white',
               )}
               title={isBookmarked ? 'Saved' : 'Bookmark Event'}
             >
@@ -335,11 +368,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
             <div className="relative flex min-h-[340px] w-full flex-col justify-end overflow-hidden p-8 sm:p-12">
               {/* Background Image/Gradient */}
               <div className="absolute inset-0 z-0">
-                <img
-                  src={categoryImage}
-                  alt=""
-                  className="h-full w-full object-cover opacity-15"
-                />
+                <img src={categoryImage} alt="" className="h-full w-full object-cover opacity-15" />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-50 via-zinc-50/80 to-transparent" />
                 <CategoryBackgroundArt
                   category={event.event_type}
@@ -400,7 +429,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                     {[...(event.skills || []), ...(event.tags || [])].map((item, i) => (
                       <span
                         key={i}
-                        className="rounded-lg border border-black/10 bg-white/40 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-zinc-800"
+                        className="rounded-lg border border-black/10 bg-white/40 px-3 py-1 text-[11px] font-bold text-zinc-800 backdrop-blur-md"
                       >
                         #{item.toUpperCase()}
                       </span>
@@ -475,7 +504,7 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                           <h4 className="text-xl font-black tracking-tight text-zinc-900">
                             About the event
                           </h4>
-                          <div className="max-h-[250px] overflow-y-auto custom-scrollbar pr-2 text-sm leading-relaxed whitespace-pre-wrap text-slate-700">
+                          <div className="custom-scrollbar max-h-[250px] overflow-y-auto pr-2 text-sm leading-relaxed whitespace-pre-wrap text-slate-700">
                             {event.description ||
                               event.shortDescription ||
                               'No detailed description available.'}
@@ -485,8 +514,6 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                     )}
                   </AnimatePresence>
                 </div>
-
-
               </div>
 
               {/* Right Column: Info Cards */}
@@ -540,14 +567,12 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
                     {event.is_free ? 'Free for all' : event.price || 'Check source'}
                   </p>
                 </div>
-
-
               </div>
             </div>
           </div>
 
           {/* Action Area (Fixed position at the bottom of the card) */}
-          <div className="flex flex-wrap gap-4 p-8 sm:p-12 border-t border-black/5 bg-inherit shrink-0 z-10">
+          <div className="z-10 flex shrink-0 flex-wrap gap-4 border-t border-black/5 bg-inherit p-8 sm:p-12">
             <a
               href={event.url}
               target="_blank"
@@ -580,7 +605,12 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
         </motion.div>
       </div>
 
-      <ShareDialog event={event} isOpen={isShareOpen} onClose={() => setIsShareOpen(false)} />
+      <ShareDialog
+        event={event}
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        captureSelector='[data-event-modal-content="true"]'
+      />
     </AnimatePresence>
   );
 }

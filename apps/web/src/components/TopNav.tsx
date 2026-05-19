@@ -63,7 +63,7 @@ export default function TopNav({
         console.warn('LocalStorage blocked:', e);
       }
     };
-    
+
     updateCount();
     window.addEventListener('eventio-bookmarks-updated', updateCount);
     return () => window.removeEventListener('eventio-bookmarks-updated', updateCount);
@@ -334,14 +334,14 @@ export default function TopNav({
         <div className="flex items-center gap-3">
           <Link
             to="/events/bookmark"
-            className="hover:bg-muted text-stone-700 dark:text-stone-300 hover:text-foreground flex items-center gap-2 rounded-xl border border-border bg-stone-100/50 dark:bg-stone-900/50 p-2 px-3 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="hover:bg-muted hover:text-foreground border-border flex items-center gap-2 rounded-xl border bg-stone-100/50 p-2 px-3 text-stone-700 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] dark:bg-stone-900/50 dark:text-stone-300"
             title="View Bookmarked Events"
           >
             <Bookmark className="h-4 w-4 fill-current text-amber-500" />
             <span className="hidden text-[10px] font-black tracking-widest uppercase sm:inline">
               Bookmarks
             </span>
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1.5 text-[9px] font-black text-white shadow-sm animate-pulse-subtle">
+            <span className="animate-pulse-subtle flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1.5 text-[9px] font-black text-white shadow-sm">
               {bookmarkCount}
             </span>
           </Link>
@@ -493,7 +493,11 @@ export default function TopNav({
 
         <AnimatePresence>
           {isHelpOpen && (
-            <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+            <div
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-0 z-100 flex items-center justify-center p-4"
+            >
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -530,35 +534,36 @@ export default function TopNav({
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground text-xs font-medium">Go to Today</span>
-                    <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
-                      D
-                    </kbd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground text-xs font-medium">
-                      Month Prev/Next
-                    </span>
-                    <div className="flex gap-1">
-                      <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
-                        A
-                      </kbd>
-                      <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
-                        F
-                      </kbd>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground text-xs font-medium">
-                      Year Prev/Next
-                    </span>
-                    <div className="flex gap-1">
-                      <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
-                        S
-                      </kbd>
-                      <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
-                        W
-                      </kbd>
+                    <span className="text-muted-foreground text-xs font-medium">Main Nav</span>
+                    <div className="flex flex-col items-end gap-1">
+                      <div className="flex gap-1">
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          A
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          D
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          ←
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          →
+                        </kbd>
+                      </div>
+                      <div className="flex gap-1">
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          F
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          S
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          ↑
+                        </kbd>
+                        <kbd className="bg-muted border-border rounded border px-1.5 py-0.5 text-[9px] font-bold">
+                          ↓
+                        </kbd>
+                      </div>
                     </div>
                   </div>
                   <div className="bg-border my-2 h-px" />

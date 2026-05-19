@@ -1,6 +1,6 @@
 import { Bell, Check, Mail, ShieldCheck, X, Zap } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface SubscriptionModalProps {
   isOpen: boolean;
@@ -13,10 +13,28 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
   onClose,
   userEmail: _userEmail,
 }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [isOpen, onClose]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4"
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
