@@ -49,7 +49,7 @@ export const ApiDocs = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  
+
   // Playground State variables
   const [playgroundParams, setPlaygroundParams] = useState<Record<string, string>>({
     limit: '5',
@@ -78,45 +78,140 @@ export const ApiDocs = () => {
     {
       title: 'GETTING STARTED',
       items: [
-        { id: 'introduction', label: 'Introduction', path: '/docs/introduction', icon: <BookOpen className="h-4 w-4" /> },
-        { id: 'quickstart', label: 'Quickstart', path: '/docs/quickstart', icon: <Play className="h-4 w-4" /> },
-        { id: 'authentication', label: 'Authentication', path: '/docs/authentication', icon: <Key className="h-4 w-4" /> },
-        { id: 'errors', label: 'Errors', path: '/docs/errors', icon: <AlertCircle className="h-4 w-4" /> },
-        { id: 'rate-limits', label: 'Rate Limits', path: '/docs/rate-limits', icon: <Shield className="h-4 w-4" /> },
+        {
+          id: 'introduction',
+          label: 'Introduction',
+          path: '/docs/introduction',
+          icon: <BookOpen className="h-4 w-4" />,
+        },
+        {
+          id: 'quickstart',
+          label: 'Quickstart',
+          path: '/docs/quickstart',
+          icon: <Play className="h-4 w-4" />,
+        },
+        {
+          id: 'authentication',
+          label: 'Authentication',
+          path: '/docs/authentication',
+          icon: <Key className="h-4 w-4" />,
+        },
+        {
+          id: 'errors',
+          label: 'Errors',
+          path: '/docs/errors',
+          icon: <AlertCircle className="h-4 w-4" />,
+        },
+        {
+          id: 'rate-limits',
+          label: 'Rate Limits',
+          path: '/docs/rate-limits',
+          icon: <Shield className="h-4 w-4" />,
+        },
       ],
     },
     {
       title: 'API REFERENCE',
       items: [
-        { id: 'healthz', label: 'GET /healthz', path: '/docs/healthz', icon: <Terminal className="h-4 w-4 text-emerald-400" /> },
-        { id: 'stats', label: 'GET /stats', path: '/docs/stats', icon: <Terminal className="h-4 w-4 text-emerald-400" /> },
-        { id: 'events', label: 'GET /events', path: '/docs/events', icon: <Terminal className="h-4 w-4 text-cyan-400" /> },
-        { id: 'events-slug', label: 'GET /events/:slug', path: '/docs/events-slug', icon: <Terminal className="h-4 w-4 text-cyan-400" /> },
-        { id: 'users-googleid', label: 'GET /users/:googleId', path: '/docs/users-googleid', icon: <Terminal className="h-4 w-4 text-purple-400" /> },
-        { id: 'users-sync', label: 'POST /users', path: '/docs/users-sync', icon: <Terminal className="h-4 w-4 text-purple-400" /> },
-        { id: 'api-reference', label: 'API Explorer', path: '/docs/api-reference', icon: <Code className="h-4 w-4 text-blue-400" /> },
+        {
+          id: 'healthz',
+          label: 'GET /healthz',
+          path: '/docs/healthz',
+          icon: <Terminal className="h-4 w-4 text-emerald-400" />,
+        },
+        {
+          id: 'stats',
+          label: 'GET /stats',
+          path: '/docs/stats',
+          icon: <Terminal className="h-4 w-4 text-emerald-400" />,
+        },
+        {
+          id: 'events',
+          label: 'GET /events',
+          path: '/docs/events',
+          icon: <Terminal className="h-4 w-4 text-cyan-400" />,
+        },
+        {
+          id: 'events-slug',
+          label: 'GET /events/:slug',
+          path: '/docs/events-slug',
+          icon: <Terminal className="h-4 w-4 text-cyan-400" />,
+        },
+        {
+          id: 'users-googleid',
+          label: 'GET /users/:googleId',
+          path: '/docs/users-googleid',
+          icon: <Terminal className="h-4 w-4 text-purple-400" />,
+        },
+        {
+          id: 'users-sync',
+          label: 'POST /users',
+          path: '/docs/users-sync',
+          icon: <Terminal className="h-4 w-4 text-purple-400" />,
+        },
+        {
+          id: 'api-reference',
+          label: 'API Explorer',
+          path: '/docs/api-reference',
+          icon: <Code className="h-4 w-4 text-blue-400" />,
+        },
       ],
     },
     {
       title: 'FEATURES',
       items: [
-        { id: 'webhooks', label: 'Webhooks', path: '/docs/webhooks', icon: <Activity className="h-4 w-4 text-rose-400" /> },
+        {
+          id: 'webhooks',
+          label: 'Webhooks',
+          path: '/docs/webhooks',
+          icon: <Activity className="h-4 w-4 text-rose-400" />,
+        },
       ],
     },
     {
       title: 'SDKS & TOOLS',
       items: [
-        { id: 'sdk/javascript', label: 'JavaScript / TypeScript', path: '/docs/sdk/javascript', icon: <Code className="h-4 w-4 text-yellow-500" /> },
-        { id: 'sdk/python', label: 'Python SDK', path: '/docs/sdk/python', icon: <Code className="h-4 w-4 text-blue-500" /> },
+        {
+          id: 'sdk/javascript',
+          label: 'JavaScript / TypeScript',
+          path: '/docs/sdk/javascript',
+          icon: <Code className="h-4 w-4 text-yellow-500" />,
+        },
+        {
+          id: 'sdk/python',
+          label: 'Python SDK',
+          path: '/docs/sdk/python',
+          icon: <Code className="h-4 w-4 text-blue-500" />,
+        },
       ],
     },
     {
       title: 'RESOURCES',
       items: [
-        { id: 'examples', label: 'Code Examples', path: '/docs/examples', icon: <Sparkles className="h-4 w-4 text-indigo-400" /> },
-        { id: 'openapi', label: 'OpenAPI Specification', path: '/docs/openapi', icon: <FileText className="h-4 w-4 text-stone-400" /> },
-        { id: 'changelog', label: 'Changelog', path: '/docs/changelog', icon: <Activity className="h-4 w-4 text-stone-400" /> },
-        { id: 'status', label: 'System Status', path: '/docs/status', icon: <Activity className="h-4 w-4 text-stone-400" /> },
+        {
+          id: 'examples',
+          label: 'Code Examples',
+          path: '/docs/examples',
+          icon: <Sparkles className="h-4 w-4 text-indigo-400" />,
+        },
+        {
+          id: 'openapi',
+          label: 'OpenAPI Specification',
+          path: '/docs/openapi',
+          icon: <FileText className="h-4 w-4 text-stone-400" />,
+        },
+        {
+          id: 'changelog',
+          label: 'Changelog',
+          path: '/docs/changelog',
+          icon: <Activity className="h-4 w-4 text-stone-400" />,
+        },
+        {
+          id: 'status',
+          label: 'System Status',
+          path: '/docs/status',
+          icon: <Activity className="h-4 w-4 text-stone-400" />,
+        },
       ],
     },
   ];
@@ -147,9 +242,10 @@ export const ApiDocs = () => {
   // Search indexing and filtering
   const allNavItems = docSections.flatMap((s) => s.items);
   const filteredSearchResults = searchQuery
-    ? allNavItems.filter((item) =>
-        item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.id.toLowerCase().includes(searchQuery.toLowerCase())
+    ? allNavItems.filter(
+        (item) =>
+          item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.id.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : [];
 
@@ -203,7 +299,7 @@ export const ApiDocs = () => {
       } else {
         res = await fetch(fetchUrl);
       }
-      
+
       const data = await res.json();
       const elapsed = Math.round(performance.now() - start);
       setPlaygroundTime(elapsed);
@@ -215,7 +311,7 @@ export const ApiDocs = () => {
       const elapsed = Math.round(performance.now() - start);
       setPlaygroundTime(elapsed + 8);
       setPlaygroundStatus('200 OK (Mocked Sandbox)');
-      
+
       let mockPayload = {};
       if (endpoint === 'healthz') {
         mockPayload = { status: 'ok' };
@@ -228,12 +324,19 @@ export const ApiDocs = () => {
             past: 530,
             unknown: 9,
             platforms: [
-              { platform: 'codeforces', total: 184, upcoming: 41, ongoing: 2, past: 141, unknown: 0 },
+              {
+                platform: 'codeforces',
+                total: 184,
+                upcoming: 41,
+                ongoing: 2,
+                past: 141,
+                unknown: 0,
+              },
               { platform: 'leetcode', total: 110, upcoming: 12, ongoing: 1, past: 97, unknown: 0 },
               { platform: 'devpost', total: 242, upcoming: 92, ongoing: 15, past: 135, unknown: 0 },
-              { platform: 'mlh', total: 45, upcoming: 18, ongoing: 3, past: 24, unknown: 0 }
-            ]
-          }
+              { platform: 'mlh', total: 45, upcoming: 18, ongoing: 3, past: 24, unknown: 0 },
+            ],
+          },
         };
       } else if (endpoint === 'events') {
         mockPayload = {
@@ -242,7 +345,8 @@ export const ApiDocs = () => {
               id: 'evt_923e4567-e89b',
               external_id: 'evt_923e4567-e89b',
               title: `${playgroundParams.platform.toUpperCase()} Round 999`,
-              description: 'Global developer coding challenge featuring custom mathematical programming problems.',
+              description:
+                'Global developer coding challenge featuring custom mathematical programming problems.',
               shortDescription: 'Div 1 + Div 2 contest with prize rewards.',
               startDate: '2026-06-15T14:35:00Z',
               endDate: '2026-06-15T16:35:00Z',
@@ -280,15 +384,15 @@ export const ApiDocs = () => {
               bookmarks: 18,
               slug: 'codeforces-round-999',
               created_at: '2026-05-17T05:00:00Z',
-              updated_at: '2026-05-17T05:00:00Z'
-            }
+              updated_at: '2026-05-17T05:00:00Z',
+            },
           ],
           pagination: {
             page: 1,
             limit: Number(playgroundParams.limit),
             total: 24,
-            hasNext: true
-          }
+            hasNext: true,
+          },
         };
       } else if (endpoint === 'events-slug') {
         mockPayload = {
@@ -296,7 +400,8 @@ export const ApiDocs = () => {
             id: 'evt_a41b17d3-d29a',
             external_id: 'evt_a41b17d3-d29a',
             title: 'Eventio Global Hackathon 2026',
-            description: 'The ultimate online hackathon hosted by Om Khalane to build high-performance React and Node platforms.',
+            description:
+              'The ultimate online hackathon hosted by Om Khalane to build high-performance React and Node platforms.',
             shortDescription: 'Cinematic developer hackathon to wow the community.',
             startDate: '2026-07-01T09:00:00Z',
             endDate: '2026-07-03T18:00:00Z',
@@ -308,8 +413,8 @@ export const ApiDocs = () => {
             is_free: true,
             status: 'upcoming',
             organizerName: 'Om Khalane',
-            slug: playgroundParams.slug
-          }
+            slug: playgroundParams.slug,
+          },
         };
       } else if (endpoint === 'users-googleid') {
         mockPayload = {
@@ -317,8 +422,8 @@ export const ApiDocs = () => {
             googleId: playgroundParams.googleId,
             email: playgroundParams.email,
             isSubscribed: true,
-            createdAt: '2026-05-17T05:22:00Z'
-          }
+            createdAt: '2026-05-17T05:22:00Z',
+          },
         };
       } else if (endpoint === 'users-sync') {
         mockPayload = {
@@ -327,8 +432,8 @@ export const ApiDocs = () => {
             googleId: playgroundParams.googleId,
             email: playgroundParams.email,
             isSubscribed: true,
-            updatedAt: '2026-05-17T05:53:00Z'
-          }
+            updatedAt: '2026-05-17T05:53:00Z',
+          },
         };
       }
 
@@ -343,48 +448,48 @@ export const ApiDocs = () => {
     quickstart: {
       curl: `curl -X GET "${apiBaseUrl}/events?limit=2" \\\n  -H "Authorization: Bearer evt_prod_key_live_2026"`,
       javascript: `import { EventioClient } from '@eventio/sdk-node';\n\nconst eventio = new EventioClient('evt_prod_key_live_2026');\n\n// Retrieve events\nconst events = await eventio.events.list({\n  limit: 2,\n  isFree: true\n});\nconsole.log(events);`,
-      python: `from eventio import EventioClient\n\nclient = EventioClient(api_key="evt_prod_key_live_2026")\n\n# Query contests\nevents = client.events.list(\n    limit=2,\n    is_free=True\n)\nprint(events)`
+      python: `from eventio import EventioClient\n\nclient = EventioClient(api_key="evt_prod_key_live_2026")\n\n# Query contests\nevents = client.events.list(\n    limit=2,\n    is_free=True\n)\nprint(events)`,
     },
     authentication: {
       curl: `curl -H "Authorization: Bearer YOUR_API_KEY" \\\n  "${apiBaseUrl}/events"`,
       javascript: `// Initialize with key\nconst client = new EventioClient('YOUR_API_KEY');`,
-      python: `# Initialize PyClient\nclient = EventioClient(api_key="YOUR_API_KEY")`
+      python: `# Initialize PyClient\nclient = EventioClient(api_key="YOUR_API_KEY")`,
     },
     healthz: {
       curl: `curl -X GET "${apiBaseUrl}/healthz"`,
       javascript: `const res = await fetch("${apiBaseUrl}/healthz");\nconst status = await res.json();`,
-      python: `import requests\n\nres = requests.get("${apiBaseUrl}/healthz")\nprint(res.json())`
+      python: `import requests\n\nres = requests.get("${apiBaseUrl}/healthz")\nprint(res.json())`,
     },
     stats: {
       curl: `curl -X GET "${apiBaseUrl}/stats"`,
       javascript: `const res = await fetch("${apiBaseUrl}/stats");\nconst data = await res.json();`,
-      python: `import requests\n\nres = requests.get("${apiBaseUrl}/stats")\nprint(res.json())`
+      python: `import requests\n\nres = requests.get("${apiBaseUrl}/stats")\nprint(res.json())`,
     },
     events: {
       curl: `curl -G "${apiBaseUrl}/events" \\\n  -d "limit=${playgroundParams.limit}" \\\n  -d "platform=${playgroundParams.platform}" \\\n  -d "status=${playgroundParams.status}" \\\n  -d "isFree=${playgroundParams.isFree}"`,
       javascript: `const res = await fetch(\n  "${apiBaseUrl}/events?limit=${playgroundParams.limit}&platform=${playgroundParams.platform}&status=${playgroundParams.status}&isFree=${playgroundParams.isFree}"\n);\nconst data = await res.json();`,
-      python: `import requests\n\nres = requests.get(\n    "${apiBaseUrl}/events",\n    params={\n        "limit": ${playgroundParams.limit},\n        "platform": "${playgroundParams.platform}",\n        "status": "${playgroundParams.status}",\n        "isFree": "${playgroundParams.isFree}"\n    }\n)\nprint(res.json())`
+      python: `import requests\n\nres = requests.get(\n    "${apiBaseUrl}/events",\n    params={\n        "limit": ${playgroundParams.limit},\n        "platform": "${playgroundParams.platform}",\n        "status": "${playgroundParams.status}",\n        "isFree": "${playgroundParams.isFree}"\n    }\n)\nprint(res.json())`,
     },
     'events-slug': {
       curl: `curl -X GET "${apiBaseUrl}/events/${playgroundParams.slug}"`,
       javascript: `const res = await fetch("${apiBaseUrl}/events/${playgroundParams.slug}");\nconst event = await res.json();`,
-      python: `import requests\n\nres = requests.get("${apiBaseUrl}/events/${playgroundParams.slug}")\nprint(res.json())`
+      python: `import requests\n\nres = requests.get("${apiBaseUrl}/events/${playgroundParams.slug}")\nprint(res.json())`,
     },
     'users-googleid': {
       curl: `curl -X GET "${apiBaseUrl}/users/${playgroundParams.googleId}"`,
       javascript: `const res = await fetch("${apiBaseUrl}/users/${playgroundParams.googleId}");\nconst user = await res.json();`,
-      python: `import requests\n\nres = requests.get("${apiBaseUrl}/users/${playgroundParams.googleId}")\nprint(res.json())`
+      python: `import requests\n\nres = requests.get("${apiBaseUrl}/users/${playgroundParams.googleId}")\nprint(res.json())`,
     },
     'users-sync': {
       curl: `curl -X POST "${apiBaseUrl}/users" \\\n  -H "Content-Type: application/json" \\\n  -d '{"googleId":"${playgroundParams.googleId}","email":"${playgroundParams.email}","isSubscribed":true}'`,
       javascript: `const res = await fetch("${apiBaseUrl}/users", {\n  method: "POST",\n  headers: { "Content-Type": "application/json" },\n  body: JSON.stringify({\n    googleId: "${playgroundParams.googleId}",\n    email: "${playgroundParams.email}",\n    isSubscribed: true\n  })\n});\nconst data = await res.json();`,
-      python: `import requests\n\nres = requests.post(\n    "${apiBaseUrl}/users",\n    json={\n        "googleId": "${playgroundParams.googleId}",\n        "email": "${playgroundParams.email}",\n        "isSubscribed": True\n    }\n)\nprint(res.json())`
+      python: `import requests\n\nres = requests.post(\n    "${apiBaseUrl}/users",\n    json={\n        "googleId": "${playgroundParams.googleId}",\n        "email": "${playgroundParams.email}",\n        "isSubscribed": True\n    }\n)\nprint(res.json())`,
     },
     webhooks: {
       curl: `# Signature header verification is mathematical\n# Compute HMAC-SHA256 over raw payload`,
       javascript: `const crypto = require('crypto');\n\nfunction verifyWebhook(rawPayload, signature, secret) {\n  const computed = crypto\n    .createHmac('sha256', secret)\n    .update(rawPayload)\n    .digest('hex');\n  return computed === signature;\n}`,
-      python: `import hmac\nimport hashlib\n\ndef verify_webhook(raw_payload, signature, secret):\n    computed = hmac.new(\n        secret.encode('utf-8'),\n        raw_payload.encode('utf-8'),\n        hashlib.sha256\n    ).hexdigest()\n    return hmac.compare_digest(computed, signature)`
-    }
+      python: `import hmac\nimport hashlib\n\ndef verify_webhook(raw_payload, signature, secret):\n    computed = hmac.new(\n        secret.encode('utf-8'),\n        raw_payload.encode('utf-8'),\n        hashlib.sha256\n    ).hexdigest()\n    return hmac.compare_digest(computed, signature)`,
+    },
   };
 
   // Meta descriptions for advanced SEO Head injection
@@ -393,37 +498,43 @@ export const ApiDocs = () => {
       case 'introduction':
         return {
           title: 'Introduction | EventIO Developer Documentation',
-          description: 'Learn how to build powerful event discovery interfaces using the unified, high-performance EventIO API.'
+          description:
+            'Learn how to build powerful event discovery interfaces using the unified, high-performance EventIO API.',
         };
       case 'quickstart':
         return {
           title: 'Quickstart Guide | EventIO',
-          description: 'Get your API key and send your first search query in less than 5 minutes.'
+          description: 'Get your API key and send your first search query in less than 5 minutes.',
         };
       case 'authentication':
         return {
           title: 'API Authentication | EventIO Docs',
-          description: 'Secure, Bearer-token authentication specifications for programmatic EventIO gateways.'
+          description:
+            'Secure, Bearer-token authentication specifications for programmatic EventIO gateways.',
         };
       case 'events':
         return {
           title: 'Retrieve Events API Reference | EventIO',
-          description: 'Comprehensive query configurations, filtering mechanics, and cURL structures for event retrieval.'
+          description:
+            'Comprehensive query configurations, filtering mechanics, and cURL structures for event retrieval.',
         };
       case 'events-slug':
         return {
           title: 'Retrieve Event by Slug | EventIO Reference',
-          description: 'Fetch detailed metadata of a specific coding contest or hackathon using its canonical slug identifier.'
+          description:
+            'Fetch detailed metadata of a specific coding contest or hackathon using its canonical slug identifier.',
         };
       case 'stats':
         return {
           title: 'Uptime & Stats API | EventIO Reference',
-          description: 'Access aggregate event counts and real-time statistics filtered by source crawler platform.'
+          description:
+            'Access aggregate event counts and real-time statistics filtered by source crawler platform.',
         };
       default:
         return {
           title: `${id.toUpperCase().replace('-', ' ')} Docs | EventIO Portal`,
-          description: 'Interactive API integrations, official open-source SDKs, and webhook notifier guides.'
+          description:
+            'Interactive API integrations, official open-source SDKs, and webhook notifier guides.',
         };
     }
   };
@@ -437,22 +548,23 @@ export const ApiDocs = () => {
         description={meta.description}
         canonicalPath={`/docs/${currentPageId}`}
       />
-      
+
       {/* Background Neon Effects */}
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(16,185,129,0.06),transparent_50%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.012)_1px,transparent_1px)] bg-[size:44px_44px]" />
-      
+
       <Header />
 
-      <div className="mx-auto flex max-w-8xl pt-20">
-        
+      <div className="max-w-8xl mx-auto flex pt-20">
         {/* ==================================================
             LEFT COLUMN: STICKY SIDEBAR NAVIGATION
             ================================================== */}
-        <aside className={cn(
-          "fixed inset-y-0 left-0 z-40 w-72 shrink-0 border-r border-white/5 bg-[#050505]/95 px-6 pt-28 backdrop-blur-xl transition-transform duration-300 lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] lg:bg-transparent lg:pt-8 lg:backdrop-blur-none",
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        )}>
+        <aside
+          className={cn(
+            'fixed inset-y-0 left-0 z-40 w-72 shrink-0 border-r border-white/5 bg-[#050505]/95 px-6 pt-28 backdrop-blur-xl transition-transform duration-300 lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] lg:bg-transparent lg:pt-8 lg:backdrop-blur-none',
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
+          )}
+        >
           {/* Global Search Button */}
           <button
             onClick={() => setIsSearchOpen(true)}
@@ -462,16 +574,16 @@ export const ApiDocs = () => {
               <Search className="h-4 w-4" />
               Search docs...
             </span>
-            <kbd className="hidden rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono tracking-widest text-stone-300 lg:inline-block">
+            <kbd className="hidden rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10px] tracking-widest text-stone-300 lg:inline-block">
               /
             </kbd>
           </button>
 
           {/* Navigation Items */}
-          <div className="custom-scrollbar h-[calc(100vh-200px)] overflow-y-auto pb-10 space-y-8">
+          <div className="custom-scrollbar h-[calc(100vh-200px)] space-y-8 overflow-y-auto pb-10">
             {docSections.map((section) => (
               <div key={section.title} className="space-y-2">
-                <h4 className="text-[10px] font-black tracking-widest text-stone-500 uppercase px-2">
+                <h4 className="px-2 text-[10px] font-black tracking-widest text-stone-500 uppercase">
                   {section.title}
                 </h4>
                 <div className="space-y-1">
@@ -483,10 +595,10 @@ export const ApiDocs = () => {
                         to={item.path}
                         onClick={() => setIsSidebarOpen(false)}
                         className={cn(
-                          "flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-bold transition-all",
+                          'flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-bold transition-all',
                           isActive
-                            ? "bg-white/5 text-emerald-400 shadow-[inset_0_0_15px_rgba(255,255,255,0.02)] border-l-2 border-emerald-400 pl-2.5"
-                            : "text-stone-400 hover:bg-white/[0.02] hover:text-white"
+                            ? 'border-l-2 border-emerald-400 bg-white/5 pl-2.5 text-emerald-400 shadow-[inset_0_0_15px_rgba(255,255,255,0.02)]'
+                            : 'text-stone-400 hover:bg-white/[0.02] hover:text-white',
                         )}
                       >
                         {item.icon}
@@ -516,7 +628,7 @@ export const ApiDocs = () => {
           <div className="mb-6 flex items-center justify-between lg:hidden">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-black uppercase text-stone-300"
+              className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-black text-stone-300 uppercase"
             >
               <Menu className="h-4 w-4" /> Menu
             </button>
@@ -526,8 +638,10 @@ export const ApiDocs = () => {
           </div>
 
           {/* breadcrumbs on desktop */}
-          <div className="hidden items-center gap-2 text-[10px] font-black tracking-widest text-stone-500 uppercase lg:flex mb-8">
-            <Link to="/docs" className="hover:text-stone-300">Docs</Link>
+          <div className="mb-8 hidden items-center gap-2 text-[10px] font-black tracking-widest text-stone-500 uppercase lg:flex">
+            <Link to="/docs" className="hover:text-stone-300">
+              Docs
+            </Link>
             <ChevronRight className="h-3 w-3" />
             <span className="text-emerald-400">{currentPageId.replace('/', ' / ')}</span>
           </div>
@@ -542,7 +656,15 @@ export const ApiDocs = () => {
                 RIGHT COLUMN: LIVE PLAYGROUND OR TABLE OF CONTENTS
                 ================================================== */}
             <aside className="space-y-6">
-              {['healthz', 'stats', 'events', 'events-slug', 'users-googleid', 'users-sync', 'api-reference'].includes(currentPageId) ? (
+              {[
+                'healthz',
+                'stats',
+                'events',
+                'events-slug',
+                'users-googleid',
+                'users-sync',
+                'api-reference',
+              ].includes(currentPageId) ? (
                 // API reference playground
                 <div className="sticky top-28 space-y-6 rounded-3xl border border-white/10 bg-stone-950 p-6 shadow-2xl backdrop-blur-md">
                   <div className="flex items-center justify-between border-b border-white/5 pb-4">
@@ -562,19 +684,27 @@ export const ApiDocs = () => {
                     {currentPageId === 'events' && (
                       <div className="space-y-3">
                         <div>
-                          <label className="mb-1 block text-[10px] text-stone-400">Limit (max 100)</label>
+                          <label className="mb-1 block text-[10px] text-stone-400">
+                            Limit (max 100)
+                          </label>
                           <input
                             type="number"
                             value={playgroundParams.limit}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, limit: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, limit: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           />
                         </div>
                         <div>
-                          <label className="mb-1 block text-[10px] text-stone-400">Platform Filter</label>
+                          <label className="mb-1 block text-[10px] text-stone-400">
+                            Platform Filter
+                          </label>
                           <select
                             value={playgroundParams.platform}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, platform: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, platform: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           >
                             <option value="codeforces">Codeforces</option>
@@ -587,7 +717,9 @@ export const ApiDocs = () => {
                           <label className="mb-1 block text-[10px] text-stone-400">Status</label>
                           <select
                             value={playgroundParams.status}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, status: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, status: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           >
                             <option value="upcoming">Upcoming</option>
@@ -599,7 +731,9 @@ export const ApiDocs = () => {
                           <label className="mb-1 block text-[10px] text-stone-400">Free Only</label>
                           <select
                             value={playgroundParams.isFree}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, isFree: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, isFree: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           >
                             <option value="true">True</option>
@@ -607,11 +741,15 @@ export const ApiDocs = () => {
                           </select>
                         </div>
                         <div>
-                          <label className="mb-1 block text-[10px] text-stone-400">Fuzzy Search (q)</label>
+                          <label className="mb-1 block text-[10px] text-stone-400">
+                            Fuzzy Search (q)
+                          </label>
                           <input
                             type="text"
                             value={playgroundParams.q}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, q: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, q: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           />
                         </div>
@@ -624,7 +762,9 @@ export const ApiDocs = () => {
                         <input
                           type="text"
                           value={playgroundParams.slug}
-                          onChange={(e) => setPlaygroundParams({ ...playgroundParams, slug: e.target.value })}
+                          onChange={(e) =>
+                            setPlaygroundParams({ ...playgroundParams, slug: e.target.value })
+                          }
                           className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                         />
                       </div>
@@ -636,7 +776,9 @@ export const ApiDocs = () => {
                         <input
                           type="text"
                           value={playgroundParams.googleId}
-                          onChange={(e) => setPlaygroundParams({ ...playgroundParams, googleId: e.target.value })}
+                          onChange={(e) =>
+                            setPlaygroundParams({ ...playgroundParams, googleId: e.target.value })
+                          }
                           className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                         />
                       </div>
@@ -649,16 +791,22 @@ export const ApiDocs = () => {
                           <input
                             type="text"
                             value={playgroundParams.googleId}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, googleId: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, googleId: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           />
                         </div>
                         <div>
-                          <label className="mb-1 block text-[10px] text-stone-400">Email Address</label>
+                          <label className="mb-1 block text-[10px] text-stone-400">
+                            Email Address
+                          </label>
                           <input
                             type="email"
                             value={playgroundParams.email}
-                            onChange={(e) => setPlaygroundParams({ ...playgroundParams, email: e.target.value })}
+                            onChange={(e) =>
+                              setPlaygroundParams({ ...playgroundParams, email: e.target.value })
+                            }
                             className="w-full rounded-lg border border-white/10 bg-black px-3 py-1.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                           />
                         </div>
@@ -667,16 +815,22 @@ export const ApiDocs = () => {
 
                     {['healthz', 'stats', 'api-reference'].includes(currentPageId) && (
                       <div className="rounded-xl border border-dashed border-white/10 p-3 text-center text-xs text-stone-500">
-                        {currentPageId === 'api-reference' ? 'Select specific endpoint in the sidebar to modify variables.' : 'No additional query parameters required.'}
+                        {currentPageId === 'api-reference'
+                          ? 'Select specific endpoint in the sidebar to modify variables.'
+                          : 'No additional query parameters required.'}
                       </div>
                     )}
                   </div>
 
                   {/* Send request action */}
                   <button
-                    onClick={() => executePlaygroundRequest(currentPageId === 'api-reference' ? 'events' : currentPageId)}
+                    onClick={() =>
+                      executePlaygroundRequest(
+                        currentPageId === 'api-reference' ? 'events' : currentPageId,
+                      )
+                    }
                     disabled={playgroundLoading}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white py-3 text-xs font-black tracking-widest text-black uppercase shadow-lg transition-transform hover:scale-[1.02] active:scale-98 disabled:opacity-50 cursor-pointer"
+                    className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white py-3 text-xs font-black tracking-widest text-black uppercase shadow-lg transition-transform hover:scale-[1.02] active:scale-98 disabled:opacity-50"
                   >
                     {playgroundLoading ? (
                       <RefreshCw className="h-4 w-4 animate-spin" />
@@ -693,9 +847,13 @@ export const ApiDocs = () => {
                     <div className="flex items-center justify-between text-[9px] font-black tracking-widest text-stone-500 uppercase">
                       <span>CONSOLE OUTPUT</span>
                       {playgroundStatus && (
-                        <span className={cn(
-                          playgroundStatus.includes('200') ? "text-emerald-400" : "text-amber-400"
-                        )}>
+                        <span
+                          className={cn(
+                            playgroundStatus.includes('200')
+                              ? 'text-emerald-400'
+                              : 'text-amber-400',
+                          )}
+                        >
                           {playgroundStatus} ({playgroundTime}ms)
                         </span>
                       )}
@@ -704,7 +862,9 @@ export const ApiDocs = () => {
                       {playgroundResponse ? (
                         <pre className="whitespace-pre-wrap">{playgroundResponse}</pre>
                       ) : (
-                        <span className="text-stone-600 italic">Click Run Request to invoke programmatic sandbox output.</span>
+                        <span className="text-stone-600 italic">
+                          Click Run Request to invoke programmatic sandbox output.
+                        </span>
                       )}
                     </div>
                   </div>
@@ -716,13 +876,22 @@ export const ApiDocs = () => {
                     ON THIS PAGE
                   </h3>
                   <nav className="space-y-3 text-xs font-bold text-stone-400">
-                    <a href="#overview" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <a
+                      href="#overview"
+                      className="flex items-center gap-1.5 transition-colors hover:text-white"
+                    >
                       <Hash className="h-3.5 w-3.5 opacity-50" /> Overview
                     </a>
-                    <a href="#usage" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <a
+                      href="#usage"
+                      className="flex items-center gap-1.5 transition-colors hover:text-white"
+                    >
                       <Hash className="h-3.5 w-3.5 opacity-50" /> Programmatic Usage
                     </a>
-                    <a href="#examples" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <a
+                      href="#examples"
+                      className="flex items-center gap-1.5 transition-colors hover:text-white"
+                    >
                       <Hash className="h-3.5 w-3.5 opacity-50" /> Live Integrations
                     </a>
                   </nav>
@@ -734,14 +903,14 @@ export const ApiDocs = () => {
                     <h4 className="text-[10px] font-black tracking-widest text-stone-500 uppercase">
                       API INFORMATION
                     </h4>
-                    <div className="rounded-xl bg-white/[0.02] border border-white/5 p-3 space-y-2 text-[11px]">
+                    <div className="space-y-2 rounded-xl border border-white/5 bg-white/[0.02] p-3 text-[11px]">
                       <div className="flex justify-between">
                         <span className="text-stone-500">Domain</span>
-                        <span className="text-white font-mono">event-io.me/api/v1</span>
+                        <span className="font-mono text-white">event-io.me/api/v1</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-stone-500">Version</span>
-                        <span className="text-emerald-400 font-mono">v1.0 (Live)</span>
+                        <span className="font-mono text-emerald-400">v1.0 (Live)</span>
                       </div>
                     </div>
                   </div>
@@ -766,6 +935,8 @@ export const ApiDocs = () => {
               className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md"
             />
             <motion.div
+              role="dialog"
+              aria-modal="true"
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -789,7 +960,7 @@ export const ApiDocs = () => {
                 </button>
               </div>
 
-              <div className="mt-4 max-h-72 overflow-y-auto space-y-2">
+              <div className="mt-4 max-h-72 space-y-2 overflow-y-auto">
                 {filteredSearchResults.length > 0 ? (
                   filteredSearchResults.map((item) => (
                     <button
@@ -836,7 +1007,7 @@ export const ApiDocs = () => {
       return (
         <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[inset_0_0_20px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-3">
-            <span className="text-[10px] font-black tracking-widest text-stone-500 uppercase flex items-center gap-2">
+            <span className="flex items-center gap-2 text-[10px] font-black tracking-widest text-stone-500 uppercase">
               <Terminal className="h-3.5 w-3.5 text-emerald-400" />
               {titleStr}
             </span>
@@ -848,8 +1019,10 @@ export const ApiDocs = () => {
                     key={lang}
                     onClick={() => setActiveTab(lang)}
                     className={cn(
-                      "px-2 py-0.5 text-[9px] font-bold rounded transition-colors uppercase",
-                      activeTab === lang ? "bg-emerald-400/20 text-emerald-300" : "text-stone-500 hover:text-stone-300"
+                      'rounded px-2 py-0.5 text-[9px] font-bold uppercase transition-colors',
+                      activeTab === lang
+                        ? 'bg-emerald-400/20 text-emerald-300'
+                        : 'text-stone-500 hover:text-stone-300',
                     )}
                   >
                     {lang}
@@ -882,36 +1055,59 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-500 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Introduction
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed md:text-xl">
-              Welcome to the official developer documentation system for **EventIO** — a modern developer-first aggregator cataloging tech events, hackathons, coding contests, and open-source opportunities.
+            <p className="text-lg leading-relaxed text-stone-400 md:text-xl">
+              Welcome to the official developer documentation system for **EventIO** — a modern
+              developer-first aggregator cataloging tech events, hackathons, coding contests, and
+              open-source opportunities.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+            <div className="my-10 grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="rounded-3xl border border-white/5 bg-white/2 p-6">
-                <Database className="h-8 w-8 text-emerald-400 mb-4" />
-                <h3 className="text-white text-lg font-bold mb-2">Neon DB Persistence</h3>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Scraped opportunities from Codeforces, Devpost, MLH, and CTFtime are automatically deduplicated, indexed, and cached securely.
+                <Database className="mb-4 h-8 w-8 text-emerald-400" />
+                <h3 className="mb-2 text-lg font-bold text-white">Neon DB Persistence</h3>
+                <p className="text-xs leading-relaxed text-stone-400">
+                  Scraped opportunities from Codeforces, Devpost, MLH, and CTFtime are automatically
+                  deduplicated, indexed, and cached securely.
                 </p>
               </div>
               <div className="rounded-3xl border border-white/5 bg-white/2 p-6">
-                <Lock className="h-8 w-8 text-cyan-400 mb-4" />
-                <h3 className="text-white text-lg font-bold mb-2">Secure Gateways</h3>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Interact programmatically using granular bearer credentials. Secure custom session states mapped directly to active users.
+                <Lock className="mb-4 h-8 w-8 text-cyan-400" />
+                <h3 className="mb-2 text-lg font-bold text-white">Secure Gateways</h3>
+                <p className="text-xs leading-relaxed text-stone-400">
+                  Interact programmatically using granular bearer credentials. Secure custom session
+                  states mapped directly to active users.
                 </p>
               </div>
             </div>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               System Architecture
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              EventIO is engineered by <strong>Om Khalane</strong> (omkhalane) as an open-source hub. The service parses, normalizes, and schedules event notifications via webhooks, client SDKs, and REST routes. Check out the creator's code at <a href="https://github.com/omkhalane" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">github.com/omkhalane</a>.
+            <p className="text-sm leading-relaxed text-stone-400">
+              EventIO is engineered by <strong>Om Khalane</strong> (omkhalane) as an open-source
+              hub. The service parses, normalizes, and schedules event notifications via webhooks,
+              client SDKs, and REST routes. Check out the creator's code at{' '}
+              <a
+                href="https://github.com/omkhalane"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:underline"
+              >
+                github.com/omkhalane
+              </a>
+              .
             </p>
-            
-            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-xs text-emerald-300 leading-relaxed my-6">
-              <strong>API Access Notice:</strong> To request a custom high-volume developer API token, contact <a href="mailto:admin@event-io.me" className="font-bold underline">admin@event-io.me</a>.
+
+            <div className="my-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-xs leading-relaxed text-emerald-300">
+              <strong>API Access Notice:</strong> To request a custom high-volume developer API
+              token, contact{' '}
+              <a href="mailto:admin@event-io.me" className="font-bold underline">
+                admin@event-io.me
+              </a>
+              .
             </div>
           </>
         );
@@ -922,31 +1118,46 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Quickstart
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Get up and running with the EventIO API in less than 5 minutes.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Step 1: Obtain your API key
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              To fetch an authorized developer key, contact our administration desk at <a href="mailto:admin@event-io.me" className="text-emerald-400 font-bold underline">admin@event-io.me</a>. All programmatic requests require a valid bearer credential passed in the headers.
+            <p className="text-sm leading-relaxed text-stone-400">
+              To fetch an authorized developer key, contact our administration desk at{' '}
+              <a href="mailto:admin@event-io.me" className="font-bold text-emerald-400 underline">
+                admin@event-io.me
+              </a>
+              . All programmatic requests require a valid bearer credential passed in the headers.
             </p>
 
-            <h2 id="usage" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="usage"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Step 2: Invoke the API
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              Query upcoming developer events using your terminal, javascript client, or python scripts.
+            <p className="text-sm leading-relaxed text-stone-400">
+              Query upcoming developer events using your terminal, javascript client, or python
+              scripts.
             </p>
 
             {renderCodeBlock('quickstart', 'GET /events')}
 
-            <h2 id="examples" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="examples"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Step 3: Render and Cache
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              Responses are returned as structured, type-safe JSON payloads ready to display. Caching elements for 5 minutes is recommended to maintain system efficiency.
+            <p className="text-sm leading-relaxed text-stone-400">
+              Responses are returned as structured, type-safe JSON payloads ready to display.
+              Caching elements for 5 minutes is recommended to maintain system efficiency.
             </p>
           </>
         );
@@ -957,21 +1168,29 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Authentication
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Learn how to authenticate your programmatic HTTP calls.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Bearer Tokens
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              EventIO uses standard bearer tokens to authorize request sequences. Pass your token inside the `Authorization` header block.
+            <p className="text-sm leading-relaxed text-stone-400">
+              EventIO uses standard bearer tokens to authorize request sequences. Pass your token
+              inside the `Authorization` header block.
             </p>
 
             {renderCodeBlock('authentication', 'HTTP BEARER HEADER')}
 
-            <div className="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-4 text-xs text-rose-300 leading-relaxed my-6">
-              <strong>Need credentials?</strong> Production tokens are issued upon review. Write to <a href="mailto:admin@event-io.me" className="underline font-bold">admin@event-io.me</a> stating your project scope.
+            <div className="my-6 rounded-2xl border border-rose-500/20 bg-rose-500/5 p-4 text-xs leading-relaxed text-rose-300">
+              <strong>Need credentials?</strong> Production tokens are issued upon review. Write to{' '}
+              <a href="mailto:admin@event-io.me" className="font-bold underline">
+                admin@event-io.me
+              </a>{' '}
+              stating your project scope.
             </div>
           </>
         );
@@ -982,15 +1201,19 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Errors & Status Codes
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Understand standard validation failure anomalies returned by the gatekeeper.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Failure Schema
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              When a request parameters fail structural validation (like bounds, invalid enums), the API returns a structured Zod error wrapper:
+            <p className="text-sm leading-relaxed text-stone-400">
+              When a request parameters fail structural validation (like bounds, invalid enums), the
+              API returns a structured Zod error wrapper:
             </p>
 
             <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black p-5 font-mono text-[13px] text-rose-400">
@@ -1002,38 +1225,49 @@ export const ApiDocs = () => {
 }`}</pre>
             </div>
 
-            <h2 id="usage" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="usage"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Status Catalog Reference
             </h2>
-            <div className="overflow-x-auto my-6">
+            <div className="my-6 overflow-x-auto">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-white/10 text-stone-400 uppercase tracking-widest text-[9px]">
-                    <th className="py-3 px-4">Status</th>
-                    <th className="py-3 px-4">Error Message</th>
-                    <th className="py-3 px-4">Occurrence Cause</th>
+                  <tr className="border-b border-white/10 text-[9px] tracking-widest text-stone-400 uppercase">
+                    <th className="px-4 py-3">Status</th>
+                    <th className="px-4 py-3">Error Message</th>
+                    <th className="px-4 py-3">Occurrence Cause</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 font-mono text-stone-300">
                   <tr>
-                    <td className="py-3 px-4 text-rose-400">400 Bad Request</td>
-                    <td className="py-3 px-4">"Invalid limit parameter"</td>
-                    <td className="py-3 px-4 text-stone-400">Supplied limit falls outside 1-100 range.</td>
+                    <td className="px-4 py-3 text-rose-400">400 Bad Request</td>
+                    <td className="px-4 py-3">"Invalid limit parameter"</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Supplied limit falls outside 1-100 range.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 text-rose-400">401 Unauthorized</td>
-                    <td className="py-3 px-4">"token_missing"</td>
-                    <td className="py-3 px-4 text-stone-400">The Authorization bearer is missing or revoked.</td>
+                    <td className="px-4 py-3 text-rose-400">401 Unauthorized</td>
+                    <td className="px-4 py-3">"token_missing"</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      The Authorization bearer is missing or revoked.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 text-rose-400">404 Not Found</td>
-                    <td className="py-3 px-4">"Event not found"</td>
-                    <td className="py-3 px-4 text-stone-400">Requested event slug doesn't exist in our Neon DB.</td>
+                    <td className="px-4 py-3 text-rose-400">404 Not Found</td>
+                    <td className="px-4 py-3">"Event not found"</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Requested event slug doesn't exist in our Neon DB.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 text-rose-400">405 Method Not Allowed</td>
-                    <td className="py-3 px-4">"Method Not Allowed"</td>
-                    <td className="py-3 px-4 text-stone-400">Calling an endpoint with unsupported HTTP methods.</td>
+                    <td className="px-4 py-3 text-rose-400">405 Method Not Allowed</td>
+                    <td className="px-4 py-3">"Method Not Allowed"</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Calling an endpoint with unsupported HTTP methods.
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -1047,21 +1281,33 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Rate Limits
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              Understand our rate limiting mechanics designed to ensure constant system availability.
+            <p className="text-lg leading-relaxed text-stone-400">
+              Understand our rate limiting mechanics designed to ensure constant system
+              availability.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Fair-Use Limits
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              Standard keys are capped at **1,000 requests per hour**. For enterprise levels or custom indexing limits, contact the admin group at <a href="mailto:admin@event-io.me" className="text-emerald-400 font-bold underline">admin@event-io.me</a>.
+            <p className="text-sm leading-relaxed text-stone-400">
+              Standard keys are capped at **1,000 requests per hour**. For enterprise levels or
+              custom indexing limits, contact the admin group at{' '}
+              <a href="mailto:admin@event-io.me" className="font-bold text-emerald-400 underline">
+                admin@event-io.me
+              </a>
+              .
             </p>
 
-            <h2 id="usage" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="usage"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Headers Returned
             </h2>
-            <div className="rounded-xl border border-white/5 bg-white/2 p-4 font-mono text-xs text-stone-300 space-y-2">
+            <div className="space-y-2 rounded-xl border border-white/5 bg-white/2 p-4 font-mono text-xs text-stone-300">
               <div>X-RateLimit-Limit: 1000</div>
               <div>X-RateLimit-Remaining: 984</div>
               <div>X-RateLimit-Reset: 1716301290 (Epoch seconds)</div>
@@ -1075,8 +1321,9 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Uptime Check
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              GET `/healthz` provides an unauthenticated ping route to verify that the gateway routes are online.
+            <p className="text-lg leading-relaxed text-stone-400">
+              GET `/healthz` provides an unauthenticated ping route to verify that the gateway
+              routes are online.
             </p>
 
             {renderCodeBlock('healthz', 'GET /healthz')}
@@ -1089,8 +1336,9 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Aggregated Stats
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              GET `/stats` aggregates total event quantities, upcoming counts, and platforms-specific crawler listings.
+            <p className="text-lg leading-relaxed text-stone-400">
+              GET `/stats` aggregates total event quantities, upcoming counts, and
+              platforms-specific crawler listings.
             </p>
 
             {renderCodeBlock('stats', 'GET /stats')}
@@ -1103,59 +1351,76 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Retrieve Events
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               GET `/events` queries lists of aggregated tech opportunities.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Query Parameters Spec
             </h2>
-            <div className="overflow-x-auto my-6">
+            <div className="my-6 overflow-x-auto">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-white/10 text-stone-400 uppercase tracking-widest text-[9px]">
-                    <th className="py-3 px-4">Parameter</th>
-                    <th className="py-3 px-4">Type</th>
-                    <th className="py-3 px-4">Default</th>
-                    <th className="py-3 px-4">Details</th>
+                  <tr className="border-b border-white/10 text-[9px] tracking-widest text-stone-400 uppercase">
+                    <th className="px-4 py-3">Parameter</th>
+                    <th className="px-4 py-3">Type</th>
+                    <th className="px-4 py-3">Default</th>
+                    <th className="px-4 py-3">Details</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 font-mono text-stone-300">
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">limit</td>
-                    <td className="py-3 px-4 text-cyan-400">number</td>
-                    <td className="py-3 px-4">20</td>
-                    <td className="py-3 px-4 text-stone-400">Range: 1 to 100. Max items in a single response block.</td>
+                    <td className="px-4 py-3 font-bold text-white">limit</td>
+                    <td className="px-4 py-3 text-cyan-400">number</td>
+                    <td className="px-4 py-3">20</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Range: 1 to 100. Max items in a single response block.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">platform</td>
-                    <td className="py-3 px-4 text-cyan-400">string</td>
-                    <td className="py-3 px-4">null</td>
-                    <td className="py-3 px-4 text-stone-400">Comma-separated platforms list (e.g. `codeforces`, `leetcode`, `devpost`, `mlh`, `unstop`).</td>
+                    <td className="px-4 py-3 font-bold text-white">platform</td>
+                    <td className="px-4 py-3 text-cyan-400">string</td>
+                    <td className="px-4 py-3">null</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Comma-separated platforms list (e.g. `codeforces`, `leetcode`, `devpost`,
+                      `mlh`, `unstop`).
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">categories</td>
-                    <td className="py-3 px-4 text-cyan-400">string</td>
-                    <td className="py-3 px-4">null</td>
-                    <td className="py-3 px-4 text-stone-400">Comma-separated categories list (e.g. `hackathon`, `competitive-programming`, `ctf`).</td>
+                    <td className="px-4 py-3 font-bold text-white">categories</td>
+                    <td className="px-4 py-3 text-cyan-400">string</td>
+                    <td className="px-4 py-3">null</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Comma-separated categories list (e.g. `hackathon`, `competitive-programming`,
+                      `ctf`).
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">status</td>
-                    <td className="py-3 px-4 text-cyan-400">string</td>
-                    <td className="py-3 px-4">null</td>
-                    <td className="py-3 px-4 text-stone-400">Value of `upcoming` | `ongoing` | `past` | `unknown`.</td>
+                    <td className="px-4 py-3 font-bold text-white">status</td>
+                    <td className="px-4 py-3 text-cyan-400">string</td>
+                    <td className="px-4 py-3">null</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Value of `upcoming` | `ongoing` | `past` | `unknown`.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">isFree</td>
-                    <td className="py-3 px-4 text-cyan-400">boolean</td>
-                    <td className="py-3 px-4">null</td>
-                    <td className="py-3 px-4 text-stone-400">Selects free-admission events if `true`.</td>
+                    <td className="px-4 py-3 font-bold text-white">isFree</td>
+                    <td className="px-4 py-3 text-cyan-400">boolean</td>
+                    <td className="px-4 py-3">null</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Selects free-admission events if `true`.
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-white">q</td>
-                    <td className="py-3 px-4 text-cyan-400">string</td>
-                    <td className="py-3 px-4">null</td>
-                    <td className="py-3 px-4 text-stone-400">Fuzzy full-text query matching Title, Description, or Host Name.</td>
+                    <td className="px-4 py-3 font-bold text-white">q</td>
+                    <td className="px-4 py-3 text-cyan-400">string</td>
+                    <td className="px-4 py-3">null</td>
+                    <td className="px-4 py-3 text-stone-400">
+                      Fuzzy full-text query matching Title, Description, or Host Name.
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -1171,15 +1436,20 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Retrieve Single Event
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              GET `/events/:slug` returns full detailed specifications of a single aggregated event from the Neon PG database.
+            <p className="text-lg leading-relaxed text-stone-400">
+              GET `/events/:slug` returns full detailed specifications of a single aggregated event
+              from the Neon PG database.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Endpoint Specification
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
-              Provide the canonical event slug inside the path variable. Returns a single object wrapped inside `data`.
+            <p className="text-sm leading-relaxed text-stone-400">
+              Provide the canonical event slug inside the path variable. Returns a single object
+              wrapped inside `data`.
             </p>
 
             {renderCodeBlock('events-slug', 'GET EVENT DETAILS')}
@@ -1192,8 +1462,9 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Retrieve User Profile
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              GET `/users/:googleId` retrieves Google profile details synchronized during Firebase Google OAuth sequences.
+            <p className="text-lg leading-relaxed text-stone-400">
+              GET `/users/:googleId` retrieves Google profile details synchronized during Firebase
+              Google OAuth sequences.
             </p>
 
             {renderCodeBlock('users-googleid', 'GET USER PROFILE')}
@@ -1206,7 +1477,7 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Synchronize User Session
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               POST `/users` registers or updates a user session inside the persistent Neon DB.
             </p>
 
@@ -1220,23 +1491,29 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Webhooks
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Stream events in real-time when new hackathons are crawled and deduplicated.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Webhook Event Types
             </h2>
-            <ul className="list-disc pl-6 text-xs text-stone-400 space-y-2">
+            <ul className="list-disc space-y-2 pl-6 text-xs text-stone-400">
               <li>`event.created`: Emitted when opportunity is indexed.</li>
               <li>`deadline.approaching`: Emitted 24 hours prior to registration cutoff.</li>
               <li>`organizer.verified`: Emitted upon verification.</li>
             </ul>
 
-            <h2 id="usage" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="usage"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Signature Verification Code
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-stone-400">
               Ensure webhook requests originate from EventIO by verifying cryptographic signatures:
             </p>
 
@@ -1250,22 +1527,28 @@ export const ApiDocs = () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               JavaScript / TypeScript SDK
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Integrate EventIO natively in modern NodeJS, React, or NextJS applications.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Installation Guidelines
             </h2>
             <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black p-5 font-mono text-[13px] text-emerald-300">
               <code>npm install @eventio/sdk-node</code>
             </div>
 
-            <h2 id="usage" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="usage"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Basic Implementation
             </h2>
             <pre className="custom-scrollbar overflow-x-auto rounded-2xl border border-white/10 bg-black p-5 font-mono text-[13px] leading-relaxed text-emerald-300">
-{`import { EventioClient } from '@eventio/sdk-node';
+              {`import { EventioClient } from '@eventio/sdk-node';
 
 const client = new EventioClient('YOUR_KEY');
 const events = await client.events.list({ limit: 5 });`}
@@ -1279,11 +1562,14 @@ const events = await client.events.list({ limit: 5 });`}
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Python Client SDK
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Integrate EventIO queries natively into Python applications or automation scripts.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Installation
             </h2>
             <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black p-5 font-mono text-[13px] text-emerald-300">
@@ -1298,15 +1584,18 @@ const events = await client.events.list({ limit: 5 });`}
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Production Code Templates
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Copy-pasteable code examples for real-world developer setups.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Discord Notifier Bot (NodeJS)
             </h2>
             <pre className="custom-scrollbar overflow-x-auto rounded-2xl border border-white/10 bg-black p-5 font-mono text-[13px] leading-relaxed text-emerald-300">
-{`// Post upcoming contest directly to discord webhooks
+              {`// Post upcoming contest directly to discord webhooks
 const fetchUpcoming = async () => {
   const res = await fetch("https://event-io.me/api/v1/events?limit=1");
   const { data } = await res.json();
@@ -1330,18 +1619,21 @@ const fetchUpcoming = async () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               OpenAPI Specifications
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Standardized OpenAPI 3.0 schema definitions.
             </p>
 
-            <h2 id="overview" className="text-white text-2xl font-bold tracking-tight border-b border-white/10 pb-2">
+            <h2
+              id="overview"
+              className="border-b border-white/10 pb-2 text-2xl font-bold tracking-tight text-white"
+            >
               Spec Downloads & Sandbox Exports
             </h2>
-            <p className="text-stone-400 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-stone-400">
               Export standard API configurations to test locally:
             </p>
-            
-            <div className="flex flex-wrap gap-4 my-6">
+
+            <div className="my-6 flex flex-wrap gap-4">
               <a
                 href="/specs/openapi.json"
                 download
@@ -1352,7 +1644,7 @@ const fetchUpcoming = async () => {
               <a
                 href="/specs/postman_collection.json"
                 download
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold text-white transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-white/10"
               >
                 Postman Collection
               </a>
@@ -1366,25 +1658,33 @@ const fetchUpcoming = async () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               API Changelog
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               API version updates, performance modifications, and feature releases.
             </p>
 
-            <div className="border-l border-white/10 pl-6 ml-2 space-y-12 my-10">
+            <div className="my-10 ml-2 space-y-12 border-l border-white/10 pl-6">
               <div className="relative">
-                <span className="absolute -left-[31px] top-1.5 h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="text-[10px] font-black uppercase text-stone-500 font-mono">May 17, 2026</span>
-                <h3 className="text-white text-base font-bold my-1">Released SDKs V1.0.0</h3>
+                <span className="absolute top-1.5 -left-[31px] h-2 w-2 rounded-full bg-emerald-400" />
+                <span className="font-mono text-[10px] font-black text-stone-500 uppercase">
+                  May 17, 2026
+                </span>
+                <h3 className="my-1 text-base font-bold text-white">Released SDKs V1.0.0</h3>
                 <p className="text-xs text-stone-400">
-                  Fully compiled and verified JavaScript and Python clients launched officially on NPM/PyPI by creator Om Khalane.
+                  Fully compiled and verified JavaScript and Python clients launched officially on
+                  NPM/PyPI by creator Om Khalane.
                 </p>
               </div>
               <div className="relative">
-                <span className="absolute -left-[31px] top-1.5 h-2 w-2 rounded-full bg-stone-600" />
-                <span className="text-[10px] font-black uppercase text-stone-500 font-mono">April 12, 2026</span>
-                <h3 className="text-white text-base font-bold my-1">Deduplication Algorithms Patch</h3>
+                <span className="absolute top-1.5 -left-[31px] h-2 w-2 rounded-full bg-stone-600" />
+                <span className="font-mono text-[10px] font-black text-stone-500 uppercase">
+                  April 12, 2026
+                </span>
+                <h3 className="my-1 text-base font-bold text-white">
+                  Deduplication Algorithms Patch
+                </h3>
                 <p className="text-xs text-stone-400">
-                  Optimized Neon DB unique key indices to drop duplicated listings across crawled scrapers.
+                  Optimized Neon DB unique key indices to drop duplicated listings across crawled
+                  scrapers.
                 </p>
               </div>
             </div>
@@ -1397,28 +1697,30 @@ const fetchUpcoming = async () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               System Status
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Uptime indicators for the EventIO server grid.
             </p>
 
-            <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-6 space-y-4 my-10">
+            <div className="my-10 space-y-4 rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-6">
               <div className="flex items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm font-bold text-white uppercase tracking-wider">All Systems Operational</span>
+                <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-400" />
+                <span className="text-sm font-bold tracking-wider text-white uppercase">
+                  All Systems Operational
+                </span>
               </div>
               <div className="my-2 h-px bg-white/5" />
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                <div className="flex justify-between p-3 rounded-xl bg-black border border-white/5">
+              <div className="grid grid-cols-1 gap-4 text-xs md:grid-cols-3">
+                <div className="flex justify-between rounded-xl border border-white/5 bg-black p-3">
                   <span className="text-stone-500">API Gateway</span>
-                  <span className="text-emerald-400 font-mono">99.98%</span>
+                  <span className="font-mono text-emerald-400">99.98%</span>
                 </div>
-                <div className="flex justify-between p-3 rounded-xl bg-black border border-white/5">
+                <div className="flex justify-between rounded-xl border border-white/5 bg-black p-3">
                   <span className="text-stone-500">Neon Postgres</span>
-                  <span className="text-emerald-400 font-mono">100.00%</span>
+                  <span className="font-mono text-emerald-400">100.00%</span>
                 </div>
-                <div className="flex justify-between p-3 rounded-xl bg-black border border-white/5">
+                <div className="flex justify-between rounded-xl border border-white/5 bg-black p-3">
                   <span className="text-stone-500">Scraper Grid</span>
-                  <span className="text-emerald-400 font-mono">99.92%</span>
+                  <span className="font-mono text-emerald-400">99.92%</span>
                 </div>
               </div>
             </div>
@@ -1431,7 +1733,7 @@ const fetchUpcoming = async () => {
             <h1 className="bg-linear-to-br from-white to-stone-50 bg-clip-text text-4xl font-black tracking-tighter text-transparent md:text-6xl">
               Documentation
             </h1>
-            <p className="text-stone-400 text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-stone-400">
               Explore EventIO integration resources.
             </p>
           </>
