@@ -12,6 +12,8 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import LoadingSpinner from './LoadingSpinner';
+import SkeletonCard from './SkeletonCard';
 import { buildApiUrl } from '../lib/api';
 import { CalendarEvent } from '../types';
 import { CATEGORIES } from '../constants';
@@ -144,13 +146,7 @@ export default function BookmarkedEventsPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-stone-50 dark:bg-stone-950">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="text-xs font-black tracking-[0.5em] text-stone-400 uppercase"
-        >
-          Loading Bookmarks
-        </motion.div>
+        <LoadingSpinner size="lg" />
       </div>
     );
   }
@@ -191,7 +187,7 @@ export default function BookmarkedEventsPage() {
                 Your personally curated roster of upcoming tech hackathons, programming contests, and resource opportunities.
               </p>
             </div>
-            <div className="flex items-center gap-2 self-start rounded-2xl border border-stone-200 bg-white px-5 py-4 shadow-xs dark:border-stone-800 dark:bg-stone-900 md:self-auto">
+            <div className="flex items-center gap-4 self-start rounded-2xl border border-stone-200 bg-white px-5 py-4 shadow-xs dark:border-stone-800 dark:bg-stone-900 md:self-auto">
               <span className="font-sans text-3xl font-black text-amber-500">
                 {bookmarkedEvents.length}
               </span>
@@ -199,6 +195,19 @@ export default function BookmarkedEventsPage() {
                 <p className="text-[10px] font-black tracking-widest text-stone-400 uppercase">Saved</p>
                 <p className="mt-0.5 text-xs font-bold text-stone-600 dark:text-stone-300">Events total</p>
               </div>
+              <button
+                onClick={() => {
+                  if (window.confirm('Are you sure you want to clear all bookmarks?')) {
+                    localStorage.removeItem('eventio-bookmarks');
+                    localStorage.removeItem('eventio-bookmarked-events-data');
+                    setBookmarkedEvents([]);
+                    window.dispatchEvent(new Event('eventio-bookmarks-updated'));
+                  }
+                }}
+                className="rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white hover:bg-amber-600 transition-colors"
+              >
+                Reset All
+              </button>
             </div>
           </div>
 
