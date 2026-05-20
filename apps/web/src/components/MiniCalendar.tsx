@@ -40,7 +40,7 @@ export default function MiniCalendar({
   const weekDays = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
   return (
-    <div className="bg-card w-full">
+    <div data-mini-calendar="true" className="bg-card w-full">
       <div className="mb-2 grid grid-cols-7 gap-1">
         {weekDays.map((day, i) => (
           <div

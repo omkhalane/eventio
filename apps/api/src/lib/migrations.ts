@@ -2,6 +2,10 @@ import { logger } from '@eventio/observability';
 import fs from 'fs/promises';
 import path from 'path';
 import postgres from 'postgres';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const migrationsDir = path.resolve(__dirname, '../../../..', 'packages/db/drizzle');
 

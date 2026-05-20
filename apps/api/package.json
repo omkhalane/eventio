@@ -8,11 +8,12 @@
     "lint": "eslint . --ext ts --max-warnings 0"
   },
   "dependencies": {
-    "fastify": "^5.8.5",
+    "fastify": "^4.28.1",
     "@fastify/cors": "^9.0.1",
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "tsx": "^4.7.2",

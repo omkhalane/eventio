@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import './env.js';
 
 import { loadConfig } from '@eventio/config';
 import { logger } from '@eventio/observability';
@@ -16,6 +16,15 @@ function getCorsOrigins() {
   const origins = [config.frontendUrl, config.siteUrl, config.apiBaseUrl].filter(
     (origin): origin is string => typeof origin === 'string' && origin.length > 0,
   );
+
+  if (config.isDevelopment) {
+    origins.push(
+      'http://localhost:5173',
+      'http://localhost:5175',
+      'http://127.0.0.1:5173',
+      'http://127.0.0.1:5175',
+    );
+  }
 
   return Array.from(new Set(origins));
 }

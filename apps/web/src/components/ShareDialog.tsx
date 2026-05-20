@@ -19,6 +19,7 @@ interface ShareDialogProps {
   event: CalendarEvent;
   isOpen: boolean;
   onClose: () => void;
+  captureSelector?: string;
 }
 
 export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps) {
@@ -93,13 +94,17 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center p-0 sm:p-6">
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[200] flex items-end justify-center p-0 sm:items-center sm:p-6"
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="bg-black/60 absolute inset-0 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           />
 
           <motion.div
@@ -107,36 +112,48 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="bg-white dark:bg-zinc-950 relative w-full max-w-lg overflow-hidden rounded-t-[2.5rem] sm:rounded-[2.5rem] border border-white/10 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)]"
+            className="relative w-full max-w-lg overflow-hidden rounded-t-[2.5rem] border border-white/10 bg-white shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)] sm:rounded-[2.5rem]"
           >
-            <div className="p-8 sm:p-10 space-y-8">
+            <div className="space-y-8 p-8 sm:p-10">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 uppercase">Share Event</h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest">Spread the word about this event</p>
+                  <h3 className="text-2xl font-black tracking-tighter text-zinc-900 uppercase">
+                    Share Event
+                  </h3>
+                  <p className="text-xs font-bold tracking-widest text-zinc-500 uppercase">
+                    Spread the word about this event
+                  </p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-50 rounded-full p-2 transition-colors"
+                  className="rounded-full bg-zinc-100 p-2 text-zinc-500 transition-colors hover:text-zinc-900"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
               {/* Event Preview Mini-Card */}
-              <div className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-3xl p-6 flex gap-6 items-center">
+              <div className="flex items-center gap-6 rounded-3xl border border-zinc-100 bg-zinc-50 p-6">
                 {event.thumbnailImage ? (
-                  <img src={event.thumbnailImage} className="h-20 w-20 rounded-2xl object-cover shadow-lg" alt="" />
+                  <img
+                    src={event.thumbnailImage}
+                    className="h-20 w-20 rounded-2xl object-cover shadow-lg"
+                    alt=""
+                  />
                 ) : (
-                  <div className="h-20 w-20 rounded-2xl bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-zinc-200">
                     <Share2 className="h-8 w-8 text-zinc-400" />
                   </div>
                 )}
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-zinc-900 dark:text-zinc-50 font-black tracking-tight text-lg truncate uppercase">{event.title}</h4>
-                  <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">{event.platform}</p>
+                <div className="min-w-0 flex-1">
+                  <h4 className="truncate text-lg font-black tracking-tight text-zinc-900 uppercase">
+                    {event.title}
+                  </h4>
+                  <p className="text-xs font-bold tracking-widest text-zinc-500 uppercase">
+                    {event.platform}
+                  </p>
                   <div className="mt-2 flex gap-2">
-                    <span className="bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest">
+                    <span className="rounded-md bg-zinc-200 px-2 py-0.5 text-[9px] font-black tracking-widest text-zinc-600 uppercase">
                       {event.event_type}
                     </span>
                   </div>
@@ -144,18 +161,17 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
               </div>
 
               {/* Share Grid */}
-              <div className="grid grid-cols-4 sm:grid-cols-4 gap-6">
-                <button
-                  onClick={handleCopyLink}
-                  className="flex flex-col items-center gap-3 group"
-                >
-                  <div className={cn(
-                    "h-14 w-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110",
-                    copied ? "bg-emerald-500 text-white" : "bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"
-                  )}>
+              <div className="grid grid-cols-4 gap-6 sm:grid-cols-4">
+                <button onClick={handleCopyLink} className="group flex flex-col items-center gap-3">
+                  <div
+                    className={cn(
+                      'flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-300 group-hover:scale-110',
+                      copied ? 'bg-emerald-500 text-white' : 'bg-zinc-100 text-zinc-900',
+                    )}
+                  >
                     {copied ? <Check className="h-6 w-6" /> : <Copy className="h-6 w-6" />}
                   </div>
-                  <span className="text-[10px] font-black tracking-widest uppercase text-zinc-500 dark:text-zinc-400">
+                  <span className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
                     {copied ? 'Copied' : 'Copy'}
                   </span>
                 </button>
@@ -166,15 +182,17 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
                     href={p.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex flex-col items-center gap-3 group"
+                    className="group flex flex-col items-center gap-3"
                   >
-                    <div className={cn(
-                      "h-14 w-14 rounded-2xl flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 shadow-lg",
-                      p.color
-                    )}>
+                    <div
+                      className={cn(
+                        'flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:scale-110',
+                        p.color,
+                      )}
+                    >
                       <p.icon className="h-6 w-6" />
                     </div>
-                    <span className="text-[10px] font-black tracking-widest uppercase text-zinc-500 dark:text-zinc-400 truncate w-full text-center">
+                    <span className="w-full truncate text-center text-[10px] font-black tracking-widest text-zinc-500 uppercase">
                       {p.name.split(' ')[0]}
                     </span>
                   </a>
@@ -182,22 +200,31 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
 
                 <button
                   onClick={handleNativeShare}
-                  className="flex flex-col items-center gap-3 group"
+                  className="group flex flex-col items-center gap-3"
                 >
-                  <div className="h-14 w-14 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900 transition-all duration-300 group-hover:scale-110">
                     <MoreHorizontal className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-black tracking-widest uppercase text-zinc-500 dark:text-zinc-400">More</span>
+                  <span className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
+                    More
+                  </span>
                 </button>
               </div>
 
               {/* Dynamic URL Preview */}
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-zinc-500/10 to-zinc-500/5 rounded-2xl blur-xl group-hover:opacity-100 transition-opacity opacity-0" />
-                <div className="relative bg-zinc-100 dark:bg-zinc-900 rounded-2xl p-4 flex items-center justify-between gap-4 border border-zinc-200 dark:border-zinc-800">
-                  <span className="text-[10px] font-mono text-zinc-500 truncate">{shareUrl}</span>
-                  <button onClick={handleCopyLink} className="text-zinc-900 dark:text-zinc-100 hover:text-primary transition-colors">
-                    {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+              <div className="group relative">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-zinc-500/10 to-zinc-500/5 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
+                <div className="relative flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-zinc-100 p-4">
+                  <span className="truncate font-mono text-[10px] text-zinc-500">{shareUrl}</span>
+                  <button
+                    onClick={handleCopyLink}
+                    className="hover:text-primary text-zinc-900 transition-colors"
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4 text-emerald-500" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </div>
