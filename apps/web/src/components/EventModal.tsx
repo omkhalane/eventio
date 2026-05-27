@@ -160,8 +160,10 @@ const CATEGORY_IMAGES: Record<string, string[]> = {
 interface EventModalProps {
   event: CalendarEvent | null;
   onClose: () => void;
-  isAuthorized?: boolean;
-  onSignIn?: () => Promise<void>;
+  isGoogleAuthorized?: boolean;
+  isMicrosoftAuthorized?: boolean;
+  onGoogleSignIn?: () => Promise<void>;
+  onMicrosoftSignIn?: () => Promise<void>;
 }
 
 const GoogleIcon = () => (
@@ -185,7 +187,14 @@ const GoogleIcon = () => (
   </svg>
 );
 
-export default function EventModal({ event, onClose, isAuthorized, onSignIn }: EventModalProps) {
+export default function EventModal({
+  event,
+  onClose,
+  isGoogleAuthorized,
+  isMicrosoftAuthorized,
+  onGoogleSignIn,
+  onMicrosoftSignIn,
+}: EventModalProps) {
   const [isSynced, setIsSynced] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(true);
@@ -289,12 +298,23 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
 
   if (!event) return null;
 
-  const handleSync = async () => {
+  const handleSync = async (provider: 'google' | 'microsoft' | 'apple') => {
     try {
-      if (!isAuthorized && onSignIn) {
-        await onSignIn();
+      if (provider === 'google') {
+        if (!isGoogleAuthorized && onGoogleSignIn) {
+          await onGoogleSignIn();
+        }
+        await syncEventToGoogle(event);
+      } else if (provider === 'microsoft') {
+        if (!isMicrosoftAuthorized && onMicrosoftSignIn) {
+          await onMicrosoftSignIn();
+        }
+        const { syncEventToMicrosoft } = await import('../services/microsoftCalendarService');
+        await syncEventToMicrosoft(event);
+      } else if (provider === 'apple') {
+        const { downloadIcsFile } = await import('../services/appleCalendarService');
+        downloadIcsFile(event);
       }
-      await syncEventToGoogle(event);
       setIsSynced(true);
       setTimeout(() => setIsSynced(false), 3000);
     } catch (err: any) {
@@ -594,13 +614,39 @@ export default function EventModal({ event, onClose, isAuthorized, onSignIn }: E
             >
               <Share2 className="h-3.5 w-3.5" /> Share
             </button>
-            <button
-              onClick={handleSync}
-              className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-4 text-xs font-black tracking-widest text-slate-900 uppercase transition-colors hover:bg-slate-50"
-            >
-              {isSynced ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <GoogleIcon />}
-              {isSynced ? 'Synced' : 'Add to Calendar'}
-            </button>
+            <div className="group relative">
+              <button
+                className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-4 text-xs font-black tracking-widest text-slate-900 uppercase transition-colors hover:bg-slate-50"
+              >
+                {isSynced ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <CalendarIcon className="h-3.5 w-3.5" />}
+                {isSynced ? 'Synced' : 'Add to Calendar'}
+              </button>
+              
+              <div className="absolute bottom-full left-0 mb-2 hidden w-48 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl group-hover:flex">
+                <button
+                  onClick={() => handleSync('google')}
+                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <GoogleIcon /> Google Calendar
+                </button>
+                <div className="h-px bg-slate-100" />
+                <button
+                  onClick={() => handleSync('microsoft')}
+                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4 24H0V12.6h11.4V24ZM24 24H12.6V12.6H24V24ZM11.4 11.4H0V0h11.4v11.4ZM24 11.4H12.6V0H24v11.4Z" fill="#00A4EF"/></svg>
+                  Microsoft Calendar
+                </button>
+                <div className="h-px bg-slate-100" />
+                <button
+                  onClick={() => handleSync('apple')}
+                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <svg viewBox="0 0 384 512" className="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                  Apple Calendar
+                </button>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

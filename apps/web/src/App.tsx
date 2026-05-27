@@ -78,9 +78,10 @@ const CalendarApp = () => {
   const [googleUser, setGoogleUser] = useState<any | null>(null);
   const [showSubModal, setShowSubModal] = useState(false);
   const [hasGoogleToken, setHasGoogleToken] = useState(false);
+  const [hasMicrosoftToken, setHasMicrosoftToken] = useState(false);
 
   const [filters, setFilters] = useState<FilterState>(() => {
-    if (typeof window === 'undefined') return { categories: [], platforms: [], mode: 'all' };
+    if (typeof window === 'undefined') return { categories: [], platforms: [], tags: [], mode: 'all' };
     try {
       const saved = localStorage.getItem('app-filters');
       return saved
@@ -88,6 +89,7 @@ const CalendarApp = () => {
         : {
             categories: [],
             platforms: [],
+            tags: [],
             mode: 'all',
             difficulty: undefined,
           };
@@ -95,6 +97,7 @@ const CalendarApp = () => {
       return {
         categories: [],
         platforms: [],
+        tags: [],
         mode: 'all',
         difficulty: undefined,
       };
@@ -134,8 +137,10 @@ const CalendarApp = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
       if (token) {
-        setGoogleAccessToken(token);
-        setHasGoogleToken(true);
+        import('./services/googleCalendarService').then((m) => {
+          m.setGoogleAccessToken(token);
+          setHasGoogleToken(true);
+        });
       }
     } catch (err: any) {
       console.error('Login failed:', err);
@@ -150,13 +155,38 @@ const CalendarApp = () => {
     }
   };
 
+  const handleMicrosoftSignIn = async () => {
+    if (!auth) {
+      console.warn('Firebase Auth is not initialized');
+      return;
+    }
+    try {
+      const { microsoftProvider } = await import('./lib/firebase');
+      const { OAuthProvider } = await import('firebase/auth');
+      const result = await signInWithPopup(auth, microsoftProvider);
+      const credential = OAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      if (token) {
+        import('./services/microsoftCalendarService').then((m) => {
+          m.setMicrosoftAccessToken(token);
+          setHasMicrosoftToken(true);
+        });
+      }
+    } catch (err: any) {
+      console.error('Microsoft Login failed:', err);
+      alert('Microsoft Sign-In failed. Please ensure the Microsoft provider is configured in Firebase.');
+    }
+  };
+
   const handleSignOut = async () => {
     if (!auth) return;
     try {
       await firebaseSignOut(auth);
       setGoogleUser(null);
       setHasGoogleToken(false);
-      setGoogleAccessToken(null);
+      setHasMicrosoftToken(false);
+      import('./services/googleCalendarService').then((m) => m.setGoogleAccessToken(null));
+      import('./services/microsoftCalendarService').then((m) => m.setMicrosoftAccessToken(null));
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -214,6 +244,9 @@ const CalendarApp = () => {
         }
         if (filters.categories && filters.categories.length > 0) {
           params.set('categories', filters.categories.join(','));
+        }
+        if (filters.tags && filters.tags.length > 0) {
+          params.set('tags', filters.tags.join(','));
         }
         if (searchQuery && searchQuery.length > 1) {
           params.set('search', searchQuery);
@@ -386,9 +419,11 @@ const CalendarApp = () => {
         theme={theme}
         setTheme={setTheme}
         onGoogleSignIn={handleGoogleSignIn}
+        onMicrosoftSignIn={handleMicrosoftSignIn}
         onGoogleSignOut={handleSignOut}
         googleUser={googleUser}
         allEvents={events}
+        upcomingEvents={upcomingEventsByDay}
         onEventClick={setSelectedEvent}
       />
 
@@ -521,8 +556,10 @@ const CalendarApp = () => {
       <EventModal
         event={selectedEvent}
         onClose={() => setSelectedEvent(null)}
-        isAuthorized={hasGoogleToken}
-        onSignIn={handleGoogleSignIn}
+        isGoogleAuthorized={hasGoogleToken}
+        isMicrosoftAuthorized={hasMicrosoftToken}
+        onGoogleSignIn={handleGoogleSignIn}
+        onMicrosoftSignIn={handleMicrosoftSignIn}
       />
 
       <SubscriptionModal

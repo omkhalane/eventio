@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { type Auth, getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { type Auth, getAuth, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
 
 import { getPublicConfig } from './publicConfig';
 
@@ -27,7 +27,12 @@ if (missingKeys.length > 0) {
 
 const app = missingKeys.length > 0 ? null : initializeApp(firebaseConfig);
 export const auth: Auth | null = app ? getAuth(app) : null;
-export const googleProvider = new GoogleAuthProvider();
 
-// Required scope for Google Calendar if we want to use the same auth flow
+// Google Provider
+export const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('https://www.googleapis.com/auth/calendar.events');
+
+// Microsoft Provider
+export const microsoftProvider = new OAuthProvider('microsoft.com');
+microsoftProvider.addScope('Calendars.ReadWrite');
+

@@ -2,6 +2,7 @@ import {
   Filter,
   Infinity as InfinityIcon,
   Info,
+  Menu,
   Moon,
   Search,
   Settings,
@@ -30,9 +31,11 @@ interface TopNavProps {
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
   onGoogleSignIn: () => void;
+  onMicrosoftSignIn?: () => void;
   onGoogleSignOut: () => void;
   googleUser: any | null;
   allEvents: CalendarEvent[];
+  upcomingEvents?: { date: Date; events: CalendarEvent[] }[];
   onEventClick: (event: CalendarEvent) => void;
 }
 
@@ -44,14 +47,17 @@ export default function TopNav({
   theme,
   setTheme,
   onGoogleSignIn,
+  onMicrosoftSignIn,
   onGoogleSignOut,
   googleUser,
   allEvents,
+  upcomingEvents,
   onEventClick,
 }: TopNavProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [bookmarkCount, setBookmarkCount] = useState(0);
 
   useEffect(() => {
@@ -85,8 +91,20 @@ export default function TopNav({
   }, []);
 
   const availablePlatforms = useMemo(() => {
-    return Array.from(new Set(PLATFORMS));
-  }, []);
+    const platforms = new Set<string>();
+    allEvents.forEach((e) => {
+      if (e.platform) platforms.add(e.platform);
+    });
+    return Array.from(platforms).sort();
+  }, [allEvents]);
+
+  const availableTags = useMemo(() => {
+    const tags = new Set<string>();
+    allEvents.forEach((e) => {
+      if (e.tags) e.tags.forEach((t) => tags.add(t));
+    });
+    return Array.from(tags).sort();
+  }, [allEvents]);
 
   const toggleCategory = (cat: EventCategory) => {
     const newCats = filters.categories.includes(cat)
@@ -100,6 +118,13 @@ export default function TopNav({
       ? filters.platforms.filter((p) => p !== plat)
       : [...filters.platforms, plat];
     setFilters({ ...filters, platforms: newPlats });
+  };
+
+  const toggleTag = (tag: string) => {
+    const newTags = filters.tags.includes(tag)
+      ? filters.tags.filter((t) => t !== tag)
+      : [...filters.tags, tag];
+    setFilters({ ...filters, tags: newTags });
   };
 
   return (
@@ -242,6 +267,7 @@ export default function TopNav({
                           setFilters({
                             categories: [],
                             platforms: [],
+                            tags: [],
                             mode: 'all',
                             difficulty: undefined,
                           });
@@ -279,6 +305,22 @@ export default function TopNav({
                                 label={plat}
                                 active={filters.platforms.includes(plat)}
                                 onClick={() => togglePlatform(plat)}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {availableTags.length > 0 && (
+                        <div>
+                          <h3 className="text-foreground mb-3 px-1 text-xs font-bold">Tags</h3>
+                          <div className="flex flex-wrap gap-1.5">
+                            {availableTags.map((tag) => (
+                              <FilterButton
+                                key={tag}
+                                label={tag}
+                                active={filters.tags.includes(tag)}
+                                onClick={() => toggleTag(tag)}
                               />
                             ))}
                           </div>
@@ -331,7 +373,7 @@ export default function TopNav({
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             to="/events/bookmark"
             className="hover:bg-muted hover:text-foreground border-border flex items-center gap-2 rounded-xl border bg-stone-100/50 p-2 px-3 text-stone-700 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] dark:bg-stone-900/50 dark:text-stone-300"
@@ -346,8 +388,16 @@ export default function TopNav({
             </span>
           </Link>
 
-          <a
-            href="https://github.com/omkhalane/eventio"
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex items-center justify-center rounded-xl border border-transparent p-2 text-stone-700 transition-all hover:bg-muted md:hidden dark:text-stone-300"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="https://github.com/omkhalane/eventio"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-foreground text-background group flex items-center gap-2 rounded-xl px-3 py-2 shadow-sm transition-all hover:opacity-90"
@@ -602,6 +652,141 @@ export default function TopNav({
             </div>
           )}
         </AnimatePresence>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <div className="fixed inset-0 z-100 flex md:hidden">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-background/80 absolute inset-0 backdrop-blur-sm"
+              />
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="bg-card border-border relative ml-auto flex h-full w-[85%] max-w-sm flex-col border-l shadow-2xl"
+              >
+                <div className="flex items-center justify-between border-b border-border p-4">
+                  <span className="font-sans text-[20px] font-bold tracking-[-0.03em] text-stone-900 select-none">
+                    EventIO
+                  </span>
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="hover:bg-muted rounded-full p-2"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+                
+                <div className="custom-scrollbar flex-1 overflow-y-auto p-4 space-y-6">
+                  {/* User Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Account</h3>
+                    {googleUser ? (
+                      <div className="flex items-center justify-between rounded-xl border border-border p-3">
+                        <div className="flex items-center gap-3">
+                          {googleUser.photoURL ? (
+                            <img src={googleUser.photoURL} alt="" className="h-10 w-10 rounded-full" />
+                          ) : (
+                            <div className="bg-muted flex h-10 w-10 items-center justify-center rounded-full">
+                              <User className="h-5 w-5" />
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-sm font-bold">{googleUser.displayName}</p>
+                            <p className="text-[10px] text-muted-foreground">{googleUser.email}</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={onGoogleSignOut}
+                          className="text-xs font-bold text-destructive hover:underline"
+                        >
+                          Sign Out
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <button
+                          onClick={onGoogleSignIn}
+                          className="w-full rounded-xl bg-blue-600 px-4 py-3 text-xs font-bold text-white shadow-sm flex items-center justify-center gap-2"
+                        >
+                          Sign in with Google
+                        </button>
+                        {onMicrosoftSignIn && (
+                          <button
+                            onClick={onMicrosoftSignIn}
+                            className="w-full rounded-xl bg-zinc-900 px-4 py-3 text-xs font-bold text-white shadow-sm flex items-center justify-center gap-2"
+                          >
+                            Sign in with Microsoft
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Tools */}
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Settings</h3>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border p-3 text-sm font-medium transition-colors hover:bg-muted"
+                      >
+                        {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                      </button>
+                      <a
+                        href="https://github.com/omkhalane/eventio/issues"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border p-3 text-sm font-medium transition-colors hover:bg-muted"
+                      >
+                        <Settings className="h-4 w-4" /> Settings
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Upcoming Events */}
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Upcoming</h3>
+                    {upcomingEvents && upcomingEvents.length > 0 ? (
+                      <div className="space-y-4">
+                        {upcomingEvents.slice(0, 3).map((group) => (
+                          <div key={group.date.toISOString()} className="space-y-2">
+                            <h4 className="text-[10px] font-bold text-primary/70 uppercase">
+                              {new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(group.date)}
+                            </h4>
+                            <div className="space-y-2">
+                              {group.events.map((event) => (
+                                <button
+                                  key={event.id}
+                                  onClick={() => {
+                                    onEventClick(event);
+                                    setIsMobileMenuOpen(false);
+                                  }}
+                                  className="flex w-full items-center gap-3 rounded-xl border border-border bg-card p-3 text-left transition-all hover:bg-muted hover:shadow-sm"
+                                >
+                                  <div className="flex-1 min-w-0">
+                                    <p className="truncate text-xs font-bold">{event.title}</p>
+                                    <p className="text-[10px] text-muted-foreground">{event.platform}</p>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-xs text-muted-foreground italic">No upcoming events.</p>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
       </div>
     </header>
   );

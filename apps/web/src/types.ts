@@ -67,6 +67,7 @@ export type ViewMode = 'month' | 'week' | 'day' | 'list';
 export interface FilterState {
   categories: EventCategory[];
   platforms: string[];
+  tags: string[];
   mode: 'online' | 'offline' | 'hybrid' | 'all';
   difficulty?: 'beginner' | 'intermediate' | 'advanced' | 'all';
 }

@@ -754,6 +754,7 @@ export default function MainCalendar({
               onClick={() => setViewMode(mode)}
               className={cn(
                 'rounded-md px-3 py-1 text-xs font-medium transition-all',
+                (mode === 'week' || mode === 'day') ? 'hidden sm:block' : '',
                 viewMode === mode
                   ? 'bg-background text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground',
