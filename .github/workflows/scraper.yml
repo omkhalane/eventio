@@ -55,7 +55,7 @@ jobs:
           REDIS_PORT: 6379
 
       - name: Upload Scraper Output JSON
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: scraper-outputs
           path: outputs/
