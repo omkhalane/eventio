@@ -12,7 +12,7 @@
     "@fastify/cors": "^9.0.1",
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.4.2",
     "postgres": "^3.4.4"
   },
   "devDependencies": {
