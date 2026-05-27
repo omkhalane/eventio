@@ -1,5 +1,4 @@
 import { logger } from '@eventio/observability';
-import { scrapingQueue } from '@eventio/queue';
 
 import {
   buildEventResponse,
