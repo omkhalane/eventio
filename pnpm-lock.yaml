@@ -95,8 +95,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/observability
       '@fastify/cors':
-        specifier: ^9.0.1
-        version: 9.0.1
+        specifier: ^11.2.0
+        version: 11.2.0
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
@@ -910,8 +910,8 @@ packages:
   '@fastify/ajv-compiler@4.0.5':
     resolution: {integrity: sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==}
 
-  '@fastify/cors@9.0.1':
-    resolution: {integrity: sha512-YY9Ho3ovI+QHIL2hW+9X4XqQjXLjJqsU+sMV/xFsxZkE8p3GNnYVFpoOxF7SsP5ZL76gwvbo3V9L+FIekBGU4Q==}
+  '@fastify/cors@11.2.0':
+    resolution: {integrity: sha512-LbLHBuSAdGdSFZYTLVA3+Ch2t+sA6nq3Ejc6XLAKiQ6ViS2qFnvicpj0htsx03FyYeLs04HfRNBsz/a8SvbcUw==}
 
   '@fastify/error@4.2.0':
     resolution: {integrity: sha512-RSo3sVDXfHskiBZKBPRgnQTtIqpi/7zhJOEmAxCiBcM7d0uwdGdxLlsCaLzGs8v8NnxIRlfG0N51p5yFaOentQ==}
@@ -2575,8 +2575,8 @@ packages:
   fast-uri@3.1.2:
     resolution: {integrity: sha512-rVjf7ArG3LTk+FS6Yw81V1DLuZl1bRbNrev6Tmd/9RaroeeRRJhAt7jg/6YFxbvAQXUCavSoZhPPj6oOx+5KjQ==}
 
-  fastify-plugin@4.5.1:
-    resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
+  fastify-plugin@5.1.0:
+    resolution: {integrity: sha512-FAIDA8eovSt5qcDgcBvDuX/v0Cjz0ohGhENZ/wpc3y+oZCY2afZ9Baqql3g/lC+OHRnciQol4ww7tuthOb9idw==}
 
   fastify@5.8.5:
     resolution: {integrity: sha512-Yqptv59pQzPgQUSIm87hMqHJmdkb1+GPxdE6vW6FRyVE9G86mt7rOghitiU4JHRaTyDUk9pfeKmDeu70lAwM4Q==}
@@ -3032,9 +3032,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  mnemonist@0.39.6:
-    resolution: {integrity: sha512-A/0v5Z59y63US00cRSLiloEIw3t5G+MiKz4BhX21FI+YBJXBOGW0ohFxTxO08dsOYlzxo87T7vGfZKYp2bcAWA==}
-
   motion-dom@12.40.0:
     resolution: {integrity: sha512-HxU3ZaBwNPVQUBQf1xxgq+7JrPNZvjLVxgbpEZL7RrWJnsxOf0/OM+yrHG9ogLQ31Do/r57Oz2gQWPK+6q62mg==}
 
@@ -3112,9 +3109,6 @@ packages:
   object-inspect@1.13.4:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
     engines: {node: '>= 0.4'}
-
-  obliterator@2.0.5:
-    resolution: {integrity: sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==}
 
   on-exit-leak-free@2.1.2:
     resolution: {integrity: sha512-0eJJY6hXLGf1udHwfNftBqH+g73EU4B504nZeKpz1sYRKafAghwxEJunB2O7rDZkL4PGfsMVnTXZ2EjibbqcsA==}
@@ -3641,6 +3635,10 @@ packages:
   toad-cache@3.7.0:
     resolution: {integrity: sha512-/m8M+2BJUpoJdgAHoG+baCwBT+tf2VraSfkBgl0Y00qIWt41DJ8R5B8nsEw0I58YwF5IZH6z24/2TobDKnqSWw==}
     engines: {node: '>=12'}
+
+  toad-cache@3.7.1:
+    resolution: {integrity: sha512-5DXWzE4Vz7xNHsv+xQ+MGfJYyC78Aok3tEr0MNwHoRf7vZnga1mQXZ4/Nsodld4VR6Wd+VhfmqnNrsRJyYPfrQ==}
+    engines: {node: '>=20'}
 
   toidentifier@1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
@@ -4191,10 +4189,10 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 3.1.2
 
-  '@fastify/cors@9.0.1':
+  '@fastify/cors@11.2.0':
     dependencies:
-      fastify-plugin: 4.5.1
-      mnemonist: 0.39.6
+      fastify-plugin: 5.1.0
+      toad-cache: 3.7.1
 
   '@fastify/error@4.2.0': {}
 
@@ -5857,7 +5855,7 @@ snapshots:
 
   fast-uri@3.1.2: {}
 
-  fastify-plugin@4.5.1: {}
+  fastify-plugin@5.1.0: {}
 
   fastify@5.8.5:
     dependencies:
@@ -6314,10 +6312,6 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
-  mnemonist@0.39.6:
-    dependencies:
-      obliterator: 2.0.5
-
   motion-dom@12.40.0:
     dependencies:
       motion-utils: 12.39.0
@@ -6378,8 +6372,6 @@ snapshots:
       abbrev: 3.0.1
 
   object-inspect@1.13.4: {}
-
-  obliterator@2.0.5: {}
 
   on-exit-leak-free@2.1.2: {}
 
@@ -6981,6 +6973,8 @@ snapshots:
       is-number: 7.0.0
 
   toad-cache@3.7.0: {}
+
+  toad-cache@3.7.1: {}
 
   toidentifier@1.0.1: {}
 
