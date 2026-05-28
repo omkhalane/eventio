@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { GoogleAuthProvider, OAuthProvider,signInWithPopup } from 'firebase/auth';
+import { ArrowLeft, Calendar as CalendarIcon, Globe, KeyRound,Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import { ArrowLeft, Sparkles, Globe, Calendar as CalendarIcon, KeyRound } from 'lucide-react';
-import { cn } from '../lib/utils';
-import { SeoHead } from './SeoHead';
+import React, { useState } from 'react';
+import {useNavigate } from 'react-router-dom';
 
-import { signInWithPopup, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
 import { auth, googleProvider } from '../lib/firebase';
+import { SeoHead } from './SeoHead';
 
 // Icons for the login providers
 const GoogleIcon = () => (

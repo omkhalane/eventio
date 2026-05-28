@@ -28,9 +28,9 @@ import EventModal from './components/EventModal';
 import { Footer } from './components/Footer';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
+import LoginPage from './components/LoginPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
-import LoginPage from './components/LoginPage';
 import {
   AiHackathonsPage,
   CategoryPage,
@@ -438,8 +438,6 @@ const CalendarApp = () => {
         setFilters={setFilters}
         theme={theme}
         setTheme={setTheme}
-        onGoogleSignIn={handleGoogleSignIn}
-        onMicrosoftSignIn={handleMicrosoftSignIn}
         onGoogleSignOut={handleSignOut}
         googleUser={googleUser}
         allEvents={events}
