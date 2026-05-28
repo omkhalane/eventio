@@ -15,10 +15,10 @@
     "@eventio/queue": "workspace:*",
     "@eventio/observability": "workspace:*",
     "@eventio/scraper-core": "workspace:*",
-    "dotenv": "^16.4.5"
+    "dotenv": "^17.4.2"
   },
   "devDependencies": {
-    "tsx": "^4.7.2",
+    "tsx": "^4.22.3",
     "typescript": "^5.4.5"
   }
 }

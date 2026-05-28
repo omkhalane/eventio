@@ -4,8 +4,8 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "bullmq": "^5.7.8",
-    "ioredis": "^5.3.2"
+    "bullmq": "^5.77.6",
+    "ioredis": "^5.11.0"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

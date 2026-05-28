@@ -4,10 +4,10 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "pino": "^8.20.0"
+    "pino": "^10.3.1"
   },
   "devDependencies": {
-    "pino-pretty": "^11.0.0",
+    "pino-pretty": "^13.1.3",
     "typescript": "^5.4.5"
   }
 }
