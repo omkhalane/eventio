@@ -12,23 +12,22 @@ import {
   MousePointerClick,
   Share2,
   Trophy,
-  User,
   UserCheck,
   Users,
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
 import { buildApiUrl } from '../lib/api';
-import { cn } from '../lib/utils';
 import { setLastOpenedEvent } from '../lib/recentEvent';
+import { cn } from '../lib/utils';
 import { syncEventToGoogle } from '../services/googleCalendarService';
 import { CalendarEvent } from '../types';
-import ShareDialog from './ShareDialog';
 import { CategoryBackgroundArt } from './MainCalendar';
+import ShareDialog from './ShareDialog';
 
 const getCategoryModalStyles = (type?: string) => {
   switch (type) {
@@ -213,11 +212,12 @@ export default function EventModal({
     if (!event) return;
     try {
       const savedSlugs = JSON.parse(localStorage.getItem('eventio-bookmarks') || '[]');
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsBookmarked(savedSlugs.includes(event.slug));
     } catch (e) {
       console.warn('LocalStorage blocked:', e);
     }
-  }, [event?.slug]);
+  }, [event, event?.slug]);
 
   useEffect(() => {
     if (event) {
@@ -292,9 +292,10 @@ export default function EventModal({
   const categoryImage = React.useMemo(() => {
     if (!event) return '';
     const list = CATEGORY_IMAGES[event.event_type || ''] || CATEGORY_IMAGES.default;
-    const randomIndex = Math.floor(Math.random() * list.length);
+    const idNum = event.id ? String(event.id).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) : 0;
+    const randomIndex = idNum % list.length;
     return list[randomIndex];
-  }, [event?.id, event?.event_type]);
+  }, [event]);
 
   if (!event) return null;
 

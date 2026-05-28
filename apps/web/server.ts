@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import './env.js';
+
 import { handleApiRequest } from '@eventio/api/src/lib/event-api.js';
 import express, { type Request } from 'express';
 import path from 'path';

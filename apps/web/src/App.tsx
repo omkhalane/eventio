@@ -21,16 +21,16 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter as Router, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 import { ApiDocs } from './components/ApiDocs';
+import BookmarkedEventsPage from './components/BookmarkedEventsPage';
 import { CookieConsent } from './components/CookieConsent';
 import EventDetailPage from './components/EventDetailPage';
-import BookmarkedEventsPage from './components/BookmarkedEventsPage';
 import EventModal from './components/EventModal';
 import { Footer } from './components/Footer';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
-import { SeoHead } from './components/SeoHead';
+import LoginPage from './components/LoginPage';
 import {
   AiHackathonsPage,
   CategoryPage,
@@ -43,11 +43,12 @@ import {
   OrganizerPage,
   PuneHackathonsPage,
   StudentHackathonsPage,
+  TagPage,
   ThisMonthPage,
   ThisWeekPage,
-  TagPage,
   Web3HackathonsPage,
 } from './components/seo/DiscoveryRoutes';
+import { SeoHead } from './components/SeoHead';
 import { SubmitEventPage } from './components/SubmitEventPage';
 import { SubscriptionModal } from './components/SubscriptionModal';
 import TopNav from './components/TopNav';
@@ -56,16 +57,30 @@ import { buildApiUrl } from './lib/api';
 import { auth, googleProvider } from './lib/firebase';
 import { clearLastOpenedEvent, getLastOpenedEvent, setLastOpenedEvent } from './lib/recentEvent';
 import { cn } from './lib/utils';
-import { setGoogleAccessToken } from './services/googleCalendarService';
 import { CalendarEvent, FilterState, ViewMode } from './types';
 
 const CalendarApp = () => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
+    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
+      ? new Date(restored.event.start_time)
+      : new Date();
+  });
+  const [currentMonth, setCurrentMonth] = useState(() => {
+    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
+    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
+      ? new Date(restored.event.start_time)
+      : new Date();
+  });
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('month');
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(() => {
+    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
+    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
+      ? restored.event
+      : null;
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window === 'undefined') return 'light';
@@ -77,8 +92,16 @@ const CalendarApp = () => {
   });
   const [googleUser, setGoogleUser] = useState<any | null>(null);
   const [showSubModal, setShowSubModal] = useState(false);
-  const [hasGoogleToken, setHasGoogleToken] = useState(false);
-  const [hasMicrosoftToken, setHasMicrosoftToken] = useState(false);
+  const [hasGoogleToken, setHasGoogleToken] = useState(() => {
+    // We can't import synchronously, so we start false and check in useEffect
+    return false;
+  });
+  const [hasMicrosoftToken, setHasMicrosoftToken] = useState(() => false);
+
+  useEffect(() => {
+    import('./services/googleCalendarService').then(m => setHasGoogleToken(m.isGoogleAuthorized()));
+    import('./services/microsoftCalendarService').then(m => setHasMicrosoftToken(m.isMicrosoftAuthorized()));
+  }, []);
 
   const [filters, setFilters] = useState<FilterState>(() => {
     if (typeof window === 'undefined') return { categories: [], platforms: [], tags: [], mode: 'all' };
@@ -390,12 +413,9 @@ const CalendarApp = () => {
   }, [events]);
 
   useEffect(() => {
-    const restored = getLastOpenedEvent();
-    if (!restored?.event || !window.location.pathname.startsWith('/calendar')) return;
+    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
+    if (!restored?.event || typeof window === 'undefined' || !window.location.pathname.startsWith('/calendar')) return;
 
-    setSelectedEvent(restored.event);
-    setSelectedDate(new Date(restored.event.start_time));
-    setCurrentMonth(new Date(restored.event.start_time));
     clearLastOpenedEvent();
   }, []);
 
@@ -576,6 +596,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/events" element={<ThisMonthPage />} />
         <Route path="/events/bookmark" element={<BookmarkedEventsPage />} />
         <Route path="/events/:slug" element={<EventDetailPage />} />

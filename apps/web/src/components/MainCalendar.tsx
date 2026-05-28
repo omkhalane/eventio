@@ -232,6 +232,7 @@ export const CategoryBackgroundArt = ({
   }
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const getCategoryTheme = (type?: string) => {
   switch (type) {
     case 'competitive_programming':
@@ -366,18 +367,6 @@ interface MainCalendarProps {
   isLoading?: boolean;
 }
 
-const getPlatformColor = (platform: string) => {
-  const p = platform.toLowerCase();
-  if (p.includes('codeforces')) return 'bg-[#1b4396]';
-  if (p.includes('leetcode')) return 'bg-[#ffa116]';
-  if (p.includes('hackerrank')) return 'bg-[#2ec866]';
-  if (p.includes('codechef')) return 'bg-[#5b4638]';
-  if (p.includes('topcoder')) return 'bg-[#29aae2]';
-  if (p.includes('google')) return 'bg-[#4285f4]';
-  if (p.includes('meta')) return 'bg-[#0668E1]';
-  if (p.includes('atcoder')) return 'bg-[#000000]';
-  return 'bg-zinc-800';
-};
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -527,7 +516,7 @@ export default function MainCalendar({
     if (!element) return;
 
     const observer = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         if (entry.contentRect.height) {
           setGridHeight(entry.contentRect.height);
         }
@@ -1035,7 +1024,7 @@ const EventBar: React.FC<EventBarProps> = ({ event, onClick, isExpanded = false,
     }
   };
 
-  const getCategoryStyles = (type?: string, expanded?: boolean) => {};
+
 
   if (isExpanded) {
     const isListView = viewMode === 'list';

@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
 import {
+  ArrowLeft,
   Bookmark,
   Calendar,
-  ArrowLeft,
+  Clock,
   ExternalLink,
   MapPin,
-  Trash2,
-  Clock,
   Sparkles,
+  Trash2,
 } from 'lucide-react';
-import { cn } from '../lib/utils';
-import LoadingSpinner from './LoadingSpinner';
-import SkeletonCard from './SkeletonCard';
-import { buildApiUrl } from '../lib/api';
-import { CalendarEvent } from '../types';
+import { AnimatePresence,motion } from 'motion/react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { CATEGORIES } from '../constants';
+import { buildApiUrl } from '../lib/api';
+import { cn } from '../lib/utils';
+import { CalendarEvent } from '../types';
 
 const getCategoryStyles = (type: string) => {
   const styles: Record<string, { bg: string; text: string; border: string; glow: string; badge: string }> = {
@@ -95,8 +94,15 @@ const getCategoryStyles = (type: string) => {
 };
 
 export default function BookmarkedEventsPage() {
-  const [bookmarkedEvents, setBookmarkedEvents] = useState<CalendarEvent[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [bookmarkedEvents, setBookmarkedEvents] = useState<CalendarEvent[]>(() => {
+    try {
+      if (typeof window === 'undefined') return [];
+      const savedEvents = JSON.parse(localStorage.getItem('eventio-bookmarked-events-data') || '[]');
+      return Array.isArray(savedEvents) ? savedEvents : [];
+    } catch {
+      return [];
+    }
+  });
 
   const loadBookmarks = () => {
     try {
@@ -106,13 +112,10 @@ export default function BookmarkedEventsPage() {
       }
     } catch (e) {
       console.warn('LocalStorage blocked:', e);
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadBookmarks();
     window.addEventListener('eventio-bookmarks-updated', loadBookmarks);
     return () => window.removeEventListener('eventio-bookmarks-updated', loadBookmarks);
   }, []);
@@ -143,13 +146,7 @@ export default function BookmarkedEventsPage() {
     }).catch((e) => console.warn('Failed to track click:', e));
   };
 
-  if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-stone-50 dark:bg-stone-950">
-        <LoadingSpinner size="lg" />
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">

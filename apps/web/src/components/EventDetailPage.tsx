@@ -5,7 +5,6 @@ import {
   Calendar as CalendarIcon,
   Clock,
   ExternalLink,
-  Globe,
   MapPin,
   Share2,
   Shield,
@@ -18,12 +17,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { buildApiUrl } from '../lib/api';
+import { cn } from '../lib/utils';
 import { CalendarEvent } from '../types';
 import { Footer } from './Footer';
+import { CategoryBackgroundArt, getCategoryTheme } from './MainCalendar';
 import { SeoHead } from './SeoHead';
 import ShareDialog from './ShareDialog';
-import { CategoryBackgroundArt, getCategoryTheme } from './MainCalendar';
-import { cn } from '../lib/utils';
 
 const CATEGORY_IMAGES: Record<string, string[]> = {
   competitive_programming: [
@@ -154,31 +153,6 @@ const getCategorySolidColorClass = (type?: string) => {
   }
 };
 
-const getCategoryGlowClass = (type?: string) => {
-  switch (type) {
-    case 'competitive_programming':
-      return 'bg-amber-500/10';
-    case 'hackathon':
-      return 'bg-purple-500/10';
-    case 'data_science':
-    case 'ai_ml':
-      return 'bg-cyan-500/10';
-    case 'global_competition':
-    case 'startup':
-      return 'bg-yellow-500/10';
-    case 'hiring_challenge':
-      return 'bg-orange-500/10';
-    case 'community_event':
-    case 'web_development':
-      return 'bg-blue-500/10';
-    case 'cybersecurity_ctf':
-      return 'bg-red-500/10';
-    case 'open_source':
-      return 'bg-emerald-500/10';
-    default:
-      return 'bg-white/10';
-  }
-};
 
 export default function EventDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -192,7 +166,16 @@ export default function EventDetailPage() {
   const navOpacity = useTransform(scrollY, [0, 100], [0, 1]);
   const navTranslateY = useTransform(scrollY, [0, 100], [-20, 0]);
 
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const bookmarks = JSON.parse(localStorage.getItem('eventio-bookmarks') || '[]');
+      return Array.isArray(bookmarks) && slug ? bookmarks.includes(slug) : false;
+    } catch (e) {
+      console.warn('LocalStorage blocked:', e);
+      return false;
+    }
+  });
 
   const categoryImage = React.useMemo(() => {
     if (!event) return '';
@@ -201,18 +184,7 @@ export default function EventDetailPage() {
     const idNum = event.id ? String(event.id).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) : 0;
     const randomIndex = idNum % list.length;
     return list[randomIndex];
-  }, [event?.id, event?.event_type]);
-
-  useEffect(() => {
-    try {
-      const bookmarks = JSON.parse(localStorage.getItem('eventio-bookmarks') || '[]');
-      if (Array.isArray(bookmarks) && slug) {
-        setIsBookmarked(bookmarks.includes(slug));
-      }
-    } catch (e) {
-      console.warn('LocalStorage blocked:', e);
-    }
-  }, [slug]);
+  }, [event]);
 
   const trackClick = () => {
     if (!slug) return;
