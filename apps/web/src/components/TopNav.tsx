@@ -28,8 +28,8 @@ interface TopNavProps {
   setFilters: (filters: FilterState) => void;
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
-  onGoogleSignIn: () => void;
-  onMicrosoftSignIn?: () => void;
+  _onGoogleSignIn?: () => void;
+  _onMicrosoftSignIn?: () => void;
   onGoogleSignOut: () => void;
   googleUser: any | null;
   allEvents: CalendarEvent[];
@@ -44,8 +44,8 @@ export default function TopNav({
   setFilters,
   theme,
   setTheme,
-  onGoogleSignIn,
-  onMicrosoftSignIn,
+  _onGoogleSignIn: _onGoogleSignIn,
+  _onMicrosoftSignIn: _onMicrosoftSignIn,
   onGoogleSignOut,
   googleUser,
   allEvents,

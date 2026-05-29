@@ -9,15 +9,15 @@ import {
   Trash2,
 } from 'lucide-react';
 import { AnimatePresence,motion } from 'motion/react';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useMemo,useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
 import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 import { CalendarEvent } from '../types';
-import Header from './Header';
 import { Footer } from './Footer';
+import Header from './Header';
 
 const getCategoryStyles = (type: string) => {
   const styles: Record<string, { bg: string; text: string; border: string; glow: string; badge: string }> = {

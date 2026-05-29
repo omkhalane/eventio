@@ -29,9 +29,9 @@ import EventModal from './components/EventModal';
 import { Footer } from './components/Footer';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
+import LoginPage from './components/LoginPage';
 import MainCalendar from './components/MainCalendar';
 import MiniCalendar from './components/MiniCalendar';
-import LoginPage from './components/LoginPage';
 import {
   AiHackathonsPage,
   CategoryPage,
@@ -56,7 +56,6 @@ import TopNav from './components/TopNav';
 import { CATEGORIES } from './constants';
 import { buildApiUrl } from './lib/api';
 import { auth, googleProvider } from './lib/firebase';
-import { clearLastOpenedEvent, getLastOpenedEvent, setLastOpenedEvent } from './lib/recentEvent';
 import { cn } from './lib/utils';
 import { CalendarEvent, FilterState, ViewMode } from './types';
 
@@ -412,15 +411,18 @@ const CalendarApp = () => {
 
   useEffect(() => {
     const slug = searchParams.get('event');
-    if (!slug) {
-      if (selectedEvent) setSelectedEvent(null);
-    } else {
-      if (!selectedEvent || selectedEvent.slug !== slug) {
-        const ev = events.find((e) => e.slug === slug);
-        if (ev) setSelectedEvent(ev);
+    const updateEvent = () => {
+      if (!slug) {
+        if (selectedEvent) setSelectedEvent(null);
+      } else {
+        if (!selectedEvent || selectedEvent.slug !== slug) {
+          const ev = events.find((e) => e.slug === slug);
+          if (ev) setSelectedEvent(ev);
+        }
       }
-    }
-  }, [searchParams, events]);
+    };
+    setTimeout(updateEvent, 0);
+  }, [searchParams, events, selectedEvent]);
 
   return (
     <div

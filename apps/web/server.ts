@@ -2,7 +2,7 @@
 import './env.js';
 
 import { handleApiRequest } from '@eventio/api/src/lib/event-api.js';
-import { db, events, eq } from '@eventio/db';
+import { db, eq,events } from '@eventio/db';
 import express, { type Request } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
@@ -98,7 +98,7 @@ async function startServer() {
       }
       sitemap += `</urlset>`;
       res.type('application/xml').send(sitemap);
-    } catch (e) {
+    } catch {
       res.status(500).send('Error generating sitemap');
     }
   });

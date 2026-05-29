@@ -115,7 +115,7 @@ export default function ShareDialog({ event, isOpen, onClose }: ShareDialogProps
     }
   };
 
-  const handleNativeShare = async () => {
+  const _handleNativeShare = async () => {
     if (navigator.share) {
       try {
         if (event.thumbnailImage) {
