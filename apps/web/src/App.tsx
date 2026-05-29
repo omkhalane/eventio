@@ -18,7 +18,8 @@ import {
 import { ChevronLeft, ChevronRight, Infinity as InfinityIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useEffect, useMemo, useState } from 'react';
-import { BrowserRouter as Router, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter as Router, Link, Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
 import { ApiDocs } from './components/ApiDocs';
 import BookmarkedEventsPage from './components/BookmarkedEventsPage';
@@ -55,32 +56,17 @@ import TopNav from './components/TopNav';
 import { CATEGORIES } from './constants';
 import { buildApiUrl } from './lib/api';
 import { auth, googleProvider } from './lib/firebase';
-import { clearLastOpenedEvent, getLastOpenedEvent, setLastOpenedEvent } from './lib/recentEvent';
 import { cn } from './lib/utils';
 import { CalendarEvent, FilterState, ViewMode } from './types';
 
 const CalendarApp = () => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [selectedDate, setSelectedDate] = useState(() => {
-    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
-    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
-      ? new Date(restored.event.start_time)
-      : new Date();
-  });
-  const [currentMonth, setCurrentMonth] = useState(() => {
-    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
-    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
-      ? new Date(restored.event.start_time)
-      : new Date();
-  });
+  const [selectedDate, setSelectedDate] = useState(() => new Date());
+  const [currentMonth, setCurrentMonth] = useState(() => new Date());
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('month');
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(() => {
-    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
-    return restored?.event && typeof window !== 'undefined' && window.location.pathname.startsWith('/calendar')
-      ? restored.event
-      : null;
-  });
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window === 'undefined') return 'light';
@@ -107,22 +93,24 @@ const CalendarApp = () => {
     if (typeof window === 'undefined') return { categories: [], platforms: [], tags: [], mode: 'all' };
     try {
       const saved = localStorage.getItem('app-filters');
-      return saved
-        ? JSON.parse(saved)
-        : {
-            categories: [],
-            platforms: [],
-            tags: [],
-            mode: 'all',
-            difficulty: undefined,
-          };
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          categories: parsed.categories || [],
+          platforms: parsed.platforms || [],
+          mode: parsed.mode || 'all',
+        };
+      }
+      return {
+        categories: [],
+        platforms: [],
+        mode: 'all',
+      };
     } catch {
       return {
         categories: [],
         platforms: [],
-        tags: [],
         mode: 'all',
-        difficulty: undefined,
       };
     }
   });
@@ -268,9 +256,7 @@ const CalendarApp = () => {
         if (filters.categories && filters.categories.length > 0) {
           params.set('categories', filters.categories.join(','));
         }
-        if (filters.tags && filters.tags.length > 0) {
-          params.set('tags', filters.tags.join(','));
-        }
+
         if (searchQuery && searchQuery.length > 1) {
           params.set('search', searchQuery);
         }
@@ -412,18 +398,31 @@ const CalendarApp = () => {
     return groups;
   }, [events]);
 
-  useEffect(() => {
-    const restored = typeof window !== 'undefined' ? getLastOpenedEvent() : null;
-    if (!restored?.event || typeof window === 'undefined' || !window.location.pathname.startsWith('/calendar')) return;
-
-    clearLastOpenedEvent();
-  }, []);
-
-  useEffect(() => {
-    if (selectedEvent) {
-      setLastOpenedEvent(selectedEvent, 'calendar');
+  const handleSetSelectedEvent = (event: CalendarEvent | null) => {
+    setSelectedEvent(event);
+    if (event) {
+      searchParams.set('event', event.slug);
+      setSearchParams(searchParams, { replace: true });
+    } else {
+      searchParams.delete('event');
+      setSearchParams(searchParams, { replace: true });
     }
-  }, [selectedEvent]);
+  };
+
+  useEffect(() => {
+    const slug = searchParams.get('event');
+    const updateEvent = () => {
+      if (!slug) {
+        if (selectedEvent) setSelectedEvent(null);
+      } else {
+        if (!selectedEvent || selectedEvent.slug !== slug) {
+          const ev = events.find((e) => e.slug === slug);
+          if (ev) setSelectedEvent(ev);
+        }
+      }
+    };
+    setTimeout(updateEvent, 0);
+  }, [searchParams, events, selectedEvent]);
 
   return (
     <div
@@ -442,7 +441,7 @@ const CalendarApp = () => {
         googleUser={googleUser}
         allEvents={events}
         upcomingEvents={upcomingEventsByDay}
-        onEventClick={setSelectedEvent}
+        onEventClick={handleSetSelectedEvent}
       />
 
       <main className="flex flex-1 overflow-hidden">
@@ -519,7 +518,7 @@ const CalendarApp = () => {
                       {group.events.map((event) => (
                         <div
                           key={event.id}
-                          onClick={() => setSelectedEvent(event)}
+                          onClick={() => handleSetSelectedEvent(event)}
                           className="group flex cursor-pointer items-stretch gap-3"
                         >
                           <div
@@ -563,7 +562,7 @@ const CalendarApp = () => {
             viewMode={viewMode}
             setViewMode={setViewMode}
             events={events}
-            onEventClick={setSelectedEvent}
+            onEventClick={handleSetSelectedEvent}
             searchQuery={searchQuery}
             filters={filters}
             isLoading={isLoading}
@@ -573,7 +572,7 @@ const CalendarApp = () => {
 
       <EventModal
         event={selectedEvent}
-        onClose={() => setSelectedEvent(null)}
+        onClose={() => handleSetSelectedEvent(null)}
         isGoogleAuthorized={hasGoogleToken}
         isMicrosoftAuthorized={hasMicrosoftToken}
         onGoogleSignIn={handleGoogleSignIn}
@@ -591,8 +590,9 @@ const CalendarApp = () => {
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
+    <HelmetProvider>
+      <Router>
+        <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/events" element={<ThisMonthPage />} />
@@ -636,6 +636,7 @@ export default function App() {
       <CookieConsent />
       <Analytics />
     </Router>
+  </HelmetProvider>
   );
 }
 

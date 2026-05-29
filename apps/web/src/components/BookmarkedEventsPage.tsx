@@ -9,13 +9,15 @@ import {
   Trash2,
 } from 'lucide-react';
 import { AnimatePresence,motion } from 'motion/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo,useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
 import { buildApiUrl } from '../lib/api';
 import { cn } from '../lib/utils';
 import { CalendarEvent } from '../types';
+import { Footer } from './Footer';
+import Header from './Header';
 
 const getCategoryStyles = (type: string) => {
   const styles: Record<string, { bg: string; text: string; border: string; glow: string; badge: string }> = {
@@ -103,6 +105,8 @@ export default function BookmarkedEventsPage() {
       return [];
     }
   });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<'date-asc' | 'date-desc'>('date-asc');
 
   const loadBookmarks = () => {
     try {
@@ -146,17 +150,33 @@ export default function BookmarkedEventsPage() {
     }).catch((e) => console.warn('Failed to track click:', e));
   };
 
-
+  const filteredAndSortedEvents = useMemo(() => {
+    let result = bookmarkedEvents;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(
+        (e) =>
+          e.title.toLowerCase().includes(q) ||
+          e.platform.toLowerCase().includes(q) ||
+          e.tags?.some((t) => t.toLowerCase().includes(q))
+      );
+    }
+    result = [...result].sort((a, b) => {
+      const timeA = new Date(a.start_time).getTime();
+      const timeB = new Date(b.start_time).getTime();
+      return sortBy === 'date-asc' ? timeA - timeB : timeB - timeA;
+    });
+    return result;
+  }, [bookmarkedEvents, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
-      <div className="relative overflow-hidden py-12 px-6 sm:px-12 lg:px-24">
-        {/* Background gradient flares */}
+    <div className="flex min-h-screen flex-col bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
+      <Header />
+      <div className="relative flex-1 overflow-hidden py-12 px-6 sm:px-12 lg:px-24 mt-20">
         <div className="pointer-events-none absolute -top-40 -left-40 h-[400px] w-[400px] rounded-full bg-amber-500/10 blur-[120px] dark:bg-amber-500/5" />
         <div className="pointer-events-none absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-purple-500/10 blur-[120px] dark:bg-purple-500/5" />
 
         <div className="mx-auto max-w-7xl">
-          {/* Header Action Back Button */}
           <div className="mb-8">
             <Link
               to="/calendar"
@@ -166,7 +186,6 @@ export default function BookmarkedEventsPage() {
             </Link>
           </div>
 
-          {/* Page Heading Title */}
           <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <div className="flex items-center gap-2.5">
@@ -181,37 +200,49 @@ export default function BookmarkedEventsPage() {
                 Bookmarked Events
               </h1>
               <p className="mt-2 text-stone-500 dark:text-stone-400 max-w-2xl text-sm font-medium">
-                Your personally curated roster of upcoming tech hackathons, programming contests, and resource opportunities.
+                You have {bookmarkedEvents.length} saved offline event
+                {bookmarkedEvents.length !== 1 && 's'}
               </p>
             </div>
-            <div className="flex items-center gap-4 self-start rounded-2xl border border-stone-200 bg-white px-5 py-4 shadow-xs dark:border-stone-800 dark:bg-stone-900 md:self-auto">
-              <span className="font-sans text-3xl font-black text-amber-500">
-                {bookmarkedEvents.length}
-              </span>
-              <div className="text-left leading-none">
-                <p className="text-[10px] font-black tracking-widest text-stone-400 uppercase">Saved</p>
-                <p className="mt-0.5 text-xs font-bold text-stone-600 dark:text-stone-300">Events total</p>
+            
+            {bookmarkedEvents.length > 0 && (
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <input
+                  type="text"
+                  placeholder="Search bookmarks..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full rounded-xl border border-stone-200 bg-white/50 px-4 py-2 text-sm text-stone-900 shadow-sm backdrop-blur-md transition-colors placeholder:text-stone-400 focus:border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-500/10 dark:border-stone-800 dark:bg-stone-900/50 dark:text-white dark:placeholder:text-stone-600 dark:focus:border-stone-700 sm:w-48"
+                />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'date-asc' | 'date-desc')}
+                  className="w-full cursor-pointer appearance-none rounded-xl border border-stone-200 bg-white/50 px-4 py-2 text-sm font-bold text-stone-600 shadow-sm backdrop-blur-md transition-colors focus:border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-500/10 dark:border-stone-800 dark:bg-stone-900/50 dark:text-stone-300 dark:focus:border-stone-700 sm:w-32"
+                >
+                  <option value="date-asc">Earliest</option>
+                  <option value="date-desc">Latest</option>
+                </select>
+                <button
+                  onClick={() => {
+                    if (window.confirm('Are you sure you want to clear all bookmarks?')) {
+                      localStorage.removeItem('eventio-bookmarks');
+                      localStorage.removeItem('eventio-bookmarked-events-data');
+                      setBookmarkedEvents([]);
+                      window.dispatchEvent(new Event('eventio-bookmarks-updated'));
+                    }
+                  }}
+                  className="rounded-full bg-red-500 px-4 py-2 text-xs font-bold text-white hover:bg-red-600 transition-colors"
+                >
+                  Clear All
+                </button>
               </div>
-              <button
-                onClick={() => {
-                  if (window.confirm('Are you sure you want to clear all bookmarks?')) {
-                    localStorage.removeItem('eventio-bookmarks');
-                    localStorage.removeItem('eventio-bookmarked-events-data');
-                    setBookmarkedEvents([]);
-                    window.dispatchEvent(new Event('eventio-bookmarks-updated'));
-                  }
-                }}
-                className="rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white hover:bg-amber-600 transition-colors"
-              >
-                Reset All
-              </button>
-            </div>
+            )}
           </div>
 
-          {/* Cards Grid / Empty State */}
           <AnimatePresence mode="popLayout">
             {bookmarkedEvents.length === 0 ? (
               <motion.div
+                key="empty"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -232,12 +263,25 @@ export default function BookmarkedEventsPage() {
                   Explore Calendar
                 </Link>
               </motion.div>
+            ) : filteredAndSortedEvents.length === 0 ? (
+              <motion.div
+                key="no-results"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="flex flex-col items-center justify-center rounded-[2rem] border border-stone-200 border-dashed bg-white/30 py-24 text-center dark:border-stone-800 dark:bg-stone-900/20"
+              >
+                <p className="text-sm font-bold text-stone-400">No events match your search.</p>
+              </motion.div>
             ) : (
               <motion.div
-                layout
-                className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                key="grid"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
               >
-                {bookmarkedEvents.map((event) => {
+                {filteredAndSortedEvents.map((event) => {
                   const style = getCategoryStyles(event.event_type || 'default');
                   const categoryObj = CATEGORIES.find((c) => c.id === event.event_type);
                   const startDate = event.start_time ? new Date(event.start_time) : null;
@@ -257,7 +301,6 @@ export default function BookmarkedEventsPage() {
                       )}
                     >
                       <div>
-                        {/* Top platforms & Category labels */}
                         <div className="flex items-center justify-between">
                           <span className="text-[10px] font-black tracking-widest text-stone-400 uppercase">
                             {event.platform}
@@ -270,14 +313,12 @@ export default function BookmarkedEventsPage() {
                           </span>
                         </div>
 
-                        {/* Title & Link */}
                         <Link to={`/events/${event.slug}`} className="mt-4 block group-hover:underline">
                           <h3 className="font-sans text-lg font-bold leading-snug tracking-tight text-stone-900 dark:text-white line-clamp-2">
                             {event.title}
                           </h3>
                         </Link>
 
-                        {/* Date details */}
                         {startDate && (
                           <div className="mt-4 flex items-center gap-2 text-stone-500 dark:text-stone-400">
                             <Calendar className="h-4 w-4 shrink-0 text-stone-400" />
@@ -305,7 +346,6 @@ export default function BookmarkedEventsPage() {
                           </div>
                         )}
 
-                        {/* Location / Mode detail */}
                         <div className="mt-3 flex items-center gap-2 text-stone-500 dark:text-stone-400">
                           <MapPin className="h-4 w-4 shrink-0 text-stone-400" />
                           <span className="text-xs font-bold capitalize">
@@ -363,6 +403,7 @@ export default function BookmarkedEventsPage() {
           </AnimatePresence>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

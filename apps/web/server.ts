@@ -2,7 +2,9 @@
 import './env.js';
 
 import { handleApiRequest } from '@eventio/api/src/lib/event-api.js';
+import { db, eq,events } from '@eventio/db';
 import express, { type Request } from 'express';
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
@@ -81,6 +83,74 @@ async function startServer() {
       .type('application/javascript')
       .set('Cache-Control', 'no-store')
       .send(buildPublicConfig(HOST === '0.0.0.0' ? 'localhost' : HOST, PORT, API_HOST, API_PORT));
+  });
+
+  app.get('/sitemap.xml', async (_req, res) => {
+    try {
+      const allEvents = await db.select({ slug: events.slug, updatedAt: events.updatedAt }).from(events).where(eq(events.status, 'active'));
+      const siteUrl = process.env.PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://event-io.me' : `http://${HOST}:${PORT}`);
+      let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+      sitemap += `  <url>\n    <loc>${siteUrl}/</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
+      sitemap += `  <url>\n    <loc>${siteUrl}/events/bookmark</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+      for (const event of allEvents) {
+        const dateStr = event.updatedAt ? new Date(event.updatedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+        sitemap += `  <url>\n    <loc>${siteUrl}/events/${event.slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
+      }
+      sitemap += `</urlset>`;
+      res.type('application/xml').send(sitemap);
+    } catch {
+      res.status(500).send('Error generating sitemap');
+    }
+  });
+
+  app.get('/robots.txt', (_req, res) => {
+    const siteUrl = process.env.PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://event-io.me' : `http://${HOST}:${PORT}`);
+    res.type('text/plain').send(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml`);
+  });
+
+  app.get('/events/:slug', async (req, res, next) => {
+    const slug = req.params.slug;
+    const siteUrl = process.env.PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://event-io.me' : `http://${HOST}:${PORT}`);
+    try {
+      const result = await db.select().from(events).where(eq(events.slug, slug)).limit(1);
+      const event = result[0];
+      if (event) {
+        let indexHtmlPath = '';
+        let indexHtml = '';
+        if (process.env.NODE_ENV !== 'production') {
+          indexHtmlPath = path.resolve(__dirname, 'index.html');
+          indexHtml = await fs.readFile(indexHtmlPath, 'utf-8');
+        } else {
+          indexHtmlPath = path.join(process.cwd(), 'dist/apps/web/index.html');
+          indexHtml = await fs.readFile(indexHtmlPath, 'utf-8');
+        }
+        
+        const ogTitle = event.title;
+        const ogDesc = event.shortDescription || event.description || 'View event details on EventIO';
+        const ogImage = event.thumbnailImage || event.bannerImage || `${siteUrl}/assets/logo.svg`;
+        
+        const metaTags = `
+          <meta property="og:title" content="${ogTitle.replace(/"/g, '&quot;')}" />
+          <meta property="og:description" content="${ogDesc.replace(/"/g, '&quot;')}" />
+          <meta property="og:image" content="${ogImage}" />
+          <meta property="og:url" content="${siteUrl}/events/${slug}" />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="${ogTitle.replace(/"/g, '&quot;')}" />
+          <meta name="twitter:description" content="${ogDesc.replace(/"/g, '&quot;')}" />
+          <meta name="twitter:image" content="${ogImage}" />
+          <title>${ogTitle} | EventIO</title>
+        `;
+        
+        const modifiedHtml = indexHtml.replace('</head>', `${metaTags}\n</head>`);
+        res.send(modifiedHtml);
+      } else {
+        next();
+      }
+    } catch (e) {
+      console.error('SSR Meta Injection Error:', e);
+      next();
+    }
   });
 
   // Vite / Static Serving

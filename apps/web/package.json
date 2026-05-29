@@ -27,6 +27,7 @@
     "posthog-js": "^1.376.3",
     "react": "^19.0.0",
     "react-dom": "^19.2.6",
+    "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.15.1",
     "tailwind-merge": "^3.5.0",
     "zod": "^4.4.3"

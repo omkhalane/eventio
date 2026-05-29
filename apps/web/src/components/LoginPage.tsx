@@ -1,11 +1,13 @@
 import { GoogleAuthProvider, OAuthProvider,signInWithPopup } from 'firebase/auth';
-import { ArrowLeft, Calendar as CalendarIcon, Globe, KeyRound,Sparkles } from 'lucide-react';
+import { ArrowLeft, Braces, Code2, Cpu, Sparkles, Terminal, Calendar as CalendarIcon, Globe, KeyRound } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useState } from 'react';
 import {useNavigate } from 'react-router-dom';
 
 import { auth, googleProvider } from '../lib/firebase';
 import { SeoHead } from './SeoHead';
+
+const LOGO_IMAGE = '/assets/logo.svg';
 
 // Icons for the login providers
 const GoogleIcon = () => (
@@ -79,10 +81,45 @@ export default function LoginPage() {
       />
 
       {/* Decorative Background Elements */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-indigo-500/10 blur-[120px] dark:bg-indigo-500/5 animate-pulse-subtle" />
-        <div className="absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full bg-rose-500/10 blur-[120px] dark:bg-rose-500/5 animate-pulse-subtle delay-1000" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,.02)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black,transparent)] bg-[size:40px_40px] dark:bg-[linear-gradient(to_right,rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.02)_1px,transparent_1px)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[120px] dark:bg-emerald-500/5 animate-pulse-subtle" />
+        <div className="absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full bg-cyan-500/10 blur-[120px] dark:bg-cyan-500/5 animate-pulse-subtle delay-1000" />
+        
+        {/* Tech/Event themed background pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,.02)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black,transparent)] bg-[size:60px_60px] dark:bg-[linear-gradient(to_right,rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.02)_1px,transparent_1px)]" />
+
+        {/* Floating tech icons */}
+        <motion.div
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute left-[15%] top-[20%] text-stone-200 dark:text-stone-800"
+        >
+          <Code2 className="h-16 w-16" />
+        </motion.div>
+        
+        <motion.div
+          animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute right-[20%] top-[15%] text-stone-200 dark:text-stone-800"
+        >
+          <Terminal className="h-20 w-20" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, -25, 0], rotate: [0, 15, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className="absolute bottom-[20%] left-[25%] text-stone-200 dark:text-stone-800"
+        >
+          <Braces className="h-12 w-12" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+          className="absolute bottom-[15%] right-[15%] text-stone-200 dark:text-stone-800"
+        >
+          <Cpu className="h-24 w-24" />
+        </motion.div>
       </div>
 
       <div className="relative z-10 w-full max-w-md px-6">
@@ -101,24 +138,47 @@ export default function LoginPage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden rounded-[2.5rem] border border-white/50 bg-white/70 p-8 shadow-2xl backdrop-blur-xl dark:border-stone-800/50 dark:bg-stone-900/70 sm:p-12"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/40 p-8 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-black/40 sm:p-12"
         >
-          <div className="text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-stone-900 to-stone-700 text-white shadow-lg dark:from-white dark:to-stone-200 dark:text-stone-900">
-              <KeyRound className="h-8 w-8" />
-            </div>
-            <h1 className="font-sans text-3xl font-black tracking-tight text-stone-900 dark:text-white">
-              Welcome Back
-            </h1>
-            <p className="mt-3 text-sm font-medium leading-relaxed text-stone-500 dark:text-stone-400">
-              Sign in to sync events to your personal calendar, track your registrations, and curate your bookmarks.
-            </p>
+          {/* Glassmorphic overlay */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent dark:from-white/5 dark:via-transparent dark:to-transparent pointer-events-none" />
+          
+          <div className="relative z-10 text-center">
+            <motion.div 
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 200, damping: 15 }}
+              className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-stone-200 bg-white shadow-xl dark:border-stone-800 dark:bg-stone-900"
+            >
+              <img src={LOGO_IMAGE} alt="EventIO" className="h-8 w-8 object-contain" />
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="font-sans text-3xl font-black tracking-tight text-stone-900 dark:text-white"
+            >
+              EventIO
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-3 text-sm font-medium leading-relaxed text-stone-600 dark:text-stone-400"
+            >
+              Authenticate to securely sync events, track registrations, and manage your developer portfolio.
+            </motion.p>
           </div>
 
-          <div className="mt-10 space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="relative z-10 mt-10 space-y-4"
+          >
             {error && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
@@ -132,50 +192,51 @@ export default function LoginPage() {
             <button
               onClick={() => handleSignIn('google')}
               disabled={isLoading !== null}
-              className="group relative flex w-full items-center justify-center rounded-2xl border border-stone-200 bg-white px-6 py-4 text-sm font-bold text-stone-700 shadow-sm transition-all hover:bg-stone-50 hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-750"
+              className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-stone-200/50 bg-white/80 px-6 py-4 text-sm font-bold text-stone-700 shadow-sm backdrop-blur-md transition-all hover:bg-white hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 dark:border-white/10 dark:bg-black/50 dark:text-stone-200 dark:hover:bg-black/80"
             >
-              {isLoading === 'google' ? (
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-800 dark:border-stone-600 dark:border-t-stone-200" />
-              ) : (
-                <>
-                  <GoogleIcon />
-                  Continue with Google
-                </>
-              )}
+              <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-t from-stone-100 to-transparent transition-transform duration-300 group-hover:translate-y-0 dark:from-stone-900" />
+              <div className="relative flex items-center">
+                {isLoading === 'google' ? (
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-800 dark:border-stone-600 dark:border-t-stone-200" />
+                ) : (
+                  <>
+                    <GoogleIcon />
+                    Continue with Google
+                  </>
+                )}
+              </div>
             </button>
 
             <button
               onClick={() => handleSignIn('microsoft')}
               disabled={isLoading !== null}
-              className="group relative flex w-full items-center justify-center rounded-2xl border border-stone-200 bg-white px-6 py-4 text-sm font-bold text-stone-700 shadow-sm transition-all hover:bg-stone-50 hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-750"
+              className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-stone-200/50 bg-white/80 px-6 py-4 text-sm font-bold text-stone-700 shadow-sm backdrop-blur-md transition-all hover:bg-white hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 dark:border-white/10 dark:bg-black/50 dark:text-stone-200 dark:hover:bg-black/80"
             >
-              {isLoading === 'microsoft' ? (
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-800 dark:border-stone-600 dark:border-t-stone-200" />
-              ) : (
-                <>
-                  <MicrosoftIcon />
-                  Continue with Microsoft
-                </>
-              )}
+              <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-t from-stone-100 to-transparent transition-transform duration-300 group-hover:translate-y-0 dark:from-stone-900" />
+              <div className="relative flex items-center">
+                {isLoading === 'microsoft' ? (
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-800 dark:border-stone-600 dark:border-t-stone-200" />
+                ) : (
+                  <>
+                    <MicrosoftIcon />
+                    Continue with Microsoft
+                  </>
+                )}
+              </div>
             </button>
-          </div>
+          </motion.div>
 
-          <div className="mt-10 pt-8 border-t border-stone-200 dark:border-stone-800">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 text-xs font-bold text-stone-500 dark:text-stone-400">
-                <Sparkles className="h-4 w-4 text-amber-500" /> 
-                Curate your personal hackathon roadmap
-              </div>
-              <div className="flex items-center gap-3 text-xs font-bold text-stone-500 dark:text-stone-400">
-                <CalendarIcon className="h-4 w-4 text-blue-500" /> 
-                1-click sync to your native calendar app
-              </div>
-              <div className="flex items-center gap-3 text-xs font-bold text-stone-500 dark:text-stone-400">
-                <Globe className="h-4 w-4 text-emerald-500" /> 
-                Access events across 41 tech categories
-              </div>
-            </div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="relative z-10 mt-10 pt-8 border-t border-stone-200/50 dark:border-white/10 text-center"
+          >
+            <p className="text-xs font-bold text-stone-400 dark:text-stone-500 flex items-center justify-center gap-2">
+              <Sparkles className="h-3.5 w-3.5" />
+              Secure Enterprise Authentication
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </div>
