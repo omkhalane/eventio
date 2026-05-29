@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, OAuthProvider,signInWithPopup } from 'firebase/auth';
-import { ArrowLeft, Braces, Code2, Cpu, Sparkles, Terminal, Calendar as CalendarIcon, Globe, KeyRound } from 'lucide-react';
+import { ArrowLeft, Braces, Code2, Cpu,Sparkles, Terminal } from 'lucide-react';
 import { motion } from 'motion/react';
 import React, { useState } from 'react';
 import {useNavigate } from 'react-router-dom';
