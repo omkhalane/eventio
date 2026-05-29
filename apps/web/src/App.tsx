@@ -437,8 +437,6 @@ const CalendarApp = () => {
         setFilters={setFilters}
         theme={theme}
         setTheme={setTheme}
-        onGoogleSignIn={handleGoogleSignIn}
-        onMicrosoftSignIn={handleMicrosoftSignIn}
         onGoogleSignOut={handleSignOut}
         googleUser={googleUser}
         allEvents={events}
