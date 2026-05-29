@@ -26,10 +26,10 @@ export const QUEUES = {
 } as const;
 
 // Queue definitions
-export const scrapingQueue = new Queue(QUEUES.SCRAPING, { connection });
-export const normalizationQueue = new Queue(QUEUES.NORMALIZATION, { connection });
-export const dedupeQueue = new Queue(QUEUES.DEDUPE, { connection });
-export const indexingQueue = new Queue(QUEUES.INDEXING, { connection });
+export const scrapingQueue = new Queue(QUEUES.SCRAPING, { connection: connection as any });
+export const normalizationQueue = new Queue(QUEUES.NORMALIZATION, { connection: connection as any });
+export const dedupeQueue = new Queue(QUEUES.DEDUPE, { connection: connection as any });
+export const indexingQueue = new Queue(QUEUES.INDEXING, { connection: connection as any });
 
 // Export to allow apps to create their own workers
 export { connection,QueueEvents, Worker };

@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CATEGORIES } from '../constants';
+import { CATEGORIES, PLATFORMS } from '../constants';
 import { cn } from '../lib/utils';
 import { CalendarEvent, EventCategory, FilterState } from '../types';
 
@@ -89,20 +89,8 @@ export default function TopNav({
   }, []);
 
   const availablePlatforms = useMemo(() => {
-    const platforms = new Set<string>();
-    allEvents.forEach((e) => {
-      if (e.platform) platforms.add(e.platform);
-    });
-    return Array.from(platforms).sort();
-  }, [allEvents]);
-
-  const availableTags = useMemo(() => {
-    const tags = new Set<string>();
-    allEvents.forEach((e) => {
-      if (e.tags) e.tags.forEach((t) => tags.add(t));
-    });
-    return Array.from(tags).sort();
-  }, [allEvents]);
+    return PLATFORMS.sort();
+  }, []);
 
   const toggleCategory = (cat: EventCategory) => {
     const newCats = filters.categories.includes(cat)
@@ -118,12 +106,7 @@ export default function TopNav({
     setFilters({ ...filters, platforms: newPlats });
   };
 
-  const toggleTag = (tag: string) => {
-    const newTags = filters.tags.includes(tag)
-      ? filters.tags.filter((t) => t !== tag)
-      : [...filters.tags, tag];
-    setFilters({ ...filters, tags: newTags });
-  };
+
 
   return (
     <header className="border-border bg-card sticky top-0 z-40 flex h-14 items-center border-b px-6">
@@ -265,9 +248,7 @@ export default function TopNav({
                           setFilters({
                             categories: [],
                             platforms: [],
-                            tags: [],
                             mode: 'all',
-                            difficulty: undefined,
                           });
                         }}
                         className="text-primary text-[10px] font-bold hover:underline"
@@ -309,21 +290,7 @@ export default function TopNav({
                         </div>
                       )}
 
-                      {availableTags.length > 0 && (
-                        <div>
-                          <h3 className="text-foreground mb-3 px-1 text-xs font-bold">Tags</h3>
-                          <div className="flex flex-wrap gap-1.5">
-                            {availableTags.map((tag) => (
-                              <FilterButton
-                                key={tag}
-                                label={tag}
-                                active={filters.tags.includes(tag)}
-                                onClick={() => toggleTag(tag)}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      )}
+
 
                       <div>
                         <h3 className="text-foreground mb-3 px-1 text-xs font-bold">Access</h3>
@@ -334,22 +301,6 @@ export default function TopNav({
                               label={m.charAt(0).toUpperCase() + m.slice(1)}
                               active={filters.mode === m}
                               onClick={() => setFilters({ ...filters, mode: m })}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h3 className="text-foreground mb-3 px-1 text-xs font-bold">Difficulty</h3>
-                        <div className="flex flex-wrap gap-1.5">
-                          {(['all', 'beginner', 'intermediate', 'advanced'] as const).map((d) => (
-                            <FilterButton
-                              key={d}
-                              label={d.charAt(0).toUpperCase() + d.slice(1)}
-                              active={(filters.difficulty || 'all') === d}
-                              onClick={() =>
-                                setFilters({ ...filters, difficulty: d === 'all' ? undefined : d })
-                              }
                             />
                           ))}
                         </div>

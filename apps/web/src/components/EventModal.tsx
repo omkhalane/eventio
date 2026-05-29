@@ -17,7 +17,7 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CATEGORIES } from '../constants';
@@ -32,26 +32,26 @@ import ShareDialog from './ShareDialog';
 const getCategoryModalStyles = (type?: string) => {
   switch (type) {
     case 'competitive_programming':
-      return 'border-amber-500/40 shadow-[0_32px_128px_-16px_rgba(245,158,11,0.15)] bg-amber-50';
+      return 'border-amber-500/40 shadow-[0_32px_128px_-16px_rgba(245,158,11,0.15)] bg-amber-100';
     case 'hackathon':
-      return 'border-purple-500/40 shadow-[0_32px_128px_-16px_rgba(168,85,247,0.15)] bg-purple-50';
+      return 'border-purple-500/40 shadow-[0_32px_128px_-16px_rgba(168,85,247,0.15)] bg-purple-100';
     case 'data_science':
     case 'ai_ml':
-      return 'border-cyan-500/40 shadow-[0_32px_128px_-16px_rgba(6,182,212,0.15)] bg-cyan-50';
+      return 'border-cyan-500/40 shadow-[0_32px_128px_-16px_rgba(6,182,212,0.15)] bg-cyan-100';
     case 'global_competition':
     case 'startup':
-      return 'border-yellow-600/40 shadow-[0_32px_128px_-16px_rgba(234,179,8,0.15)] bg-yellow-50';
+      return 'border-yellow-600/40 shadow-[0_32px_128px_-16px_rgba(234,179,8,0.15)] bg-yellow-100';
     case 'hiring_challenge':
-      return 'border-orange-500/40 shadow-[0_32px_128px_-16px_rgba(249,115,22,0.15)] bg-orange-50';
+      return 'border-orange-500/40 shadow-[0_32px_128px_-16px_rgba(249,115,22,0.15)] bg-orange-100';
     case 'community_event':
     case 'web_development':
-      return 'border-blue-500/40 shadow-[0_32px_128px_-16px_rgba(59,130,246,0.15)] bg-blue-50';
+      return 'border-blue-500/40 shadow-[0_32px_128px_-16px_rgba(59,130,246,0.15)] bg-blue-100';
     case 'cybersecurity_ctf':
-      return 'border-red-500/40 shadow-[0_32px_128px_-16px_rgba(239,68,68,0.15)] bg-red-50';
+      return 'border-red-500/40 shadow-[0_32px_128px_-16px_rgba(239,68,68,0.15)] bg-red-100';
     case 'open_source':
-      return 'border-emerald-500/40 shadow-[0_32px_128px_-16px_rgba(16,185,129,0.15)] bg-emerald-50';
+      return 'border-emerald-500/40 shadow-[0_32px_128px_-16px_rgba(16,185,129,0.15)] bg-emerald-100';
     default:
-      return 'border-slate-300 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.1)] bg-slate-50';
+      return 'border-slate-300 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.1)] bg-slate-100';
   }
 };
 
@@ -292,7 +292,11 @@ export default function EventModal({
   const categoryImage = React.useMemo(() => {
     if (!event) return '';
     const list = CATEGORY_IMAGES[event.event_type || ''] || CATEGORY_IMAGES.default;
-    const idNum = event.id ? String(event.id).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) : 0;
+    const idNum = event.id
+      ? String(event.id)
+          .split('')
+          .reduce((acc, char) => acc + char.charCodeAt(0), 0)
+      : 0;
     const randomIndex = idNum % list.length;
     return list[randomIndex];
   }, [event]);
@@ -615,39 +619,23 @@ export default function EventModal({
             >
               <Share2 className="h-3.5 w-3.5" /> Share
             </button>
-            <div className="group relative">
-              <button
-                className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-4 text-xs font-black tracking-widest text-slate-900 uppercase transition-colors hover:bg-slate-50"
-              >
-                {isSynced ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <CalendarIcon className="h-3.5 w-3.5" />}
-                {isSynced ? 'Synced' : 'Add to Calendar'}
-              </button>
-              
-              <div className="absolute bottom-full left-0 mb-2 hidden w-48 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl group-hover:flex">
-                <button
-                  onClick={() => handleSync('google')}
-                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
-                >
-                  <GoogleIcon /> Google Calendar
-                </button>
-                <div className="h-px bg-slate-100" />
-                <button
-                  onClick={() => handleSync('microsoft')}
-                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
-                >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4 24H0V12.6h11.4V24ZM24 24H12.6V12.6H24V24ZM11.4 11.4H0V0h11.4v11.4ZM24 11.4H12.6V0H24v11.4Z" fill="#00A4EF"/></svg>
-                  Microsoft Calendar
-                </button>
-                <div className="h-px bg-slate-100" />
-                <button
-                  onClick={() => handleSync('apple')}
-                  className="flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
-                >
-                  <svg viewBox="0 0 384 512" className="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                  Apple Calendar
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => {
+                if (isMicrosoftAuthorized) {
+                  handleSync('microsoft');
+                } else {
+                  handleSync('google');
+                }
+              }}
+              className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-4 text-xs font-black tracking-widest text-slate-900 uppercase transition-colors hover:bg-slate-50"
+            >
+              {isSynced ? (
+                <Check className="h-3.5 w-3.5 text-emerald-500" />
+              ) : (
+                <CalendarIcon className="h-3.5 w-3.5" />
+              )}
+              {isSynced ? 'Synced' : 'Add to Calendar'}
+            </button>
           </div>
         </motion.div>
       </div>

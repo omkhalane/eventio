@@ -239,7 +239,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-amber-500/50',
         hoverBorder: 'hover:border-amber-500/70',
-        bg: 'bg-amber-50',
+        bg: 'bg-amber-50 dark:bg-amber-500/5',
         text: 'text-amber-950 transition-all duration-300',
         titleText: 'text-amber-950 transition-all duration-300',
         descText: 'text-amber-900 transition-all duration-300',
@@ -253,7 +253,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-purple-500/50',
         hoverBorder: 'hover:border-purple-500/70',
-        bg: 'bg-purple-50',
+        bg: 'bg-purple-50 dark:bg-purple-500/5',
         text: 'text-purple-950 transition-all duration-300',
         titleText: 'text-purple-950 transition-all duration-300',
         descText: 'text-purple-900 transition-all duration-300',
@@ -268,7 +268,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-cyan-500/50',
         hoverBorder: 'hover:border-cyan-500/70',
-        bg: 'bg-cyan-50',
+        bg: 'bg-cyan-50 dark:bg-cyan-500/5',
         text: 'text-cyan-950 transition-all duration-300',
         titleText: 'text-cyan-950 transition-all duration-300',
         descText: 'text-cyan-900 transition-all duration-300',
@@ -282,7 +282,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-red-500/50',
         hoverBorder: 'hover:border-red-500/70',
-        bg: 'bg-red-50',
+        bg: 'bg-red-50 dark:bg-red-500/5',
         text: 'text-red-950 transition-all duration-300',
         titleText: 'text-red-950 transition-all duration-300',
         descText: 'text-red-900 transition-all duration-300',
@@ -296,7 +296,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-emerald-500/50',
         hoverBorder: 'hover:border-emerald-500/70',
-        bg: 'bg-emerald-50',
+        bg: 'bg-emerald-50 dark:bg-emerald-500/5',
         text: 'text-emerald-950 transition-all duration-300',
         titleText: 'text-emerald-950 transition-all duration-300',
         descText: 'text-emerald-900 transition-all duration-300',
@@ -311,7 +311,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-blue-500/50',
         hoverBorder: 'hover:border-blue-500/70',
-        bg: 'bg-blue-50',
+        bg: 'bg-blue-50 dark:bg-blue-500/5',
         text: 'text-blue-950 transition-all duration-300',
         titleText: 'text-blue-950 transition-all duration-300',
         descText: 'text-blue-900 transition-all duration-300',
@@ -326,7 +326,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-yellow-600/50',
         hoverBorder: 'hover:border-yellow-600/70',
-        bg: 'bg-yellow-50',
+        bg: 'bg-yellow-50 dark:bg-yellow-500/5',
         text: 'text-yellow-950 transition-all duration-300',
         titleText: 'text-yellow-950 transition-all duration-300',
         descText: 'text-yellow-900',
@@ -340,7 +340,7 @@ export const getCategoryTheme = (type?: string) => {
       return {
         baseBorder: 'border-2 border-slate-500/50',
         hoverBorder: 'hover:border-slate-500/70',
-        bg: 'bg-slate-50',
+        bg: 'bg-slate-50 dark:bg-slate-500/5',
         text: 'text-slate-950 transition-all duration-300',
         titleText: 'text-slate-950 transition-all duration-300',
         descText: 'text-slate-900 transition-all duration-300',
@@ -579,11 +579,8 @@ export default function MainCalendar({
       if (filters.mode === 'hybrid')
         matchesMode = event.is_online && (event.city !== null || event.country !== null);
 
-      const matchesDifficulty =
-        !filters.difficulty || event.extra?.difficulty === filters.difficulty;
-
       return (
-        matchesSearch && matchesCategory && matchesPlatform && matchesMode && matchesDifficulty
+        matchesSearch && matchesCategory && matchesPlatform && matchesMode
       );
     });
   }, [events, searchQuery, filters]);
