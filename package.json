@@ -37,7 +37,7 @@
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.16",
     "@types/react-dom": "^18.2.0",
-    "@vercel/node": "^5.8.11",
+    "@vercel/node": "^5.8.15",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",
