@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^18.2.0",
+    "@types/react-dom": "^19.2.3",
     "@vercel/node": "^5.8.15",
     "drizzle-kit": "^0.31.10",
     "eslint": "^10.4.1",

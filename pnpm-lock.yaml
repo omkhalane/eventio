@@ -68,8 +68,8 @@ importers:
         specifier: ^19.2.17
         version: 19.2.17
       '@types/react-dom':
-        specifier: ^18.2.0
-        version: 18.2.0
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.17)
       '@vercel/node':
         specifier: ^5.8.15
         version: 5.8.15(rollup@4.60.3)
@@ -1785,9 +1785,6 @@ packages:
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
-
-  '@types/react-dom@18.2.0':
-    resolution: {integrity: sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==}
 
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
@@ -4884,10 +4881,6 @@ snapshots:
     optional: true
 
   '@types/range-parser@1.2.7': {}
-
-  '@types/react-dom@18.2.0':
-    dependencies:
-      '@types/react': 19.2.17
 
   '@types/react-dom@19.2.3(@types/react@19.2.17)':
     dependencies:
