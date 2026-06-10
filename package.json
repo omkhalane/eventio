@@ -39,7 +39,7 @@
     "@types/react-dom": "^18.2.0",
     "@vercel/node": "^5.8.15",
     "drizzle-kit": "^0.31.10",
-    "eslint": "^9.0.0",
+    "eslint": "^10.4.1",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
