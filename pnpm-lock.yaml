@@ -310,8 +310,8 @@ importers:
   packages/queue:
     dependencies:
       bullmq:
-        specifier: ^5.78.0
-        version: 5.78.0
+        specifier: ^5.78.1
+        version: 5.78.1
       ioredis:
         specifier: ^5.11.1
         version: 5.11.1
@@ -2017,8 +2017,8 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bullmq@5.78.0:
-    resolution: {integrity: sha512-tT9jJmbobk9ueEfFc22egLmgwCcMGgOjZ5Y1cvgczBPv1JUmC7iHQVbQtqku2YBE5dE9uzdVpxIrBvL/YAjGwA==}
+  bullmq@5.78.1:
+    resolution: {integrity: sha512-zD5IT+qMqbMgPFPdL9FwnZka1bz6nckM+5lXj4N0vsXqdzoVO6wizmXpwsg/4GnHmXJsL7XOKeWA64tYUdPrOA==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       redis: '>=5.0.0'
@@ -5145,13 +5145,13 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bullmq@5.78.0:
+  bullmq@5.78.1:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.10.1
       msgpackr: 2.0.2
       node-abort-controller: 3.1.1
-      semver: 7.8.0
+      semver: 7.8.1
       tslib: 2.8.1
     transitivePeerDependencies:
       - supports-color
@@ -6475,8 +6475,7 @@ snapshots:
 
   semver@7.8.0: {}
 
-  semver@7.8.1:
-    optional: true
+  semver@7.8.1: {}
 
   semver@7.8.4: {}
 
@@ -6517,7 +6516,7 @@ snapshots:
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
-      semver: 7.8.1
+      semver: 7.8.4
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.5
       '@img/sharp-darwin-x64': 0.34.5
