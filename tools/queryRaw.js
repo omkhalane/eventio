@@ -4,6 +4,7 @@ const postgres = require('postgres');
     const sqlUrl = process.env.DATABASE_URL || '';
     if (!sqlUrl) {
       console.error('DATABASE_URL not set');
+      
       process.exit(1);
     }
     const sql = postgres(sqlUrl, { ssl: false });
