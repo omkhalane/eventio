@@ -40,7 +40,7 @@
     "@types/react-dom": "^19.2.3",
     "@vercel/node": "^5.8.22",
     "@vitejs/plugin-react": "^6.0.3",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.2",
     "tsx": "^4.22.4",
     "typescript": "~6.0.3",
     "vite": "^8.0.16",
