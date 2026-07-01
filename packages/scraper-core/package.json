@@ -6,7 +6,7 @@
   "dependencies": {
     "@eventio/db": "workspace:*",
     "@eventio/observability": "workspace:*",
-    "playwright": "^1.61.0"
+    "playwright": "^1.61.1"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
