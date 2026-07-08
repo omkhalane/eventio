@@ -41,7 +41,7 @@
     "drizzle-kit": "^0.31.10",
     "eslint": "^10.6.0",
     "prettier": "^3.9.4",
-    "typescript": "^5.4.5"
+    "typescript": "^7.0.2"
   },
   "pnpm": {
     "overrides": {
