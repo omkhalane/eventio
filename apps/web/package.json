@@ -38,7 +38,7 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vercel/node": "^5.8.22",
+    "@vercel/node": "^5.8.24",
     "@vitejs/plugin-react": "^6.0.3",
     "tailwindcss": "^4.3.2",
     "tsx": "^4.23.0",
