@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "bullmq": "^5.79.3",
+    "bullmq": "^5.80.4",
     "ioredis": "^5.11.1"
   },
   "devDependencies": {
