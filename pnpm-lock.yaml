@@ -71,8 +71,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       '@vercel/node':
-        specifier: ^5.8.24
-        version: 5.8.24(rollup@4.60.3)
+        specifier: ^5.8.26
+        version: 5.8.26(rollup@4.60.3)
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
@@ -193,8 +193,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       '@vercel/node':
-        specifier: ^5.8.24
-        version: 5.8.24(rollup@4.60.3)
+        specifier: ^5.8.26
+        version: 5.8.26(rollup@4.60.3)
       '@vitejs/plugin-react':
         specifier: ^6.0.3
         version: 6.0.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.1))
@@ -1955,8 +1955,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/build-utils@13.33.0':
-    resolution: {integrity: sha512-vxAcks5cAMSKlWRwu6WSwqxdJtZ2DMpLnxYaIscYVCYIacfDd4kzwZYxxufRb3gk932klAELjxGVCcuFVuxhXA==}
+  '@vercel/build-utils@13.34.0':
+    resolution: {integrity: sha512-DhbYXymwjO6N3prqBf7UzQFNpQIcHabe1qbiXxqqfjDJ5Tca9+MMYnU/+uObHrPBfR9FAXMxAwmkIUw59zJ7cw==}
 
   '@vercel/error-utils@2.2.0':
     resolution: {integrity: sha512-WFWiRxfPzoYWYifaj4thSKvAaZZwUOqD4k5GINRIgZgCiS2E3iAJbWbIsIZmkQdTecWFHcWGA6q48CjisgpOBA==}
@@ -1966,8 +1966,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@vercel/node@5.8.24':
-    resolution: {integrity: sha512-Zi5LvZaKZsUZIUCrf16pa1np6HOImygrt6/HMoDOZjcHHaeKZUda+KB/O1CZEp1ipDjvPKK03igELagrj44hiw==}
+  '@vercel/node@5.8.26':
+    resolution: {integrity: sha512-Vh7V6aWgUtzMLqd+n7K4O4KzXjB9UxV71OGCp5NODPqHvjpbavwjUfPlnKAXyZTZxQrbp+HHv+mL/6J8ezB8Hw==}
 
   '@vercel/og@0.11.1':
     resolution: {integrity: sha512-02rXXRABFq1B03w3aNhcVfxkY+8Ba5QFi4ax0zS0oOiD/LL9WUd/LA7BjVPakrQmVhIBjuo2oBM5U25R9IuXMg==}
@@ -3541,8 +3541,8 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
-  tar@7.5.20:
-    resolution: {integrity: sha512-9FcyK4PA6+WbzlTM9WhQm6vB5W7cP7dUiPsv1g7YDwEQnQ1CGpK3MGlKk/ITVWMk05kHZuBhmVhiv8LZoy/PFQ==}
+  tar@7.5.21:
+    resolution: {integrity: sha512-XdhtCvlMywwxpCW8YEq3lOXBJpUPTR2OHHcwLPO3HwsJqOHa2Ok/oJ7ruGzp+JrKoRPVCzJwAdEjqLW/vNRPHA==}
     engines: {node: '>=18'}
 
   text-segmentation@1.0.3:
@@ -3632,8 +3632,8 @@ packages:
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
 
-  undici@8.7.0:
-    resolution: {integrity: sha512-N7iQtfyLhIMOFgQubvmLV26svHpO0bqKnAiWotTQCVKCmWrcGbBotPuW1x+xwYZ2VHdSTVUfPQQnlEt1/LouTQ==}
+  undici@8.8.0:
+    resolution: {integrity: sha512-ubshXMXwF3MQIMF1y/WxZdNBnjEKeSg2wF5mcGUtU55YTw34tnVVpKRlLf7ruDXZ5344KokPVX4RBx1wJm64Bw==}
     engines: {node: '>=22.19.0'}
 
   unicode-trie@2.0.0:
@@ -4637,7 +4637,7 @@ snapshots:
       node-fetch: 2.6.9
       nopt: 8.1.0
       semver: 7.8.5
-      tar: 7.5.20
+      tar: 7.5.21
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -5067,7 +5067,7 @@ snapshots:
     optionalDependencies:
       react: 19.2.7
 
-  '@vercel/build-utils@13.33.0':
+  '@vercel/build-utils@13.34.0':
     dependencies:
       '@vercel/python-analysis': 0.11.1
       cjs-module-lexer: 1.2.3
@@ -5094,13 +5094,13 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/node@5.8.24(rollup@4.60.3)':
+  '@vercel/node@5.8.26(rollup@4.60.3)':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
       '@edge-runtime/vm': 3.2.0
       '@types/node': 20.11.0
-      '@vercel/build-utils': 13.33.0
+      '@vercel/build-utils': 13.34.0
       '@vercel/error-utils': 2.2.0
       '@vercel/nft': 1.10.0(rollup@4.60.3)
       '@vercel/static-config': 3.4.0
@@ -5117,7 +5117,7 @@ snapshots:
       ts-morph: 12.0.0
       tsx: 4.21.0
       typescript: 5.9.3
-      undici: 8.7.0
+      undici: 8.8.0
     transitivePeerDependencies:
       - encoding
       - rollup
@@ -6750,7 +6750,7 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  tar@7.5.20:
+  tar@7.5.21:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
@@ -6853,7 +6853,7 @@ snapshots:
 
   undici-types@8.3.0: {}
 
-  undici@8.7.0: {}
+  undici@8.8.0: {}
 
   unicode-trie@2.0.0:
     dependencies:
