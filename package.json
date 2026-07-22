@@ -30,7 +30,7 @@
     "@vercel/og": "^0.11.1",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.24.0",
-    "react": "^19.2.7",
+    "react": "^19.2.8",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
