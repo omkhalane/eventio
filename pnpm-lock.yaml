@@ -71,8 +71,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       '@vercel/node':
-        specifier: ^5.9.2
-        version: 5.9.2(rollup@4.60.3)
+        specifier: ^5.9.3
+        version: 5.9.3(rollup@4.60.3)
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
@@ -193,8 +193,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       '@vercel/node':
-        specifier: ^5.9.2
-        version: 5.9.2(rollup@4.60.3)
+        specifier: ^5.9.3
+        version: 5.9.3(rollup@4.60.3)
       '@vitejs/plugin-react':
         specifier: ^6.0.4
         version: 6.0.4(vite@8.1.5(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.1))
@@ -1997,8 +1997,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/build-utils@13.36.2':
-    resolution: {integrity: sha512-TC+LhfYxW0N17cqJoYHtow6ybMRF1v6NnlRWjeeyuWAdGwdzXcKYNuD1MqheshyNOrz2Hu9LpifxmpXvLqRHiA==}
+  '@vercel/build-utils@13.36.3':
+    resolution: {integrity: sha512-2f6RhmPYLiQjAJltaq9WPsRNdnzos0bWShL/AbYLXoydBVszlX8H/5w9rJ23nqPmtGjbDfZ9kLLGuAdyftvcTA==}
 
   '@vercel/error-utils@2.2.0':
     resolution: {integrity: sha512-WFWiRxfPzoYWYifaj4thSKvAaZZwUOqD4k5GINRIgZgCiS2E3iAJbWbIsIZmkQdTecWFHcWGA6q48CjisgpOBA==}
@@ -2008,8 +2008,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@vercel/node@5.9.2':
-    resolution: {integrity: sha512-QM9btX0pYWl+abtHOhJMiBUNy0xnmCszrDbcM0nHln9FKD/4DzOxQgGEUWN78YWzfO+7qVoY3bCZg+4fElbdVw==}
+  '@vercel/node@5.9.3':
+    resolution: {integrity: sha512-KkAYFVyrRVm9nYLdk5zVIbAra4H9ZUmLyjDnMNe3+yy5GUtC/jmBVp1fl9cf1CejMNMBu7apcrRN5nX0lhj2xw==}
 
   '@vercel/og@0.11.1':
     resolution: {integrity: sha512-02rXXRABFq1B03w3aNhcVfxkY+8Ba5QFi4ax0zS0oOiD/LL9WUd/LA7BjVPakrQmVhIBjuo2oBM5U25R9IuXMg==}
@@ -2165,8 +2165,8 @@ packages:
     resolution: {integrity: sha512-3grm+/2tUOvu2cjJkvsIxrv/wVpfXQW4PsQHYm7yk4vfpu7Ekl6nEsYBoJUL6qDwZUx8wUhQ8tR2qz+ad9c9OA==}
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
 
-  brace-expansion@1.1.17:
-    resolution: {integrity: sha512-w+aeW/mkgM4PyRMOJCgi3fOrTm5Q8QY1OSfn2TO2iuDj3ezIHqejmuxbjfPrqUkgqRew1iqkyAn0tr0ZwHD9+w==}
+  brace-expansion@1.1.18:
+    resolution: {integrity: sha512-Edep/X9fGqVNmzKBVsDYIOtD+z1tuezV70LBjdCst9Tqu76lsnvRiZ6oTic1n+/BIwX6QDGAO94PN4N2SADvtw==}
 
   brace-expansion@5.0.8:
     resolution: {integrity: sha512-JZyDyq3D4AUifKTPOB7DELf6XsB3WdPuNxCtob1vFXPsSXhdAiHBWJ/tJ8HAc9aH84BK+5JFZLNkJKx3G9kzQg==}
@@ -2750,6 +2750,9 @@ packages:
 
   get-tsconfig@4.14.0:
     resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
+
+  get-tsconfig@4.14.1:
+    resolution: {integrity: sha512-Dz/6HxkrxgNehhxLVeyv8sad9UzF2xBVeaKBQNDfJ5XiSXmp2gTR0eO0RWiT2NCKS5aGP9jjkOMggTN90qU50A==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -3752,8 +3755,8 @@ packages:
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
 
-  undici@8.9.0:
-    resolution: {integrity: sha512-aWZpUj7XoGonMClx4gdDRfgBjqeA+F473aDmROQQbM9n6PRfK/u1q/a0X4wMTgcHfT8H6fpbt98PFuDUwFg2YA==}
+  undici@8.10.0:
+    resolution: {integrity: sha512-HvltHd7avK13QIw/oLe4qoOLyoVSoafqJ2jYOrtMRBkbYT31eiBQ8O0ehRKZiEZCMEyLFQNIADpgCWC5fALvYQ==}
     engines: {node: '>=22.19.0'}
 
   unicode-trie@2.0.0:
@@ -5192,7 +5195,7 @@ snapshots:
     optionalDependencies:
       react: 19.2.8
 
-  '@vercel/build-utils@13.36.2':
+  '@vercel/build-utils@13.36.3':
     dependencies:
       '@vercel/python-analysis': 0.12.0
       cjs-module-lexer: 1.2.3
@@ -5219,13 +5222,13 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/node@5.9.2(rollup@4.60.3)':
+  '@vercel/node@5.9.3(rollup@4.60.3)':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
       '@edge-runtime/vm': 3.2.0
       '@types/node': 20.11.0
-      '@vercel/build-utils': 13.36.2
+      '@vercel/build-utils': 13.36.3
       '@vercel/error-utils': 2.2.0
       '@vercel/nft': 1.10.0(rollup@4.60.3)
       '@vercel/static-config': 3.4.0
@@ -5242,7 +5245,7 @@ snapshots:
       ts-morph: 12.0.0
       tsx: 4.21.0
       typescript: 5.9.3
-      undici: 8.9.0
+      undici: 8.10.0
     transitivePeerDependencies:
       - encoding
       - rollup
@@ -5410,7 +5413,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  brace-expansion@1.1.17:
+  brace-expansion@1.1.18:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
@@ -6044,6 +6047,10 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
+  get-tsconfig@4.14.1:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -6355,7 +6362,7 @@ snapshots:
 
   minimatch@3.1.5:
     dependencies:
-      brace-expansion: 1.1.17
+      brace-expansion: 1.1.18
 
   minimist@1.2.8: {}
 
@@ -6980,7 +6987,7 @@ snapshots:
   tsx@4.21.0:
     dependencies:
       esbuild: 0.27.0
-      get-tsconfig: 4.14.0
+      get-tsconfig: 4.14.1
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -7028,7 +7035,7 @@ snapshots:
 
   undici-types@8.3.0: {}
 
-  undici@8.9.0: {}
+  undici@8.10.0: {}
 
   unicode-trie@2.0.0:
     dependencies:
