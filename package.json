@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
-    "@types/react": "^19.2.17",
+    "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.3",
     "@vercel/node": "^5.9.2",
     "drizzle-kit": "^0.31.10",
