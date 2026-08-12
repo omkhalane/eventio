@@ -23,7 +23,7 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "lucide-react": "^1.28.0",
-    "motion": "^12.43.0",
+    "motion": "^13.0.0",
     "posthog-js": "^1.409.5",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
