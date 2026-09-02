@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/index.js",
   "dependencies": {
-    "zod": "^4.4.3",
+    "zod": "^4.5.4",
     "dotenv": "^17.4.2"
   },
   "devDependencies": {
