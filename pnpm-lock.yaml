@@ -52,8 +52,8 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(@types/react@19.2.18)
       '@vercel/node':
-        specifier: ^10.0.0
-        version: 10.0.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.7.0)(rollup@4.60.3)
+        specifier: ^12.0.1
+        version: 12.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.9.1)(rollup@4.60.3)
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
@@ -174,8 +174,8 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(@types/react@19.2.18)
       '@vercel/node':
-        specifier: ^10.0.0
-        version: 10.0.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.7.0)(rollup@4.60.3)
+        specifier: ^12.0.1
+        version: 12.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.9.1)(rollup@4.60.3)
       '@vitejs/plugin-react':
         specifier: ^6.1.1
         version: 6.1.1(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13))
@@ -2461,8 +2461,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/build-utils@14.7.0':
-    resolution: {integrity: sha512-Raz4NkE5sO83/QKt4pLN6C3vLt50vkOY7cPzxBr2jLI17FPRRpHPuMfjqwGL67s/G4PA3qFG0IxiYHTEUcLEdA==}
+  '@vercel/build-utils@14.9.1':
+    resolution: {integrity: sha512-d7Ov4+TA+UAxopVsgh698LPs0Um/LrW430FRU/qPlI7WFWWU55XwGJ2+aXCY8ZbA2zoZ8XjbZJVGjwnTCBG52Q==}
 
   '@vercel/error-utils@2.2.1':
     resolution: {integrity: sha512-9DhP8jP7raLML4hGsBemxX5fXuQnu5xxMV+HjGygGbzEmVK/+KyJ3QP2Cw7PdF0uXdb9N0Qa4c3tRGH34ZX6vw==}
@@ -2472,10 +2472,10 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@vercel/node@10.0.0':
-    resolution: {integrity: sha512-YmeBOFd9wZ3aNrBZ0Qo68+cW8jug4JWMI4TiF0bkjwW0EcUxpGYT4tleLLgdDuja0THZt6slgfWbmvxxpe/HEg==}
+  '@vercel/node@12.0.1':
+    resolution: {integrity: sha512-aKxdgnp31N/clDxZM69Z9McoZ0gfBo48Ms+iiuFxJ5wt2SilTVvmS3Rn/LZjlTvQwHGKlJPUwamiuDs/Qsfszw==}
     peerDependencies:
-      '@vercel/build-utils': 14.7.0
+      '@vercel/build-utils': 14.9.1
 
   '@vercel/og@1.0.2':
     resolution: {integrity: sha512-xL22Oy3fZ1TjR2eYJ3A9dKFmaHSAnaHfQ3lREFOquAQIBydkjHqIZkndKQGphxXertZMcGBdIkJbAo/ty9uGdw==}
@@ -5946,7 +5946,7 @@ snapshots:
     optionalDependencies:
       react: 19.2.8
 
-  '@vercel/build-utils@14.7.0':
+  '@vercel/build-utils@14.9.1':
     dependencies:
       cjs-module-lexer: 1.2.3
       es-module-lexer: 1.5.0
@@ -5972,13 +5972,13 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/node@10.0.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.7.0)(rollup@4.60.3)':
+  '@vercel/node@12.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.9.1)(rollup@4.60.3)':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
       '@edge-runtime/vm': 3.2.0
       '@types/node': 20.11.0
-      '@vercel/build-utils': 14.7.0
+      '@vercel/build-utils': 14.9.1
       '@vercel/error-utils': 2.2.1
       '@vercel/nft': 1.10.0(rollup@4.60.3)
       '@vercel/static-config': 3.4.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
