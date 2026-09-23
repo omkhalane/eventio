@@ -291,8 +291,8 @@ importers:
   packages/queue:
     dependencies:
       bullmq:
-        specifier: ^6.3.4
-        version: 6.3.4(ioredis@6.0.0)
+        specifier: ^6.3.8
+        version: 6.3.8(ioredis@6.0.0)
       ioredis:
         specifier: ^6.0.0
         version: 6.0.0
@@ -2630,8 +2630,8 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bullmq@6.3.4:
-    resolution: {integrity: sha512-DpilB5sayCB8huCp4YuzVhJjxB4ieHidzu+GPgbcjPi3kQv0gdLoLnk+I+mMACDQ88rTbSiT+B4crmhWFGL9GA==}
+  bullmq@6.3.8:
+    resolution: {integrity: sha512-09zcOQ1uycyCK2C9iY2Pm+/JPa/gIXiZqGBUiIlO1v3VshwBgarmAgWRTWDL/IAvI8NFE1zqrkdKFgRfXHHM5A==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       bullmq-otel: '>=2.0.0'
@@ -2742,8 +2742,8 @@ packages:
   core-js@3.50.0:
     resolution: {integrity: sha512-BRWgOLKkFeCgRudR6zrs8p9XJZcE14grzKMMssoYrk6krtuEZ7MTKPIY5RzOnqsEKIR9kst7wNzphttraT+Yqw==}
 
-  cron-parser@5.10.0:
-    resolution: {integrity: sha512-izNAxJyRWUP8ljBoDSub5WyrVOUlT4SLGShswE7eoRBpp6QUsSycYxLBMJlbshgPBMcPT/nrfgjNY2918ayv2A==}
+  cron-parser@5.10.1:
+    resolution: {integrity: sha512-pKRrRagItwk9rGIStcUyMxFX34x56zoX3KDf9HJ4ttwkXIK1qxK63EvXvEDmlxI9AdPJ+Y7TEKRftRlW5eSS7A==}
     engines: {node: '>=18'}
 
   cross-spawn@7.0.6:
@@ -6130,9 +6130,9 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bullmq@6.3.4(ioredis@6.0.0):
+  bullmq@6.3.8(ioredis@6.0.0):
     dependencies:
-      cron-parser: 5.10.0
+      cron-parser: 5.10.1
       msgpackr: 2.1.0
       node-abort-controller: 3.1.1
       semver: 7.8.5
@@ -6223,7 +6223,7 @@ snapshots:
 
   core-js@3.50.0: {}
 
-  cron-parser@5.10.0:
+  cron-parser@5.10.1:
     dependencies:
       luxon: 3.7.2
 
