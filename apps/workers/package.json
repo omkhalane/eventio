@@ -15,7 +15,7 @@
     "@eventio/queue": "workspace:*",
     "@eventio/observability": "workspace:*",
     "@eventio/scraper-core": "workspace:*",
-    "dotenv": "^17.4.2"
+    "dotenv": "^18.0.4"
   },
   "devDependencies": {
     "tsx": "^4.23.15",
