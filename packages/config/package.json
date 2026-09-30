@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "zod": "^4.6.5",
-    "dotenv": "^17.4.2"
+    "dotenv": "^18.0.4"
   },
   "devDependencies": {
     "typescript": "^7.0.2"
