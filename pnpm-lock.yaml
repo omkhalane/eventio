@@ -27,8 +27,8 @@ importers:
         specifier: workspace:*
         version: link:packages/scraper-core
       '@vercel/og':
-        specifier: ^1.0.2
-        version: 1.0.2(@types/node@26.6.2)
+        specifier: ^1.0.3
+        version: 1.0.3(@types/node@26.6.2)
       drizzle-orm:
         specifier: ^0.45.2
         version: 0.45.2(@opentelemetry/api@1.9.1)(postgres@3.4.9)
@@ -2474,8 +2474,8 @@ packages:
     peerDependencies:
       '@vercel/build-utils': 14.10.1
 
-  '@vercel/og@1.0.2':
-    resolution: {integrity: sha512-xL22Oy3fZ1TjR2eYJ3A9dKFmaHSAnaHfQ3lREFOquAQIBydkjHqIZkndKQGphxXertZMcGBdIkJbAo/ty9uGdw==}
+  '@vercel/og@1.0.3':
+    resolution: {integrity: sha512-/iYJ34PDu4lty1TXdL86qHEw8viveHTllG1PWLuJX8tSFfqKL7kyVJeUORJmQ250bHB0h+alcalXUlza3c/NSA==}
     engines: {node: '>=22'}
 
   '@vercel/static-config@3.4.3':
@@ -4014,8 +4014,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  satori@0.33.3:
-    resolution: {integrity: sha512-9dOJkLzIsBqEfaJZxn/u7dBtUcm6+rcNQ6qEWo600Ar50Cudq9mTzyW6fCiasbdV1N+dKuUAWGo+KzGOdS7+qg==}
+  satori@0.33.5:
+    resolution: {integrity: sha512-PNW6ktrQ8SM6kk7u4aOuTkkUewkzyTOrj+QeEzXSsnNMAdff4ire9CAqIz8+4C3rCiBtK8QTELv52AZEd1PbRw==}
     engines: {node: '>=16'}
 
   scheduler@0.27.0:
@@ -5973,10 +5973,10 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/og@1.0.2(@types/node@26.6.2)':
+  '@vercel/og@1.0.3(@types/node@26.6.2)':
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
-      satori: 0.33.3
+      satori: 0.33.5
     optionalDependencies:
       sharp: 0.35.4(@types/node@26.6.2)
     transitivePeerDependencies:
@@ -7553,7 +7553,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  satori@0.33.3:
+  satori@0.33.5:
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
       css-background-parser: 0.1.0

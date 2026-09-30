@@ -27,7 +27,7 @@
     "@eventio/observability": "workspace:*",
     "@eventio/queue": "workspace:*",
     "@eventio/scraper-core": "workspace:*",
-    "@vercel/og": "^1.0.2",
+    "@vercel/og": "^1.0.3",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.47.0",
     "react": "^19.3.0",
