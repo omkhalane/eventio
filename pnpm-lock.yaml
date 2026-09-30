@@ -52,8 +52,8 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(@types/react@19.3.0)
       '@vercel/node':
-        specifier: ^13.0.0
-        version: 13.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.10.1)(rollup@4.60.3)
+        specifier: ^16.0.1
+        version: 16.0.2(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.13.2)(rollup@4.60.3)
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
@@ -174,8 +174,8 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(@types/react@19.3.0)
       '@vercel/node':
-        specifier: ^13.0.0
-        version: 13.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.10.1)(rollup@4.60.3)
+        specifier: ^16.0.1
+        version: 16.0.2(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.13.2)(rollup@4.60.3)
       '@vitejs/plugin-react':
         specifier: ^6.1.1
         version: 6.1.1(vite@8.3.1(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
@@ -2458,8 +2458,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/build-utils@14.10.1':
-    resolution: {integrity: sha512-TjFFbw5K2uKL6/6pHPmp4ZaSJIS84AEKtU3dvNvtzbK4ATUx+PK4wRLZIyf3FqJ33NLzyER6DkHfZzHHj5k/yQ==}
+  '@vercel/build-utils@14.13.2':
+    resolution: {integrity: sha512-BX3Byi0MRHRKnEQiHKfslTy8zM2vuLXCcEiIWyFahnlvO4lqLK1Hke5bfB0DMUMU+2+jehmQF6zKSHQZG28WaQ==}
 
   '@vercel/error-utils@2.2.1':
     resolution: {integrity: sha512-9DhP8jP7raLML4hGsBemxX5fXuQnu5xxMV+HjGygGbzEmVK/+KyJ3QP2Cw7PdF0uXdb9N0Qa4c3tRGH34ZX6vw==}
@@ -2469,17 +2469,17 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@vercel/node@13.0.1':
-    resolution: {integrity: sha512-WpHviLdoReq5oGTQhbljiKZTxshARiSjqN+8dh8GB5icaXTjhneDoWJlQYUw0yd4PSfBeWNJzFMHt+bsSU6d/w==}
+  '@vercel/node@16.0.2':
+    resolution: {integrity: sha512-96QPNY0D2hCL2aYWMAnAz6ElhxYW0nE7husjVVbJvnT7oBG8GaigkBQUm4/dxL+IbYHA7S1IXPvhJfPZQcwDNA==}
     peerDependencies:
-      '@vercel/build-utils': 14.10.1
+      '@vercel/build-utils': 14.13.2
 
   '@vercel/og@1.0.3':
     resolution: {integrity: sha512-/iYJ34PDu4lty1TXdL86qHEw8viveHTllG1PWLuJX8tSFfqKL7kyVJeUORJmQ250bHB0h+alcalXUlza3c/NSA==}
     engines: {node: '>=22'}
 
-  '@vercel/static-config@3.4.3':
-    resolution: {integrity: sha512-BY1sL8rNJvIm3TK/8TQ+Q6jIx7NpO5xckQzv7s6c1ypHvRnTl+vf6rmgY5WFXmoYDeGm3tMy4jiy/5M/5jGr/g==}
+  '@vercel/static-config@3.4.4':
+    resolution: {integrity: sha512-WppaPyEKQhO8qo5gVee3mSo1QSCgDZaUcUDHrqICSlt90oYeC/SHTmKCPWY1x1NB9hU+kR2oDzJwAeRKKv5NIw==}
 
   '@vitejs/plugin-react@6.1.1':
     resolution: {integrity: sha512-yxLaQV9gkhS8ezJqCM6+ndU7mDY6gqAg75NQ+0IjwEI8IYOmQCgkRwHKVSfWXW076DsqMo0Dk+0FK1U+M5RgFw==}
@@ -5920,7 +5920,7 @@ snapshots:
     optionalDependencies:
       react: 19.3.0
 
-  '@vercel/build-utils@14.10.1':
+  '@vercel/build-utils@14.13.2':
     dependencies:
       cjs-module-lexer: 1.2.3
       es-module-lexer: 1.5.0
@@ -5946,16 +5946,16 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/node@13.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.10.1)(rollup@4.60.3)':
+  '@vercel/node@16.0.2(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.13.2)(rollup@4.60.3)':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
       '@edge-runtime/vm': 3.2.0
       '@types/node': 20.11.0
-      '@vercel/build-utils': 14.10.1
+      '@vercel/build-utils': 14.13.2
       '@vercel/error-utils': 2.2.1
       '@vercel/nft': 1.10.0(rollup@4.60.3)
-      '@vercel/static-config': 3.4.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
+      '@vercel/static-config': 3.4.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       async-listen: 3.0.0
       cjs-module-lexer: 1.2.3
       edge-runtime: 2.5.9
@@ -5986,7 +5986,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@vercel/static-config@3.4.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
+  '@vercel/static-config@3.4.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:
       ajv: 8.6.3
       json-schema-to-ts: 1.6.4
