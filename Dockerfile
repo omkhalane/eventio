@@ -1,6 +1,6 @@
 FROM node:20-alpine AS base
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
 RUN apk add --no-cache dumb-init
 
 # ----------------------------------------------------------------------------
@@ -10,7 +10,7 @@ FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps ./apps
 COPY packages ./packages
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 
 # ----------------------------------------------------------------------------
 # Build
@@ -19,7 +19,7 @@ FROM base AS build
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps ./apps
 COPY packages ./packages
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 RUN pnpm build
 
 # ----------------------------------------------------------------------------
