@@ -17,7 +17,7 @@ jobs:
     if: github.event.pull_request.user.login == 'dependabot[bot]' && !github.event.pull_request.draft
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for PR checks
+      - name: Wait for CI checks
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,10 +25,13 @@ jobs:
           set -euo pipefail
 
           for attempt in {1..90}; do
-            checks="$(gh pr checks "$PR_URL" --json bucket,name 2>/dev/null || true)"
+            checks="$(gh pr checks "$PR_URL" --json name,bucket 2>/dev/null || true)"
 
-            if [ -z "$checks" ] || [ "$checks" = "[]" ]; then
-              echo "Checks have not appeared yet; waiting..."
+            # Ignore this workflow's own check while it is running.
+            checks="$(echo "$checks" | jq '[.[] | select(.name != "Enable auto-merge" and .name != "Dependabot auto-merge")]')"
+
+            if [ "$checks" = "[]" ]; then
+              echo "Waiting for CI checks to appear..."
               sleep 10
               continue
             fi
@@ -36,27 +39,32 @@ jobs:
             echo "$checks"
 
             if echo "$checks" | jq -e 'any(.[]; .bucket == "fail" or .bucket == "cancel")' >/dev/null; then
-              echo "A required PR check failed or was cancelled. Leaving PR open."
+              echo "A CI check failed/cancelled. PR will not be merged."
               exit 1
             fi
 
             if echo "$checks" | jq -e 'any(.[]; .bucket == "pending")' >/dev/null; then
-              echo "Checks are still running..."
+              echo "CI is still running..."
               sleep 10
               continue
             fi
 
-            echo "All reported PR checks passed."
-            break
+            echo "All reported CI checks passed."
+            exit 0
           done
 
-          if [ "$attempt" = "90" ]; then
-            echo "Timed out waiting for PR checks."
-            exit 1
-          fi
+          echo "Timed out waiting for CI checks."
+          exit 1
+
+      - name: Approve Dependabot PR
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review "$PR_URL" --approve || true
 
       - name: Squash merge Dependabot PR
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr merge "$PR_URL" --squash --delete-branch
+        run: gh pr merge "$PR_URL" --squash --delete-branch --match-head-commit "$HEAD_SHA"
