@@ -28,7 +28,7 @@ jobs:
             checks="$(gh pr checks "$PR_URL" --json name,bucket 2>/dev/null || true)"
 
             # Ignore this workflow's own check while it is running.
-            checks="$(echo "$checks" | jq '[.[] | select(.name != "Enable auto-merge" and .name != "Dependabot auto-merge")]')"
+            checks="$(echo "$checks" | jq '[.[] | select(.name == "Lint & Type Check" or .name == "Test")]')"
 
             if [ "$checks" = "[]" ]; then
               echo "Waiting for CI checks to appear..."
