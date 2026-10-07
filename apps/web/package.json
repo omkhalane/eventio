@@ -24,7 +24,7 @@
     "jspdf": "^4.2.1",
     "lucide-react": "^1.48.0",
     "motion": "^13.4.4",
-    "posthog-js": "^1.434.15",
+    "posthog-js": "^1.435.8",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-helmet-async": "^3.0.0",
